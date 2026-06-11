@@ -1,0 +1,26 @@
+BUILD-SUMMARY.md
+  s_d96fe3c1f5b20a::t_205c0b14704cab 1-324,365-428
+  s_d96fe3c1f5b20a::t_8f47e6afd941c6 325-364
+DEPLOYMENT.md
+  s_d96fe3c1f5b20a::t_bab15a09b4cd1a 1-84,92-335
+  s_d96fe3c1f5b20a::t_dae23f27a3e360 85-91
+GOVERNANCE.md
+  s_d96fe3c1f5b20a::t_761e5d6eed65c9 348-363
+  s_d96fe3c1f5b20a::t_170b442f78df1d 1-347,364-375
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "ab6ffaab177c3505c983f2e0402650bbe3d582f8",
+  "prompts": {},
+  "sessions": {
+    "s_d96fe3c1f5b20a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2536e6cb-f0ae-4da3-b268-b2068b711054",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
