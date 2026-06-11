@@ -1,0 +1,23 @@
+MIGRATION_LOG.md
+  s_a1c7ef936594bc::t_4e7e7d9c8678eb 139
+  s_a1c7ef936594bc::t_c384a0658f1be5 260,266-280
+  s_a1c7ef936594bc::t_45b9a48c6a8a38 150
+  s_a1c7ef936594bc::t_968a2ab02489d1 285,297,299-300,304
+  s_a1c7ef936594bc::t_09267353c7265a 293,296,298,301-303,305-308
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "2dafc9f3a80a63366d25f4d149d1c9c7dc2d9460",
+  "prompts": {},
+  "sessions": {
+    "s_a1c7ef936594bc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b7641c3b-e53d-45cb-be67-998ad8af5a4e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
