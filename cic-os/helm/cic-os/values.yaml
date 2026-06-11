@@ -1,0 +1,19 @@
+namespace: cic-system
+
+foundry:
+  installCrds: true
+  installControllers: true
+
+cic:
+  enableStressHarness: true
+  enableLoadGenerator: true
+  enableMutationFramework: true
+  enableCanaryTelemetry: true
+
+governance:
+  enforceDeterminism: true
+  enforceImmutability: true
+
+drift:
+  enableDriftDetection: true
+  defaultThreshold: 0.35
