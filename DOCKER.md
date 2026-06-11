@@ -56,7 +56,9 @@ Optional:
 - `CIC_ENV` — environment tag (default: `development`)
 - `CIC_MCP_PORT` — primary MCP port (default: `3100`)
 - `CIC_DRY_RUN` — test mode without side effects (default: `false`)
-- `CLAUDE_SKIP_PERMISSIONS` — disable permission prompts in Docker (default: `true`)
+- `CLAUDE_SKIP_PERMISSIONS` — disable permission prompts (default: `true` for dev, **MUST be `false` in production**)
+
+⚠️ **WARNING: CLAUDE_SKIP_PERMISSIONS**: This setting is safe in dev Docker containers where file access is scoped to the project root. In production or on shared systems, set `CLAUDE_SKIP_PERMISSIONS=false` to restore permission prompts and prevent unauthorized operations.
 
 ## Features
 

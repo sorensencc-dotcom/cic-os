@@ -82,15 +82,24 @@ EOF
 check_dependencies() {
   info "Checking dependencies..."
   local deps=(node npm git curl jq lsof)
+  local missing=()
   for dep in "${deps[@]}"; do
-    command -v "$dep" &>/dev/null || die "Missing: $dep"
+    if ! command -v "$dep" &>/dev/null; then
+      if [[ "$dep" == "lsof" ]]; then
+        warn "Optional: $dep not found (port checks will be skipped)"
+      else
+        missing+=("$dep")
+      fi
+    fi
   done
-  success "All dependencies present."
+  [[ ${#missing[@]} -gt 0 ]] && die "Missing required dependencies: ${missing[*]}"
+  success "All required dependencies present."
 }
 
 # Better process detection: use ps instead of kill -0
 is_process_alive() {
   local pid=$1
+  [[ "$pid" =~ ^[0-9]+$ ]] || return 1
   ps -p "$pid" -o state= &>/dev/null
 }
 
@@ -98,7 +107,7 @@ is_process_alive() {
 acquire_lock() {
   if [[ -f "$LOCK_FILE" ]]; then
     local old_pid; old_pid=$(jq -r '.pid // 0' "$LOCK_FILE" 2>/dev/null || echo "0")
-    if [[ "$old_pid" -gt 0 ]] && is_process_alive "$old_pid"; then
+    if [[ "$old_pid" =~ ^[0-9]+$ ]] && [[ "$old_pid" -gt 0 ]] && is_process_alive "$old_pid"; then
       die "Startup already in progress (PID: $old_pid)."
     fi
     warn "Removing stale lock from PID $old_pid."
@@ -111,8 +120,12 @@ acquire_lock() {
   success "Lock acquired (PID: $$)"
 }
 
-# Port availability check
+# Port availability check (handles missing lsof gracefully)
 port_is_free() {
+  if ! command -v lsof &>/dev/null; then
+    warn "lsof not available; skipping port check for $1"
+    return 0
+  fi
   ! lsof -iTCP:"$1" -sTCP:LISTEN -t &>/dev/null 2>&1
 }
 

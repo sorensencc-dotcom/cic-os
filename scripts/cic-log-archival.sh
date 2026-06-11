@@ -39,19 +39,19 @@ while read logfile; do
     archive "Compressing: $basename"
 
     # Gzip in-place
-    if gzip -f "$logfile" 2>/dev/null; then
-      archive "Compressed: ${basename}.gz"
-
-      # Move to archive
-      if mv "${logfile}.gz" "$ARCHIVE_DIR/" 2>/dev/null; then
-        archive "Moved to: archive/${basename}.gz"
-        (( archived_count++ ))
-      else
-        info "Failed to move ${basename}.gz to archive"
-      fi
-    else
-      info "Failed to gzip $basename"
+    if ! gzip -f "$logfile" 2>/dev/null; then
+      err "Failed to gzip $basename"
+      continue
     fi
+    archive "Compressed: ${basename}.gz"
+
+    # Move to archive
+    if ! mv "${logfile}.gz" "$ARCHIVE_DIR/" 2>/dev/null; then
+      err "Failed to move ${basename}.gz to archive"
+      continue
+    fi
+    archive "Moved to: archive/${basename}.gz"
+    (( archived_count++ ))
   fi
 done
 

@@ -96,8 +96,20 @@ recover_config() {
     local backup; backup=$(ls -t "$CIC_ROOT/.cic/backups/mcp-manifest-"*.json 2>/dev/null | head -1)
 
     if [[ -n "$backup" ]]; then
-      cp "$backup" "$cfg"
-      ok "Restored from: $(basename $backup)"
+      # Validate backup is readable and valid JSON before restoring
+      if jq empty "$backup" 2>/dev/null; then
+        cp "$backup" "$cfg"
+        ok "Restored from: $(basename $backup)"
+      else
+        warn "Backup is corrupt. Initializing default config..."
+        cat > "$cfg" <<'EOF'
+{
+  "version": "1.0.0",
+  "servers": []
+}
+EOF
+        ok "Default config created."
+      fi
     else
       warn "No backup found. Initializing default config..."
       cat > "$cfg" <<'EOF'
