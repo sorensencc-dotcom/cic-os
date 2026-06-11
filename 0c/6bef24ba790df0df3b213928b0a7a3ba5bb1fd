@@ -1,0 +1,22 @@
+cic-os/docs/governance.md
+  s_2ea40af8817355::t_6c91ef7468a824 39
+cic-os/docs/architecture.md
+  s_2ea40af8817355::t_b7ef6fbb8a071c 7
+  s_2ea40af8817355::t_2533a142885bfc 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "0c6bef24ba790df0df3b213928b0a7a3ba5bb1fd",
+  "prompts": {},
+  "sessions": {
+    "s_2ea40af8817355": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6b683fb5-17cd-4bc4-abc9-e87ef9693bcd",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
