@@ -36,7 +36,7 @@ Specifies what CIC can do without operator approval:
 ### Constitutional Court
 An agent whose sole job is interpreting governance rules.
 
-Responds with: \{"decision": "allow | deny | escalate", "reason": "...", "governanceArticles": [...]}\
+Responds with: `{"decision": "allow | deny | escalate", "reason": "...", "governanceArticles": [...]}`
 
 ### Governance Ledger
 Immutable, append-only record of all CIC decisions:

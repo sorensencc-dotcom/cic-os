@@ -4,7 +4,7 @@
 
 CIC OS is a layered intelligence runtime with strict separation of concerns:
 
-\\\
+```text
 [Operators]
     ↓
 [Governance Layer]
@@ -18,7 +18,7 @@ CIC OS is a layered intelligence runtime with strict separation of concerns:
 [Execution & Agents]
     ↓
 [Telemetry & Bundles]
-\\\
+```
 
 ## Core Subsystems
 
