@@ -1,0 +1,47 @@
+REVIEW.md
+  s_d96fe3c1f5b20a::t_dcf23c0010780a 1-28
+integration.test.ts
+  s_d96fe3c1f5b20a::t_f3b853da509bc6 26
+  s_d96fe3c1f5b20a::t_80ed48cf21a25e 1-25,27-232
+approval-gates.ts
+  s_d96fe3c1f5b20a::t_13c8b0f0de9dfd 1-185
+drift-detector.ts
+  s_d96fe3c1f5b20a::t_5f16b6e5de831f 1-57,59-64,66-225
+  s_d96fe3c1f5b20a::t_9c9bc93f1af24d 58
+  s_d96fe3c1f5b20a::t_d48ddd10ef3f1f 65
+cic-cli-governance.ts
+  s_d96fe3c1f5b20a::t_21263343497c35 1-244
+policy-engine.ts
+  s_d96fe3c1f5b20a::t_bf2164a2f04104 1-185
+.env
+  s_d96fe3c1f5b20a::t_5d4fb80655ca5e 1-14
+codeflow-analyze.js
+  s_d96fe3c1f5b20a::t_21fb6de2f34339 61-65
+  s_d96fe3c1f5b20a::t_6c037ed7426267 85,96
+  s_d96fe3c1f5b20a::t_54e7edd0a50f08 60,66-67
+  s_d96fe3c1f5b20a::t_d78074bcb21f3a 82
+  s_d96fe3c1f5b20a::t_2560e1ed3cb14a 115-116
+  s_d96fe3c1f5b20a::t_44b6f996b7b129 1-59,68-81,83-84,86-95,97-114,117-160,162-214,216-316
+  s_d96fe3c1f5b20a::t_d7066ed738cdf8 161
+  s_d96fe3c1f5b20a::t_4fe2cb3aa6cf1f 215
+docker-compose-cic-loop.yml
+  s_d96fe3c1f5b20a::t_e17f9bdafa4719 1-142,213-240
+  s_d96fe3c1f5b20a::t_84886d74672919 166
+  s_d96fe3c1f5b20a::t_4bd83c400a09f6 143-165,167-212
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "7ceafb161d0570785f301ffda53ec0cd5698f054",
+  "prompts": {},
+  "sessions": {
+    "s_d96fe3c1f5b20a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2536e6cb-f0ae-4da3-b268-b2068b711054",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
