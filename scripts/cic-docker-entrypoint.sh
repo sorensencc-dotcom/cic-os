@@ -263,6 +263,9 @@ main() {
       validate_project_root
       check_dependencies
       rotate_logs
+      # Initialize SCP (Phase 28a) — run migrations + manifest setup
+      info "Initializing SCP Phase 28a.2..."
+      bash "${SCRIPT_DIR}/scp-init.sh" || warn "SCP initialization had issues (non-fatal)"
       start_mcp_servers
       check_mcp_health || true
       check_api_reachability || true
