@@ -1,0 +1,35 @@
+cic-os/helm/cic-os/Chart.yaml
+  s_2ea40af8817355::t_f452b6e83d7203 1-14
+cic-os/manifests/cic-release/cic-os-v1.0-manifest.yaml
+  s_2ea40af8817355::t_c6ed217624d7cc 1-50
+cic-os/manifests/cic-governance/governance-manifest.yaml
+  s_2ea40af8817355::t_314f76274789c6 1-40
+cic-os/docs/index.md
+  s_2ea40af8817355::t_45fabfd9e0c396 1-27
+cic-os/CHANGELOG.md
+  s_2ea40af8817355::t_fd19693dca28e9 1-72
+cic-os/README.md
+  s_2ea40af8817355::t_6da0a40b8b2435 1-87
+cic-os/.gitignore
+  s_2ea40af8817355::t_e495c872d11465 1-49
+cic-os/helm/cic-os/values.yaml
+  s_2ea40af8817355::t_bd0c61abfd23a9 1-19
+cic-os/.github/workflows/ci.yaml
+  s_2ea40af8817355::t_3b255f9c0dbb4c 1-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "eb9a5fef6c1bb457fc90f15a8fcd1ba41c8bbb36",
+  "prompts": {},
+  "sessions": {
+    "s_2ea40af8817355": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6b683fb5-17cd-4bc4-abc9-e87ef9693bcd",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
