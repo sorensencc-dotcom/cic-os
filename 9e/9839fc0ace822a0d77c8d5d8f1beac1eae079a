@@ -1,0 +1,21 @@
+scripts/scp-init.sh
+  s_23364b39b23e42::t_8a3f837f2b62c4 1-70
+scripts/cic-docker-entrypoint.sh
+  s_23364b39b23e42::t_6a4abb14968701 266-268
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "9e9839fc0ace822a0d77c8d5d8f1beac1eae079a",
+  "prompts": {},
+  "sessions": {
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
