@@ -1,0 +1,41 @@
+scripts/cic-docker-entrypoint.sh
+  s_e18d579c113d68::t_7d5eec12c95e11 1-301
+DOCKER.md
+  s_e18d579c113d68::t_6c8feca2739ec4 1-199
+.env.example
+  s_e18d579c113d68::t_1e68c906536e91 1-34
+DOCKER-QUICKSTART.md
+  s_e18d579c113d68::t_4166d2d807a8ae 1-118
+DOCKER-BUILD-SUMMARY.md
+  s_e18d579c113d68::t_0c8e5dccc18937 1-253
+.dockerignore
+  s_e18d579c113d68::t_c593f193c90193 1-51
+docker-compose.yml
+  s_e18d579c113d68::t_6efa82b2b694bd 1-63
+scripts/cic-smoke-test.sh
+  s_e18d579c113d68::t_c91b83a0c7f5de 1-141
+scripts/cic-log-archival.sh
+  s_e18d579c113d68::t_8c6dc3bcd38c53 1-87
+scripts/cic-docker-recovery.sh
+  s_e18d579c113d68::t_de0f56836d889f 1-181
+Dockerfile
+  s_e18d579c113d68::t_66643cab0702da 1-87
+scripts/cic-dry-run.sh
+  s_e18d579c113d68::t_1d37ecfeec10b0 1-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "9f3593024645c42c9cb35827277fa51a23c89405",
+  "prompts": {},
+  "sessions": {
+    "s_e18d579c113d68": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a0f93137-2d0c-43b2-8f93-71bd64a4f83b",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
