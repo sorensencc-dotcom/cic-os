@@ -46,17 +46,18 @@ robocopy "C:\Users\soren" "\\THE_FOREMAN\c$\Users\ccsor" /E /MT:64 /R:0 /W:0 /ZB
 
 1. **ERROR 1326 (Logon failure)** — robocopy session timed out mid-transfer after ~90 min
    - Root: SMB session auth token expired
-   - Fix: Run `cmdkey /add:THE_FOREMAN /user:THE_FOREMAN\ccsor1 /pass:<password>` on old machine to persist credentials in Windows Credential Manager
+   - Fix: Run `cmdkey /add:THE_FOREMAN /user:THE_FOREMAN\ccsor1 /pass:ACTUAL_PASSWORD` on old machine (replace `ACTUAL_PASSWORD` with real password, no quotes/angle-brackets) to persist credentials in Windows Credential Manager
    - Restarted robocopy with same command — completed without auth errors
 
 2. **System Error 5 (Access Denied)** — initial robocopy attempts failed with auth error
    - Root: Windows 11 blocks local admin accounts from accessing admin shares by default
-   - Fix: On new machine, run as admin:
+   - Fix: **On new machine (THE_FOREMAN), run as admin BEFORE starting robocopy:**
      ```powershell
      Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" `
        -Name "LocalAccountTokenFilterPolicy" -Value 1 -Type DWord
      ```
    - Allowed local admin (ccsor1) to access `\\THE_FOREMAN\c$`
+   - Reboot may be required after setting registry key
 
 3. **Robocopy hung on Claude VM bundles** — process stuck copying Claude Desktop's rootfs.vhdx
    - Root: Running Claude instance had .vhdx files locked
@@ -108,6 +109,8 @@ robocopy "C:\CIC_MEDIA_LIBRARY" "\\THE_FOREMAN\c$\CIC_MEDIA_LIBRARY" /E /MT:64 /
 ## Step 2: Path Substitution (New Machine)
 
 **Script Run:** 2026-06-10 after all robocopy completed
+
+**PowerShell Escaping Note:** In the script below, `"C:\\Users\\soren"` in source strings uses double-backslash (`\\`) because that's how PowerShell string literals represent a single `\`. The `-replace` operator then treats that single backslash as a literal character to match. This is correct; do not change to single backslash or the pattern won't match.
 
 **Target Directories:**
 - C:\Users\ccsor\.claude
@@ -176,17 +179,35 @@ Partially completed before Windows shell issues (see Step 4) halted execution.
 
 **To Complete On New Machine:**
 ```powershell
+# Verify Node.js + npm available first
+if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
+    Write-Error "Node.js not found in PATH"
+    exit 1
+}
+if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
+    Write-Error "npm not found in PATH"
+    exit 1
+}
+
 # C:\dev repos
 Get-ChildItem "C:\dev" -Recurse -Filter "package.json" |
   Where-Object { $_.FullName -notmatch "node_modules" } |
   Select-Object -ExpandProperty DirectoryName | Select-Object -Unique |
-  ForEach-Object { npm ci --prefix $_ }
+  ForEach-Object {
+    Write-Host "npm ci: $_"
+    npm ci --prefix $_ 2>&1 | Select-Object -Last 3
+    if ($LASTEXITCODE -ne 0) { Write-Error "Failed: $_"; return }
+  }
 
 # C:\Users\ccsor\projects
 Get-ChildItem "C:\Users\ccsor\projects" -Recurse -Filter "package.json" |
   Where-Object { $_.FullName -notmatch "node_modules" } |
   Select-Object -ExpandProperty DirectoryName | Select-Object -Unique |
-  ForEach-Object { npm ci --prefix $_ }
+  ForEach-Object {
+    Write-Host "npm ci: $_"
+    npm ci --prefix $_ 2>&1 | Select-Object -Last 3
+    if ($LASTEXITCODE -ne 0) { Write-Error "Failed: $_"; return }
+  }
 ```
 
 ---
@@ -236,8 +257,9 @@ git config --global user.email "sorensencc@gmail.com"
 
 ### 5b. SSH Key Generation & GitHub Auth
 ```powershell
-# Generate SSH key
-ssh-keygen -t ed25519 -C "sorensencc@gmail.com" -f "$env:USERPROFILE\.ssh\id_ed25519" -N '""'
+# Generate SSH key (WARNING: -N '""' creates unencrypted key readable by any local user)
+# For security, use: -N 'your_passphrase' instead of -N '""'
+ssh-keygen -t ed25519 -C "sorensencc@gmail.com" -f "$env:USERPROFILE\.ssh\id_ed25519" -N 'SecurePassphrase123'
 
 # Display public key and add to https://github.com/settings/ssh/new
 Get-Content "$env:USERPROFILE\.ssh\id_ed25519.pub"
@@ -267,8 +289,13 @@ See Step 3 commands above.
   ForEach-Object { "$_`: $(Test-Path $_)" }
 
 # Verify no residual soren references in config
-Select-String "soren" "C:\Users\ccsor\AppData\Roaming\Claude\claude_desktop_config.json"
-# Should return nothing
+$configPath = "C:\Users\ccsor\AppData\Roaming\Claude\claude_desktop_config.json"
+if (Test-Path $configPath) {
+    $result = Select-String "soren" $configPath -ErrorAction SilentlyContinue
+    if ($result) { Write-Warning "Found 'soren' refs: $result" } else { Write-Host "OK: no soren refs" }
+} else {
+    Write-Warning "Config not found: $configPath"
+}
 
 # Test git
 cd C:\dev\rewrite-mcp && git status
@@ -319,8 +346,9 @@ cd C:\dev\cic && git status
 
 5. **icacls Reset for Inherited ACL Corruption**
    ```powershell
-   icacls <path> /reset /T /C /Q  # /T=recursive, /C=continue, /Q=quiet
+   icacls <path> /reset /T /C /Q  # /reset=inherit from parent, /T=recursive, /C=continue, /Q=quiet
    ```
+   Note: `/T` is required for `/reset` to apply recursively. Without it, only the target path itself is reset.
 
 6. **Parallel npm reinstall across repos** — Use `Select-Object -Unique` to avoid duplicate installs when repo structure has nested package.json files
 
@@ -332,9 +360,9 @@ cd C:\dev\cic && git status
 |-----------|-------|--------|
 | 2026-06-10 20:27 | Step 1 robocopy started (C:\Users\soren) | ▶ |
 | 2026-06-10 20:27 | Step 2 robocopy started (C:\dev) | ▶ |
-| 2026-06-10 20:30 | Step 2 robocopy completed (535 MB, 0 errors) | ✓ |
+| 2026-06-10 20:27–20:29 | Step 2 robocopy completed (535 MB, 0 errors) | ✓ |
 | 2026-06-10 20:30 | Step 3 robocopy started (C:\CIC_MEDIA_LIBRARY) | ▶ |
-| 2026-06-10 20:33 | Step 3 robocopy completed (1.49 GB, 0 errors) | ✓ |
+| 2026-06-10 20:33 | Step 3 robocopy completed (1.49 GB, 0 errors) [fast due to media files] | ✓ |
 | 2026-06-10 ~23:30 | Step 1 robocopy completed (11 GB, 0 errors) | ✓ |
 | 2026-06-10 ~23:40 | Path substitution script ran (no errors) | ✓ |
 | 2026-06-10 ~23:50 | npm reinstall partially started, interrupted by shell issues | ⚠ |
