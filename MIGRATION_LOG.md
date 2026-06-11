@@ -136,7 +136,7 @@ $targets = @(
 foreach ($dir in $targets) {
     Get-ChildItem $dir -Recurse -ErrorAction SilentlyContinue `
       -Include "*.json","*.yaml","*.yml","*.toml","*.env","*.ini","*.config","*.md" |
-      Where-Object { $_.FullName -notmatch "node_modules|\.venv|\.git[/\\]objects" } |
+      Where-Object { $_.FullName -notmatch "node_modules|\.venv|\.git" } |
       ForEach-Object {
         try {
             $raw = Get-Content $_.FullName -Raw -ErrorAction Stop
@@ -147,7 +147,7 @@ foreach ($dir in $targets) {
                     -replace [regex]::Escape("/c/Users/soren"), "/c/Users/ccsor" `
                     -replace [regex]::Escape("\\soren\\"), "\\ccsor\\" `
                     -replace [regex]::Escape("/soren/"), "/ccsor/"
-                Set-Content $_.FullName $updated -Encoding UTF8 -NoNewline
+                Set-Content $_.FullName $updated -Encoding UTF8 -NoNewline -Force
                 Write-Host "Updated: $($_.FullName)"
             }
         } catch {}
@@ -257,18 +257,32 @@ git config --global user.email "sorensencc@gmail.com"
 
 ### 5b. SSH Key Generation & GitHub Auth
 ```powershell
-# Generate SSH key (WARNING: -N '""' creates unencrypted key readable by any local user)
-# For security, use: -N 'your_passphrase' instead of -N '""'
+# Generate SSH key (replace SecurePassphrase123 with a strong passphrase)
 ssh-keygen -t ed25519 -C "sorensencc@gmail.com" -f "$env:USERPROFILE\.ssh\id_ed25519" -N 'SecurePassphrase123'
 
 # Display public key and add to https://github.com/settings/ssh/new
 Get-Content "$env:USERPROFILE\.ssh\id_ed25519.pub"
 
-# Authenticate GitHub CLI
+# Add SSH key to ssh-agent (required for passphrase-protected keys)
+# Run this once per session, or add to PowerShell profile $PROFILE for automatic loading
+ssh-add "$env:USERPROFILE\.ssh\id_ed25519"
+# Enter passphrase when prompted
+
+# Verify git identity was set in 5a
+git config --global user.name
+git config --global user.email
+# Should output: Chris Sorensen and sorensencc@gmail.com
+
+# Test SSH connection to GitHub
+ssh -T git@github.com
+# Should respond: "Hi <username>! You've successfully authenticated..."
+
+# Authenticate GitHub CLI (uses web browser)
 gh auth login
 ```
 
 ### 5c. Sensitive Files (Manual Copy — Do NOT Commit)
+
 ```
 Source: C:\Users\soren\projects\executive-dashboard\
 Files:
@@ -276,8 +290,22 @@ Files:
   - token.json
 
 Destination: C:\Users\ccsor\projects\executive-dashboard\
-Method: Manual copy, add to .gitignore, do NOT push to git
+Method: Manual copy (do NOT use robocopy), do NOT push to git
 ```
+
+**Before copying sensitive files:**
+
+1. Verify `.gitignore` in `C:\Users\ccsor\projects\executive-dashboard\` includes:
+
+   ```text
+   credentials.json
+   token.json
+   ```
+
+2. If not present, add these lines and commit `.gitignore`
+3. Then manually copy the two files from old machine
+4. Verify git status shows them as untracked or ignored (not staged)
+5. Never run `git add -A` or `git add .` — use explicit file names only
 
 ### 5d. npm Reinstall (Complete)
 See Step 3 commands above.
