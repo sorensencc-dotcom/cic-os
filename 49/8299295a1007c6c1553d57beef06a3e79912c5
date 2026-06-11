@@ -1,0 +1,32 @@
+scripts/cic-smoke-test.sh
+  s_e18d579c113d68::t_1a109afa16c0a0 123,127-131
+scripts/cic-log-archival.sh
+  s_e18d579c113d68::t_3f0b90be80a221 42-51,53-54
+docker-compose.yml
+  s_e18d579c113d68::t_fe3cecae01fc8d 55-64
+scripts/cic-docker-recovery.sh
+  s_e18d579c113d68::t_36810a79d87370 99-112
+scripts/cic-docker-entrypoint.sh
+  s_e18d579c113d68::t_8a271682deea37 85,87-93,95-96
+  s_e18d579c113d68::t_f764bad82984d5 102
+  s_e18d579c113d68::t_70fbf683715402 110
+  s_e18d579c113d68::t_324ad6bae94031 123,125-128
+DOCKER.md
+  s_e18d579c113d68::t_84e5551607ff19 59-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "498299295a1007c6c1553d57beef06a3e79912c5",
+  "prompts": {},
+  "sessions": {
+    "s_e18d579c113d68": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a0f93137-2d0c-43b2-8f93-71bd64a4f83b",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
