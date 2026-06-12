@@ -111,6 +111,7 @@ services:
       - BUILD_PHASE=0.7
       - PORT=3104
       - REDIS_URL=redis://redis:6379
+      - BUILD_EXECUTOR_URL=http://build-executor:3101
       - LINEAGE_URL=http://lineage-registry:3102
       - ROUTING_URL=http://routing-validator:3103
       - NEMOTRON_URL=http://nemotron:9000

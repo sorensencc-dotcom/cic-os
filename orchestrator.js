@@ -107,6 +107,41 @@ class OrchestratorService {
     };
   }
 
+  callBuildWorker(nodeId, nodeConfig) {
+    const http = require('http');
+    const buildWorkerUrl = process.env.BUILD_EXECUTOR_URL || 'http://build-executor:3101';
+
+    return new Promise((resolve) => {
+      const payload = JSON.stringify({ nodeId, nodeConfig });
+      const req = http.request(`${buildWorkerUrl}/execute`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Content-Length': payload.length },
+      });
+
+      let responseBody = '';
+      req.on('response', (res) => {
+        res.on('data', (chunk) => {
+          responseBody += chunk;
+        });
+        res.on('end', () => {
+          try {
+            const result = JSON.parse(responseBody);
+            resolve({ success: true, result });
+          } catch (e) {
+            resolve({ success: false, error: 'Invalid JSON response' });
+          }
+        });
+      });
+
+      req.on('error', (err) => {
+        resolve({ success: false, error: err.message });
+      });
+
+      req.write(payload);
+      req.end();
+    });
+  }
+
   executeDAG(job) {
     job.state = 'RUNNING';
     job.startTime = Date.now();
@@ -130,25 +165,22 @@ class OrchestratorService {
 
           job.logs.push(`[${new Date().toISOString()}] Node ${nodeId} started`);
 
-          return new Promise((resolve) => {
-            setTimeout(() => {
+          return this.callBuildWorker(nodeId, node).then((response) => {
+            if (response.success) {
+              const result = response.result;
               const context = {
                 nodeId,
                 phase: node.phase,
-                executionTime: 250,
+                executionTime: result.executionTime,
                 status: 'success',
-                artifacts: {
-                  nodeId,
-                  timestamp: new Date().toISOString(),
-                  data: { result: 'mock result' },
-                },
+                artifacts: result.artifacts,
                 error: null,
               };
-
               job.nodeResults.set(nodeId, context);
-              job.logs.push(`[${new Date().toISOString()}] Node ${nodeId} completed`);
-              resolve();
-            }, Math.random() * 500 + 100);
+              job.logs.push(`[${new Date().toISOString()}] Node ${nodeId} completed (${result.executionTime.toFixed(0)}ms)`);
+            } else {
+              job.logs.push(`[${new Date().toISOString()}] Node ${nodeId} failed: ${response.error}`);
+            }
           });
         }),
       ).then(() => {
