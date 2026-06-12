@@ -75,6 +75,22 @@ services:
     volumes:
       - ./phase0.7:/app/config:ro
 
+  # Phase 0.7: Redis (async message queue for builds)
+  redis:
+    image: redis:7-alpine
+    container_name: redis-cic
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: redis-server --appendonly yes
+
   # Phase 0.7: Build Orchestrator (HTTP API + coordination)
   build-orchestrator:
     build:
@@ -87,6 +103,7 @@ services:
       - LOG_LEVEL=debug
       - BUILD_PHASE=0.7
       - PORT=3104
+      - REDIS_URL=redis://redis:6379
       - LINEAGE_URL=http://lineage-registry:3102
       - ROUTING_URL=http://routing-validator:3103
       - NEMOTRON_URL=http://nemotron:9000
@@ -98,12 +115,13 @@ services:
       - lineage-registry
       - routing-validator
       - build-executor
+      - redis
     networks:
       - cic-network
     volumes:
       - .:/app:ro
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3100/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:3104/health"]
       interval: 10s
       timeout: 5s
       retries: 5

@@ -4,6 +4,8 @@ WORKDIR /app
 
 RUN apk add --no-cache git curl jq bash
 
+# Copy orchestrator service and config
+COPY orchestrator.js ./orchestrator.js
 COPY phase0.7/ ./phase0.7/
 
 ENV NODE_ENV=production
@@ -18,5 +20,5 @@ EXPOSE 3104
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
   CMD curl -f http://localhost:3104/health || exit 1
 
-# Phase 0.7 Orchestrator (built-in HTTP server, no dependencies)
-CMD ["node", "-e", "require('http').createServer((q,s)=>{if(q.url=='/health'){s.writeHead(200);s.end(JSON.stringify({ok:1}))}else{s.writeHead(200);s.end(JSON.stringify({builds:[]}))}}).listen(3104,()=>console.log('Phase 0.7 Orchestrator on 3104'))"]
+# Run orchestrator service (uses only built-in Node modules)
+CMD ["node", "orchestrator.js"]
