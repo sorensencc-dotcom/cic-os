@@ -1,0 +1,63 @@
+ui-server.js
+  s_d96fe3c1f5b20a::t_c946e3ac032b70 1-36
+codeflow-server.js
+  s_d96fe3c1f5b20a::t_6a32fc6a712330 16-23
+  s_d96fe3c1f5b20a::t_4e0884afaa5883 39-41,56-57,60
+  s_d96fe3c1f5b20a::t_b586c2d7636457 4,8
+  s_d96fe3c1f5b20a::t_b466f379902dd0 1-3,5-7,9-15,24-38,42-55,58-59,61-70
+codeflow-observability.js
+  s_d96fe3c1f5b20a::t_5c00f866ba8e84 1-64
+Dockerfile.test
+  s_0cbf0495b87311::t_e339f4de1262a0 1,6-7,9-10,12-15,17-19
+  s_d96fe3c1f5b20a::t_55aaa0b63670c5 2-5,8,11,16
+cic-cli.ts
+  s_d96fe3c1f5b20a::t_09723b5ddf6f77 1-183
+Dockerfile.codeflow
+  s_d96fe3c1f5b20a::t_6247da2db62b20 1-32
+Dockerfile.cli
+  s_d96fe3c1f5b20a::t_0f65aa392ab0df 1-20
+extractor-orchestrator.ts
+  s_d96fe3c1f5b20a::t_5593b99f470dee 1-122
+startup.sh
+  s_d96fe3c1f5b20a::t_b8e5dd419db79b 1-103
+jest.config.js
+  s_d96fe3c1f5b20a::t_940eb5d2aaee5c 1-18
+codeflow-package.json
+  s_d96fe3c1f5b20a::t_3137080b265ceb 1-18
+policy-manifest.yaml
+  s_d96fe3c1f5b20a::t_f6e2769f4ac3de 1-63
+ui-dashboard.tsx
+  s_d96fe3c1f5b20a::t_253331c7429536 1-752
+codeflow-api-contract.json
+  s_d96fe3c1f5b20a::t_863d129216af9d 1-63
+Dockerfile.ui
+  s_d96fe3c1f5b20a::t_00bcc5ffaffa7c 1-18
+codeflow-schema.json
+  s_d96fe3c1f5b20a::t_4effb229cb9e2c 1-178
+cic-observability.ts
+  s_d96fe3c1f5b20a::t_2561bcc9ce823c 1-292
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "c599b48a4f7c866932eee57ec39e1b437bf8d3f8",
+  "prompts": {},
+  "sessions": {
+    "s_0cbf0495b87311": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "feae3ff2-ccdb-4b60-8f92-7e3bc5db2b17",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_d96fe3c1f5b20a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2536e6cb-f0ae-4da3-b268-b2068b711054",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
