@@ -1,0 +1,29 @@
+performance-store.js
+  s_23364b39b23e42::t_c1b925ee5f833f 1-227
+build-system/docker/Dockerfile.predictive-routing-engine
+  s_23364b39b23e42::t_439e42c74141c6 1-21
+build-system/docker/Dockerfile.performance-store
+  s_23364b39b23e42::t_daa46d6f3a32a9 1-20
+docs/phase0.7-deployment.md
+  s_23364b39b23e42::t_3c65da566f6d6e 1-454
+predictive-routing-engine.js
+  s_23364b39b23e42::t_4f72cbc32b74dd 1-224
+docker-compose.yml
+  s_23364b39b23e42::t_92a34be9aa15e6 142-188
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "512178b4754839a13d12cdcc5dccfdab8442d07a",
+  "prompts": {},
+  "sessions": {
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
