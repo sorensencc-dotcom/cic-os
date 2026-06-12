@@ -1,0 +1,20 @@
+build-executor.js
+  s_121d4b47ec4231::t_30d073bbb26053 14-15,17-18
+  s_121d4b47ec4231::t_c86171f57d9eec 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "227ed0e4b8594ba69dd97910bec697a39cefed90",
+  "prompts": {},
+  "sessions": {
+    "s_121d4b47ec4231": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4ab2b45c-3252-4482-b81a-4880cbc7e6cc",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
