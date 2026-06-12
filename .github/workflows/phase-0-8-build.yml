@@ -75,12 +75,19 @@ jobs:
           sleep 3
           curl -s http://localhost:3104/builds/${{ steps.simple_build.outputs.BUILD_ID }}
 
+      - name: Check services still running
+        run: |
+          echo "=== Container Status ==="
+          docker compose ps
+
       - name: Verify metrics recorded
         run: |
-          METRICS=$(curl -s http://localhost:3105/metrics)
-          COUNT=$(echo $METRICS | grep -o '"buildId"' | wc -l)
-          echo "✓ Metrics recorded: $COUNT builds"
-          [[ $COUNT -gt 0 ]] || exit 1
+          echo "Querying performance-store:3105/metrics..."
+          METRICS=$(curl -v http://localhost:3105/metrics 2>&1)
+          echo "Response: $METRICS"
+          COUNT=$(echo "$METRICS" | grep -o '"buildId"' | wc -l)
+          echo "Metrics count: $COUNT"
+          [[ $COUNT -gt 0 ]] || { echo "ERROR: No metrics recorded"; exit 1; }
 
       - name: Get node statistics
         run: |
