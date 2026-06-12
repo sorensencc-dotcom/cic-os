@@ -1,0 +1,21 @@
+build-executor.js
+  s_121d4b47ec4231::t_7fe60f7c407ced 1-96
+build-system/docker/Dockerfile.build-executor
+  s_121d4b47ec4231::t_a0882d8fe94946 7-8,16,19-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "df6979a73ab5ed31b70fbc6a1821e967c9a7ba15",
+  "prompts": {},
+  "sessions": {
+    "s_121d4b47ec4231": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4ab2b45c-3252-4482-b81a-4880cbc7e6cc",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
