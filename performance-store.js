@@ -13,15 +13,20 @@ class PerformanceStore {
   }
 
   recordBuild(build) {
+    // nodeResults is already an array from orchestrator JSON serialization
+    const nodeMetrics = Array.isArray(build.nodeResults)
+      ? build.nodeResults
+      : Array.from(build.nodeResults.entries()).map(([nodeId, result]) => ({
+          nodeId,
+          executionTime: result.executionTime,
+          phase: result.phase,
+        }));
+
     const metric = {
       buildId: build.id,
       totalTime: build.endTime - build.startTime,
       nodeCount: build.nodeCount,
-      nodeMetrics: Array.from(build.nodeResults.entries()).map(([nodeId, result]) => ({
-        nodeId,
-        executionTime: result.executionTime,
-        phase: result.phase,
-      })),
+      nodeMetrics,
       timestamp: new Date().toISOString(),
       state: build.state,
     };

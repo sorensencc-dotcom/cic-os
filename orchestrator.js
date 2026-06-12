@@ -6,6 +6,7 @@ class OrchestratorService {
     this.redisUrl = process.env.REDIS_URL || 'redis://localhost:6379';
     this.lineageUrl = process.env.LINEAGE_URL || 'http://localhost:3102';
     this.routingUrl = process.env.ROUTING_URL || 'http://localhost:3103';
+    this.performanceStoreUrl = process.env.PERFORMANCE_STORE_URL || 'http://performance-store:3105';
     this.buildQueue = {
       jobs: new Map(),
       nextJobId: 1,
@@ -17,6 +18,38 @@ class OrchestratorService {
     console.log(`[Orchestrator] Redis: ${this.redisUrl}`);
     console.log(`[Orchestrator] Lineage: ${this.lineageUrl}`);
     console.log(`[Orchestrator] Routing: ${this.routingUrl}`);
+    console.log(`[Orchestrator] Performance Store: ${this.performanceStoreUrl}`);
+  }
+
+  recordMetrics(job) {
+    // Send build metrics to performance store for Phase 0.8 routing optimization
+    const http = require('http');
+    const metrics = {
+      id: job.id,
+      state: job.state,
+      totalTime: job.endTime - job.startTime,
+      startTime: job.startTime,
+      endTime: job.endTime,
+      nodeCount: job.dag.length,
+      nodeResults: Array.from(job.nodeResults.entries()).map(([nodeId, result]) => ({
+        nodeId,
+        executionTime: result.executionTime,
+        phase: result.phase,
+      })),
+    };
+
+    const payload = JSON.stringify(metrics);
+    const req = http.request(`${this.performanceStoreUrl}/metrics`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Content-Length': payload.length },
+    });
+
+    req.on('error', (err) => {
+      console.log(`[Orchestrator] Warning: failed to record metrics: ${err.message}`);
+    });
+
+    req.write(payload);
+    req.end();
   }
 
   generateJobId() {
@@ -152,6 +185,8 @@ class OrchestratorService {
         job.state = 'SUCCESS';
         job.endTime = Date.now();
         job.logs.push(`[${new Date().toISOString()}] Build completed (${job.endTime - job.startTime}ms)`);
+        // Record metrics to performance store for Phase 0.8
+        this.recordMetrics(job);
         return;
       }
 

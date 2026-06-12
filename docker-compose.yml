@@ -118,6 +118,7 @@ services:
       - BUILD_EXECUTOR_URL=http://build-executor:3101
       - LINEAGE_URL=http://lineage-registry:3102
       - ROUTING_URL=http://routing-validator:3103
+      - PERFORMANCE_STORE_URL=http://performance-store:3105
       - NEMOTRON_URL=http://nemotron:9000
       - NIM_GATEWAY_URL=http://nim-gateway:8000
       - GIT_SHA=${GIT_SHA:-dev}
@@ -128,6 +129,7 @@ services:
       - routing-validator
       - build-executor
       - redis
+      - performance-store
     networks:
       - cic-network
     volumes:
