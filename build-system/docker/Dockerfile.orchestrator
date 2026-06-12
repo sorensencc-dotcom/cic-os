@@ -7,9 +7,7 @@ COPY cic/package.json cic/package-lock.json ./
 RUN npm ci
 
 COPY cic/dist ./dist
-COPY cic/src ./src
 COPY phase0.7/ ./phase0.7/
-COPY build-system/scripts/ ./scripts/
 
 ENV NODE_ENV=development
 ENV LOG_LEVEL=debug
