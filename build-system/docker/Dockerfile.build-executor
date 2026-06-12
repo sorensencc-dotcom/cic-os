@@ -4,21 +4,17 @@ WORKDIR /app
 
 RUN apk add --no-cache git curl jq bash
 
-# Copy build worker service
-COPY build-worker.js ./build-worker.js
-COPY phase0.7/ ./phase0.7/
+# Copy build executor service (Phase 0.8)
+COPY build-executor.js ./build-executor.js
 
 ENV NODE_ENV=production
 ENV LOG_LEVEL=info
-ENV BUILD_PHASE=0.7
 ENV PORT=3101
-ENV LINEAGE_URL=http://lineage-registry:3102
-ENV ROUTING_URL=http://routing-validator:3103
 
 EXPOSE 3101
 
-HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=3 \
   CMD curl -f http://localhost:3101/health || exit 1
 
-# Run build worker service (uses only built-in Node modules)
-CMD ["node", "build-worker.js"]
+# Run build executor service
+CMD ["node", "build-executor.js"]
