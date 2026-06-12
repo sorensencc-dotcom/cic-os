@@ -1,0 +1,74 @@
+docs/phase0.7/index.md
+  s_23364b39b23e42::t_68561d3c339418 1-64
+docs/phase0.7/routing.md
+  s_23364b39b23e42::t_fd1ed8aebfc427 1-112
+docs/phase0.7/agents.md
+  s_23364b39b23e42::t_5bada36e44f96d 1-125
+GIT-REVIEW.md
+  s_4dfea66899e6d2::t_77052e3e650947 1-29
+docs/phase0.7/operator-runbook.md
+  s_23364b39b23e42::t_04d2afdae01a7a 1-160
+docs/ROADMAP-0.7-to-1.0.md
+  s_23364b39b23e42::t_4c9d3a7595daaf 1-76
+build-roadmap.json
+  s_23364b39b23e42::t_651e257b7e0f2c 1-28
+docs/COMMERCIALIZATION-BLUEPRINT.md
+  s_23364b39b23e42::t_11566601d52726 1-127
+docs/phase0.7/inference-routing.md
+  s_23364b39b23e42::t_05984a0deeb41b 1-160
+phase0.7/policies/cic.lineage.rego
+  s_23364b39b23e42::t_ab8a4f803f05dc 1-57
+phase0.7/policies/cic.routing.rego
+  s_23364b39b23e42::t_312e7b389740cb 1-75
+phase0.7/build-system/graph/phase0.7.json
+  s_23364b39b23e42::t_624f8e519ed9ce 1-90
+docs/phase0.7/security-hardening.md
+  s_23364b39b23e42::t_105f650d3d98ef 1-202
+mkdocs.yml
+  s_23364b39b23e42::t_c5322be82aec7c 20-29
+CLAUDE.md
+  s_23364b39b23e42::t_ff679eb30c5331 3-8,10-17,19-26,28-35
+  s_23364b39b23e42::t_0bed1f34e891db 18
+  s_23364b39b23e42::t_27ca2e8efb3eb5 27
+  s_23364b39b23e42::t_3e716c54a9e4be 9
+REVIEW-28a2.md
+  s_23364b39b23e42::t_550ef46ecac2a5 1-41
+docs/phase0.7/incident-response-playbook.md
+  s_23364b39b23e42::t_db5bbaec45ae32 1-79
+.gitignore
+  s_4dfea66899e6d2::t_dd00b198e6c2cb 45-54
+docs/phase0.7/cli-reference.md
+  s_23364b39b23e42::t_db8ef8a025ef5c 1-196
+docs/phase0.7/build-graph.md
+  s_23364b39b23e42::t_a81bcd2ec1d8db 1-136
+docs/phase0.8/index.md
+  s_23364b39b23e42::t_115b80d8354306 1-86
+docs/phase0.7/day2-ops.md
+  s_23364b39b23e42::t_ffea789cb2fdbb 1-137
+phase0.7/build-system/routing/phase0.7-routing.yaml
+  s_23364b39b23e42::t_1b87cde5a0d474 1-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "d33ca6d24dcbd31ee920bba34ca2cc15f38680ee",
+  "prompts": {},
+  "sessions": {
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_4dfea66899e6d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f6ed94a5-1ff0-4e1e-9614-ad8d6200f18e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
