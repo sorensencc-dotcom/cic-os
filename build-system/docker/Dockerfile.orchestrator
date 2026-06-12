@@ -1,0 +1,28 @@
+FROM node:20-alpine AS base
+WORKDIR /app
+
+RUN apk add --no-cache git curl jq bash
+
+COPY cic/package.json cic/package-lock.json ./
+RUN npm ci
+
+COPY cic/dist ./dist
+COPY cic/src ./src
+COPY phase0.7/ ./phase0.7/
+COPY build-system/scripts/ ./scripts/
+
+ENV NODE_ENV=development
+ENV LOG_LEVEL=debug
+ENV BUILD_PHASE=0.7
+ENV LINEAGE_URL=http://lineage-registry:3102
+ENV ROUTING_URL=http://routing-validator:3103
+ENV NEMOTRON_URL=http://nemotron:9000
+ENV NIM_GATEWAY_URL=http://nim-gateway:8000
+
+EXPOSE 3100
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
+  CMD curl -f http://localhost:3100/health || exit 1
+
+ENTRYPOINT ["node"]
+CMD ["dist/build-system/orchestrator.js"]

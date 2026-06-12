@@ -1,0 +1,21 @@
+FROM node:20-alpine AS base
+WORKDIR /app
+
+# Install build dependencies
+RUN apk add --no-cache git curl jq
+
+COPY cic/package.json cic/package-lock.json ./
+RUN npm ci --omit=dev
+
+COPY cic/dist ./dist
+COPY phase0.7/build-system/graph/phase0.7.json ./config/
+COPY phase0.7/policies/ ./policies/
+
+ENV NODE_ENV=production
+ENV LOG_LEVEL=info
+ENV BUILD_PHASE=0.7
+
+EXPOSE 3101
+
+ENTRYPOINT ["node", "dist/build-system/graph-engine.js"]
+CMD ["execute", "--phase", "0.7"]
