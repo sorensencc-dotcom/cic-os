@@ -1,21 +1,24 @@
-FROM node:20-alpine AS base
+FROM node:20-alpine
+
 WORKDIR /app
 
-# Install build dependencies
-RUN apk add --no-cache git curl jq
+RUN apk add --no-cache git curl jq bash
 
-COPY cic/package.json cic/package-lock.json ./
-RUN npm ci --omit=dev
-
-COPY cic/dist ./dist
-COPY phase0.7/build-system/graph/phase0.7.json ./config/
-COPY phase0.7/policies/ ./policies/
+# Copy build worker service
+COPY build-worker.js ./build-worker.js
+COPY phase0.7/ ./phase0.7/
 
 ENV NODE_ENV=production
 ENV LOG_LEVEL=info
 ENV BUILD_PHASE=0.7
+ENV PORT=3101
+ENV LINEAGE_URL=http://lineage-registry:3102
+ENV ROUTING_URL=http://routing-validator:3103
 
 EXPOSE 3101
 
-ENTRYPOINT ["node", "dist/build-system/graph-engine.js"]
-CMD ["execute", "--phase", "0.7"]
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
+  CMD curl -f http://localhost:3101/health || exit 1
+
+# Run build worker service (uses only built-in Node modules)
+CMD ["node", "build-worker.js"]

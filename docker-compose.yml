@@ -52,7 +52,7 @@ services:
       retries: 3
       start_period: 10s
 
-  # Phase 0.7: Build Executor (DAG execution)
+  # Phase 0.7: Build Executor (worker that executes DAG nodes)
   build-executor:
     build:
       context: .
@@ -63,6 +63,8 @@ services:
       - NODE_ENV=production
       - LOG_LEVEL=info
       - BUILD_PHASE=0.7
+      - PORT=3101
+      - REDIS_URL=redis://redis:6379
       - LINEAGE_URL=http://lineage-registry:3102
       - ROUTING_URL=http://routing-validator:3103
     ports:
@@ -70,10 +72,15 @@ services:
     depends_on:
       - lineage-registry
       - routing-validator
+      - redis
     networks:
       - cic-network
-    volumes:
-      - ./phase0.7:/app/config:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3101/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
 
   # Phase 0.7: Redis (async message queue for builds)
   redis:
