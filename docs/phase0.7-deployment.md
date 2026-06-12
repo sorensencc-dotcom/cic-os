@@ -6,9 +6,9 @@
 
 Phase 0.7 is a fully distributed system for executing build DAGs with deterministic outcomes. All services run in Docker with no external dependencies.
 
-**Status:** ✓ Complete + Verified
+**Status:** ✓ Complete + Verified + Phase 0.8 Integrated
 **Last tested:** 2026-06-12
-**Services running:** 6 (5 + postgres)
+**Services running:** 8 (7 + postgres + redis)
 
 ## Architecture
 
@@ -18,7 +18,9 @@ Client
 [Orchestrator:3104] (state machine, DAG validation)
   ├→ [BuildWorker:3101] (node execution)
   ├→ [LineageRegistry:3102] (artifact tracking)
-  └→ [RoutingValidator:3103] (policy enforcement)
+  ├→ [RoutingValidator:3103] (policy enforcement)
+  └→ [PerformanceStore:3105] (metrics + Phase 0.8)
+      └→ [PredictiveRoutingEngine:3106] (routing optimization)
   
 [Redis:6379] (message queue, async jobs)
 [PostgreSQL:5433] (persistent storage)
@@ -110,6 +112,7 @@ GET /policies
 ```
 
 **Hardcoded allowed routes (Phase 0.7):**
+
 - orchestrator → build-executor
 - build-executor → lineage-registry
 - build-executor → routing-validator
@@ -118,9 +121,61 @@ GET /policies
 - telemetry-sink → * (wildcard)
 
 **Features:**
+
 - Policy validation before every route
 - Deny by default, explicit allow
 - OPA-style rules (simplified)
+
+## Phase 0.8: Build Metrics & Predictive Routing
+
+### PerformanceStore (Port 3105)
+
+**Build metrics collection and critical path prediction.**
+
+```bash
+POST /metrics
+  Input: { id, state, totalTime, startTime, endTime, nodeCount, nodeResults }
+  Output: { status: "recorded", buildId }
+  
+GET /metrics
+  Output: { totalBuilds, recentBuilds: [{buildId, totalTime, nodeCount, nodeMetrics}] }
+  
+GET /stats/:nodeId
+  Output: { nodeId, stats: {count, avg, median, p95, p99, min, max} }
+  
+POST /predict
+  Input: { dag: [{id, dependencies}] }
+  Output: { criticalPathMs, predictions: [{nodeId, prediction, confidence, reason}] }
+```
+
+**Features:**
+- Post-build metrics recording (automatic from orchestrator)
+- Per-node execution time tracking (min, avg, p95, p99)
+- Critical path prediction for DAG optimization
+- Confidence scoring based on sample size
+
+### PredictiveRoutingEngine (Port 3106)
+
+**Intelligent routing and DAG optimization (Phase 0.8+).**
+
+```bash
+POST /route
+  Input: { nodeId, availableServices }
+  Output: { nodeId, selected, score, reason, timestamp }
+  
+GET /decisions
+  Output: { totalDecisions, recent: [...] }
+  
+POST /optimize
+  Input: { dag: [{id, dependencies}] }
+  Output: { dagSize, recommendations: [{type, reason, potential_speedup}] }
+```
+
+**Features:**
+- Heuristic-based routing (compile→build-worker, test→test-runner)
+- Performance-aware service selection
+- DAG optimization recommendations
+- ML-ready infrastructure (Phase 0.8+)
 
 ## Running Locally
 
@@ -217,10 +272,109 @@ curl -X POST http://localhost:3104/execute \
 ```
 
 **Execution order:**
+
 - Layer 1: compile (311ms)
 - Layer 2: test + package in parallel (508ms, 290ms)
 - Layer 3: deploy waits for both (556ms)
 - **Total:** 1,591ms
+
+## Phase 0.8 Integration: Metrics & Routing
+
+After each build completes, metrics are automatically recorded to PerformanceStore for Phase 0.8 optimization.
+
+### View Recorded Metrics
+
+```bash
+curl http://localhost:3105/metrics
+```
+
+Response:
+```json
+{
+  "totalBuilds": 2,
+  "recentBuilds": [
+    {
+      "buildId": "build-1",
+      "totalTime": 975,
+      "nodeCount": 2,
+      "nodeMetrics": [
+        {"nodeId": "extract", "executionTime": 497.26, "phase": "0.7"},
+        {"nodeId": "enrich", "executionTime": 356.32, "phase": "0.7"}
+      ],
+      "timestamp": "2026-06-12T14:30:45.123Z",
+      "state": "SUCCESS"
+    }
+  ]
+}
+```
+
+### Get Node Statistics
+
+```bash
+curl http://localhost:3105/stats/extract
+```
+
+Response:
+```json
+{
+  "nodeId": "extract",
+  "stats": {
+    "count": 5,
+    "avg": 512.45,
+    "median": 497.26,
+    "p95": 589.33,
+    "p99": 612.01,
+    "min": 456.12,
+    "max": 612.01
+  }
+}
+```
+
+### Predict Critical Path
+
+```bash
+curl -X POST http://localhost:3105/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "dag": [
+      {"id": "compile", "dependencies": []},
+      {"id": "test", "dependencies": ["compile"]},
+      {"id": "package", "dependencies": ["compile"]}
+    ]
+  }'
+```
+
+Response:
+```json
+{
+  "criticalPathMs": 820,
+  "predictions": [
+    {"nodeId": "compile", "prediction": 311, "confidence": 0.95, "reason": "p95 of 5 runs"},
+    {"nodeId": "test", "prediction": 508, "confidence": 0.92, "reason": "p95 of 4 runs"},
+    {"nodeId": "package", "prediction": 290, "confidence": 0.88, "reason": "p95 of 3 runs"}
+  ]
+}
+```
+
+### Get Routing Decision
+
+```bash
+curl -X POST http://localhost:3106/route \
+  -H "Content-Type: application/json" \
+  -d '{"nodeId": "compile", "availableServices": ["build-worker", "test-runner"]}'
+```
+
+Response:
+```json
+{
+  "nodeId": "compile",
+  "services": ["build-worker", "test-runner"],
+  "selected": "build-worker",
+  "score": 75,
+  "reason": "node type matches build-worker",
+  "timestamp": "2026-06-12T14:30:47.456Z"
+}
+```
 
 ## Artifact Tracking
 
@@ -332,6 +486,7 @@ REDIS_URL=redis://redis:6379
 BUILD_EXECUTOR_URL=http://build-executor:3101
 LINEAGE_URL=http://lineage-registry:3102
 ROUTING_URL=http://routing-validator:3103
+PERFORMANCE_STORE_URL=http://performance-store:3105
 ```
 
 **BuildWorker:**
@@ -357,6 +512,19 @@ PORT=3103
 OPA_ENABLED=true
 ```
 
+**PerformanceStore (Phase 0.8):**
+```
+PORT=3105
+NODE_ENV=production
+LOG_LEVEL=info
+```
+
+**PredictiveRoutingEngine (Phase 0.8):**
+```
+PORT=3106
+PERFORMANCE_STORE_URL=http://performance-store:3105
+```
+
 ### Ports
 
 | Service | Port | Type |
@@ -365,6 +533,8 @@ OPA_ENABLED=true
 | build-worker | 3101 | HTTP |
 | lineage-registry | 3102 | HTTP |
 | routing-validator | 3103 | HTTP |
+| performance-store | 3105 | HTTP (Phase 0.8) |
+| predictive-routing-engine | 3106 | HTTP (Phase 0.8) |
 | redis | 6379 | TCP |
 | postgres | 5433 | TCP |
 
@@ -435,7 +605,7 @@ docker-compose up -d
 | Phase | Feature | Timeline |
 |-------|---------|----------|
 | 0.7 | Deterministic orchestration | ✓ Complete |
-| 0.8 | Predictive routing (PRE) | 2026-06-15 to 2026-06-29 |
+| 0.8 | Predictive routing + metrics (Phase 0.8) | ✓ Integrated (foundation) |
 | 0.9 | Self-healing (TheFoundry) | 2026-06-22 to 2026-07-06 |
 | 1.0 | Autonomous optimization (CLOE) | 2026-06-29 to 2026-07-13 |
 
