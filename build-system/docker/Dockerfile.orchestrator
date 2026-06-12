@@ -14,6 +14,7 @@ ENV BUILD_PHASE=0.7
 ENV PORT=3104
 ENV LINEAGE_URL=http://lineage-registry:3102
 ENV ROUTING_URL=http://routing-validator:3103
+ENV PERFORMANCE_STORE_URL=http://performance-store:3105
 
 EXPOSE 3104
 
