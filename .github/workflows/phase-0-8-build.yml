@@ -52,9 +52,9 @@ jobs:
 
       - name: Start services with Docker Compose
         run: |
-          docker-compose up -d
+          docker compose up -d
           sleep 10
-          docker-compose ps
+          docker compose ps
 
       - name: Health check - Orchestrator
         run: |
@@ -175,8 +175,8 @@ jobs:
       - name: Cleanup
         if: always()
         run: |
-          docker-compose down
-          docker-compose ps
+          docker compose down
+          docker compose ps
 
       - name: Report results
         run: |
