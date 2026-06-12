@@ -1,0 +1,25 @@
+docs/rewrite-labs/ai-finetuning-playbook.md
+  s_23364b39b23e42::t_4ae1d2cbea91c7 1-108
+docs/rewrite-labs/enterprise-rfp-response.md
+  s_23364b39b23e42::t_20ef7028a1a106 1-93
+docs/rewrite-labs/product-requirements-document.md
+  s_23364b39b23e42::t_003e13757b7526 1-118
+docs/rewrite-labs/partner-program-guide.md
+  s_23364b39b23e42::t_2ea111df87576b 1-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "13aa87f71cf01ded7274aa4944a4a135386899a8",
+  "prompts": {},
+  "sessions": {
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
