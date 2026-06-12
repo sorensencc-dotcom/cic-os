@@ -1,69 +1,8 @@
 version: '3.8'
 
 services:
-  cic-dev:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: runtime
-    container_name: cic-dev
-    restart: unless-stopped
-
-    environment:
-      - NODE_ENV=development
-      - CIC_ENV=development
-      - CIC_PROJECT_ROOT=/workspace
-      - CIC_MCP_PORT=3100
-      - CIC_LOG_DIR=/workspace/logs
-      - CIC_STARTUP_TIMEOUT=60
-      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
-      # Optional: enable dry-run mode for testing without side effects
-      - CIC_DRY_RUN=${CIC_DRY_RUN:-false}
-      # Optional: disable permission prompts for CI/headless mode
-      - CLAUDE_SKIP_PERMISSIONS=${CLAUDE_SKIP_PERMISSIONS:-true}
-
-    ports:
-      # MCP primary port
-      - "3100:3100"
-      # MCP secondary servers (git, filesystem, etc.)
-      - "3101-3110:3101-3110"
-      # SSH for remote access (optional)
-      - "2222:22"
-
-    volumes:
-      # Project code
-      - .:/workspace
-      # Logs (preserved across restarts)
-      - ./logs:/workspace/logs
-      # SSH keys for remote access (optional)
-      - ${HOME}/.ssh:/home/chris/.ssh:ro
-      # Config (optional)
-      - ${HOME}/.config/cic:/home/chris/.config/cic:ro
-
-    # Healthcheck validates MCP startup
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3100/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-
-    # Keep container running for interactive/headless operation
-    stdin_open: true
-    tty: true
-
-    # Resource limits (prevent host exhaustion)
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 2G
-        reservations:
-          cpus: '1'
-          memory: 1G
-
-    networks:
-      - cic-network
+  # cic-dev: Commented out (separate git repo, build locally via 'npm run build')
+  # Use local Phase 0.7 build system instead (see below)
 
   # Phase 0.7: Lineage Registry (provenance + SBOM tracking)
   lineage-registry:
@@ -147,14 +86,14 @@ services:
       - NODE_ENV=development
       - LOG_LEVEL=debug
       - BUILD_PHASE=0.7
-      - PORT=3100
+      - PORT=3104
       - LINEAGE_URL=http://lineage-registry:3102
       - ROUTING_URL=http://routing-validator:3103
       - NEMOTRON_URL=http://nemotron:9000
       - NIM_GATEWAY_URL=http://nim-gateway:8000
       - GIT_SHA=${GIT_SHA:-dev}
     ports:
-      - "3100:3100"
+      - "3104:3104"
     depends_on:
       - lineage-registry
       - routing-validator
@@ -180,7 +119,7 @@ services:
       - POSTGRES_USER=cic
       - POSTGRES_PASSWORD=cic_dev_pass
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
@@ -199,4 +138,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.20.0.0/16
+        - subnet: 172.25.0.0/16

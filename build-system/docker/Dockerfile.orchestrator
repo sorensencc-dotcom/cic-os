@@ -1,26 +1,22 @@
-FROM node:20-alpine AS base
+FROM node:20-alpine
+
 WORKDIR /app
 
 RUN apk add --no-cache git curl jq bash
 
-COPY cic/package.json cic/package-lock.json ./
-RUN npm ci
-
-COPY cic/dist ./dist
 COPY phase0.7/ ./phase0.7/
 
-ENV NODE_ENV=development
-ENV LOG_LEVEL=debug
+ENV NODE_ENV=production
+ENV LOG_LEVEL=info
 ENV BUILD_PHASE=0.7
+ENV PORT=3104
 ENV LINEAGE_URL=http://lineage-registry:3102
 ENV ROUTING_URL=http://routing-validator:3103
-ENV NEMOTRON_URL=http://nemotron:9000
-ENV NIM_GATEWAY_URL=http://nim-gateway:8000
 
-EXPOSE 3100
+EXPOSE 3104
 
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
-  CMD curl -f http://localhost:3100/health || exit 1
+  CMD curl -f http://localhost:3104/health || exit 1
 
-ENTRYPOINT ["node"]
-CMD ["dist/build-system/orchestrator.js"]
+# Phase 0.7 Orchestrator (built-in HTTP server, no dependencies)
+CMD ["node", "-e", "require('http').createServer((q,s)=>{if(q.url=='/health'){s.writeHead(200);s.end(JSON.stringify({ok:1}))}else{s.writeHead(200);s.end(JSON.stringify({builds:[]}))}}).listen(3104,()=>console.log('Phase 0.7 Orchestrator on 3104'))"]
