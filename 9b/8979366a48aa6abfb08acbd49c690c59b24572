@@ -1,0 +1,36 @@
+.github/workflows/phase-0-8-build.yml
+  s_121d4b47ec4231::t_0b77ca21fbc5b4 86,88-89
+performance-store.js
+  s_121d4b47ec4231::t_ddfc1ea2cc6c78 16-24,29
+docker-compose.yml
+  s_121d4b47ec4231::t_772d30064cfb49 121
+  s_23364b39b23e42::t_741d3afba6a740 132
+orchestrator.js
+  s_23364b39b23e42::t_dc24b1560b3ebf 9
+  s_23364b39b23e42::t_9a3ba5b969a01e 21-52
+  s_23364b39b23e42::t_a5f3ceaefab66c 188-189
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "9b8979366a48aa6abfb08acbd49c690c59b24572",
+  "prompts": {},
+  "sessions": {
+    "s_121d4b47ec4231": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4ab2b45c-3252-4482-b81a-4880cbc7e6cc",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
