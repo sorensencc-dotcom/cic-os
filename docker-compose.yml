@@ -139,6 +139,53 @@ services:
       retries: 5
       start_period: 15s
 
+  # Phase 0.8: Performance Store (build metrics + predictions)
+  performance-store:
+    build:
+      context: .
+      dockerfile: build-system/docker/Dockerfile.performance-store
+    container_name: performance-store
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - PORT=3105
+    ports:
+      - "3105:3105"
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3105/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # Phase 0.8: Predictive Routing Engine (route optimization)
+  predictive-routing-engine:
+    build:
+      context: .
+      dockerfile: build-system/docker/Dockerfile.predictive-routing-engine
+    container_name: predictive-routing-engine
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - PORT=3106
+      - PERFORMANCE_STORE_URL=http://performance-store:3105
+    ports:
+      - "3106:3106"
+    depends_on:
+      - performance-store
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3106/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
   # PostgreSQL: Lineage & Artifact Storage
   postgres:
     image: postgres:15-alpine
