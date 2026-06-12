@@ -1,0 +1,47 @@
+GIT-REMEDIATION-REVIEW.md
+  s_4dfea66899e6d2::t_610eff0fef9857 1-32
+build-system/docker/Dockerfile.build-executor
+  s_23364b39b23e42::t_a5fe8e9eef5b04 1-21
+docker-compose.yml
+  s_23364b39b23e42::t_f3af08e7c4d9cb 68-196
+build-system/docker/Dockerfile.orchestrator
+  s_23364b39b23e42::t_a488d1510fbfbc 1-28
+build-system/docker/Dockerfile.routing-validator
+  s_23364b39b23e42::t_ca8c05e77195ce 1-23
+Dockerfile.smoke
+  s_0cbf0495b87311::t_4f01d28961a2d2 1-15
+build-system/docker/Dockerfile.lineage-registry
+  s_23364b39b23e42::t_9083a0e2a4e533 1-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "6a74f0d05474cfe63a9c17013c92a5173a6a5a8c",
+  "prompts": {},
+  "sessions": {
+    "s_0cbf0495b87311": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "feae3ff2-ccdb-4b60-8f92-7e3bc5db2b17",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_4dfea66899e6d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f6ed94a5-1ff0-4e1e-9614-ad8d6200f18e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
