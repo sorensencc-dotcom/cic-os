@@ -1,23 +1,21 @@
-FROM node:20-alpine AS base
+FROM node:20-alpine
+
 WORKDIR /app
 
-RUN apk add --no-cache git curl jq
+RUN apk add --no-cache git curl jq bash
 
-COPY cic/package.json cic/package-lock.json ./
-RUN npm ci --omit=dev
-
-COPY cic/dist ./dist
-COPY phase0.7/policies/cic.routing.rego ./policies/
-COPY phase0.7/build-system/routing/phase0.7-routing.yaml ./config/
+# Copy routing-validator service
+COPY routing-validator.js ./routing-validator.js
 
 ENV NODE_ENV=production
 ENV LOG_LEVEL=info
+ENV PORT=3103
 ENV OPA_ENABLED=true
 
 EXPOSE 3103
 
-HEALTHCHECK --interval=10s --timeout=5s --start-period=5s --retries=3 \
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=3 \
   CMD curl -f http://localhost:3103/health || exit 1
 
-ENTRYPOINT ["node", "dist/build-system/routing-engine.js"]
-CMD ["serve", "--port", "3103"]
+# Run routing-validator service
+CMD ["node", "routing-validator.js"]

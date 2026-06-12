@@ -14,9 +14,12 @@ services:
     environment:
       - NODE_ENV=production
       - LOG_LEVEL=info
+      - PORT=3102
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_NAME=cic_lineage
+      - DB_USER=cic
+      - DB_PASSWORD=cic_dev_pass
     ports:
       - "3102:3102"
     depends_on:
@@ -40,6 +43,7 @@ services:
     environment:
       - NODE_ENV=production
       - LOG_LEVEL=info
+      - PORT=3103
       - OPA_ENABLED=true
     ports:
       - "3103:3103"
