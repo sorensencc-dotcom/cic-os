@@ -1,0 +1,21 @@
+HUMANIZER_GUIDE.md
+  s_0cbf0495b87311::t_f41d21fe6c50a5 1-197
+CHANGELOG.md
+  s_0cbf0495b87311::t_ffb03f81b6f7c4 1-201
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "16b3617637fb349b4d11e94e2d4c3d99fbedbb91",
+  "prompts": {},
+  "sessions": {
+    "s_0cbf0495b87311": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "feae3ff2-ccdb-4b60-8f92-7e3bc5db2b17",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
