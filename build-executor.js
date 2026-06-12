@@ -7,12 +7,15 @@ class BuildExecutor {
 
   initialize() {
     console.log(`[BuildExecutor] Initializing on port ${this.port}`);
+    console.log(`[BuildExecutor] Simulating node execution with deterministic timing`);
   }
 
   executeNode(nodeId, nodeConfig) {
-    // Simulate node execution with deterministic time based on nodeId
+    // Simulate node execution with deterministic time based on nodeId (100-150ms range).
+    // If nodeId is missing, use fallback to prevent charCodeAt crash.
     const baseTime = 100;
-    const nodeHash = nodeId.charCodeAt(0) % 50;
+    const safeId = nodeId || 'default';
+    const nodeHash = safeId.charCodeAt(0) % 50;
     const executionTime = baseTime + nodeHash;
 
     return {
