@@ -1,0 +1,25 @@
+docs/phase1.0/system-diagrams.md
+  s_23364b39b23e42::t_927194ceede01b 1-94
+docs/rewrite-labs/sales-playbook.md
+  s_23364b39b23e42::t_111fb05fdfad37 1-84
+docs/rewrite-labs/brand-identity-kit.md
+  s_23364b39b23e42::t_3b52249e86963d 1-175
+docs/rewrite-labs/onboarding-course.md
+  s_23364b39b23e42::t_f8caef0f3d6233 1-121
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "568fe78014f9c486d6d90021e70317201a278e77",
+  "prompts": {},
+  "sessions": {
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
