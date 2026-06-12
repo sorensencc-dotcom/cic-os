@@ -67,13 +67,17 @@ Optional:
 - SSH hardening (key-only, no passwords)
 - Secrets not embedded (passed via env)
 - Process isolation
+- Resource limits (2G memory, 2 CPU)
+- Numeric validation on all process IDs
 
 ✅ **Reliability**
 - Multi-stage build (compile → minimal runtime)
 - Healthcheck (30s interval, 40s startup grace)
-- Automatic log rotation & archival
-- Stale lock/PID recovery
+- Automatic log rotation & archival (30-day archive, 90-day retention)
+- Stale lock/PID recovery with robust detection
 - Exponential backoff for API retries
+- Graceful degradation if lsof unavailable
+- Cross-platform portability (stat, ps commands)
 
 ✅ **Operability**
 - Smoke tests (10 critical paths)

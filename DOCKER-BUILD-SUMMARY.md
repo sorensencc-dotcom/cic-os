@@ -1,9 +1,10 @@
 # CIC Docker Build Summary
 
-**Status: Complete & Ready for Handoff**  
+**Status: Production Ready (Review Findings Fixed)**  
 **Date: June 11, 2026**  
-**Issues Fixed: 10/10**  
-**Code Handoff Ready: Yes**
+**Issues Fixed: 10/10 (Docker) + 9/9 (Review FLAGS)**  
+**Code Handoff Ready: Yes**  
+**Last Review: ijfw-review (PASS)**
 
 ---
 
@@ -178,6 +179,22 @@ c:\dev\
 
 Total: ~1,250 lines of production-ready code + 300+ lines of docs
 ```
+
+---
+
+## Review & Fixes Applied
+
+**ijfw-review:** Comprehensive audit found 9 FLAG findings (robustness edge cases), all fixed:
+
+✅ Pid validation (3 locations) — numeric pid check before arithmetic  
+✅ lsof fallback — port check degrades if missing  
+✅ Gzip errors — explicit error handling, skip on failure  
+✅ Config backup — validate with jq before restore  
+✅ Stat portability — GNU stat -c → ls + awk (cross-platform)  
+✅ Resource limits — docker-compose: 2G memory, 2 CPU  
+✅ CLAUDE_SKIP_PERMISSIONS docs — dev-only warning added  
+
+All fixes backward compatible. Production ready.
 
 ---
 

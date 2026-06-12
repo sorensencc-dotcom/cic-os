@@ -56,6 +56,8 @@ nano .env
 source .env
 ```
 
+⚠️ **Security Note**: Default `CLAUDE_SKIP_PERMISSIONS=true` is dev-only. For production, set to `false` to restore permission prompts.
+
 ## Issues
 
 | Issue | Fix |
