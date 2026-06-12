@@ -1,0 +1,27 @@
+mkdocs.yml
+  s_23364b39b23e42::t_46ac7ef7b72f89 1-33
+docs/about.md
+  s_23364b39b23e42::t_8f5ce18f447bfe 1-124
+docs/automation/skills.md
+  s_23364b39b23e42::t_53bab4308519c7 1-363
+docs/automation/guide.md
+  s_23364b39b23e42::t_1e913fd3dfc213 1-229
+docs/index.md
+  s_23364b39b23e42::t_b2c78ff054d072 1-155
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "742dd5fe77795907b18db87b770657f5e4de28a6",
+  "prompts": {},
+  "sessions": {
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
