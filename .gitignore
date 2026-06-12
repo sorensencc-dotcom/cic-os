@@ -1,0 +1,44 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build & Runtime
+dist/
+build/
+.next/
+out/
+.cache/
+*.tsbuildinfo
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.claude/
+.ijfw/
+
+# Logs & temp
+*.log
+logs/
+tmp/
+temp/
+
+# Docker
+docker-compose.override.yml
+
+# Workspace config
+.github/
+.husky/
+
+# Generated
+coverage/
+.nyc_output/
