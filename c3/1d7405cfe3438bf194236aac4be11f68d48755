@@ -1,0 +1,25 @@
+docs/rewrite-labs/customer-success-playbook.md
+  s_23364b39b23e42::t_23f9d3f0350402 1-77
+docs/rewrite-labs/marketing-funnel-full.md
+  s_23364b39b23e42::t_8685774cbc2cc5 1-80
+docs/rewrite-labs/phase-2-0-vision.md
+  s_23364b39b23e42::t_15b4a4e3778326 1-97
+docs/rewrite-labs/enterprise-security-whitepaper.md
+  s_23364b39b23e42::t_51fab4e4cb9a97 1-99
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "c31d7405cfe3438bf194236aac4be11f68d48755",
+  "prompts": {},
+  "sessions": {
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
