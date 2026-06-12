@@ -1,0 +1,27 @@
+docs/phase0.7-deployment.md
+  s_23364b39b23e42::t_7b44265227e5e8 129-179
+  s_23364b39b23e42::t_ad85940dc559d7 9,11
+  s_23364b39b23e42::t_e32432dba22292 124
+  s_23364b39b23e42::t_25f108b52fe157 275,281-377
+  s_23364b39b23e42::t_086bd8992f2258 608
+  s_23364b39b23e42::t_d2128966e00a11 115
+  s_23364b39b23e42::t_debbe901c9d477 536-537
+  s_23364b39b23e42::t_682406493eec72 489,515-525
+  s_23364b39b23e42::t_dc41ac0c2aaa13 21-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "6b4e3880ba17aed8a686cfa5048d8c67288e2d55",
+  "prompts": {},
+  "sessions": {
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
