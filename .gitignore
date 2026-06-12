@@ -42,3 +42,13 @@ docker-compose.override.yml
 # Generated
 coverage/
 .nyc_output/
+
+# Nested Git Repos (workspace projects)
+CIP/
+charlie-deep-research/
+cic/
+cic-ingestion/
+claude-configs/
+claude-skills/
+financeos/
+rewrite-mcp/

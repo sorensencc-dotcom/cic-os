@@ -1,51 +1,16 @@
-# Git
-.git
-.gitignore
-.gitattributes
-
-# Node
 node_modules
-npm-debug.log
-yarn-error.log
-.npm
-
-# OS
-.DS_Store
-Thumbs.db
-*.swp
-*.swo
-
-# IDE
-.vscode
-.idea
-*.code-workspace
-
-# CI/CD
-.github
-.gitlab-ci.yml
-.travis.yml
-
-# Logs (built fresh in container)
+.git
+.venv
+*.venv
+venv
+charlie-deep-research
+rewrite-mcp
+cic-ingestion
 logs
-*.log
-
-# Temp files
-*.tmp
-.cache
 dist
-
-# Documentation (not needed in image)
-*.md
-docs/
-
-# Docker
-.docker
-docker-compose.override.yml
-Dockerfile.*
-
-# Sensitive
-.env
-.env.local
-.env.*.local
-.cic/startup.lock
-.cic/*.pids
+build
+coverage
+.next
+.env*
+.ijfw
+.claude

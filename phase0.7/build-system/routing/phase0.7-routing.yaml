@@ -1,0 +1,30 @@
+version: "0.7.0"
+
+routes:
+  - from: cic.ingestion
+    to: cic.evolution
+    channel: cic.events
+
+  - from: cic.evolution
+    to: labs.discovery
+    channel: labs.discovery.requests
+
+  - from: labs.discovery
+    to: labs.extractor
+    channel: labs.extractor.requests
+
+  - from: labs.extractor
+    to: labs.redesign.gpu
+    channel: labs.redesign.requests
+
+  - from: labs.redesign.gpu
+    to: labs.outreach
+    channel: labs.outreach.requests
+
+  - from: labs.redesign.gpu
+    to: inference.nemotron
+    channel: inference.requests
+
+  - from: "*"
+    to: cic.observability
+    channel: cic.telemetry

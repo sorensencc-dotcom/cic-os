@@ -1,0 +1,28 @@
+{
+  "roadmap": [
+    {
+      "phase": "Phase 28a",
+      "status": "complete",
+      "priority": 1,
+      "dependencies": [],
+      "tests": true,
+      "commit": true
+    },
+    {
+      "phase": "Phase 24.5",
+      "status": "queued",
+      "priority": 2,
+      "dependencies": ["Phase 28a"],
+      "tests": true,
+      "commit": true
+    },
+    {
+      "phase": "Phase 23.2",
+      "status": "queued",
+      "priority": 3,
+      "dependencies": ["Phase 24.5"],
+      "tests": true,
+      "commit": true
+    }
+  ]
+}
