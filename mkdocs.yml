@@ -1,0 +1,33 @@
+site_name: CIC Build Automation
+site_description: Build automation, scheduling, and roadmap management for CIC phases
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: indigo
+    accent: amber
+  features:
+    - navigation.instant
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+
+nav:
+  - Home: index.md
+  - Build Automation:
+      - Guide: automation/guide.md
+      - Skills Reference: automation/skills.md
+  - About: about.md
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - tables
+  - attr_list
+  - md_in_html
