@@ -1,0 +1,24 @@
+build-system/docker/Dockerfile.orchestrator
+  s_23364b39b23e42::t_f5efd52de8a616 7-8
+  s_23364b39b23e42::t_b5103d9bd7589c 23-24
+docker-compose.yml
+  s_23364b39b23e42::t_a4098bc3e72188 78-93,106,118,124
+orchestrator.js
+  s_23364b39b23e42::t_76abec3287c4d2 1-305
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "9dcbefede56e814a62bc35d0bb1e69a95a719825",
+  "prompts": {},
+  "sessions": {
+    "s_23364b39b23e42": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634d2733-de5b-486e-a577-4a51780bbf56",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
