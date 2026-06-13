@@ -1,0 +1,19 @@
+build-executor-REVIEW.md
+  s_121d4b47ec4231::t_2d8399d18e2836 1-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "80fa9a463541d37d631d3878845d4b54c3b551cb",
+  "prompts": {},
+  "sessions": {
+    "s_121d4b47ec4231": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4ab2b45c-3252-4482-b81a-4880cbc7e6cc",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
