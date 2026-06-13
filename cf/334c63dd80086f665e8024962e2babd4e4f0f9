@@ -1,0 +1,25 @@
+docs/roadmap/CIC_SUBROADMAP_v3.0.md
+  s_308ad2cbeaff09::t_9650bc1f35f903 1-181
+docs/roadmap/REWRITE_LABS_SUBROADMAP_v3.0.md
+  s_308ad2cbeaff09::t_6071045496d28b 1-266
+docs/roadmap/MIGRATION_GUIDE_v2_to_v3.md
+  s_308ad2cbeaff09::t_3c3a57e485b0c7 1-109
+docs/roadmap/MASTER_ROADMAP_v3.0.md
+  s_308ad2cbeaff09::t_145dd225ed2468 1-137
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "cf334c63dd80086f665e8024962e2babd4e4f0f9",
+  "prompts": {},
+  "sessions": {
+    "s_308ad2cbeaff09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8bed8b8-23d2-4df4-830c-58123d770460",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
