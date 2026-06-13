@@ -1,0 +1,26 @@
+scripts/evaluate-decision.js
+  s_e73aa9eb519f51::t_1f03a3d788a536 1-25
+scripts/write-vault-record.js
+  s_e73aa9eb519f51::t_4dce0ff7f7e89b 66,69,71,73
+  s_e73aa9eb519f51::t_c92719ef6b59dc 1-65,67-68,70,72,74-133
+scripts/fetch-lineage.js
+  s_e73aa9eb519f51::t_ffbd10bf3ca40b 1-57
+scripts/submit-governance.js
+  s_e73aa9eb519f51::t_df83c8bb53f71a 1-76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "55099273f614330561d324e4e064400e7b4fddbf",
+  "prompts": {},
+  "sessions": {
+    "s_e73aa9eb519f51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5e2176b3-377c-4b06-9916-ae546f69dd10",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
