@@ -1,0 +1,19 @@
+docs/strategy/REWRITE_LABS_TEARDOWN_AND_BUILD_PLAN_v1.0.md
+  s_308ad2cbeaff09::t_e3d437ef2e07bf 1-682
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "f35e58f43adee16e5caf257bf2b0803950907b3a",
+  "prompts": {},
+  "sessions": {
+    "s_308ad2cbeaff09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8bed8b8-23d2-4df4-830c-58123d770460",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
