@@ -1,0 +1,41 @@
+build-roadmap.json
+  s_e73aa9eb519f51::t_3f31ffdb97bcbf 44-54,57-76
+scripts/write-vault-record.js
+  s_e73aa9eb519f51::t_c11e0fcd018366 6
+  s_e73aa9eb519f51::t_83fb1c3c82c697 116-117
+docs/roadmap/ROADMAP_POLICY.md
+  s_308ad2cbeaff09::t_53ee9e6c8de709 130-131
+  s_308ad2cbeaff09::t_db77b621427ea8 1-123,136-166
+  s_308ad2cbeaff09::t_7479fd1cf0f8bf 124-129,132-135
+docs/roadmap/ROADMAP_INDEX.md
+  s_308ad2cbeaff09::t_f7219812bdc2a3 26
+  s_308ad2cbeaff09::t_8c1a0dbb47ee9d 18
+  s_308ad2cbeaff09::t_d2016c31854bd7 13
+.github/workflows/cic-governance-ci.yml
+  s_e73aa9eb519f51::t_e9880abdba6e39 66-71
+  s_e73aa9eb519f51::t_cfc69876617380 1-65,72-118
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "bba2aa7133f77bf2b2c2719578043ea8fe58472f",
+  "prompts": {},
+  "sessions": {
+    "s_308ad2cbeaff09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8bed8b8-23d2-4df4-830c-58123d770460",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_e73aa9eb519f51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5e2176b3-377c-4b06-9916-ae546f69dd10",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
