@@ -1,0 +1,129 @@
+REVIEW.md
+  s_9c5ea7eeb98f11::t_210682a2839877 141-167
+docs/rewrite-labs/template-expansion-pack/aeo/fitness.json
+  s_d94e5bf7b3cd2d::t_b4d486ee1ae808 1-116
+docs/rewrite-labs/template-expansion-pack/aeo/salon_spa.json
+  s_d94e5bf7b3cd2d::t_c92dd263df322a 1-158
+build-roadmap.json
+  s_9c5ea7eeb98f11::t_3a95f4a376bbb8 14-49
+docs/rewrite-labs/template-expansion-pack/aeo/landscaping.json
+  s_d94e5bf7b3cd2d::t_3e632f8b1b032e 1-116
+docs/rewrite-labs/template-expansion-pack/outreach/salon_spa-sequence.md
+  s_d94e5bf7b3cd2d::t_2390046c4ce9ab 1-126
+docs/rewrite-labs/template-expansion-pack/outreach/fitness-sequence.md
+  s_d94e5bf7b3cd2d::t_146212f883c727 1-117
+docs/rewrite-labs/template-expansion-pack/manifests/fitness-manifest.json
+  s_d94e5bf7b3cd2d::t_49dcc6bde01fef 1-95
+docs/rewrite-labs/template-expansion-pack/skeletons/mobile-shell.html
+  s_d94e5bf7b3cd2d::t_1b9e9747fabfef 1-172
+docs/rewrite-labs/template-expansion-pack/schemas/components-universal.json
+  s_d94e5bf7b3cd2d::t_0bf24ecf21c9d2 1-140
+docs/rewrite-labs/template-expansion-pack/skeletons/service-page.html
+  s_d94e5bf7b3cd2d::t_d2c094d042cb1e 1-196
+docs/rewrite-labs/template-expansion-pack/phase-30/PHASE-30-INTEGRATION-CHECKLIST.md
+  s_65e5e0cd1adcaa::t_bdbe25246c3954 1-234
+docs/rewrite-labs/template-expansion-pack/phase-30/PHASE-30-DEPLOYMENT-ANNOUNCEMENT.md
+  s_65e5e0cd1adcaa::t_7e90e50084c381 1-276
+docs/rewrite-labs/template-expansion-pack/aeo/dental.json
+  s_d94e5bf7b3cd2d::t_01f01c89f5f183 1-162
+docs/rewrite-labs/template-expansion-pack/README.md
+  s_d94e5bf7b3cd2d::t_66ec66ebef1939 1-149
+AGENTS.md
+  s_9c5ea7eeb98f11::t_3a95f4a376bbb8 182-592
+docs/rewrite-labs/template-expansion-pack/outreach/landscaping-sequence.md
+  s_d94e5bf7b3cd2d::t_dc8400d556d244 1-118
+docs/rewrite-labs/template-expansion-pack/schemas/components-landscaping.json
+  s_d94e5bf7b3cd2d::t_ad41273f125883 1-77
+docs/rewrite-labs/template-expansion-pack/manifests/dental-manifest.json
+  s_d94e5bf7b3cd2d::t_3517cddd431cdc 1-95
+docs/rewrite-labs/agent-architecture.md
+  s_9c5ea7eeb98f11::t_3a95f4a376bbb8 1-78
+docs/rewrite-labs/template-expansion-pack/schemas/components-legal.json
+  s_d94e5bf7b3cd2d::t_a6e4725f9d3f4c 1-83
+docs/rewrite-labs/template-expansion-pack/schemas/components-fitness.json
+  s_d94e5bf7b3cd2d::t_25718d4ddcb3f1 1-87
+scripts/fetch-lineage.js
+  s_e73aa9eb519f51::t_470e458b98609a 14,16,20-25,31-39,47,56-68,72
+competitive-teardown-REVIEW.md
+  s_308ad2cbeaff09::t_d8efceeef119e0 1-43
+docs/rewrite-labs/template-expansion-pack/skeletons/homepage.html
+  s_d94e5bf7b3cd2d::t_3f79bc824bc038 1-172
+TEMPLATE-EXPANSION-REVIEW.md
+  s_d94e5bf7b3cd2d::t_8e2a59af078971 1-140
+docs/rewrite-labs/agent-template.md
+  s_9c5ea7eeb98f11::t_3a95f4a376bbb8 1-77
+docs/rewrite-labs/template-expansion-pack/manifests/salon_spa-manifest.json
+  s_d94e5bf7b3cd2d::t_eef33e8917f660 1-96
+docs/rewrite-labs/template-expansion-pack/skeletons/contact.html
+  s_d94e5bf7b3cd2d::t_da1fc5130f3d25 1-162
+docs/rewrite-labs/template-expansion-pack/aeo/legal.json
+  s_d94e5bf7b3cd2d::t_b995d30d95cca3 1-142
+docs/rewrite-labs/template-expansion-pack/phase-30/PHASE-30-CIC-INGESTION-TEST-PLAN.md
+  s_65e5e0cd1adcaa::t_df5296807cdf96 1-390
+docs/rewrite-labs/agent-design-guide.md
+  s_9c5ea7eeb98f11::t_3a95f4a376bbb8 1-115
+docs/rewrite-labs/template-expansion-pack/schemas/components-salon_spa.json
+  s_d94e5bf7b3cd2d::t_5f37e5f472a731 1-93
+docs/rewrite-labs/template-expansion-pack/schemas/components-dental.json
+  s_d94e5bf7b3cd2d::t_c1408a25ac3547 1-81
+docs/rewrite-labs/template-expansion-pack/phase-30/PHASE-30-TELEMETRY-DASHBOARD-SPEC.md
+  s_65e5e0cd1adcaa::t_4f44ee572b0430 1-525
+docs/rewrite-labs/template-expansion-pack/outreach/legal-sequence.md
+  s_d94e5bf7b3cd2d::t_bef919d9abb21f 1-115
+docs/rewrite-labs/template-expansion-pack/outreach/dental-sequence.md
+  s_d94e5bf7b3cd2d::t_e5b460fc720053 1-127
+docs/rewrite-labs/template-expansion-pack/manifests/landscaping-manifest.json
+  s_d94e5bf7b3cd2d::t_1f22c991ba50b5 1-96
+docs/rewrite-labs/template-expansion-pack/manifests/legal-manifest.json
+  s_d94e5bf7b3cd2d::t_4a2c6c0d671dcd 1-95
+docs/rewrite-labs/template-expansion-pack/phase-30/PHASE-30-VERTICAL-QA-MATRIX.md
+  s_65e5e0cd1adcaa::t_af2d9e7dd2fcd9 1-300
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "73193f48a8ed7be820256073b41e475d1eeef8ff",
+  "prompts": {},
+  "sessions": {
+    "s_308ad2cbeaff09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8bed8b8-23d2-4df4-830c-58123d770460",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_65e5e0cd1adcaa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "666f4b09-ad39-4e7c-a1b1-fb4cf7f0c132",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_9c5ea7eeb98f11": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9997bef8-7c13-499a-a4c1-eb89a8839ea7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_d94e5bf7b3cd2d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "890da49b-cba7-494d-9800-b729a5070d04",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_e73aa9eb519f51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5e2176b3-377c-4b06-9916-ae546f69dd10",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
