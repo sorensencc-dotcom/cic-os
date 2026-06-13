@@ -16,11 +16,11 @@ claude-skills/ — Skill definitions, validation, contribution pipeline
 
 ## Patterns
 
-Express.js for HTTP APIs (codeflow-server.js, AutonomyAPIServer.ts)
-Jest async/mock patterns; use ts-jest preset for TypeScript
-Commander.js for CLI tools (cic-cli.ts, cic-cli-governance.ts)
-Fetch + node-fetch for external API calls (GitHub, services)
-Structured logging via observability modules (cic-observability.ts)
+Express.js → HTTP APIs (codeflow-server.js, AutonomyAPIServer.ts)
+Jest async/mock patterns; ts-jest preset for TypeScript
+Commander.js → CLI tools (cic-cli.ts, cic-cli-governance.ts)
+Fetch + node-fetch → external API calls (GitHub, services)
+Structured logging through observability modules (cic-observability.ts)
 Docker Compose for local dev, Kubernetes for prod (k3d in cic-ingestion/)
 
 ## Key Files
