@@ -1,0 +1,19 @@
+docs/rewrite-labs/RL-4.0-DOM-Extraction.md
+  s_039b75ee64201a::t_45a6d1cfc5a190 1-131
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "db3c73d1f3aafa85a397dc6edaad7935b545cf94",
+  "prompts": {},
+  "sessions": {
+    "s_039b75ee64201a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "530b6ee5-5da3-4682-b5fb-3046c4d4619e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
