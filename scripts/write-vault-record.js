@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const https = require("https");
+const http = require("http");
 const crypto = require("crypto");
 
 function args() {
@@ -112,7 +113,8 @@ function write(vaultEndpoint, vaultApiKey, lineageFile, decisionFile, signingFil
     console.error(`Digest: ${digest}`);
 
     const url = new URL(vaultEndpoint);
-    const req = https.request(
+    const proto = url.protocol === "https:" ? https : http;
+    const req = proto.request(
       url,
       {
         method: "POST",

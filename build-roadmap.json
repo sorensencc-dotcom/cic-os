@@ -41,9 +41,39 @@
                         "commit":  true
                     },
                     {
-                        "phase":  "Phase 0.9.1",
+                        "phase":  "Phase 0.9 M2 (CI Integration)",
+                        "status":  "complete",
+                        "priority":  5,
+                        "dependencies":  [
+                                             "Phase 24.5"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 0.9 M3 (Deployment)",
                         "status":  "queued",
                         "priority":  5,
+                        "dependencies":  [
+                                             "Phase 0.9 M2 (CI Integration)"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 23.2",
+                        "status":  "queued",
+                        "priority":  6,
+                        "dependencies":  [
+                                             "Phase 0.9 M3 (Deployment)"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 0.9.1",
+                        "status":  "queued",
+                        "priority":  7,
                         "dependencies":  [
                                              "Phase 23.2"
                                          ],

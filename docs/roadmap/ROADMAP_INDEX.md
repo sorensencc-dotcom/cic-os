@@ -10,11 +10,12 @@ This directory is the authoritative roadmap set for the CIC + Rewrite Labs platf
 ## Files in this directory
 
 | File | Purpose |
-|---|---|
+| --- | --- |
 | [MASTER_ROADMAP_v3.0.md](MASTER_ROADMAP_v3.0.md) | Shared systems authority (IR Toolkit, Agents, TorqueQuery, Governance, Delivery) |
 | [CIC_SUBROADMAP_v3.0.md](CIC_SUBROADMAP_v3.0.md) | CIC-specific phases: documentary, ARL, autonomy stack 23–28a |
 | [REWRITE_LABS_SUBROADMAP_v3.0.md](REWRITE_LABS_SUBROADMAP_v3.0.md) | Rewrite Labs product pipeline: RL-4.0 through RL-4.6 |
 | [MIGRATION_GUIDE_v2_to_v3.md](MIGRATION_GUIDE_v2_to_v3.md) | Diff from legacy CIC master, where-to-find-what, recommended source patches |
+| [ROADMAP_POLICY.md](ROADMAP_POLICY.md) | Change rules, enforcement checks, exception process, file lifecycle |
 | [ROADMAP_INDEX.md](ROADMAP_INDEX.md) | This file |
 
 ---
@@ -22,7 +23,7 @@ This directory is the authoritative roadmap set for the CIC + Rewrite Labs platf
 ## Where to find what
 
 | Question | File |
-|---|---|
+| --- | --- |
 | What shared systems exist and what's their status? | `MASTER_ROADMAP_v3.0.md` §1 |
 | How do CIC and Rewrite Labs depend on each other? | `MASTER_ROADMAP_v3.0.md` §2 |
 | What's the current CIC build order? | `CIC_SUBROADMAP_v3.0.md` |
