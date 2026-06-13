@@ -11,37 +11,40 @@ function args() {
   return out;
 }
 
-function fetchLineage(buildId, output) {
-  const endpoint = process.env.FOUNDRY_LINEAGE_ENDPOINT;
-  const apiKey = process.env.FOUNDRY_API_KEY;
-
-  if (!endpoint || !apiKey) {
-    console.error("Missing FOUNDRY_LINEAGE_ENDPOINT or FOUNDRY_API_KEY");
-    process.exit(1);
-  }
-
+function fetch(endpoint, apiKey, buildId, outputFile) {
   const url = new URL(endpoint);
-  url.searchParams.set("build_id", buildId);
+  url.searchParams.append("build_id", buildId);
 
   const req = https.request(
     url,
-    { method: "GET", headers: { Authorization: `Bearer ${apiKey}` } },
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+      },
+    },
     (res) => {
       let data = "";
       res.on("data", (c) => (data += c));
       res.on("end", () => {
         if (res.statusCode < 200 || res.statusCode >= 300) {
-          console.error(`Lineage fetch failed: ${res.statusCode} ${data}`);
+          console.error(`Fetch lineage failed: ${res.statusCode} ${data}`);
           process.exit(1);
         }
-        fs.writeFileSync(path.resolve(output), data);
-        console.log(`Lineage written to ${output}`);
+        try {
+          const lineage = JSON.parse(data);
+          fs.writeFileSync(path.resolve(outputFile), JSON.stringify(lineage, null, 2));
+          console.log(`Lineage packet fetched and written to ${outputFile}`);
+        } catch (e) {
+          console.error("Failed to parse lineage response:", e);
+          process.exit(1);
+        }
       });
     }
   );
 
   req.on("error", (e) => {
-    console.error("Lineage fetch error:", e);
+    console.error("Fetch lineage error:", e);
     process.exit(1);
   });
 
@@ -50,8 +53,20 @@ function fetchLineage(buildId, output) {
 
 const a = args();
 if (!a["build-id"] || !a.output) {
-  console.error("Usage: fetch-lineage.js --build-id <id> --output <file>");
+  console.error(
+    "Usage: fetch-lineage.js --build-id <id> --output <file>"
+  );
   process.exit(1);
 }
 
-fetchLineage(a["build-id"], a.output);
+const endpoint = process.env.FOUNDRY_LINEAGE_ENDPOINT;
+const apiKey = process.env.FOUNDRY_API_KEY;
+
+if (!endpoint || !apiKey) {
+  console.error(
+    "Missing FOUNDRY_LINEAGE_ENDPOINT or FOUNDRY_API_KEY environment variables"
+  );
+  process.exit(1);
+}
+
+fetch(endpoint, apiKey, a["build-id"], a.output);

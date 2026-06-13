@@ -138,3 +138,30 @@ Comprehensive audit of error handling, token compression, and test harness cover
 - ✅ All routes have error-injection test cases
 - ✅ Error responses sanitized (no path/stack leakage)
 - ✅ Compression stats exported to monitoring endpoint
+
+---
+
+```gate-result
+{
+  "schema_version": "1.0",
+  "gate": "swarm-review",
+  "status": "CONDITIONAL",
+  "project_type": "TypeScript/Node.js Microservices (Express, Qdrant, Docker)",
+  "lenses": ["ijfw-review/ultra"],
+  "affected_artifacts": ["c:\\dev\\REVIEW.md"],
+  "accounting": {
+    "duration_ms": 1200,
+    "lenses_invoked": 1,
+    "cost_usd": null
+  },
+  "remediation": [
+    "Fix 5 BLOCK findings (Promise.all handlers, JSON guards, test harness) — high crash risk",
+    "Apply Caveman compression to 4 API response paths — 40-60% token savings",
+    "Add 25+ test cases for autonomy routes, orchestrator, bridges — coverage < 15%"
+  ],
+  "receipts_ref": null,
+  "supersedes": null,
+  "gate_id": "swarm-review-2026-06-12-a7k3",
+  "emitted_at": "2026-06-12T00:00:00Z"
+}
+```
