@@ -97,11 +97,11 @@ mkdocs serve
 - Skill PRs can be queued via roadmap manager
 
 ### With Phase 24 (Autonomous Governance)
-- All skills log audit trails
-- GitHub Actions provides immutable governance audit
+- All skills log audit trails and require **TheFoundry** for execution
+- GitHub Actions + **TheFoundry** provides the immutable governance audit and sealed build environment required by policy
 
 ### With Phase 0.9 (TheFoundry Docker)
-- All skills use deterministic Docker builds
+- All skills use deterministic, containerized builds via **TheFoundry**
 - Reproducible output across all machines
 
 ## Status

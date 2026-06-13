@@ -81,7 +81,7 @@ Multi-phase projects with dependencies. Auto-updates state, respects blockers.
 | GitHub Actions | ⚡⚡ Medium | Immutable history | Medium | ✅ Full |
 | Roadmap Manager | ⚡ Slow | JSON + git | High | ✓ Full |
 
-**For production builds:** Use GitHub Actions (immutable audit trail for Phase 24).
+**For production builds:** Use GitHub Actions with **TheFoundry** containerized builds (immutable audit trail for Phase 24).
 
 **For local dev:** Use Build Queue Executor (instant feedback).
 
@@ -139,7 +139,7 @@ A: Edit your build queue (Queue Executor), GitHub Actions input, or roadmap.json
 
 **Q: Is this compatible with Phase 24 governance?**
 
-A: Yes. GitHub Actions provides the immutable audit trail Phase 24 requires. Build Queue Executor provides git-based audit. Roadmap Manager tracks state changes.
+A: Yes. All production builds run securely inside containerized environments managed by **TheFoundry**, which satisfies the sealed-execution requirements and provides the immutable audit trail Phase 24 requires. Build Queue Executor provides local git-based audit, and Roadmap Manager tracks state changes.
 
 ---
 
