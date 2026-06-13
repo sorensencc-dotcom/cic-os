@@ -1,0 +1,108 @@
+roadmap-runner/prometheus.yml
+  s_afb97e309c79fa::t_c59039f630650b 1-35
+roadmap-runner/phases/RL-4.0.yaml
+  s_afb97e309c79fa::t_d6dbb437fb3577 1-45
+TheFoundry/phase-metadata.json
+  s_afb97e309c79fa::t_9b4bb26fdf256d 1-65
+TheFoundry/PRE_FLIGHT.md
+  s_afb97e309c79fa::t_ab29347127148e 1-176
+roadmap-runner/Dockerfile
+  s_afb97e309c79fa::t_42b7d2615ad890 1-24
+roadmap-runner/.env.local.example
+  s_afb97e309c79fa::t_d47e2265172115 1-20
+roadmap-runner/success-gate-validator.js
+  s_afb97e309c79fa::t_57e728c1e3d6f4 1-84
+TheFoundry/docker-stubs.sh
+  s_afb97e309c79fa::t_62cb41f6685a8f 1-63
+roadmap-runner/phases/RL-4.4.yaml
+  s_afb97e309c79fa::t_9b6034b70610c5 1-46
+roadmap-runner/phases/RL-4.3.yaml
+  s_afb97e309c79fa::t_2b18a8ff8272b1 1-43
+roadmap-runner/phases/RL-4.2.yaml
+  s_afb97e309c79fa::t_b0697f60d2b700 1-46
+TheFoundry/schemas/phase.schema.json
+  s_afb97e309c79fa::t_611e8d1e44c5b0 1-56
+roadmap-runner/docker-runner.js
+  s_afb97e309c79fa::t_578dc4012ab0e8 1-114
+DEPLOY_SUMMARY.md
+  s_afb97e309c79fa::t_bf241d107cc717 1,4,8,10-11,14-23,25-26,28,30-40,42-47,49,53-54,56-61,63,65,67-73,75,77,79,81-83,85-87,89-91,94,97-99,102,105-107,109,111,113-118,120-133,137,141-147,149-152,161,164-173,175,177-181,183-185,190,192-199,203-211,214,218,220-250,254,256,258
+  s_afb97e309c79fa::t_dcb4ce6a27d9d4 2-3,5-7,9,12-13,24,27,29,41,48,50-52,55,62,64,66,74,76,78,80,84,88,92-93,95-96,100-101,103-104,108,110,112,119,134-136,138-140,148,153-160,162-163,174,176,182,186-189,191,200-202,212-213,215-217,219,251-253,255,257,259-260
+roadmap-runner/phases/RL-4.6.yaml
+  s_afb97e309c79fa::t_8f32c6ea7377bc 1-44
+roadmap-runner/phases/RL-4.5.yaml
+  s_afb97e309c79fa::t_e79ab9a07cc637 1-46
+TheFoundry/schemas/roadmap.schema.json
+  s_afb97e309c79fa::t_8313a88e4cade4 1-31
+roadmap-runner/docker-compose.yml
+  s_afb97e309c79fa::t_2d106998d8574b 1-76
+roadmap-runner/.gitignore
+  s_afb97e309c79fa::t_2001418abb26dc 1-27
+roadmap-runner/phases/RL-4.1.yaml
+  s_afb97e309c79fa::t_c66245358b412a 1-42
+roadmap-runner/Makefile
+  s_afb97e309c79fa::t_4a92879a35cced 1-95
+TheFoundry/build.sh
+  s_afb97e309c79fa::t_3647d55b47c37e 1-37
+roadmap-runner/README.md
+  s_afb97e309c79fa::t_a41754e6e1b4c8 1-374
+TheFoundry/compile.js
+  s_afb97e309c79fa::t_461cd6c2f75d1e 1-157
+TheFoundry/validate-schema.js
+  s_afb97e309c79fa::t_d4917d956048a8 1-72
+TheFoundry/validate-phases.js
+  s_afb97e309c79fa::t_412c6beb85585d 1-55
+roadmap-runner/phases/PHASE-0.9.yaml
+  s_afb97e309c79fa::t_95a22887274c80 1-51
+TheFoundry/package.json
+  s_afb97e309c79fa::t_da7ade45942531 1-19
+TheFoundry/.markdownlint.json
+  s_afb97e309c79fa::t_d2e06e2a6fe142 1-13
+TheFoundry/README.md
+  s_afb97e309c79fa::t_dc83efbcdd69fe 1-74
+TheFoundry/generate-manifest.js
+  s_afb97e309c79fa::t_a349b581d4c5d7 1-57
+TheFoundry/Dockerfile
+  s_afb97e309c79fa::t_159c43428856ae 1-26
+TheFoundry/Makefile
+  s_afb97e309c79fa::t_4f70e3be9f6ce7 1-31
+INTEGRATION_GUIDE.md
+  s_afb97e309c79fa::t_198134d6ad5a67 1-264
+TheFoundry/health-check.sh
+  s_afb97e309c79fa::t_b3f84355685d87 1-98
+roadmap-runner/STARTUP_CHECKLIST.md
+  s_afb97e309c79fa::t_0234ced8e9a51f 1-273
+TheFoundry/SCHEDULER_ENFORCEMENT.md
+  s_afb97e309c79fa::t_750e6da119db69 1-100
+TheFoundry/drift-detector.js
+  s_afb97e309c79fa::t_c668eb89936a3c 1-100
+roadmap-runner/phases/PHASE-26.yaml
+  s_afb97e309c79fa::t_1f8892d9dce647 1-56
+TheFoundry/build-docs.sh
+  s_afb97e309c79fa::t_52cb5d91f6770d 1-26
+TheFoundry/validate-docs.sh
+  s_afb97e309c79fa::t_870cf21b253eef 1-19
+TheFoundry/scheduler-enforcement-patch.js
+  s_afb97e309c79fa::t_863e6ad7f38fa4 1-38
+docs/roadmap/ROADMAP_DEPENDENCY_GRAPH.json
+  s_afb97e309c79fa::t_7e45f14684021c 1-129
+roadmap-runner/package.json
+  s_afb97e309c79fa::t_93d96748baa1db 1-34
+roadmap-runner/scheduler.js
+  s_afb97e309c79fa::t_6ab341264c7a53 1-228
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "c47f4464eae11e0c4596533aa08dce25a2224514",
+  "prompts": {},
+  "sessions": {
+    "s_afb97e309c79fa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c5fc5a10-cb68-4978-9adf-c7bb37ac1610",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
