@@ -1,0 +1,89 @@
+services/knowledge-graph/src/core/graph_store/GraphStore.ts
+  s_23c404ff52405e::t_07ef70b8925f04 18-20,26,30,34-38,45,49,53-58,62-67,71-72,74-76,79-81
+  s_23c404ff52405e::t_19b89fa92b4bfc 1-17,21-25,27-29,31-33,39-44,46-48,50-52,59-61,68-70,73,77-78,82-84
+services/repomix-ingestion/jest.config.js
+  s_112a5ec9662ca8::t_376240aa0e6e9a 1-6
+services/knowledge-graph/src/core/graph_store/migrations/001_init_nodes_edges.sql
+  s_23c404ff52405e::t_4f3d61cd7d91e4 1-28
+services/cic-governance/jest.config.js
+  s_8ba98690d2f3b2::t_7fca9b128309f9 7-13
+  s_8ba98690d2f3b2::t_6225a480fb357e 1-6,14-19
+services/knowledge-graph/package.json
+  s_23c404ff52405e::t_c6c963e5df91c7 15
+  s_23c404ff52405e::t_4e849453194d66 1-14,16-27
+services/knowledge-graph/src/core/models/Node.ts
+  s_23c404ff52405e::t_bcf879eb5415fd 1-21
+services/knowledge-graph/Dockerfile
+  s_23c404ff52405e::t_7fbdeb49a9159e 1-4,7,13-14,16
+  s_23c404ff52405e::t_4a4ed2261f3520 5
+  s_23c404ff52405e::t_b5ddc3a4e6d990 6,15,17
+  s_23c404ff52405e::t_06edd0aa797508 8-12
+services/knowledge-graph/src/api/routes/introspection/stats.ts
+  s_23c404ff52405e::t_cf77b5c355df4e 1-17
+services/knowledge-graph/tsconfig.json
+  s_23c404ff52405e::t_728f14e0cbd505 1-18
+services/knowledge-graph/src/core/models/Edge.ts
+  s_23c404ff52405e::t_947e2cd0efab7a 1-21
+services/knowledge-graph/tests/unit/mappers/torque_mapper.test.ts
+  s_23c404ff52405e::t_1ea4fc5bfb7424 1-201
+services/knowledge-graph/src/core/models/Types.ts
+  s_23c404ff52405e::t_f029c41b97fc69 1-31
+services/knowledge-graph/src/core/mappers/TorqueMapper.ts
+  s_23c404ff52405e::t_8de0b58e45ca8e 1-154
+services/knowledge-graph/tests/unit/graph_store.test.ts
+  s_23c404ff52405e::t_21f800485f789f 1-231
+services/knowledge-graph/README.md
+  s_23c404ff52405e::t_5f23cbedbcc3bb 1-69
+services/torquequery/src/indexer/MemoryIndexer.ts
+  s_112a5ec9662ca8::t_6ed0dfa6484f00 83
+services/cic-governance/tsconfig.json
+  s_8ba98690d2f3b2::t_fc8d434318599e 1-14,17-20
+  s_8ba98690d2f3b2::t_fe5faf87f7c8f0 15-16
+services/knowledge-graph/jest.config.js
+  s_23c404ff52405e::t_577e3852054e11 1-9
+docker-compose.yml
+  s_23c404ff52405e::t_b2e5903bae5777 191-212
+  s_8ba98690d2f3b2::t_dbb4c850d352a7 95
+services/knowledge-graph/src/api/routes/introspection/schema.ts
+  s_23c404ff52405e::t_4fc97a64a7f55c 1-23
+services/knowledge-graph/src/api/server.ts
+  s_23c404ff52405e::t_dc0efdde526e28 1-31
+services/knowledge-graph/src/index.ts
+  s_23c404ff52405e::t_40092108725c2f 2-3,5-6,9-17
+  s_23c404ff52405e::t_a9d91f19accd8a 4
+  s_23c404ff52405e::t_0ceacf220eb22e 1,7-8
+services/vault/jest.config.js
+  s_112a5ec9662ca8::t_51cf277e2bd127 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "6590bf96f77f406b858c5d3b9373e4b2a6b0e9dd",
+  "prompts": {},
+  "sessions": {
+    "s_112a5ec9662ca8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fcd286a-45b4-4e37-8df0-7d777da14d2e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_23c404ff52405e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9bb1990c-6782-4cf5-9cba-f739dd4b8021",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_8ba98690d2f3b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0253e0ca-9f2a-4b11-b97b-4bd94b977b92",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
