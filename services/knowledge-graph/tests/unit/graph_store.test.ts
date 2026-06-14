@@ -1,11 +1,13 @@
-import { SqliteGraphStore, Node, Edge } from "../../src/core/graph_store/GraphStore";
+import { InMemoryGraphStore } from "../../src/core/graph_store/GraphStore";
+import { Node } from "../../src/core/models/Node";
+import { Edge } from "../../src/core/models/Edge";
 import { randomUUID } from "crypto";
 
-describe("SqliteGraphStore", () => {
-  let store: SqliteGraphStore;
+describe("InMemoryGraphStore", () => {
+  let store: InMemoryGraphStore;
 
   beforeEach(() => {
-    store = new SqliteGraphStore(":memory:");
+    store = new InMemoryGraphStore();
   });
 
   describe("createNode / getNode", () => {
