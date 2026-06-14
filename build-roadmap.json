@@ -52,7 +52,7 @@
                     },
                     {
                         "phase":  "Phase 0.9 M3 (Deployment)",
-                        "status":  "queued",
+                        "status":  "in-progress",
                         "priority":  5,
                         "dependencies":  [
                                              "Phase 0.9 M2 (CI Integration)"
@@ -61,11 +61,11 @@
                         "commit":  true
                     },
                     {
-                        "phase":  "Phase 23.2",
-                        "status":  "queued",
+                        "phase":  "Phase 23.2 (Memory Query API)",
+                        "status":  "in-progress",
                         "priority":  6,
                         "dependencies":  [
-                                             "Phase 0.9 M3 (Deployment)"
+                                             "Phase 24.5"
                                          ],
                         "tests":  true,
                         "commit":  true
