@@ -1,0 +1,20 @@
+docs/roadmap/REWRITE_LABS_SUBROADMAP_v3.0.md
+  s_308ad2cbeaff09::t_05968ecbf7982f 3
+  s_308ad2cbeaff09::t_32fc68e9dd455d 25-27,30,35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "eaeb334db71dfd11107401edd316f0c845bee410",
+  "prompts": {},
+  "sessions": {
+    "s_308ad2cbeaff09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8bed8b8-23d2-4df4-830c-58123d770460",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
