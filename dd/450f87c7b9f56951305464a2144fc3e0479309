@@ -1,0 +1,31 @@
+services/cic-governance/src/services/GovernanceAmendmentGenerator.ts
+  s_112a5ec9662ca8::t_bfa4542c864633 1-44
+services/unified-api/src/server.ts
+  s_112a5ec9662ca8::t_681626fbf440cd 11,26
+services/cic-governance/src/services/GovernancePolicyUpdater.ts
+  s_112a5ec9662ca8::t_f10ed004517223 1-43
+services/cic-governance/src/services/GovernanceEvolutionLoop.ts
+  s_112a5ec9662ca8::t_5eaebef41443c7 1-82
+services/cic-governance/tests/phase-24-2-evolution-loop.test.ts
+  s_112a5ec9662ca8::t_5f58911ae3c797 1-127
+services/cic-governance/src/services/GovernanceConstraintUpdater.ts
+  s_112a5ec9662ca8::t_e8a210688a5c11 1-43
+services/unified-api/src/routes/governance-evolution.ts
+  s_112a5ec9662ca8::t_47284db478f59b 1-96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "dd450f87c7b9f56951305464a2144fc3e0479309",
+  "prompts": {},
+  "sessions": {
+    "s_112a5ec9662ca8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fcd286a-45b4-4e37-8df0-7d777da14d2e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
