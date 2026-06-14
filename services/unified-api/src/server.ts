@@ -6,6 +6,7 @@
 import express from 'express';
 import { createGovernanceRouter } from './routes/governance';
 import { createTorqueQueryRouter } from './routes/torquequery';
+import { createRepomixRouter } from './routes/repomix';
 
 async function startServer() {
   const app = express();
@@ -18,6 +19,7 @@ async function startServer() {
   // Routes
   app.use('/api', createGovernanceRouter());
   app.use('/api', await createTorqueQueryRouter());
+  app.use('/api', createRepomixRouter());
 
   // Health check
   app.get('/health', (_req, res) => {
