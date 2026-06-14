@@ -1,0 +1,35 @@
+services/vault/src/VaultPersistence.ts
+  s_112a5ec9662ca8::t_0155be2c123869 1-149
+services/unified-api/src/routes/vault.ts
+  s_112a5ec9662ca8::t_bb631ab2a93b01 1-180
+services/vault/src/index.ts
+  s_112a5ec9662ca8::t_5cf1195aa16a9a 1-4
+services/vault/src/VaultSecrets.ts
+  s_112a5ec9662ca8::t_045b8baa8b5bdf 1-89
+services/vault/tsconfig.json
+  s_112a5ec9662ca8::t_f08da8fa2f9770 1-20
+services/vault/package.json
+  s_112a5ec9662ca8::t_76f3ad858f64bb 1-23
+services/vault/tests/phase-m3-vault-persistence.test.ts
+  s_112a5ec9662ca8::t_45d0df3eea3d8b 1-145
+services/unified-api/src/server.ts
+  s_112a5ec9662ca8::t_4103279b45c45f 10,24
+services/vault/src/db/schema.sql
+  s_112a5ec9662ca8::t_04b59998848d24 1-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "8b5d668af8b8c3dd241bfb4e1a23dd5a954452be",
+  "prompts": {},
+  "sessions": {
+    "s_112a5ec9662ca8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fcd286a-45b4-4e37-8df0-7d777da14d2e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
