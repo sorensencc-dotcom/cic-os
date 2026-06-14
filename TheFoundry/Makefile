@@ -12,19 +12,19 @@ help:
 
 build:
 	docker build -t foundry:latest .
-	docker run --rm -v $$(pwd):/workspace foundry
+	docker run --rm -v $(CURDIR)/..:/workspace --workdir /workspace/TheFoundry foundry
 
 docs:
 	docker build -t foundry:latest .
-	docker run --rm -v $$(pwd):/workspace foundry bash build-docs.sh
+	docker run --rm -v $(CURDIR)/..:/workspace --workdir /workspace/TheFoundry foundry bash build-docs.sh
 
 validate:
 	docker build -t foundry:latest .
-	docker run --rm -v $$(pwd):/workspace foundry bash validate-docs.sh
+	docker run --rm -v $(CURDIR)/..:/workspace --workdir /workspace/TheFoundry foundry bash validate-docs.sh
 
 manifest:
 	docker build -t foundry:latest .
-	docker run --rm -v $$(pwd):/workspace foundry node generate-manifest.js
+	docker run --rm -v $(CURDIR)/..:/workspace --workdir /workspace/TheFoundry foundry node generate-manifest.js
 
 clean:
 	rm -rf out/

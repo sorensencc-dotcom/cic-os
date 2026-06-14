@@ -14,13 +14,13 @@ Turns all roadmap markdown files into:
 
 ```bash
 docker build -t foundry .
-docker run --rm -v $(pwd):/workspace foundry
+docker run --rm -v $(pwd)/..:/workspace --workdir /workspace/TheFoundry foundry
 ```
 
 Or via Makefile:
 
 ```bash
-make foundry
+make build
 ```
 
 ---

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 
 const ROADMAP_URL = process.env.REACT_APP_ROADMAP_URL || "http://localhost:3000";
 const HARVESTER_URL = process.env.REACT_APP_HARVESTER_URL || "http://localhost:4000";
+const INGESTION_URL = process.env.REACT_APP_INGESTION_URL || "http://localhost:8080";
 
 interface ExternalEvent {
   id: string;
@@ -439,11 +440,115 @@ export function RoadmapExternalItemsView() {
 }
 
 // ============================================================================
+// VECTOR SUBSYSTEM OBS DASHBOARD
+// ============================================================================
+
+interface VectorCollectionMetrics {
+  collection: string;
+  healthy: boolean;
+  pointCount: number | null;
+  indexStatus: string | null;
+  lastSearchLatencyMs: number | null;
+  lastIndexLatencyMs: number | null;
+}
+
+export function VectorMetricsDashboard() {
+  const [metrics, setMetrics] = useState<{
+    chunks: VectorCollectionMetrics;
+    context: VectorCollectionMetrics;
+    skills: VectorCollectionMetrics;
+  } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    async function fetchMetrics() {
+      try {
+        const res = await fetch(`${INGESTION_URL}/vector/metrics`);
+        if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+        const data = await res.json();
+        if (data.ok && active) {
+          setMetrics(data);
+          setError(null);
+        } else if (active) {
+          setError(data.error || "Failed to load metrics");
+        }
+      } catch (err) {
+        if (active) {
+          setError(err instanceof Error ? err.message : String(err));
+        }
+      }
+    }
+
+    fetchMetrics();
+    const interval = setInterval(fetchMetrics, 5000);
+    return () => {
+      active = false;
+      clearInterval(interval);
+    };
+  }, []);
+
+  return (
+    <div className="vector-view">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <h2>Vector Subsystem Health & Observability</h2>
+        <span className={`status ${error ? 'failed' : 'success'}`}>
+          {error ? `Offline: ${error}` : 'Connected'}
+        </span>
+      </div>
+
+      {metrics && (
+        <div className="header">
+          {Object.entries(metrics).map(([key, m]) => (
+            <div key={key} className="stat" style={{ borderLeft: `4px solid ${m.healthy ? '#10B981' : '#EF4444'}`, textAlign: 'left', padding: '20px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                <span style={{ fontSize: '18px', fontWeight: 'bold', textTransform: 'capitalize', color: '#111827' }}>
+                  {key} ({m.collection})
+                </span>
+                <span className={`status ${m.healthy ? 'success' : 'failed'}`}>
+                  {m.healthy ? 'HEALTHY' : 'DOWN'}
+                </span>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '15px' }}>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#6B7280', textTransform: 'uppercase' }}>Points Count</div>
+                  <div style={{ fontSize: '20px', fontWeight: '600', color: '#1F2937' }}>
+                    {m.pointCount !== null ? m.pointCount.toLocaleString() : 'N/A'}
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#6B7280', textTransform: 'uppercase' }}>Indexing Status</div>
+                  <div style={{ fontSize: '20px', fontWeight: '600', color: '#1F2937', textTransform: 'capitalize' }}>
+                    {m.indexStatus || 'Unknown'}
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#6B7280', textTransform: 'uppercase' }}>Search Latency</div>
+                  <div style={{ fontSize: '20px', fontWeight: '600', color: '#1F2937' }}>
+                    {m.lastSearchLatencyMs !== null ? `${m.lastSearchLatencyMs.toFixed(2)} ms` : 'No search yet'}
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#6B7280', textTransform: 'uppercase' }}>Index Latency</div>
+                  <div style={{ fontSize: '20px', fontWeight: '600', color: '#1F2937' }}>
+                    {m.lastIndexLatencyMs !== null ? `${m.lastIndexLatencyMs.toFixed(2)} ms` : 'No index yet'}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ============================================================================
 // MAIN APP
 // ============================================================================
 
 export default function App() {
-  const [view, setView] = useState<"external-updates" | "extractor" | "roadmap">("external-updates");
+  const [view, setView] = useState<"external-updates" | "extractor" | "roadmap" | "vector">("external-updates");
 
   return (
     <div className="app">
@@ -468,6 +573,12 @@ export default function App() {
           >
             Roadmap Items
           </button>
+          <button
+            className={view === "vector" ? "active" : ""}
+            onClick={() => setView("vector")}
+          >
+            Vector Metrics
+          </button>
         </nav>
       </header>
 
@@ -475,6 +586,7 @@ export default function App() {
         {view === "external-updates" && <ExternalRepoUpdatesDashboard />}
         {view === "extractor" && <ExtractorResultsView repoId="codeflow" />}
         {view === "roadmap" && <RoadmapExternalItemsView />}
+        {view === "vector" && <VectorMetricsDashboard />}
       </main>
 
       <style>{`

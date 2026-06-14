@@ -80,7 +80,7 @@ export class MemoryIndexer {
   private indexCorrelation(correlationId: string, eventId: string): void {
     const existing = this.db
       .prepare(`SELECT eventIds FROM correlations WHERE correlationId = ?`)
-      .get(correlationId);
+      .get(correlationId) as { eventIds: string } | undefined;
 
     if (existing) {
       const eventIds = JSON.parse(existing.eventIds);

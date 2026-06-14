@@ -1,112 +1,98 @@
 {
   "version": "v3.0",
-  "generated": "2026-06-13T00:00:00Z",
-  "description": "Compiled roadmap dependency graph for roadmap-runner scheduler. Source: MASTER_ROADMAP_v3.0.md, CIC_SUBROADMAP_v3.0.md, REWRITE_LABS_SUBROADMAP_v3.0.md",
+  "generated": "2026-06-14T17:23:05.237Z",
+  "description": "Compiled roadmap dependency graph. Source: MASTER_ROADMAP_v3.0.md, CIC_SUBROADMAP_v3.0.md, REWRITE_LABS_SUBROADMAP_v3.0.md",
   "nodes": [
     {
-      "id": "PHASE-0.9",
-      "title": "TheFoundry - Deterministic Build Environment",
-      "track": "CIC",
-      "category": "infrastructure",
-      "status": "in-progress"
+      "id": "Phase",
+      "title": "Name",
+      "status": "status",
+      "track": "cic",
+      "category": "other"
     },
     {
-      "id": "PHASE-26",
-      "title": "TorqueQuery - Ingestion & Search Engine",
-      "track": "shared",
-      "category": "platform",
-      "status": "planned"
+      "id": "Phase 1",
+      "title": "Archival Research",
+      "status": "in progress",
+      "track": "cic",
+      "category": "other"
     },
     {
-      "id": "RL-4.6",
-      "title": "CrawlerEngine v1 (MVP single-site crawler)",
-      "track": "rewrite-labs",
-      "category": "product",
-      "status": "planned"
+      "id": "Phase 2",
+      "title": "Narrative Development",
+      "status": "pending",
+      "track": "cic",
+      "category": "other"
     },
     {
-      "id": "RL-4.0",
-      "title": "Extraction Engine v1 (SiteExtractor + StyleMatchEngine)",
-      "track": "rewrite-labs",
-      "category": "product",
-      "status": "planned"
+      "id": "Phase 3",
+      "title": "Pre-Production",
+      "status": "pending",
+      "track": "cic",
+      "category": "other"
     },
     {
-      "id": "RL-4.1",
-      "title": "RedesignAgent + DesignVariantRenderer",
-      "track": "rewrite-labs",
-      "category": "product",
-      "status": "planned"
+      "id": "Phase 4",
+      "title": "Production",
+      "status": "pending",
+      "track": "cic",
+      "category": "other"
     },
     {
-      "id": "RL-4.2",
-      "title": "SiteBundle + DeploymentAdapter + Delivery Infrastructure",
-      "track": "rewrite-labs",
-      "category": "product",
-      "status": "planned"
+      "id": "Phase 5",
+      "title": "Post-Production",
+      "status": "pending",
+      "track": "cic",
+      "category": "other"
     },
     {
-      "id": "RL-4.3",
-      "title": "ChatEditSession + InstructionParser + DOMPatch",
-      "track": "rewrite-labs",
-      "category": "product",
-      "status": "planned"
-    },
-    {
-      "id": "RL-4.4",
-      "title": "SaaSPricingGate + EntitlementSet",
-      "track": "rewrite-labs",
-      "category": "product",
-      "status": "planned"
-    },
-    {
-      "id": "RL-4.5",
-      "title": "OutreachAgent (Automated Outreach Pipeline)",
-      "track": "rewrite-labs",
-      "category": "product",
-      "status": "planned"
+      "id": "Phase 6",
+      "title": "Distribution",
+      "status": "pending",
+      "track": "cic",
+      "category": "other"
     }
   ],
   "edges": [
     {
       "from": "PHASE-0.9",
       "to": "PHASE-26",
-      "reason": "TorqueQuery build depends on TheFoundry deterministic environment"
+      "reason": "PHASE-26 depends on PHASE-0.9"
     },
     {
       "from": "RL-4.6",
       "to": "RL-4.0",
-      "reason": "Extraction Engine depends on CrawlerEngine for site capture"
+      "reason": "RL-4.0 depends on RL-4.6"
     },
     {
       "from": "RL-4.0",
       "to": "RL-4.1",
-      "reason": "RedesignAgent depends on extracted design tokens from RL-4.0"
+      "reason": "RL-4.1 depends on RL-4.0"
     },
     {
       "from": "RL-4.1",
       "to": "RL-4.2",
-      "reason": "SiteBundle depends on design variants from RL-4.1"
+      "reason": "RL-4.2 depends on RL-4.1"
     },
     {
       "from": "RL-4.2",
       "to": "RL-4.3",
-      "reason": "ChatEditSession depends on delivery infrastructure (RL-4.2)"
+      "reason": "RL-4.3 depends on RL-4.2"
     },
     {
       "from": "RL-4.2",
       "to": "RL-4.4",
-      "reason": "SaaSPricingGate depends on delivery infrastructure (parallel with RL-4.3)"
+      "reason": "RL-4.4 depends on RL-4.2"
     },
     {
       "from": "RL-4.3",
       "to": "RL-4.5",
-      "reason": "OutreachAgent depends on ChatEditSession for user interaction"
+      "reason": "RL-4.5 depends on RL-4.3"
     },
     {
       "from": "RL-4.4",
       "to": "RL-4.5",
-      "reason": "OutreachAgent depends on SaaSPricingGate for plan validation"
+      "reason": "RL-4.5 depends on RL-4.4"
     }
   ],
   "criticalPath": [
@@ -118,12 +104,18 @@
     "RL-4.5"
   ],
   "parallelizable": [
-    ["RL-4.3", "RL-4.4"]
+    [
+      "RL-4.3",
+      "RL-4.4"
+    ]
   ],
-  "rootPhases": ["RL-4.6"],
-  "notes": {
-    "RL-4.6_note": "MVP single-site crawler. TorqueQuery (PHASE-26) replaces at production scale. Design RL-4.6 for easy swap.",
-    "RL-4.4_note": "SaaSPricingGate is distinct from existing agency PricingEngine. Do not refactor agency model; build SaaS as separate system.",
-    "PHASE-26_note": "Production-scale shared backbone used by both CIC corpus ingestion and Rewrite Labs site capture. Parallel track with RL phases."
-  }
+  "rootPhases": [
+    "Phase",
+    "Phase 1",
+    "Phase 2",
+    "Phase 3",
+    "Phase 4",
+    "Phase 5",
+    "Phase 6"
+  ]
 }
