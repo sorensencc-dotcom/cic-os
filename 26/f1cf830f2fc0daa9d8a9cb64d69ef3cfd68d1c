@@ -1,0 +1,43 @@
+services/cic-governance/src/types/GovernancePacket.ts
+  s_8ba98690d2f3b2::t_cdfdca339181bf 1-25
+build-system/docker/labs/Dockerfile.extractor
+  s_131d4ef6abbe7e::t_c83f5c86904f0d 1-46
+services/cic-governance/src/services/GovernanceEvolutionEngine.ts
+  s_8ba98690d2f3b2::t_7d25a9ea1227d9 1-112
+build-system/docker/labs/Dockerfile.discovery
+  s_131d4ef6abbe7e::t_c83f5c86904f0d 1-47
+services/cic-governance/src/clients/VaultClient.ts
+  s_8ba98690d2f3b2::t_fdd484575955fb 1-64
+services/cic-governance/src/services/GovernanceCouncil.ts
+  s_8ba98690d2f3b2::t_75ab002fb028ac 1-115
+services/cic-governance/tests/phase-24-integration.test.ts
+  s_8ba98690d2f3b2::t_a3e0f4b77ca9ab 1-221
+services/cic-governance/package.json
+  s_8ba98690d2f3b2::t_e308d07b8a8430 1-20
+services/cic-governance/src/clients/MemoryQueryClient.ts
+  s_8ba98690d2f3b2::t_20b1041ef836d1 1-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "26f1cf830f2fc0daa9d8a9cb64d69ef3cfd68d1c",
+  "prompts": {},
+  "sessions": {
+    "s_131d4ef6abbe7e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "31feff4f-8f1e-402e-bda6-8c0c179544b8",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_8ba98690d2f3b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0253e0ca-9f2a-4b11-b97b-4bd94b977b92",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
