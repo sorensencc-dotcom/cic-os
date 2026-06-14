@@ -1,0 +1,19 @@
+build-roadmap.json
+  s_e73aa9eb519f51::t_8c9bddb079e86d 55,64-65,68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "a66bf736172a634d86a6cb86179b70bd2e57c7fb",
+  "prompts": {},
+  "sessions": {
+    "s_e73aa9eb519f51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5e2176b3-377c-4b06-9916-ae546f69dd10",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
