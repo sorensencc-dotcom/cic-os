@@ -299,6 +299,90 @@ services:
       retries: 3
       start_period: 10s
 
+  # Phase 2: Planning Engine (Cost estimation + scheduling + roadmap synthesis)
+  planning-engine:
+    build:
+      context: cic
+      dockerfile: Dockerfile.planning-engine
+    container_name: planning-engine
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=test
+      - LOG_LEVEL=info
+      - PORT=3114
+      - VAULT_URL=http://vault:3111
+      - MEMORY_STORE_URL=http://torquequery:3110
+    ports:
+      - "3114:3114"
+    depends_on:
+      - vault
+      - torquequery
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3114/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # Phase 2: Harvester v2 (Cost delta extraction + telemetry pipeline)
+  harvester-v2:
+    build:
+      context: cic-ingestion
+      dockerfile: Dockerfile.harvester-v2
+    container_name: harvester-v2
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=test
+      - LOG_LEVEL=info
+      - PORT=3115
+      - VAULT_URL=http://vault:3111
+      - MEMORY_STORE_URL=http://torquequery:3110
+      - PLANNING_ENGINE_URL=http://planning-engine:3114
+    ports:
+      - "3115:3115"
+    depends_on:
+      - vault
+      - torquequery
+      - planning-engine
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3115/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # Phase 2: Planning Console (UI dashboard + controls + governance integration)
+  planning-console:
+    build:
+      context: rewrite-mcp
+      dockerfile: Dockerfile.planning-console
+    container_name: planning-console
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - LOG_LEVEL=info
+      - REACT_APP_PLANNING_ENGINE_URL=http://localhost:3114
+      - REACT_APP_GOVERNANCE_URL=http://localhost:3113
+      - REACT_APP_VAULT_URL=http://localhost:3111
+    ports:
+      - "3200:3000"
+    depends_on:
+      - planning-engine
+      - cic-governance
+      - vault
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
   # Unified API (Routes all services)
   unified-api:
     build:
@@ -314,6 +398,9 @@ services:
       - VAULT_URL=http://vault:3111
       - REPOMIX_URL=http://repomix-ingestion:3112
       - GOVERNANCE_URL=http://cic-governance:3113
+      - PLANNING_ENGINE_URL=http://planning-engine:3114
+      - HARVESTER_V2_URL=http://harvester-v2:3115
+      - PLANNING_CONSOLE_URL=http://planning-console:3000
     ports:
       - "3100:3100"
     depends_on:
@@ -321,6 +408,9 @@ services:
       - vault
       - repomix-ingestion
       - cic-governance
+      - planning-engine
+      - harvester-v2
+      - planning-console
     networks:
       - cic-network
     healthcheck:
