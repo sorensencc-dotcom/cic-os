@@ -1,0 +1,35 @@
+services/repomix-ingestion/src/index.ts
+  s_112a5ec9662ca8::t_6b640db17509aa 1-5
+services/repomix-ingestion/src/RepomixPipeline.ts
+  s_112a5ec9662ca8::t_d6ab02d6e587d6 1-52
+services/repomix-ingestion/tsconfig.json
+  s_112a5ec9662ca8::t_cc3f94e54e7194 1-20
+services/unified-api/src/routes/repomix.ts
+  s_112a5ec9662ca8::t_a89a6609924a4f 1-67
+services/repomix-ingestion/src/RepomixMemoryAdapter.ts
+  s_112a5ec9662ca8::t_ba060c37fd3559 1-79
+services/repomix-ingestion/package.json
+  s_112a5ec9662ca8::t_642879199958c7 1-21
+services/repomix-ingestion/src/RepomixClient.ts
+  s_112a5ec9662ca8::t_8b735fbed9ef0a 1-50
+services/unified-api/src/server.ts
+  s_112a5ec9662ca8::t_f857fd7569c7a6 9,22
+services/repomix-ingestion/tests/phase-4-4-repomix-integration.test.ts
+  s_112a5ec9662ca8::t_a9e9cd3bda9c17 1-110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "fef508c856452b0d1da79ce79d402b1d10c141e8",
+  "prompts": {},
+  "sessions": {
+    "s_112a5ec9662ca8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fcd286a-45b4-4e37-8df0-7d777da14d2e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
