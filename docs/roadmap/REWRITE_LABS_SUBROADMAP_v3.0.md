@@ -1,6 +1,6 @@
 # Rewrite Labs Sub-Roadmap v3.0
 
-**Version:** 3.0.0  
+**Version:** 3.1.0  
 **Date:** 2026-06-13  
 **Parent:** [MASTER_ROADMAP_v3.0.md](MASTER_ROADMAP_v3.0.md)  
 **Source:** [docs/strategy/REWRITE_LABS_TEARDOWN_AND_BUILD_PLAN_v1.0.md](../strategy/REWRITE_LABS_TEARDOWN_AND_BUILD_PLAN_v1.0.md)
@@ -22,14 +22,17 @@ Shared systems (IR Toolkit, Agents shell, TorqueQuery) are defined in MASTER_ROA
 - LeadScoringEngine — `ir-toolkit/src/lead-scorer/score.ts`
 - PreviewGenerator (text narratives only) — `ir-toolkit/src/preview-generator/generator.ts`
 - PricingEngine (agency quote model, $75k–$150k+ tiers) — `ir-toolkit/src/pricing-engine/generator.ts`
+- **RL-4.6 ✅** CrawlerEngine v1 — `agents/src/crawler/index.ts`; robots.txt, bloom-filter dedup, dead-letter, 13 tests (commit `c1fd489`)
+- **RL-4.0 ✅** Extraction Engine v1 — `agents/src/extractors/dom.ts` (DomExtractor, node-html-parser), `agents/src/extractors/style-engine.ts` (StyleMatchEngine), `agents/src/orchestrator.ts` (RewriteLabsOrchestrator), IRPacket v1.1 (`cssMetrics` field), CrawlerEngine v1.1 (`rawHtml`/`contentType`); 56 tests (commit `bcc7289`)
+- **RL-4.1 🟡 SCAFFOLDED** Browser extraction layer — `PlaywrightExtractor` (stub, `extract()` returns null pending real Playwright wiring), `ComputedStylesAnalyzer`, `IRPacketV12Builder`, `WcagValidator`, `AccessibilityAuditor`; foundry Docker image `rl-agents:latest` (368MB, Chromium included) (commit `8e0c7c5`)
 
 **What's stubs:**
-- SiteExtractor — `agents/src/extractors/index.mjs` (version string only)
+- `PlaywrightExtractor.extract()` — returns null; interfaces + container ready, real browser wiring is RL-4.1 remaining work
 - RedesignAgent — `agents/src/redesign/index.mjs` (version string only)
 - OutreachAgent — `agents/src/outreach/index.mjs` (version string only)
 
 **What's missing entirely:**
-- CrawlerEngine, StyleMatchEngine, DesignVariantRenderer, SiteBundle, DeploymentAdapter, ChatEditSession, DOMPatch, SaaSPricingGate
+- DesignVariantRenderer, SiteBundle, DeploymentAdapter, ChatEditSession, DOMPatch, SaaSPricingGate
 
 **Critical pricing model note:** Existing PricingEngine is an **agency quote engine**, not SaaS. It outputs $75k–$150k+ project estimates. Do not refactor it. Build `SaaSPricingGate` as a separate system in RL-4.4.
 
