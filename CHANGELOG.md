@@ -199,3 +199,6 @@ docker run --rm cic-test:phase3
 ## Versions
 
 - **1.0.0-humanizer**: Humanizer PostProcessor with Tier 1/2 rules, determinism guarantee, 185 passing tests
+
+
+<!-- Updated by auto-docs skill at 2026-06-14T03:28:12.069Z -->
