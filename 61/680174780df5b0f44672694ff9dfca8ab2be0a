@@ -1,0 +1,19 @@
+scripts/test-m3-phase23.js
+  s_e73aa9eb519f51::t_c0b477c7baccb3 1-287
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "61680174780df5b0f44672694ff9dfca8ab2be0a",
+  "prompts": {},
+  "sessions": {
+    "s_e73aa9eb519f51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5e2176b3-377c-4b06-9916-ae546f69dd10",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
