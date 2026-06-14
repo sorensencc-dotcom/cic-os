@@ -1,0 +1,55 @@
+services/torquequery/src/queries/MemoryQueries.ts
+  s_112a5ec9662ca8::t_e06b435eb6f435 1-111
+services/torquequery/src/db/schema.sql
+  s_112a5ec9662ca8::t_a4e3d8b8cfd5de 1-63
+services/torquequery/jest.config.js
+  s_112a5ec9662ca8::t_556ecf9f680335 1-13
+services/unified-api/src/routes/torquequery.ts
+  s_112a5ec9662ca8::t_3bc832c6a6a5e4 1-126
+services/torquequery/src/types/TorqueRecord.ts
+  s_112a5ec9662ca8::t_7cc828b33ee001 1-58
+services/unified-api/src/server.ts
+  s_112a5ec9662ca8::t_300725e0dc6984 1-52
+services/torquequery/src/indexer/MemoryIndexer.ts
+  s_112a5ec9662ca8::t_59dc058737ac22 1-135
+services/unified-api/tsconfig.json
+  s_112a5ec9662ca8::t_14b6e14e143d5a 1-20
+services/torquequery/src/index.ts
+  s_112a5ec9662ca8::t_21d089901a9b84 1-6
+services/torquequery/package.json
+  s_112a5ec9662ca8::t_6d8adf08150d6a 1-25
+services/unified-api/src/routes/governance.ts
+  s_8ba98690d2f3b2::t_0aeb274f15901f 1-176
+services/torquequery/src/server/TorqueQueryServer.ts
+  s_112a5ec9662ca8::t_e4fa4ef789d757 1-85
+services/unified-api/package.json
+  s_112a5ec9662ca8::t_b6656a49f21215 1-25
+services/torquequery/tsconfig.json
+  s_112a5ec9662ca8::t_81f21433b78d76 1-21
+services/torquequery/tests/phase-26-torquequery-integration.test.ts
+  s_112a5ec9662ca8::t_2605beda452676 1-184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "75e1556b8f9784dd760f6f820c331292db09207b",
+  "prompts": {},
+  "sessions": {
+    "s_112a5ec9662ca8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fcd286a-45b4-4e37-8df0-7d777da14d2e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_8ba98690d2f3b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0253e0ca-9f2a-4b11-b97b-4bd94b977b92",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
