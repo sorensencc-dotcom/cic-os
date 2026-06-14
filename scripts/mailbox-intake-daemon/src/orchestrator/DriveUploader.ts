@@ -12,7 +12,7 @@ export class DriveUploader {
   private logger: Logger;
   private drive: any;
   private uploadQueue: PQueue;
-  private oauth2Client: OAuth2Client;
+  private oauth2Client: OAuth2Client | null = null;
 
   constructor(config: DriveConfig) {
     this.config = config;
@@ -92,8 +92,9 @@ export class DriveUploader {
     } catch (err) {
       if (attempt < maxRetries && this.isRetryableError(err)) {
         const delay = backoffMs[attempt - 1];
+        const errorMsg = err instanceof Error ? err.message : String(err);
         this.logger.warn(
-          `Upload attempt ${attempt} failed, retrying in ${delay}ms: ${err.message}`
+          `Upload attempt ${attempt} failed, retrying in ${delay}ms: ${errorMsg}`
         );
         await new Promise((resolve) => setTimeout(resolve, delay));
         return this.uploadFileWithRetry(entry, folderId, attempt + 1);

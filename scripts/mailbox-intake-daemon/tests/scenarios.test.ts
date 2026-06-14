@@ -3,6 +3,13 @@ import { BatchProcessor } from '../src/processor/BatchProcessor';
 import { FileWatcher } from '../src/watcher/FileWatcher';
 import { IngestOrchestrator } from '../src/orchestrator/IngestOrchestrator';
 
+// Mock MailpitClient for tests
+const mockMailpitClient = {
+  startPolling: jest.fn(),
+  downloadAttachment: jest.fn().mockResolvedValue(Buffer.from('test data')),
+  isHealthy: jest.fn().mockResolvedValue(true),
+} as unknown as MailpitClient;
+
 describe('Mailbox Intake Daemon - Integration Scenarios', () => {
   describe('Happy Path: Complete Email-to-Archive Flow', () => {
     test('E2E-001: Single email with image attachment → Tier 1 classification → Drive upload → Archive', async () => {
@@ -39,7 +46,7 @@ describe('Mailbox Intake Daemon - Integration Scenarios', () => {
         tier1Patterns: ['\\.jpg$', '\\.png$'],
         tier2Patterns: ['\\.pdf$'],
         tier3Patterns: ['\\.txt$'],
-      });
+      }, mockMailpitClient);
 
       // Expect: Batch created, classified as Tier 1, ready for ingest
       expect(true).toBe(true); // Placeholder assertion

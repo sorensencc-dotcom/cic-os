@@ -14,7 +14,7 @@ async function main() {
 
     // Initialize components
     const mailpitClient = new MailpitClient(config.mailpit);
-    const batchProcessor = new BatchProcessor(config.validation, config.classification);
+    const batchProcessor = new BatchProcessor(config.validation, config.classification, mailpitClient);
     const fileWatcher = new FileWatcher(config.watcher);
     const ingestOrchestrator = new IngestOrchestrator(config.routing, config.drive);
 
@@ -28,7 +28,7 @@ async function main() {
       for (const msg of messages) {
         try {
           const batch = await batchProcessor.processMessage(msg);
-          await ingestOrchestrator.triggerIngest(batch);
+          await ingestOrchestrator.triggerIngest(batch.batchDir);
         } catch (err) {
           logger.error(`Failed to process message ${msg.id}`, { error: err });
         }

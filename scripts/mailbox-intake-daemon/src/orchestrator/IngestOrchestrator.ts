@@ -108,10 +108,11 @@ export class IngestOrchestrator {
 
       this.logger.info(`Ingest complete for batch ${batchId}`);
     } catch (err) {
-      this.logger.error(`Ingest failed for batch ${manifest.batch_id}: ${err.message}`);
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      this.logger.error(`Ingest failed for batch ${manifest.batch_id}: ${errorMsg}`);
       manifest.ingest_status = {
         status: 'failed',
-        error: err.message,
+        error: errorMsg,
         completed_at: new Date().toISOString(),
       };
 
@@ -120,26 +121,36 @@ export class IngestOrchestrator {
         timestamp: new Date().toISOString(),
         event: 'ingest_failed',
         batchId: manifest.batch_id,
-        error: err.message,
+        error: errorMsg,
       });
 
-      await this.handleIngestFailure(batchDir, err);
+      const error = err instanceof Error ? err : new Error(errorMsg);
+      await this.handleIngestFailure(batchDir, error);
     }
   }
 
   private routeBatch(manifest: BatchManifest): TierRoute {
     const primaryTier = manifest.classification.primary_tier;
 
+    let route: TierRoute;
     switch (primaryTier) {
       case 'tier-1':
-        return this.routingConfig.tier1;
+        route = this.routingConfig.tier1;
+        break;
       case 'tier-2':
-        return this.routingConfig.tier2;
+        route = this.routingConfig.tier2;
+        break;
       case 'tier-3':
-        return this.routingConfig.tier3;
+        route = this.routingConfig.tier3;
+        break;
       default:
-        return this.routingConfig.unmappedTier;
+        route = this.routingConfig.unmappedTier;
     }
+
+    if (!route || !route.destination) {
+      throw new Error(`Invalid routing configuration for tier: ${primaryTier}`);
+    }
+    return route;
   }
 
   private validateRoutingDecision(
@@ -189,7 +200,8 @@ export class IngestOrchestrator {
 
         successCount++;
       } catch (err) {
-        this.logger.error(`Failed to copy file ${file.fileName}: ${err.message}`);
+        const errorMsg = err instanceof Error ? err.message : String(err);
+        this.logger.error(`Failed to copy file ${file.fileName}: ${errorMsg}`);
         failureCount++;
       }
     }

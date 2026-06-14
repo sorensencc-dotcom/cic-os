@@ -14,9 +14,10 @@ export interface FileWatcherConfig {
 export class FileWatcher {
   private config: FileWatcherConfig;
   private logger: Logger;
-  private watcher: chokidar.FSWatcher;
+  private watcher: chokidar.FSWatcher | null = null;
   private debounceTimers: Map<string, NodeJS.Timeout>;
   private poller: BatchPoller;
+  private pollHandle: NodeJS.Timeout | null = null;
 
   constructor(config: FileWatcherConfig) {
     this.config = config;
@@ -42,11 +43,15 @@ export class FileWatcher {
       }
     });
 
-    this.watcher.on('error', (err) => {
-      this.logger.error(`File watcher error: ${err.message}`);
+    this.watcher.on('error', (err: any) => {
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      this.logger.error(`File watcher error: ${errorMsg}`);
       if (!this.config.enablePolling) {
         this.logger.info('Falling back to polling');
-        this.poller.start(onBatchReady).catch((e) => this.logger.error(`Poller error: ${e.message}`));
+        this.poller.start(onBatchReady).catch((e: any) => {
+          const errMsg = e instanceof Error ? e.message : String(e);
+          this.logger.error(`Poller error: ${errMsg}`);
+        });
       }
     });
 
@@ -91,7 +96,8 @@ export class FileWatcher {
         try {
           await onBatchReady(batchDir);
         } catch (err) {
-          this.logger.error(`Batch processing failed: ${err.message}`);
+          const errorMsg = err instanceof Error ? err.message : String(err);
+          this.logger.error(`Batch processing failed: ${errorMsg}`);
         }
       }
     }, this.config.debounceMs);
@@ -137,7 +143,7 @@ class BatchPoller {
   private config: FileWatcherConfig;
   private logger: Logger;
   private running: boolean = false;
-  private pollHandle: NodeJS.Timer;
+  private pollHandle: NodeJS.Timeout | null = null;
   private processedBatches: Set<string>;
 
   constructor(config: FileWatcherConfig) {
@@ -158,7 +164,8 @@ class BatchPoller {
       try {
         await this.pollOnce(onBatchReady);
       } catch (err) {
-        this.logger.error(`Poll cycle failed: ${err.message}`);
+        const errorMsg = err instanceof Error ? err.message : String(err);
+        this.logger.error(`Poll cycle failed: ${errorMsg}`);
       }
     }, this.config.pollingIntervalMs);
   }
@@ -166,7 +173,9 @@ class BatchPoller {
   async stop(): Promise<void> {
     if (this.running) {
       this.running = false;
-      clearInterval(this.pollHandle);
+      if (this.pollHandle) {
+        clearInterval(this.pollHandle);
+      }
       this.logger.info('Batch poller stopped');
     }
   }
@@ -194,13 +203,15 @@ class BatchPoller {
             try {
               await onBatchReady(batchDir);
             } catch (err) {
-              this.logger.error(`Batch processing failed: ${err.message}`);
+              const errorMsg = err instanceof Error ? err.message : String(err);
+              this.logger.error(`Batch processing failed: ${errorMsg}`);
             }
           }
         }
       }
     } catch (err) {
-      this.logger.error(`Polling error: ${err.message}`);
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      this.logger.error(`Polling error: ${errorMsg}`);
     }
   }
 

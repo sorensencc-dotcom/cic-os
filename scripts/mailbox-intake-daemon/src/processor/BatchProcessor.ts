@@ -78,12 +78,16 @@ export class BatchProcessor {
   constructor(
     validationConfig: ValidationConfig,
     classificationConfig: ClassificationConfig,
-    mailpitClient?: MailpitClient
+    mailpitClient: MailpitClient
   ) {
+    if (!mailpitClient) {
+      throw new Error('MailpitClient is required');
+    }
     this.validationConfig = validationConfig;
     this.classificationConfig = classificationConfig;
     this.logger = new Logger('BatchProcessor');
     this.blockedPatterns = validationConfig.blockedFilePatterns.map((p) => new RegExp(p));
+    this.mailpitClient = mailpitClient;
   }
 
   async processMessage(msg: MailpitMessage): Promise<Batch> {
@@ -199,7 +203,8 @@ export class BatchProcessor {
         const extracted = await this.extractAttachmentWithTimeout(msg.id, att, batchDir, 15000);
         results.push(extracted);
       } catch (err) {
-        this.logger.error(`Failed to extract attachment ${att.fileName}: ${err.message}`);
+        const errorMsg = err instanceof Error ? err.message : String(err);
+        this.logger.error(`Failed to extract attachment ${att.fileName}: ${errorMsg}`);
         results.push({
           fileName: att.fileName,
           mimeType: att.mimeType,

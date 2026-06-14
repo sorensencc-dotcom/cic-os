@@ -44,7 +44,7 @@ export class MailpitClient {
   private circuitBreaker: CircuitBreaker;
   private lastHealthCheck: number = 0;
   private polling: boolean = false;
-  private pollInterval: NodeJS.Timer;
+  private pollInterval: NodeJS.Timeout | null = null;
 
   constructor(config: MailpitPoolConfig) {
     this.config = config;
@@ -70,7 +70,8 @@ export class MailpitClient {
       this.logger.info('Connected to Mailpit API');
     } catch (err) {
       this.circuitBreaker.recordFailure();
-      throw new Error(`Failed to connect to Mailpit: ${err.message}`);
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      throw new Error(`Failed to connect to Mailpit: ${errorMsg}`);
     }
   }
 
@@ -88,7 +89,8 @@ export class MailpitClient {
       await this.connect();
       return true;
     } catch (err) {
-      this.logger.error(`Health check failed: ${err.message}`);
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      this.logger.error(`Health check failed: ${errorMsg}`);
       return false;
     }
   }
@@ -105,7 +107,8 @@ export class MailpitClient {
       try {
         await this.pollOnce(onMessages);
       } catch (err) {
-        this.logger.error(`Poll cycle failed: ${err.message}`);
+        const errorMsg = err instanceof Error ? err.message : String(err);
+        this.logger.error(`Poll cycle failed: ${errorMsg}`);
       }
     }, this.config.pollIntervalMs);
 
@@ -136,7 +139,8 @@ export class MailpitClient {
       this.logger.info(`Fetched ${messages.length} new messages`);
       await onMessages(messages);
     } catch (err) {
-      this.logger.error(`Poll failed: ${err.message}`);
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      this.logger.error(`Poll failed: ${errorMsg}`);
     }
   }
 
@@ -182,7 +186,9 @@ export class MailpitClient {
   private stopPolling(): void {
     if (this.polling) {
       this.polling = false;
-      clearInterval(this.pollInterval);
+      if (this.pollInterval) {
+        clearInterval(this.pollInterval);
+      }
       this.logger.info('Poll loop stopped');
     }
   }
@@ -192,23 +198,24 @@ export class MailpitClient {
     maxAttempts: number,
     backoffMs: number[]
   ): Promise<T> {
-    let lastError: Error;
+    let lastError: Error = new Error('Unknown error');
 
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
       try {
         return await fn();
       } catch (err) {
-        lastError = err;
+        lastError = err instanceof Error ? err : new Error(String(err));
         const isRetryable = this.isRetryableError(err);
 
         if (!isRetryable) {
-          throw err;
+          throw lastError;
         }
 
         if (attempt < maxAttempts) {
           const delay = backoffMs[Math.min(attempt - 1, backoffMs.length - 1)];
+          const errorMsg = err instanceof Error ? err.message : String(err);
           this.logger.warn(
-            `Attempt ${attempt} failed, retrying in ${delay}ms: ${err.message}`
+            `Attempt ${attempt} failed, retrying in ${delay}ms: ${errorMsg}`
           );
           await new Promise((resolve) => setTimeout(resolve, delay));
         }
@@ -219,8 +226,9 @@ export class MailpitClient {
   }
 
   private isRetryableError(err: any): boolean {
+    if (!err || typeof err !== 'object') return false;
     const retryable = ['ECONNREFUSED', 'ETIMEDOUT', '503', '429'];
-    const message = err.message || '';
+    const message = (err && err.message) || '';
     return retryable.some((code) => message.includes(code));
   }
 

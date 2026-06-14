@@ -1,4 +1,5 @@
 import WebSocket, { WebSocketServer } from 'ws';
+import { z } from 'zod';
 
 interface RpcRequest {
   jsonrpc: '2.0';
@@ -14,6 +15,22 @@ interface RpcResponse {
   error?: { code: number; message: string; data?: any };
 }
 
+// Zod Validation Schemas for Incoming RPC Parameters
+const HelloParamsSchema = z.object({
+  client: z.string(),
+  version: z.string()
+});
+
+const SessionCreateParamsSchema = z.object({
+  agentId: z.string(),
+  workspaceRoot: z.string()
+});
+
+const SessionSubmitParamsSchema = z.object({
+  sessionId: z.string(),
+  prompt: z.string()
+});
+
 export class CicRpcServer {
   private wss: WebSocketServer;
 
@@ -28,40 +45,64 @@ export class CicRpcServer {
   }
 
   private async handleMessage(ws: WebSocket, raw: string) {
-    const msg = JSON.parse(raw) as RpcRequest;
+    let msg: RpcRequest;
+    try {
+      msg = JSON.parse(raw) as RpcRequest;
+    } catch (err: any) {
+      this.sendError(ws, null, -32700, "Parse Error");
+      return;
+    }
+
     const { id, method, params } = msg;
 
     try {
       switch (method) {
-        case 'rpc/hello':
+        case 'rpc/hello': {
+          const check = HelloParamsSchema.safeParse(params);
+          if (!check.success) {
+            this.sendError(ws, id, -32602, "Invalid params", check.error.format());
+            return;
+          }
           this.sendNotification(ws, 'rpc/welcome', {
             server: 'cic-daemon',
             version: '1.0.0',
           });
           break;
+        }
 
-        case 'session/create':
-          // Create CIC session, return sessionId
-          const sessionId = await this.handleSessionCreate(params);
+        case 'session/create': {
+          const check = SessionCreateParamsSchema.safeParse(params);
+          if (!check.success) {
+            this.sendError(ws, id, -32602, "Invalid params", check.error.format());
+            return;
+          }
+          const sessionId = await this.handleSessionCreate(check.data);
           this.sendResponse(ws, id, { sessionId });
           break;
+        }
 
         case 'session/update':
           await this.handleSessionUpdate(params);
           this.sendResponse(ws, id, { ok: true });
           break;
 
-        case 'session/submit':
-          const submitRes = await this.handleSessionSubmit(ws, params);
+        case 'session/submit': {
+          const check = SessionSubmitParamsSchema.safeParse(params);
+          if (!check.success) {
+            this.sendError(ws, id, -32602, "Invalid params", check.error.format());
+            return;
+          }
+          const submitRes = await this.handleSessionSubmit(ws, check.data);
           this.sendResponse(ws, id, submitRes);
           break;
+        }
 
         case 'ping':
           this.sendResponse(ws, id, { timestamp: Date.now() });
           break;
 
         default:
-          this.sendError(ws, id, 400, `Unknown method: ${method}`);
+          this.sendError(ws, id, -32601, `Method not found: ${method}`);
       }
     } catch (err: any) {
       this.sendError(ws, id, 500, err.message || 'Internal error', { stack: err.stack });
@@ -94,7 +135,7 @@ export class CicRpcServer {
     console.log(`[CIC Daemon] Updated session with params:`, params);
   }
 
-  private async handleSessionSubmit(ws: WebSocket, params: any): Promise<{ invocationId: string }> {
+  private async handleSessionSubmit(ws: WebSocket, params: { sessionId: string; prompt: string }): Promise<{ invocationId: string }> {
     const invocationId = `inv-${Date.now()}-${Math.random().toString(16).slice(2)}`;
     
     // Asynchronously run pipeline simulation
@@ -120,12 +161,12 @@ export class CicRpcServer {
         };
         this.sendNotification(ws, "notification/phase/transition", transition);
 
-        // Stream logs
+        // Stream logs with correct log prefixes
         this.sendNotification(ws, "notification/log/stream", {
           sessionId: params.sessionId,
           invocationId,
           stream: "stdout",
-          chunk: `### [${current}] Processing...\n`
+          chunk: `### [CIC Daemon] [${current}] Processing...\n`
         });
 
         await new Promise((resolve) => setTimeout(resolve, 50));
