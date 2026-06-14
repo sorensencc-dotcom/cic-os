@@ -1,0 +1,79 @@
+scripts/mailbox-intake-daemon/IMPLEMENTATION_CHECKLIST.md
+  s_fc95495cb41f6c::t_bb0a38d4387cdc 1-263
+scripts/mailbox-intake-daemon/docs/SECRETS.md
+  s_fc95495cb41f6c::t_191064ee8b92e0 1-391
+scripts/mailbox-intake-daemon/src/config.ts
+  s_fc95495cb41f6c::t_a236849c98b0a4 3
+  s_fc95495cb41f6c::t_6a9ca8ebfc3906 67-70,73-93
+  s_fc95495cb41f6c::t_332cfeed6a5071 71-72
+scripts/mailbox-intake-daemon/docs/API.md
+  s_fc95495cb41f6c::t_f106e247ea7330 1-470
+scripts/mailbox-intake-daemon/src/processor/BatchProcessor.ts
+  s_fc95495cb41f6c::t_1064ad24fea0e3 206-207
+  s_fc95495cb41f6c::t_bfb4a6540f59d9 81,83-85,90
+scripts/mailbox-intake-daemon/src/client/MailpitClient.ts
+  s_fc95495cb41f6c::t_049f0a03f88326 201,207,211,216,218
+  s_fc95495cb41f6c::t_1ccb9f48422c17 189-191
+  s_fc95495cb41f6c::t_ee8e0f42356a23 47
+  s_fc95495cb41f6c::t_5cf041525b9732 142-143
+  s_fc95495cb41f6c::t_40827e22c4243a 110-111
+  s_fc95495cb41f6c::t_88402f2c3b0bbc 229,231
+  s_fc95495cb41f6c::t_409b2a87842749 92-93
+  s_fc95495cb41f6c::t_8cf41ca6ce0ab2 73-74
+scripts/mailbox-intake-daemon/docs/DEPLOYMENT.md
+  s_fc95495cb41f6c::t_fce3f7e38d5265 1-357
+scripts/mailbox-intake-daemon/src/index.ts
+  s_fc95495cb41f6c::t_2e5b2f4c8b102c 17
+  s_fc95495cb41f6c::t_7663a8521526f6 31
+scripts/mailbox-intake-daemon/tests/scenarios.test.ts
+  s_fc95495cb41f6c::t_80487cb18ea26a 49
+  s_fc95495cb41f6c::t_b6c26dbc3435a1 6-12
+scripts/mailbox-intake-daemon/Dockerfile
+  s_fc95495cb41f6c::t_44a26026f03747 2,9,11-12,17,22,24,26,32-33,35,42,47,52
+  s_fc95495cb41f6c::t_a2d1885393abcc 1,3-8,10,13-16,18-21,23,25,27-31,34,36-41,43-46,48-51,53-55
+scripts/mailbox-intake-daemon/src/watcher/FileWatcher.ts
+  s_fc95495cb41f6c::t_7064de4c4c6534 17,20
+  s_fc95495cb41f6c::t_32e7d1e50cdeaf 176-178
+  s_fc95495cb41f6c::t_bee538e0845033 206-207
+  s_fc95495cb41f6c::t_bb1dcca9e79391 46-48,51-54
+  s_fc95495cb41f6c::t_e9dce1e5e53ee2 167-168
+  s_fc95495cb41f6c::t_382934776d6487 99-100
+  s_fc95495cb41f6c::t_987d7c33d7f6a7 213-214
+  s_fc95495cb41f6c::t_b6e3230b3a074c 146
+scripts/mailbox-intake-daemon/src/orchestrator/IngestOrchestrator.ts
+  s_fc95495cb41f6c::t_41f36d5db6d499 203-204
+  s_fc95495cb41f6c::t_dfbb30e800f047 135,138-139,141-142,144-145,147,149-153
+  s_fc95495cb41f6c::t_bef92a68ccaec7 111-112,115,124,127-128
+scripts/mailbox-intake-daemon/src/config-validator.ts
+  s_fc95495cb41f6c::t_8bd3a2cd3dfc3c 1-122
+scripts/mailbox-intake-daemon/tests/core.test.ts
+  s_fc95495cb41f6c::t_c63e2e1c6c8114 1-34,36-365
+  s_fc95495cb41f6c::t_7a2507506095ed 35
+scripts/mailbox-intake-daemon/docs/ARCHITECTURE.md
+  s_fc95495cb41f6c::t_8ce91fb9e139a7 1-416
+scripts/mailbox-intake-daemon/docs/INDEX.md
+  s_fc95495cb41f6c::t_7006eda6fa06b6 1-382
+scripts/mailbox-intake-daemon/docker-compose.yml
+  s_fc95495cb41f6c::t_d7253f84514b60 1-63
+scripts/mailbox-intake-daemon/src/orchestrator/DriveUploader.ts
+  s_fc95495cb41f6c::t_9c428c49a5db1c 95,97
+  s_fc95495cb41f6c::t_d3fdea8b66adea 15
+scripts/mailbox-intake-daemon/FINAL_STATUS.md
+  s_fc95495cb41f6c::t_7f5556cf7c66ad 1-251
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "9aa29243039e747a3a0f919477d12b6268f3fcd4",
+  "prompts": {},
+  "sessions": {
+    "s_fc95495cb41f6c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "22a4d9b6-e0b2-46e3-824a-7d9fccb6b8d9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
