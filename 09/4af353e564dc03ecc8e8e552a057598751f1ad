@@ -1,0 +1,21 @@
+services/unified-api/jest.config.js
+  s_112a5ec9662ca8::t_ac95066e3a8f6b 1-8
+services/unified-api/tests/integration.test.ts
+  s_112a5ec9662ca8::t_9f7633fcf04faa 1-127
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "094af353e564dc03ecc8e8e552a057598751f1ad",
+  "prompts": {},
+  "sessions": {
+    "s_112a5ec9662ca8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fcd286a-45b4-4e37-8df0-7d777da14d2e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
