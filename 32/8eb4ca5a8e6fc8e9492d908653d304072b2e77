@@ -1,0 +1,72 @@
+scripts/mailbox-intake-daemon/README.md
+  s_fc95495cb41f6c::t_d574ec174a7391 1-360
+scripts/mailbox-intake-daemon/src/orchestrator/IngestOrchestrator.ts
+  s_fc95495cb41f6c::t_8784079944d26d 1-263
+docs/strategy/MAILBOX_INTAKE_DAEMON_IMPLEMENTATION_SUMMARY.md
+  s_fc95495cb41f6c::t_4bfbea26c23727 1-367
+scripts/mailbox-intake-daemon/src/orchestrator/DriveUploader.ts
+  s_fc95495cb41f6c::t_7edd129f6b2ca6 1-175
+scripts/mailbox-intake-daemon/REVIEW.md
+  s_fc95495cb41f6c::t_aee9e8f78ba721 1-118
+scripts/mailbox-intake-daemon/jest.config.js
+  s_fc95495cb41f6c::t_5f227dbd460b10 1-27
+scripts/mailbox-intake-daemon/src/config.ts
+  s_fc95495cb41f6c::t_ab5dcd0667c121 1-68
+scripts/mailbox-intake-daemon/src/watcher/FileWatcher.ts
+  s_fc95495cb41f6c::t_2a80cc39231b90 1-215
+scripts/mailbox-intake-daemon/src/client/MailpitClient.ts
+  s_fc95495cb41f6c::t_e488b7b5ee8dbd 1-246
+scripts/mailbox-intake-daemon/src/index.ts
+  s_fc95495cb41f6c::t_0c0e2c22344b78 1-70
+scripts/mailbox-intake-daemon/tests/scenarios.test.ts
+  s_fc95495cb41f6c::t_5b7830761ddd95 1-324
+scripts/mailbox-intake-daemon/tsconfig.json
+  s_fc95495cb41f6c::t_9898a203c65788 1-20
+scripts/mailbox-intake-daemon/src/utils/CircuitBreaker.ts
+  s_fc95495cb41f6c::t_5e3380122ab187 1-56
+scripts/mailbox-intake-daemon/package.json
+  s_fc95495cb41f6c::t_129023815450e2 1-29
+scripts/mailbox-intake-daemon/src/processor/BatchProcessor.ts
+  s_fc95495cb41f6c::t_eeace909cedd9e 1-345
+scripts/mailbox-intake-daemon/config.example.json
+  s_fc95495cb41f6c::t_f9a893ce49ac12 1-109
+scripts/mailbox-intake-daemon/src/utils/sanitize.ts
+  s_fc95495cb41f6c::t_c4640a700e4869 1-19
+docs/strategy/MAILBOX_INTAKE_DAEMON_SPEC_EXPANDED.md
+  s_fc95495cb41f6c::t_83f7532ea22113 1089
+  s_fc95495cb41f6c::t_6c93bbaa3a25c2 424
+  s_fc95495cb41f6c::t_a23092bc18888f 715
+  s_fc95495cb41f6c::t_e8a5a032724d0a 1-7,9-61,63-108,110-201,203-334,336-382,384-387,390-398,400-423,425-501,503-553,555-714,716-804,806-869,871-906,908-1017,1019-1088,1090-1137,1139-1281
+  s_fc95495cb41f6c::t_6c7a6bbee55704 383
+  s_fc95495cb41f6c::t_087950cda32ba3 335
+  s_fc95495cb41f6c::t_5169e31e1bba05 1018
+  s_fc95495cb41f6c::t_593d7c043e845c 502
+  s_fc95495cb41f6c::t_d9e26ecb579d72 109
+  s_fc95495cb41f6c::t_0a5cf4504a5f3d 62
+  s_fc95495cb41f6c::t_6c3b8b13dc63df 8
+  s_fc95495cb41f6c::t_237dc8536cf2d6 907
+  s_fc95495cb41f6c::t_61cb407da5e013 554
+  s_fc95495cb41f6c::t_b8d42107690a4a 202
+  s_fc95495cb41f6c::t_9c2020b9c88450 388-389,399
+  s_fc95495cb41f6c::t_a15c5280d4b3ae 805
+  s_fc95495cb41f6c::t_e71d3c76515cb6 870
+  s_fc95495cb41f6c::t_fcec5b39d2e4b2 1138
+scripts/mailbox-intake-daemon/src/utils/Logger.ts
+  s_fc95495cb41f6c::t_9aeaddc759b7f5 1-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "328eb4ca5a8e6fc8e9492d908653d304072b2e77",
+  "prompts": {},
+  "sessions": {
+    "s_fc95495cb41f6c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "22a4d9b6-e0b2-46e3-824a-7d9fccb6b8d9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
