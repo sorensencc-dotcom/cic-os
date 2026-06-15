@@ -1,3 +1,12 @@
+## Changes (2026-06-15T23:04:17.035Z)
+
+**Categories:** code
+
+**Files:**
+  - integration.test.ts
+
+<!-- Updated by auto-docs skill -->
+
 ## Changes (2026-06-15T16:20:31.955Z)
 
 **Categories:** code
