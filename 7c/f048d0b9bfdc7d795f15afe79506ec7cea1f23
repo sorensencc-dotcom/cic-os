@@ -1,0 +1,23 @@
+cic-ingestion/tsconfig.json
+  s_e778e1f090b567::t_f5d85c90d33e63 28-30
+cic/tsconfig.json
+  s_e778e1f090b567::t_eaa8401ce4f1aa 25,27-30
+  s_e778e1f090b567::t_d7fe9f2c4bd2c2 26
+  s_e778e1f090b567::t_a51e6028bfd782 24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "7cf048d0b9bfdc7d795f15afe79506ec7cea1f23",
+  "prompts": {},
+  "sessions": {
+    "s_e778e1f090b567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6808a1c8-2869-4006-a21c-7beae1f15e65",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
