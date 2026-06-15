@@ -1,3 +1,12 @@
+## Changes (2026-06-15T16:20:31.955Z)
+
+**Categories:** code
+
+**Files:**
+  - services/unified-api/src/server.ts
+
+<!-- Updated by auto-docs skill -->
+
 # Changelog
 
 ## [1.0.0-humanizer] - 2026-06-12
