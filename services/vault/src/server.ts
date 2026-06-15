@@ -58,7 +58,7 @@ async function startServer() {
     try {
       const { value } = req.body;
       if (!value) return res.status(400).json({ error: 'value required' });
-      const id = await secrets.write(value);
+      const id = await secrets.writeSecret(value);
       res.status(201).json({ id });
     } catch (err) {
       res.status(500).json({ error: (err as any).message });
@@ -67,7 +67,7 @@ async function startServer() {
 
   app.get('/vault/secrets/:id', async (req, res) => {
     try {
-      const value = await secrets.read(req.params.id);
+      const value = await secrets.readSecret(req.params.id);
       if (value == null) return res.status(404).json({ error: 'not found' });
       res.json({ value });
     } catch (err) {
@@ -79,7 +79,7 @@ async function startServer() {
     try {
       const { newValue } = req.body;
       if (!newValue) return res.status(400).json({ error: 'newValue required' });
-      const rotated = await secrets.rotate(req.params.id, newValue);
+      const rotated = await secrets.rotateSecret(req.params.id, newValue);
       if (!rotated) return res.status(404).json({ error: 'not found' });
       res.json({ rotated });
     } catch (err) {

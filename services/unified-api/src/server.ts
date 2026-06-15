@@ -34,8 +34,12 @@ async function startServer() {
   app.use(
     (err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
       console.error('Error:', err);
-      res.status(err.status || 500).json({
-        error: err.message || 'Internal Server Error',
+
+      const isServiceUnavailable = ['ECONNREFUSED', 'EHOSTUNREACH', 'ETIMEDOUT', 'ENOTFOUND'].includes(err.code);
+      const status = isServiceUnavailable ? 502 : (err.status || 500);
+
+      res.status(status).json({
+        error: err.message || (status === 502 ? 'Bad Gateway' : 'Internal Server Error'),
         stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
       });
     }
