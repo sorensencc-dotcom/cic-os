@@ -1,0 +1,23 @@
+services/unified-api/package.json
+  s_e778e1f090b567::t_1469fae573f962 15-16,22
+services/unified-api/src/server.ts
+  s_e778e1f090b567::t_3ea3e911435fa5 12,28
+services/unified-api/src/routes/evolution-loop-phase243.ts
+  s_e778e1f090b567::t_67b636dd75fb6d 1-334
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "eaeebc19ab2e783e370d9ac090b694e5ba995c73",
+  "prompts": {},
+  "sessions": {
+    "s_e778e1f090b567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6808a1c8-2869-4006-a21c-7beae1f15e65",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
