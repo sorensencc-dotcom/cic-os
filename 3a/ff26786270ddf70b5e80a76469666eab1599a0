@@ -1,0 +1,28 @@
+services/unified-api/Dockerfile
+  s_92508400715733::t_4e656610a3fda2 10
+  s_92508400715733::t_d75b96ad19d86a 15
+services/vault/src/server.ts
+  s_92508400715733::t_5f71e48be7e42a 1-117
+services/torquequery/package.json
+  s_92508400715733::t_b54b4c30eb9d86 8-10
+services/torquequery/src/server.ts
+  s_92508400715733::t_a93021cb17b507 1-101
+services/vault/package.json
+  s_92508400715733::t_23109b39d668d1 8-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "3aff26786270ddf70b5e80a76469666eab1599a0",
+  "prompts": {},
+  "sessions": {
+    "s_92508400715733": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "11835871-028f-4c01-987d-fad077d65f87",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
