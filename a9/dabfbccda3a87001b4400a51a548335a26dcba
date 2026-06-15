@@ -1,0 +1,23 @@
+cic-ingestion/src/orchestrator/index.ts
+  s_e778e1f090b567::t_9f43f0b6d7064c 4,8-12
+  s_e778e1f090b567::t_0fd6a8d9b9a7db 42-58
+cic/src/build-system/orchestrator.ts
+  s_e778e1f090b567::t_ebb7f60d83982d 6-16
+  s_e778e1f090b567::t_b91f168bf40787 159-183
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "a9dabfbccda3a87001b4400a51a548335a26dcba",
+  "prompts": {},
+  "sessions": {
+    "s_e778e1f090b567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6808a1c8-2869-4006-a21c-7beae1f15e65",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
