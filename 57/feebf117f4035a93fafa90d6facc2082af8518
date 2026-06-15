@@ -1,0 +1,20 @@
+services/unified-api/src/server.ts
+  s_92508400715733::t_22bd1acec0e8bc 7-11
+  s_92508400715733::t_fade6c511f0f12 55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "57feebf117f4035a93fafa90d6facc2082af8518",
+  "prompts": {},
+  "sessions": {
+    "s_92508400715733": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "11835871-028f-4c01-987d-fad077d65f87",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
