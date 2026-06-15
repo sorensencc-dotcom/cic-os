@@ -1,0 +1,21 @@
+services/unified-api/Dockerfile
+  s_92508400715733::t_a3a7a06990d953 11,13,16
+services/unified-api/run-tests.sh
+  s_92508400715733::t_70d80a8ef1728a 1-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "470dbc62556aa8f8816c3b87b3a66c371e50a93c",
+  "prompts": {},
+  "sessions": {
+    "s_92508400715733": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "11835871-028f-4c01-987d-fad077d65f87",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
