@@ -1,0 +1,27 @@
+rewrite-mcp/src/planning-console/ui/app.ts
+  s_e778e1f090b567::t_8c3722e532d2ee 1-43
+rewrite-mcp/src/planning-console/index.ts
+  s_e778e1f090b567::t_73288fa429228d 1-42
+rewrite-mcp/src/planning-console/routes.ts
+  s_e778e1f090b567::t_b7e03aecd74b7e 1-59
+cic/src/planning/CostModel.ts
+  s_e778e1f090b567::t_8e6636387c096b 1-102
+cic-ingestion/src/harvester/v2/index.ts
+  s_e778e1f090b567::t_75dbdb52f88d0a 1-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "10052a2bfab773913f3ca57acf7181385b4517c4",
+  "prompts": {},
+  "sessions": {
+    "s_e778e1f090b567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6808a1c8-2869-4006-a21c-7beae1f15e65",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
