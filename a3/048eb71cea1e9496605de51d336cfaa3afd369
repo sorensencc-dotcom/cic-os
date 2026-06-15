@@ -1,0 +1,36 @@
+services/unified-api/src/server.ts
+  s_4bed87354dd7d7::t_43484b5a0b4956 6-11
+services/unified-api/run-tests.sh
+  s_92508400715733::t_9214ec23931a50 1
+services/unified-api/tsconfig.json
+  s_4bed87354dd7d7::t_f6c93b429958fe 4
+services/unified-api/jest.config.cjs
+  s_4bed87354dd7d7::t_2e956ebe232ac3 8
+services/unified-api/tests/setup.cjs
+  s_4bed87354dd7d7::t_10833ccd1be453 1-8,27-69
+  s_4bed87354dd7d7::t_cd981da3e11239 9-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a3048eb71cea1e9496605de51d336cfaa3afd369",
+  "prompts": {},
+  "sessions": {
+    "s_4bed87354dd7d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "963f6b5f-adf5-4c6b-95be-68dfd8377ce2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_92508400715733": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "11835871-028f-4c01-987d-fad077d65f87",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
