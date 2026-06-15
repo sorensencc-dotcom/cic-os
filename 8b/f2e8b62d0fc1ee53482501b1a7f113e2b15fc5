@@ -1,0 +1,33 @@
+systems/orchestration/src/orchestration-engine.ts
+  s_e778e1f090b567::t_09d7ed75ab7e72 1-193
+systems/orchestration/tsconfig.json
+  s_e778e1f090b567::t_1315ea30793c9d 1-12
+systems/orchestration/jest.config.js
+  s_e778e1f090b567::t_06ab21d88a94bd 1-20
+systems/orchestration/src/index.ts
+  s_e778e1f090b567::t_3c2645e63dd352 1-17
+systems/orchestration/src/plan-types.ts
+  s_e778e1f090b567::t_975531900bfa97 1-61
+systems/orchestration/src/task-runner.ts
+  s_e778e1f090b567::t_669e8d315e93e3 1-82
+systems/orchestration/package.json
+  s_e778e1f090b567::t_d3484007b28e74 1-20
+tsconfig.json
+  s_e778e1f090b567::t_549bd29e35f173 1-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "8bf2e8b62d0fc1ee53482501b1a7f113e2b15fc5",
+  "prompts": {},
+  "sessions": {
+    "s_e778e1f090b567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6808a1c8-2869-4006-a21c-7beae1f15e65",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
