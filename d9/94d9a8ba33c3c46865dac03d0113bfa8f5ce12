@@ -1,0 +1,22 @@
+systems/orchestration/package.json
+  s_e778e1f090b567::t_1d5132d1f4c8b3 10
+systems/orchestration/src/orchestration-engine.ts
+  s_e778e1f090b567::t_e55052e62eb626 30-31,33
+  s_e778e1f090b567::t_1378010f988c0a 93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "d994d9a8ba33c3c46865dac03d0113bfa8f5ce12",
+  "prompts": {},
+  "sessions": {
+    "s_e778e1f090b567": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6808a1c8-2869-4006-a21c-7beae1f15e65",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
