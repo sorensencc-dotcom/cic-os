@@ -8,11 +8,15 @@ const ROADMAP_URL = process.env.ROADMAP_URL || "http://roadmap-service:3000";
 
 // Wait for services to be ready
 async function waitForService(url: string, maxAttempts = 30): Promise<void> {
+  const CONNECTIVITY_ERRORS = ["ECONNREFUSED", "ENOTFOUND", "EHOSTUNREACH", "EADDRNOTAVAIL"];
   for (let i = 0; i < maxAttempts; i++) {
     try {
       const res = await fetch(`${url}/health`);
       if (res.ok) return;
-    } catch (e) {
+    } catch (e: any) {
+      if (e && CONNECTIVITY_ERRORS.includes(e.code)) {
+        throw new Error(`Connection failed for ${url} with ${e.code}. Aborting test wait.`);
+      }
       // continue
     }
     await new Promise(r => setTimeout(r, 1000));
