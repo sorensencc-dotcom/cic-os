@@ -8,8 +8,9 @@ COPY services/unified-api/src ./src
 COPY services/unified-api/tests ./tests
 COPY services/unified-api/tsconfig.json ./
 COPY services/unified-api/jest.config.cjs ./
+COPY services/unified-api/run-tests.sh ./
 
-RUN npm run build
+RUN chmod +x ./run-tests.sh
 
 EXPOSE 3100
-CMD npm start & sleep 2 && npm test
+CMD ["./run-tests.sh"]
