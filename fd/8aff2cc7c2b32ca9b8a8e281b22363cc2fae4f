@@ -1,0 +1,32 @@
+services/vault/package.json
+  s_4bed87354dd7d7::t_ed4b3ec0204554 15,20
+services/unified-api/src/server.ts
+  s_92508400715733::t_7985b5754c616c 37-38,40-41
+  s_92508400715733::t_e062b4c98a21d3 39,42
+services/vault/src/server.ts
+  s_4bed87354dd7d7::t_de6dd43d5a80b1 61,70,82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "fd8aff2cc7c2b32ca9b8a8e281b22363cc2fae4f",
+  "prompts": {},
+  "sessions": {
+    "s_4bed87354dd7d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "963f6b5f-adf5-4c6b-95be-68dfd8377ce2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_92508400715733": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "11835871-028f-4c01-987d-fad077d65f87",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
