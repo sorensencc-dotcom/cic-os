@@ -14,21 +14,13 @@
  */
 
 import { Router, Request, Response, NextFunction } from 'express';
-import { GovernanceCouncil, NewProposal, VoteInput } from '../../cic-governance/src/services/GovernanceCouncil';
-import { GovernanceEvolutionEngine } from '../../cic-governance/src/services/GovernanceEvolutionEngine';
-import { VaultClient } from '../../cic-governance/src/clients/VaultClient';
-import { MemoryQueryClient } from '../../cic-governance/src/clients/MemoryQueryClient';
+import { GovernanceServiceClient, NewProposal, VoteInput } from '../clients/GovernanceServiceClient';
 
 export function createGovernanceRouter(): Router {
   const router = Router();
 
-  // Initialize clients
-  const vaultClient = new VaultClient(process.env.VAULT_BASE_URL || 'http://localhost:3100');
-  const memoryClient = new MemoryQueryClient(process.env.MEMORY_BASE_URL || 'http://localhost:3100');
-
-  // Initialize services
-  const council = new GovernanceCouncil(vaultClient, memoryClient);
-  const evolution = new GovernanceEvolutionEngine(vaultClient, memoryClient);
+  // Initialize governance service client
+  const governanceClient = new GovernanceServiceClient(process.env.GOVERNANCE_URL || 'http://localhost:3113');
 
   /**
    * POST /governance/proposals
@@ -39,7 +31,7 @@ export function createGovernanceRouter(): Router {
    */
   router.post('/governance/proposals', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const packet = await council.submitProposal(req.body as NewProposal);
+      const packet = await governanceClient.submitProposal(req.body as NewProposal);
       res.status(201).json(packet);
     } catch (err) {
       next(err);
@@ -55,7 +47,7 @@ export function createGovernanceRouter(): Router {
    */
   router.post('/governance/votes', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const packet = await council.voteOnProposal(req.body as VoteInput);
+      const packet = await governanceClient.voteOnProposal(req.body as VoteInput);
       res.status(201).json(packet);
     } catch (err) {
       next(err);
@@ -73,7 +65,7 @@ export function createGovernanceRouter(): Router {
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { proposalId } = req.params;
-        const packet = await council.finalizeDecision(proposalId);
+        const packet = await governanceClient.finalizeDecision(proposalId);
         res.json(packet);
       } catch (err) {
         next(err);
@@ -92,7 +84,7 @@ export function createGovernanceRouter(): Router {
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { proposalId } = req.params;
-        const ctx = await council.getContext(proposalId);
+        const ctx = await governanceClient.getContext(proposalId);
         res.json(ctx);
       } catch (err) {
         next(err);
@@ -110,7 +102,7 @@ export function createGovernanceRouter(): Router {
     '/governance/evolution/amendments',
     async (_req: Request, res: Response, next: NextFunction) => {
       try {
-        const packets = await evolution.generateAmendments();
+        const packets = await governanceClient.generateAmendments();
         res.status(201).json(packets);
       } catch (err) {
         next(err);
@@ -128,7 +120,7 @@ export function createGovernanceRouter(): Router {
     '/governance/evolution/constraints',
     async (_req: Request, res: Response, next: NextFunction) => {
       try {
-        const packets = await evolution.generateConstraintUpdates();
+        const packets = await governanceClient.generateConstraintUpdates();
         res.status(201).json(packets);
       } catch (err) {
         next(err);
@@ -146,7 +138,7 @@ export function createGovernanceRouter(): Router {
     '/governance/evolution/policies',
     async (_req: Request, res: Response, next: NextFunction) => {
       try {
-        const packets = await evolution.generatePolicyChanges();
+        const packets = await governanceClient.generatePolicyChanges();
         res.status(201).json(packets);
       } catch (err) {
         next(err);
@@ -164,7 +156,7 @@ export function createGovernanceRouter(): Router {
     '/governance/evolution/full-cycle',
     async (_req: Request, res: Response, next: NextFunction) => {
       try {
-        const packets = await evolution.runFullCycle();
+        const packets = await governanceClient.runFullCycle();
         res.status(201).json(packets);
       } catch (err) {
         next(err);

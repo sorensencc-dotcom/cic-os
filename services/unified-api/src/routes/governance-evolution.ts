@@ -10,18 +10,12 @@
  */
 
 import { Router, Request, Response, NextFunction } from 'express';
-import { GovernanceEvolutionLoop } from '../../cic-governance/src/services/GovernanceEvolutionLoop';
-import { GovernanceAmendmentGenerator } from '../../cic-governance/src/services/GovernanceAmendmentGenerator';
-import { GovernanceConstraintUpdater } from '../../cic-governance/src/services/GovernanceConstraintUpdater';
-import { GovernancePolicyUpdater } from '../../cic-governance/src/services/GovernancePolicyUpdater';
+import { GovernanceServiceClient } from '../clients/GovernanceServiceClient';
 
 export function createGovernanceEvolutionRouter(): Router {
   const router = Router();
 
-  const loop = new GovernanceEvolutionLoop();
-  const amendmentGen = new GovernanceAmendmentGenerator();
-  const constraintGen = new GovernanceConstraintUpdater();
-  const policyGen = new GovernancePolicyUpdater();
+  const governanceClient = new GovernanceServiceClient(process.env.GOVERNANCE_URL || 'http://localhost:3113');
 
   /**
    * POST /governance/evolution/run
@@ -31,7 +25,7 @@ export function createGovernanceEvolutionRouter(): Router {
    */
   router.post('/governance/evolution/run', async (_req: Request, res: Response, next: NextFunction) => {
     try {
-      const results = await loop.run();
+      const results = await governanceClient.runFullCycle();
       res.status(201).json({ results, count: results.length });
     } catch (err) {
       next(err);
@@ -48,7 +42,7 @@ export function createGovernanceEvolutionRouter(): Router {
     '/governance/evolution/amendments',
     async (_req: Request, res: Response, next: NextFunction) => {
       try {
-        const packet = await amendmentGen.generate();
+        const packet = await governanceClient.generateAmendments();
         res.status(201).json(packet);
       } catch (err) {
         next(err);
@@ -66,7 +60,7 @@ export function createGovernanceEvolutionRouter(): Router {
     '/governance/evolution/constraints',
     async (_req: Request, res: Response, next: NextFunction) => {
       try {
-        const packet = await constraintGen.generate();
+        const packet = await governanceClient.generateConstraintUpdates();
         res.status(201).json(packet);
       } catch (err) {
         next(err);
@@ -84,7 +78,7 @@ export function createGovernanceEvolutionRouter(): Router {
     '/governance/evolution/policies',
     async (_req: Request, res: Response, next: NextFunction) => {
       try {
-        const packet = await policyGen.generate();
+        const packet = await governanceClient.generatePolicyChanges();
         res.status(201).json(packet);
       } catch (err) {
         next(err);

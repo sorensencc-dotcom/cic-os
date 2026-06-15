@@ -14,17 +14,12 @@
  */
 
 import { Router, Request, Response, NextFunction } from 'express';
-import { VaultPersistence } from '../../vault/src/VaultPersistence';
-import { VaultSecrets } from '../../vault/src/VaultSecrets';
+import { VaultServiceClient } from '../clients/VaultServiceClient';
 
 export async function createVaultRouter(): Promise<Router> {
   const router = Router();
 
-  const persistence = new VaultPersistence();
-  const secrets = new VaultSecrets();
-
-  await persistence.init();
-  await secrets.init();
+  const vaultClient = new VaultServiceClient(process.env.VAULT_URL || 'http://localhost:3111');
 
   /**
    * POST /vault/records
@@ -38,7 +33,7 @@ export async function createVaultRouter(): Promise<Router> {
       const { kind, payload } = req.body;
       if (!kind) return res.status(400).json({ error: 'kind required' });
 
-      const record = await persistence.write(kind, payload);
+      const record = await vaultClient.writeRecord(kind, payload);
       res.status(201).json(record);
     } catch (err) {
       next(err);
@@ -53,7 +48,7 @@ export async function createVaultRouter(): Promise<Router> {
    */
   router.get('/vault/records/:id', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const record = await persistence.read(req.params.id);
+      const record = await vaultClient.readRecord(req.params.id);
       if (!record) {
         return res.status(404).json({ error: 'record not found or corrupted' });
       }
@@ -75,7 +70,7 @@ export async function createVaultRouter(): Promise<Router> {
       const { kind } = req.query;
       if (!kind) return res.status(400).json({ error: 'kind query param required' });
 
-      const records = await persistence.listByKind(String(kind));
+      const records = await vaultClient.listRecordsByKind(String(kind));
       res.json({ records, count: records.length });
     } catch (err) {
       next(err);
@@ -92,7 +87,7 @@ export async function createVaultRouter(): Promise<Router> {
     '/vault/records/:id',
     async (req: Request, res: Response, next: NextFunction) => {
       try {
-        const deleted = await persistence.delete(req.params.id);
+        const deleted = await vaultClient.deleteRecord(req.params.id);
         res.json({ deleted });
       } catch (err) {
         next(err);
@@ -112,7 +107,7 @@ export async function createVaultRouter(): Promise<Router> {
       const { value } = req.body;
       if (!value) return res.status(400).json({ error: 'value required' });
 
-      const id = await secrets.writeSecret(value);
+      const id = await vaultClient.writeSecret(value);
       res.status(201).json({ id });
     } catch (err) {
       next(err);
@@ -127,7 +122,7 @@ export async function createVaultRouter(): Promise<Router> {
    */
   router.get('/vault/secrets/:id', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const value = await secrets.readSecret(req.params.id);
+      const value = await vaultClient.readSecret(req.params.id);
       if (value == null) return res.status(404).json({ error: 'secret not found' });
       res.json({ value });
     } catch (err) {
@@ -149,7 +144,7 @@ export async function createVaultRouter(): Promise<Router> {
         const { newValue } = req.body;
         if (!newValue) return res.status(400).json({ error: 'newValue required' });
 
-        const rotated = await secrets.rotateSecret(req.params.id, newValue);
+        const rotated = await vaultClient.rotateSecret(req.params.id, newValue);
         if (!rotated) return res.status(404).json({ error: 'secret not found' });
 
         res.json({ rotated });
@@ -169,7 +164,7 @@ export async function createVaultRouter(): Promise<Router> {
   router.get('/vault/audit-log', async (req: Request, res: Response, next: NextFunction) => {
     try {
       const limit = parseInt(String(req.query.limit)) || 100;
-      const log = persistence.getAuditLog(limit);
+      const log = await vaultClient.getAuditLog(limit);
       res.json({ log, count: log.length });
     } catch (err) {
       next(err);

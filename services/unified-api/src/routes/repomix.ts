@@ -8,11 +8,11 @@
  */
 
 import { Router, Request, Response, NextFunction } from 'express';
-import { RepomixPipeline } from '../../repomix-ingestion/src/RepomixPipeline';
+import { RepomixServiceClient } from '../clients/RepomixServiceClient';
 
 export function createRepomixRouter(): Router {
   const router = Router();
-  const pipeline = new RepomixPipeline();
+  const repomixClient = new RepomixServiceClient(process.env.REPOMIX_URL || 'http://localhost:3112');
 
   /**
    * POST /repomix/ingest
@@ -28,7 +28,7 @@ export function createRepomixRouter(): Router {
         return res.status(400).json({ error: 'repoPath required' });
       }
 
-      const events = await pipeline.ingest(repoPath);
+      const events = await repomixClient.ingest(repoPath);
       res.status(201).json({ repoPath, events, count: events.length });
     } catch (err) {
       next(err);
@@ -51,7 +51,7 @@ export function createRepomixRouter(): Router {
           return res.status(400).json({ error: 'repoPaths array required' });
         }
 
-        const results = await pipeline.ingestBatch(repoPaths);
+        const results = await repomixClient.ingestBatch(repoPaths);
         res.status(201).json({
           results,
           count: results.length,

@@ -12,12 +12,11 @@
  */
 
 import { Router, Request, Response, NextFunction } from 'express';
-import { getTorqueQueryServer } from '../../torquequery/src/server/TorqueQueryServer';
+import { TorqueQueryServiceClient } from '../clients/TorqueQueryServiceClient';
 
 export async function createTorqueQueryRouter(): Promise<Router> {
   const router = Router();
-  const server = await getTorqueQueryServer();
-  const queries = server.getQueries();
+  const torqueQueryClient = new TorqueQueryServiceClient(process.env.TORQUEQUERY_URL || 'http://localhost:3110');
 
   /**
    * GET /torquequery/memory/by-type/:type
@@ -25,10 +24,10 @@ export async function createTorqueQueryRouter(): Promise<Router> {
    */
   router.get(
     '/torquequery/memory/by-type/:type',
-    (req: Request, res: Response, next: NextFunction) => {
+    async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { type } = req.params;
-        const events = queries.byType(type);
+        const events = await torqueQueryClient.byType(type);
         res.json({ events, count: events.length });
       } catch (err) {
         next(err);
@@ -42,11 +41,11 @@ export async function createTorqueQueryRouter(): Promise<Router> {
    */
   router.get(
     '/torquequery/memory/by-agent/:agentId',
-    (req: Request, res: Response, next: NextFunction) => {
+    async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { agentId } = req.params;
-        const events = queries.byAgent(agentId);
-        const count = queries.countByAgent(agentId);
+        const events = await torqueQueryClient.byAgent(agentId);
+        const count = await torqueQueryClient.countByAgent(agentId);
         res.json({ events, count });
       } catch (err) {
         next(err);
@@ -60,10 +59,10 @@ export async function createTorqueQueryRouter(): Promise<Router> {
    */
   router.get(
     '/torquequery/memory/by-correlation/:correlationId',
-    (req: Request, res: Response, next: NextFunction) => {
+    async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { correlationId } = req.params;
-        const events = queries.byCorrelation(correlationId);
+        const events = await torqueQueryClient.byCorrelation(correlationId);
         res.json({ events, count: events.length });
       } catch (err) {
         next(err);
@@ -77,10 +76,10 @@ export async function createTorqueQueryRouter(): Promise<Router> {
    */
   router.get(
     '/torquequery/memory/by-signal/:signalType',
-    (req: Request, res: Response, next: NextFunction) => {
+    async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { signalType } = req.params;
-        const signals = queries.bySignal(signalType);
+        const signals = await torqueQueryClient.bySignal(signalType);
         res.json({ signals, count: signals.length });
       } catch (err) {
         next(err);
@@ -94,10 +93,10 @@ export async function createTorqueQueryRouter(): Promise<Router> {
    */
   router.get(
     '/torquequery/agent/:agentId/timeline',
-    (req: Request, res: Response, next: NextFunction) => {
+    async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { agentId } = req.params;
-        const timeline = queries.agentTimeline(agentId);
+        const timeline = await torqueQueryClient.agentTimeline(agentId);
         res.json({ timeline, count: timeline.length });
       } catch (err) {
         next(err);
@@ -111,10 +110,10 @@ export async function createTorqueQueryRouter(): Promise<Router> {
    */
   router.get(
     '/torquequery/governance/history/:proposalId',
-    (req: Request, res: Response, next: NextFunction) => {
+    async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { proposalId } = req.params;
-        const history = queries.governanceHistory(proposalId);
+        const history = await torqueQueryClient.governanceHistory(proposalId);
         res.json({ history, count: history.length });
       } catch (err) {
         next(err);

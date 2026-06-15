@@ -61,7 +61,7 @@ export class GovernanceCouncil {
       authorId: input.voterId,
       payload: {
         vote: input.vote,
-        ...input.payload,
+        ...(input.payload as any),
       },
       signals: [],
       metadata: {},
