@@ -4,11 +4,11 @@
  */
 
 import express from 'express';
-import { createGovernanceRouter } from './routes/governance';
-import { createTorqueQueryRouter } from './routes/torquequery';
-import { createRepomixRouter } from './routes/repomix';
-import { createVaultRouter } from './routes/vault';
-import { createGovernanceEvolutionRouter } from './routes/governance-evolution';
+import { createGovernanceRouter } from './routes/governance.js';
+import { createTorqueQueryRouter } from './routes/torquequery.js';
+import { createRepomixRouter } from './routes/repomix.js';
+import { createVaultRouter } from './routes/vault.js';
+import { createGovernanceEvolutionRouter } from './routes/governance-evolution.js';
 
 async function startServer() {
   const app = express();
@@ -52,7 +52,7 @@ async function startServer() {
 }
 
 // Start if run directly
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   startServer().catch(err => {
     console.error('Failed to start server:', err);
     process.exit(1);
