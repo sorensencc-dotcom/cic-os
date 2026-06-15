@@ -12,4 +12,4 @@ COPY services/unified-api/jest.config.cjs ./
 RUN npm run build
 
 EXPOSE 3100
-CMD ["sh", "-c", "npm start &  sleep 2 && npm test"]
+CMD ["npm", "test"]
