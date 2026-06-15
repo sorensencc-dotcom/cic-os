@@ -5,5 +5,4 @@ module.exports = {
   testMatch: ['**/?(*.)+(spec|test).ts'],
   moduleFileExtensions: ['ts', 'js', 'json'],
   testTimeout: 30000,
-  globalSetup: '<rootDir>/tests/setup.ts',
 };
