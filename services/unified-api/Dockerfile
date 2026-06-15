@@ -7,9 +7,9 @@ RUN npm install
 COPY services/unified-api/src ./src
 COPY services/unified-api/tests ./tests
 COPY services/unified-api/tsconfig.json ./
-COPY services/unified-api/jest.config.js ./
+COPY services/unified-api/jest.config.cjs ./
 
 RUN npm run build
 
 EXPOSE 3100
-CMD ["npm", "test"]
+CMD ["sh", "-c", "npm start &  sleep 2 && npm test"]
