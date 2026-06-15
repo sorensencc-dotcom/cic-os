@@ -3,12 +3,12 @@
  * Main entry point that wires all routes together
  */
 
-import express from 'express';
-import { createGovernanceRouter } from './routes/governance';
-import { createTorqueQueryRouter } from './routes/torquequery';
-import { createRepomixRouter } from './routes/repomix';
-import { createVaultRouter } from './routes/vault';
-import { createGovernanceEvolutionRouter } from './routes/governance-evolution';
+import express = require('express');
+const { createGovernanceRouter } = require('./routes/governance');
+const { createTorqueQueryRouter } = require('./routes/torquequery');
+const { createRepomixRouter } = require('./routes/repomix');
+const { createVaultRouter } = require('./routes/vault');
+const { createGovernanceEvolutionRouter } = require('./routes/governance-evolution');
 
 async function startServer() {
   const app = express();
