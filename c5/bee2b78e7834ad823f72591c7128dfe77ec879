@@ -1,0 +1,19 @@
+services/unified-api/Dockerfile
+  s_92508400715733::t_94adcbfc7c9b65 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "c5bee2b78e7834ad823f72591c7128dfe77ec879",
+  "prompts": {},
+  "sessions": {
+    "s_92508400715733": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "11835871-028f-4c01-987d-fad077d65f87",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
