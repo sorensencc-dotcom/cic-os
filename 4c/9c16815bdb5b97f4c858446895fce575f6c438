@@ -1,0 +1,78 @@
+services/repomix-ingestion/src/RepomixClient.ts
+  s_769dd0ba90979d::t_2f748fcf079f2c 4,8,23
+services/unified-api/src/server.ts
+  s_c9008fbf374950::t_9a8ec747a177e5 62,70-74
+  s_c9008fbf374950::t_c8f609bbb2bf24 7-8,19-48
+services/vault/src/VaultSecrets.ts
+  s_c9008fbf374950::t_de6cc22306b0b7 13-16,19
+services/knowledge-graph/src/infra/logging.ts
+  s_769dd0ba90979d::t_a4b3a37088a2f4 1-95
+services/knowledge-graph/src/core/graph_store/GraphStore.ts
+  s_c9008fbf374950::t_66c5fafea04b5c 181-203,207,212,215,221,239,242,252-254,256
+  s_c9008fbf374950::t_71f2ab5bad9ff6 325-348,353,357,359,365,383,386,396-398,400
+services/knowledge-graph/src/infra/metrics.ts
+  s_769dd0ba90979d::t_eb3691d5a474d1 1-100
+services/unified-api/package.json
+  s_c9008fbf374950::t_e9009dec05c208 14-16
+services/unified-api/tests/setup.cjs
+  s_4bed87354dd7d7::t_a4eff00be187c7 29
+  s_92508400715733::t_06bec2d1fe1894 57-68
+  s_92508400715733::t_924b6500aafdbe 11,13-14,26-28
+services/knowledge-graph/src/api/routes/diagnostics/cursor.ts
+  s_769dd0ba90979d::t_b1a1d662fde47a 1-58
+services/knowledge-graph/src/api/routes/diagnostics/lag.ts
+  s_769dd0ba90979d::t_1f83307fefe314 1-37
+services/unified-api/src/routes/vault.ts
+  s_c9008fbf374950::t_e70cec57d95135 19-27,33-34
+  s_c9008fbf374950::t_85cbca0e0054d9 131,133,137-142
+services/knowledge-graph/src/api/server.ts
+  s_769dd0ba90979d::t_68ac88a804392a 8
+  s_769dd0ba90979d::t_4c9f901328fadd 5-7,10,28-32
+  s_769dd0ba90979d::t_c5ad364eda4ee5 34-36
+services/knowledge-graph/src/api/routes/diagnostics/integrity.ts
+  s_769dd0ba90979d::t_423bbbca4f8774 1-41
+services/knowledge-graph/ARCHITECTURE.md
+  s_769dd0ba90979d::t_76e7244a53d399 1-285
+libs/torquequery-client/TorqueQueryClient.ts
+  s_769dd0ba90979d::t_e2b0876dcb49d4 1-162
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "4c9c16815bdb5b97f4c858446895fce575f6c438",
+  "prompts": {},
+  "sessions": {
+    "s_4bed87354dd7d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "963f6b5f-adf5-4c6b-95be-68dfd8377ce2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_769dd0ba90979d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a14f113d-b302-4fe0-a540-5c59deae3fce",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_92508400715733": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "11835871-028f-4c01-987d-fad077d65f87",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_c9008fbf374950": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "14519ca5-b461-493b-8a5a-2c2b55ecc80a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
