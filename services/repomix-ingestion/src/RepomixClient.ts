@@ -1,11 +1,11 @@
 // Repomix Client (Phase 4.4)
 // Wraps Repomix CLI and provides structured repo analysis
 
-import { exec } from 'child_process';
+import { execFile } from 'child_process';
 import util from 'util';
 import fs from 'fs';
 
-const execAsync = util.promisify(exec);
+const execFileAsync = util.promisify(execFile);
 
 export interface RepomixOutput {
   summary?: string;
@@ -20,7 +20,7 @@ export class RepomixClient {
 
   async analyzeRepo(repoPath: string): Promise<RepomixOutput> {
     try {
-      const { stdout } = await execAsync(`${this.repomixPath} --json "${repoPath}"`);
+      const { stdout } = await execFileAsync(this.repomixPath, ['--json', repoPath]);
       return JSON.parse(stdout);
     } catch (error) {
       // Fallback to basic analysis if repomix CLI not available

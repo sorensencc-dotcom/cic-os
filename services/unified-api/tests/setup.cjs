@@ -8,9 +8,10 @@ const { spawn } = require('child_process');
 module.exports = async () => {
   console.log('Building TypeScript...');
 
-  // Build TypeScript first
+  // Build TypeScript first using tsc directly
   await new Promise((resolve, reject) => {
-    const build = spawn('npm', ['run', 'build'], {
+    const tscPath = require.resolve('typescript/bin/tsc');
+    const build = spawn(process.execPath, [tscPath], {
       stdio: 'pipe',
       cwd: process.cwd(),
     });
@@ -21,6 +22,10 @@ module.exports = async () => {
       } else {
         resolve(null);
       }
+    });
+
+    build.on('error', (err) => {
+      reject(new Error(`Build error: ${err.message}`));
     });
   });
 
@@ -49,7 +54,18 @@ module.exports = async () => {
       output += data.toString();
       console.log('[Server]', data.toString().trim());
       if (output.includes('listening on port')) {
-        setTimeout(() => resolve(), 500);
+        // Smoke test: health check before tests start
+        const http = require('http');
+        http.get('http://localhost:3100/health', (res) => {
+          if (res.statusCode === 200) {
+            console.log('[Smoke Test] ✓ Server healthy');
+            resolve();
+          } else {
+            reject(new Error(`Health check failed: ${res.statusCode}`));
+          }
+        }).on('error', (err) => {
+          reject(new Error(`Health check failed: ${err.message}`));
+        });
       }
     });
 

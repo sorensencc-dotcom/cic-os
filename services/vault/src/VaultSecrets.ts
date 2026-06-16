@@ -10,9 +10,13 @@ export class VaultSecrets {
   private key: Buffer;
 
   constructor(secretKey?: string) {
+    const key = secretKey || process.env.VAULT_SECRET_KEY;
+    if (!key && process.env.NODE_ENV !== 'test') {
+      throw new Error('VAULT_SECRET_KEY environment variable required');
+    }
     this.key = crypto
       .createHash('sha256')
-      .update(secretKey || process.env.VAULT_SECRET_KEY || 'cic-vault-default-key')
+      .update(key || 'test-key-do-not-use-in-prod')
       .digest();
   }
 

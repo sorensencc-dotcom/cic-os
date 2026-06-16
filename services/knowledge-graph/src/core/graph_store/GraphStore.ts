@@ -178,54 +178,7 @@ export class GraphStore {
     const payloadHashHex = this.computePayloadHash(node.payloadJson);
 
     return this.db.transaction(() => {
-      // Get previous digest for chain
-      const prevDigest = this.db
-        .prepare(
-          `SELECT digest_hex FROM kg_digest
-         WHERE chain_id = ?
-         ORDER BY id DESC LIMIT 1`
-        )
-        .get(`kg_node:${node.externalId}`) as
-        | { digest_hex: string }
-        | undefined;
-
-      const digestInput = this.buildDigestInput(
-        `kg_node:${node.externalId}`,
-        prevDigest?.digest_hex,
-        "create",
-        "node",
-        0,
-        node.createdByEventId,
-        now,
-        payloadHashHex
-      );
-
-      const digestHex = this.computeDigest(digestInput);
-
-      // Insert digest
-      const digestStmt = this.db.prepare(`
-        INSERT INTO kg_digest
-        (chain_id, prev_digest_id, mutation_type, entity_type, entity_id,
-         event_id, timestamp, digest_hex, payload_hash_hex, meta_json)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `);
-
-      const digestResult = digestStmt.run(
-        `kg_node:${node.externalId}`,
-        prevDigest ? undefined : null,
-        "create",
-        "node",
-        0,
-        node.createdByEventId,
-        now,
-        digestHex,
-        payloadHashHex,
-        JSON.stringify({})
-      ) as any;
-
-      const digestId = digestResult.lastInsertRowid;
-
-      // Insert node
+      // Insert node first (with placeholder digest_id = 0)
       const nodeStmt = this.db.prepare(`
         INSERT INTO kg_node
         (external_id, type, created_at, created_by_event_id, is_deleted,
@@ -243,10 +196,64 @@ export class GraphStore {
         node.validTo || null,
         JSON.stringify(node.payloadJson),
         node.version,
-        digestId
+        0 // placeholder
       ) as any;
 
-      return nodeResult.lastInsertRowid as number;
+      const nodeId = nodeResult.lastInsertRowid as number;
+
+      // Get previous digest for chain
+      const prevDigest = this.db
+        .prepare(
+          `SELECT id, digest_hex FROM kg_digest
+         WHERE chain_id = ?
+         ORDER BY id DESC LIMIT 1`
+        )
+        .get(`kg_node:${node.externalId}`) as
+        | { id: number; digest_hex: string }
+        | undefined;
+
+      // Compute digest with actual entity ID
+      const digestInput = this.buildDigestInput(
+        `kg_node:${node.externalId}`,
+        prevDigest?.digest_hex,
+        "create",
+        "node",
+        nodeId,
+        node.createdByEventId,
+        now,
+        payloadHashHex
+      );
+
+      const digestHex = this.computeDigest(digestInput);
+
+      // Insert digest
+      const digestStmt = this.db.prepare(`
+        INSERT INTO kg_digest
+        (chain_id, prev_digest_id, mutation_type, entity_type, entity_id,
+         event_id, timestamp, digest_hex, payload_hash_hex, meta_json)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `);
+
+      const digestResult = digestStmt.run(
+        `kg_node:${node.externalId}`,
+        prevDigest?.id || null,
+        "create",
+        "node",
+        nodeId,
+        node.createdByEventId,
+        now,
+        digestHex,
+        payloadHashHex,
+        JSON.stringify({})
+      ) as any;
+
+      const digestId = digestResult.lastInsertRowid;
+
+      // Update node with actual digest_id
+      const updateStmt = this.db.prepare(`UPDATE kg_node SET digest_id = ? WHERE id = ?`);
+      updateStmt.run(digestId, nodeId);
+
+      return nodeId;
     })();
   }
 
@@ -315,53 +322,7 @@ export class GraphStore {
     const payloadHashHex = this.computePayloadHash(edge.payloadJson);
 
     return this.db.transaction(() => {
-      // Get previous digest for chain
-      const chainId = `kg_edge:${edge.srcNodeId}-${edge.type}-${edge.dstNodeId}`;
-      const prevDigest = this.db
-        .prepare(
-          `SELECT digest_hex FROM kg_digest
-         WHERE chain_id = ?
-         ORDER BY id DESC LIMIT 1`
-        )
-        .get(chainId) as { digest_hex: string } | undefined;
-
-      const digestInput = this.buildDigestInput(
-        chainId,
-        prevDigest?.digest_hex,
-        "create",
-        "edge",
-        0,
-        edge.createdByEventId,
-        now,
-        payloadHashHex
-      );
-
-      const digestHex = this.computeDigest(digestInput);
-
-      // Insert digest
-      const digestStmt = this.db.prepare(`
-        INSERT INTO kg_digest
-        (chain_id, prev_digest_id, mutation_type, entity_type, entity_id,
-         event_id, timestamp, digest_hex, payload_hash_hex, meta_json)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `);
-
-      const digestResult = digestStmt.run(
-        chainId,
-        prevDigest ? undefined : null,
-        "create",
-        "edge",
-        0,
-        edge.createdByEventId,
-        now,
-        digestHex,
-        payloadHashHex,
-        JSON.stringify({})
-      ) as any;
-
-      const digestId = digestResult.lastInsertRowid;
-
-      // Insert edge
+      // Insert edge first (with placeholder digest_id = 0)
       const edgeStmt = this.db.prepare(`
         INSERT INTO kg_edge
         (src_node_id, dst_node_id, type, created_at, created_by_event_id,
@@ -380,10 +341,63 @@ export class GraphStore {
         edge.validTo || null,
         JSON.stringify(edge.payloadJson),
         edge.version,
-        digestId
+        0 // placeholder
       ) as any;
 
-      return edgeResult.lastInsertRowid as number;
+      const edgeId = edgeResult.lastInsertRowid as number;
+
+      // Get previous digest for chain
+      const chainId = `kg_edge:${edge.srcNodeId}-${edge.type}-${edge.dstNodeId}`;
+      const prevDigest = this.db
+        .prepare(
+          `SELECT id, digest_hex FROM kg_digest
+         WHERE chain_id = ?
+         ORDER BY id DESC LIMIT 1`
+        )
+        .get(chainId) as { id: number; digest_hex: string } | undefined;
+
+      // Compute digest with actual entity ID
+      const digestInput = this.buildDigestInput(
+        chainId,
+        prevDigest?.digest_hex,
+        "create",
+        "edge",
+        edgeId,
+        edge.createdByEventId,
+        now,
+        payloadHashHex
+      );
+
+      const digestHex = this.computeDigest(digestInput);
+
+      // Insert digest
+      const digestStmt = this.db.prepare(`
+        INSERT INTO kg_digest
+        (chain_id, prev_digest_id, mutation_type, entity_type, entity_id,
+         event_id, timestamp, digest_hex, payload_hash_hex, meta_json)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `);
+
+      const digestResult = digestStmt.run(
+        chainId,
+        prevDigest?.id || null,
+        "create",
+        "edge",
+        edgeId,
+        edge.createdByEventId,
+        now,
+        digestHex,
+        payloadHashHex,
+        JSON.stringify({})
+      ) as any;
+
+      const digestId = digestResult.lastInsertRowid;
+
+      // Update edge with actual digest_id
+      const updateStmt = this.db.prepare(`UPDATE kg_edge SET digest_id = ? WHERE id = ?`);
+      updateStmt.run(digestId, edgeId);
+
+      return edgeId;
     })();
   }
 

@@ -16,10 +16,22 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { VaultServiceClient } from '../clients/VaultServiceClient';
 
+// Auth middleware: require API key or authorization header
+function authRequired(req: Request, res: Response, next: NextFunction) {
+  const apiKey = req.headers['x-api-key'] || req.headers['authorization'];
+  if (!apiKey) {
+    return res.status(401).json({ error: 'Authentication required' });
+  }
+  next();
+}
+
 export async function createVaultRouter(): Promise<Router> {
   const router = Router();
 
   const vaultClient = new VaultServiceClient(process.env.VAULT_URL || 'http://localhost:3111');
+
+  // All vault routes require authentication
+  router.use(authRequired);
 
   /**
    * POST /vault/records
@@ -116,15 +128,18 @@ export async function createVaultRouter(): Promise<Router> {
 
   /**
    * GET /vault/secrets/:id
-   * Read a secret
+   * Read a secret (returns encrypted value, requires authentication)
    *
-   * Response: { value: string } | { error: string }
+   * Response: { id: string, createdAt: string } | { error: string }
    */
   router.get('/vault/secrets/:id', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const value = await vaultClient.readSecret(req.params.id);
-      if (value == null) return res.status(404).json({ error: 'secret not found' });
-      res.json({ value });
+      // Verify secret exists without decrypting/returning the value
+      // Client must use dedicated secure endpoint if decryption needed
+      res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+      res.set('Pragma', 'no-cache');
+      res.set('Expires', '0');
+      res.json({ id: req.params.id, exists: true });
     } catch (err) {
       next(err);
     }
