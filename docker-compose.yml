@@ -398,6 +398,33 @@ services:
       retries: 3
       start_period: 15s
 
+  # Phase 2.5: Autonomy API Server (Autonomy + Config System)
+  cic-ingestion:
+    build:
+      context: cic-ingestion
+      dockerfile: Dockerfile
+    container_name: cic-ingestion
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=test
+      - LOG_LEVEL=info
+      - PORT=3116
+      - VAULT_URL=http://vault:3111
+      - MEMORY_STORE_URL=http://torquequery:3110
+    ports:
+      - "3116:3000"
+    depends_on:
+      - vault
+      - torquequery
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
   # Unified API (Routes all services)
   unified-api:
     build:
