@@ -1,0 +1,19 @@
+services/unified-api/src/routes/torquequery.ts
+  s_c9008fbf374950::t_317b6a4f7d27f8 3,6-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "5da2a83d033e68ab5c34e50b11174beaaf4ab220",
+  "prompts": {},
+  "sessions": {
+    "s_c9008fbf374950": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "14519ca5-b461-493b-8a5a-2c2b55ecc80a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
