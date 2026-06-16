@@ -22,6 +22,7 @@ Commander.js → CLI tools (cic-cli.ts, cic-cli-governance.ts)
 Fetch + node-fetch → external API calls (GitHub, services)
 Structured logging through observability modules (cic-observability.ts)
 Docker Compose for local dev, Kubernetes for prod (k3d in cic-ingestion/)
+GitHub Actions for CI/CD: docker build, test, deploy (`.github/workflows/`)
 
 ## Key Files
 
