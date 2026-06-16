@@ -1,0 +1,20 @@
+CHANGELOG.md
+  s_4bed87354dd7d7::t_051fcd8a2dd528 3-9,11-14,16-20,22-26
+  s_4bed87354dd7d7::t_2f62def3fd406e 1-2,10,15,21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a9aabcd6697c7f91fa8d724c946cc87e56378f0a",
+  "prompts": {},
+  "sessions": {
+    "s_4bed87354dd7d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "963f6b5f-adf5-4c6b-95be-68dfd8377ce2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
