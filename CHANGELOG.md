@@ -1,3 +1,29 @@
+# Changelog
+
+## Docker Torquequery + Vault Build Complete (2026-06-15)
+
+**Session:** Docker build for torquequery + vault → fixes better-sqlite3 → +23 tests
+
+**Status:** ✅ Complete
+
+**Tests Passing:**
+
+- Torquequery: 11/11 ✅
+- Vault: 12/12 ✅
+
+**Key Fixes:**
+
+- better-sqlite3 native module compilation resolved via Docker (Alpine Node 20)
+- Vault HTTP server: Fixed VaultSecrets method calls (write→writeSecret, read→readSecret, rotate→rotateSecret)
+- Express dependency added to vault/package.json
+
+**Infrastructure:**
+
+- PreTest hook wired into .ijfw/claude/hooks/hooks.json
+- Test approval batch system documented
+
+**Commits:** 305ffc1, c5bee2b (plus earlier phase commits)
+
 ## Changes (2026-06-16T01:17:39.507Z)
 
 **Categories:** other
@@ -106,8 +132,6 @@
   - services/unified-api/src/server.ts
 
 <!-- Updated by auto-docs skill -->
-
-# Changelog
 
 ## [1.0.0-humanizer] - 2026-06-12
 
