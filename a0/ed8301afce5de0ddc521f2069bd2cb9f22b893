@@ -1,0 +1,19 @@
+EXECUTION-POLICY-PHASE-A-B-SUMMARY.md
+  s_e705c2172b6489::t_693d669aa83fce 1-264
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a0ed8301afce5de0ddc521f2069bd2cb9f22b893",
+  "prompts": {},
+  "sessions": {
+    "s_e705c2172b6489": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "55c3ba62-7bef-4512-9cc5-6e337a2f342e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
