@@ -1,0 +1,23 @@
+services/knowledge-graph/src/core/graph_store/IKGStore.ts
+  s_c9008fbf374950::t_d541e50449f600 1-153
+docs/architecture/kg-migration-plan.md
+  s_c9008fbf374950::t_061874039cc0b5 1-54
+docs/architecture/kg-roadmap.txt
+  s_c9008fbf374950::t_54899826de338f 1-154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "4ed996cd627e2c44d728b147282f7a6891ab31df",
+  "prompts": {},
+  "sessions": {
+    "s_c9008fbf374950": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "14519ca5-b461-493b-8a5a-2c2b55ecc80a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
