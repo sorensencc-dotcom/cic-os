@@ -1,12 +1,12 @@
 /**
  * TorqueQuery Routes (Phase 26)
- * Exposes memory indexing & semantic search via HTTP
+ * Exposes memory indexing via exact-match queries (not semantic search)
  *
  * Routes:
- * - GET /torquequery/memory/by-type/:type — find events by type
- * - GET /torquequery/memory/by-agent/:agentId — find events by agent
- * - GET /torquequery/memory/by-correlation/:correlationId — find events by correlation
- * - GET /torquequery/memory/by-signal/:signalType — find signals by type
+ * - GET /torquequery/memory/by-type/:type — find events by type (exact match)
+ * - GET /torquequery/memory/by-agent/:agentId — find events by agent (exact match)
+ * - GET /torquequery/memory/by-correlation/:correlationId — find events by correlation (exact match)
+ * - GET /torquequery/memory/by-signal/:signalType — find signals by type (exact match)
  * - GET /torquequery/agent/:agentId/timeline — fetch agent timeline
  * - GET /torquequery/governance/history/:proposalId — fetch governance history
  */
