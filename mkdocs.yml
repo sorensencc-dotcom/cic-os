@@ -13,21 +13,11 @@ theme:
     - search.suggest
 
 nav:
-  - Home: index.md
-  - Build Automation:
-      - Guide: automation/guide.md
-      - Skills Reference: automation/skills.md
-  - Phase 0.7:
-      - Overview: phase0.7/index.md
-      - Build Graph: phase0.7/build-graph.md
-      - Agents: phase0.7/agents.md
-      - Routing: phase0.7/routing.md
-      - Inference: phase0.7/inference-routing.md
-      - Security: phase0.7/security-hardening.md
-      - CLI Reference: phase0.7/cli-reference.md
-      - Operator Runbook: phase0.7/operator-runbook.md
-      - Day-2 Ops: phase0.7/day2-ops.md
-  - About: about.md
+  - CIC:
+      - System: cic/CIC_SYSTEM.md
+      - Project State: cic/CIC_PROJECT_STATE.md
+  - Rewrite Labs:
+      - System: rewrite/REWRITE_LABS_SYSTEM.md
 
 plugins:
   - search
