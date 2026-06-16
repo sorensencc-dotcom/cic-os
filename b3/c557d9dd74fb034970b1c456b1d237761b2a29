@@ -1,0 +1,35 @@
+services/knowledge-graph/__tests__/Counterfactual.test.ts
+  s_0c618c8b0c5215::t_e09f4a5d63d47b 11
+services/knowledge-graph/src/core/graph_store/PostgresKGStore.ts
+  s_0c618c8b0c5215::t_911570d2d239a6 1-427
+services/knowledge-graph/src/core/graph_store/SQLiteKGStore.ts
+  s_0c618c8b0c5215::t_ef4d7b7d0299d4 71
+  s_0c618c8b0c5215::t_cdb941d597ef95 1-14,16-18,20,23-66,68-70,72,75-200
+  s_0c618c8b0c5215::t_32e435488c1477 15,21-22
+  s_0c618c8b0c5215::t_6b35c60906187a 19
+  s_0c618c8b0c5215::t_f01394204b3e9c 67,73-74
+services/knowledge-graph/package.json
+  s_0c618c8b0c5215::t_a52fe0e21bb688 23
+  s_0c618c8b0c5215::t_2fbb94aed1377b 15-16
+services/knowledge-graph/src/config/kg-store.config.ts
+  s_0c618c8b0c5215::t_ba623b67307e06 46-47,59-60
+  s_0c618c8b0c5215::t_9650eae1b95b9a 4,7
+  s_0c618c8b0c5215::t_6d76431cd8e018 53,61-62
+  s_0c618c8b0c5215::t_697afd06637c85 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "b3c557d9dd74fb034970b1c456b1d237761b2a29",
+  "prompts": {},
+  "sessions": {
+    "s_0c618c8b0c5215": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0b498b19-55f0-4409-8325-24f6b4d13981",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
