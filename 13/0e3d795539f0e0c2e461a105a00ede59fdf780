@@ -1,0 +1,19 @@
+WORKFLOW-ISSUE-AUTOMATION-FRICTION.md
+  s_877bf20f17af00::t_02d4088c1f5121 1-101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "130e3d795539f0e0c2e461a105a00ede59fdf780",
+  "prompts": {},
+  "sessions": {
+    "s_877bf20f17af00": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a9deac7d-e868-4c54-938d-571b7e9264a3",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
