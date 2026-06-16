@@ -1,9 +1,9 @@
 import express, { Express, Request, Response, NextFunction } from "express";
-import { IGraphStore } from "../core/graph_store/GraphStore";
+import { GraphStore } from "../core/graph_store/GraphStore";
 import { schemaRoute } from "./routes/introspection/schema";
 import { statsRoute } from "./routes/introspection/stats";
 
-export function createServer(store: IGraphStore): Express {
+export function createServer(store: GraphStore): Express {
   const app = express();
 
   app.use(express.json());
@@ -23,7 +23,7 @@ export function createServer(store: IGraphStore): Express {
   return app;
 }
 
-export async function startServer(store: IGraphStore, port: number = 3100): Promise<void> {
+export async function startServer(store: GraphStore, port: number = 3100): Promise<void> {
   const app = createServer(store);
   app.listen(port, () => {
     console.log(`Knowledge Graph service listening on port ${port}`);

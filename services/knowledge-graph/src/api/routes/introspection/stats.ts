@@ -1,16 +1,19 @@
 import { Request, Response } from "express";
-import { IGraphStore } from "../../../core/graph_store/GraphStore";
+import { GraphStore } from "../../../core/graph_store/GraphStore";
 
-export function statsRoute(store: IGraphStore) {
-  return (req: Request, res: Response): void => {
-    const stats = store.getStats();
+export function statsRoute(store: GraphStore) {
+  return async (req: Request, res: Response): Promise<void> => {
+    const stats = await store.getStats();
     res.json({
       nodes: {
         total: stats.nodeCount,
+        byType: {},
       },
       edges: {
         total: stats.edgeCount,
+        byType: {},
       },
+      density: 0,
       lastIngestionAt: stats.lastIngestionAt,
     });
   };
