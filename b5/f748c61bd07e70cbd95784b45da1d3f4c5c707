@@ -1,0 +1,21 @@
+.github/workflows/cic-ingestion-build.yml
+  s_877bf20f17af00::t_e0b532e0b9ab5f 1-31
+CLAUDE.md
+  s_877bf20f17af00::t_aeab45a56e5c26 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "b5f748c61bd07e70cbd95784b45da1d3f4c5c707",
+  "prompts": {},
+  "sessions": {
+    "s_877bf20f17af00": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a9deac7d-e868-4c54-938d-571b7e9264a3",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
