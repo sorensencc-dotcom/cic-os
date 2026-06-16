@@ -8,7 +8,7 @@ import { KGSnapshot } from "../src/causal/CausalSnapshot"
 
 const mockSnapshot = (incoming: Array<any>): KGSnapshot => ({
   t: 1730000000000,
-  getNode: (id) => ({ id }),
+  getNode: (id) => ({ id, type: "generic", externalId: id, createdByEventId: "", validFrom: 0, payloadJson: {}, version: 1 }),
   getEdges: () => [],
   hasEdge: () => false,
   getIncoming: () => incoming,

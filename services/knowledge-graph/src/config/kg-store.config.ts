@@ -1,8 +1,10 @@
 // KG Storage Backend Configuration (Phase 29-31)
 // Selects between SQLite (Phase 29), Postgres (Phase 31), or dual-write (Phase 31)
 
-import { IKGStore } from "../core/graph_store/IKGStore";
+import { IKGStore, DualKGStore } from "../core/graph_store/IKGStore";
 import { GraphStore } from "../core/graph_store/GraphStore";
+import { SQLiteKGStore } from "../core/graph_store/SQLiteKGStore";
+import { PostgresKGStore } from "../core/graph_store/PostgresKGStore";
 
 export enum KGStoreMode {
   SQLITE = "sqlite",
@@ -41,21 +43,23 @@ export async function createKGStore(config: KGStoreConfig): Promise<IKGStore> {
       if (!config.sqlite?.path) {
         throw new Error("KG_STORE_MODE=sqlite requires sqlite.path in config");
       }
-      return new GraphStore(config.sqlite.path);
+      const graphStore = new GraphStore(config.sqlite.path);
+      return new SQLiteKGStore(graphStore);
 
     case KGStoreMode.POSTGRES:
       if (!config.postgres) {
         throw new Error("KG_STORE_MODE=postgres requires postgres config");
       }
-      // Phase 31: implement PostgresKGStore
-      throw new Error("PostgresKGStore not yet implemented (Phase 31)");
+      return new PostgresKGStore(config.postgres);
 
     case KGStoreMode.DUAL:
       if (!config.sqlite?.path || !config.postgres) {
         throw new Error("KG_STORE_MODE=dual requires both sqlite and postgres config");
       }
-      // Phase 31: implement DualKGStore with both backends
-      throw new Error("DualKGStore not yet implemented (Phase 31)");
+      const graphStoreAudit = new GraphStore(config.sqlite.path);
+      const auditStore = new SQLiteKGStore(graphStoreAudit);
+      const liveStore = new PostgresKGStore(config.postgres);
+      return new DualKGStore(auditStore, liveStore);
 
     default:
       throw new Error(
