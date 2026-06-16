@@ -53,6 +53,10 @@ export class GraphStore {
     this.initializeMigrations();
   }
 
+  getDatabase(): Database.Database {
+    return this.db;
+  }
+
   private initializeMigrations(): void {
     // Run migrations inline (better-sqlite3 doesn't have native migration support)
     const schema = `

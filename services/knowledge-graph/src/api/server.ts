@@ -2,6 +2,7 @@ import express, { Express, Request, Response, NextFunction } from "express";
 import { GraphStore } from "../core/graph_store/GraphStore";
 import { schemaRoute } from "./routes/introspection/schema";
 import { statsRoute } from "./routes/introspection/stats";
+import { EventIntakeServer } from "../ingestion/EventIntakeServer";
 
 export function createServer(store: GraphStore): Express {
   const app = express();
@@ -14,6 +15,10 @@ export function createServer(store: GraphStore): Express {
 
   app.get("/api/knowledge-graph/schema", schemaRoute);
   app.get("/api/knowledge-graph/stats", statsRoute(store));
+
+  // Event intake routes
+  const intakeServer = new EventIntakeServer(store);
+  intakeServer.registerRoutes(app);
 
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     console.error(err);
