@@ -1,0 +1,19 @@
+docs/architecture/kg-storage-choice.md
+  s_c9008fbf374950::t_8e9ae7f8bb5d0c 1-110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "4ceddd851beb322faed922bc4ddee01ef1c9ae31",
+  "prompts": {},
+  "sessions": {
+    "s_c9008fbf374950": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "14519ca5-b461-493b-8a5a-2c2b55ecc80a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
