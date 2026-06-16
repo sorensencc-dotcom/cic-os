@@ -1,0 +1,39 @@
+services/knowledge-graph/src/core/graph_store/schema.ts
+  s_c9008fbf374950::t_0cb278fbbbbb3f 32
+  s_c9008fbf374950::t_776ed40c82bc50 1-14,16-31,33-77
+  s_c9008fbf374950::t_399c9ff06d12ad 15
+services/knowledge-graph/src/clients/TorqueQueryClient.ts
+  s_c9008fbf374950::t_1e6e6b264d8b76 141
+  s_c9008fbf374950::t_d406696bb65f44 153
+  s_c9008fbf374950::t_b7cd1a9201d308 89
+  s_c9008fbf374950::t_6a5e2f192eac78 32-33,37-38
+  s_c9008fbf374950::t_8a350051b32bad 31,34-36,59
+services/knowledge-graph/src/core/graph_store/GraphStore.ts
+  s_c9008fbf374950::t_548633aaea9dc7 3
+  s_c9008fbf374950::t_37678c0db30cd4 217
+  s_c9008fbf374950::t_d806fbffe535c1 4
+  s_c9008fbf374950::t_6344c33ad22672 63-64
+  s_c9008fbf374950::t_279e72ea4d3da7 363
+  s_c9008fbf374950::t_2ab22c1b6b57ec 341
+  s_c9008fbf374950::t_60963d0d184ec5 387
+  s_c9008fbf374950::t_bb45066b9392d6 406
+  s_c9008fbf374950::t_d852814ee46e19 195
+services/knowledge-graph/src/core/graph_store/mappers.ts
+  s_c9008fbf374950::t_819f36c36d20c8 1-52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "263f302ec3dba7eb61534d85c9133ffa0887d09d",
+  "prompts": {},
+  "sessions": {
+    "s_c9008fbf374950": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "14519ca5-b461-493b-8a5a-2c2b55ecc80a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
