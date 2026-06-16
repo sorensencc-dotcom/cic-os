@@ -1,0 +1,45 @@
+services/knowledge-graph/src/ingestion/IdempotencyManager.ts
+  s_c9008fbf374950::t_ed54e2a9d4beb9 16-17
+services/knowledge-graph/src/clients/TorqueQueryClient.ts
+  s_769dd0ba90979d::t_f5040b31bfaf63 1
+  s_769dd0ba90979d::t_5390ec55f80421 2-162
+services/knowledge-graph/tests/unit/ingestion/event_router.test.ts
+  s_769dd0ba90979d::t_e71d542f2cc995 1-280
+services/knowledge-graph/src/core/graph_store/GraphStore.ts
+  s_c9008fbf374950::t_28f69309551626 56-59
+services/knowledge-graph/src/ingestion/EventRouter.ts
+  s_769dd0ba90979d::t_dd01d94835589e 1-189
+services/knowledge-graph/src/api/server.ts
+  s_769dd0ba90979d::t_d1adf4974aba1f 5,19-21
+services/knowledge-graph/src/ingestion/EventIntakeServer.ts
+  s_769dd0ba90979d::t_209f43c8a9a9f3 1-176
+services/knowledge-graph/tests/unit/ingestion/idempotency_manager.test.ts
+  s_769dd0ba90979d::t_93e9f788030ad7 1-136
+services/knowledge-graph/src/cli/bootstrap.ts
+  s_769dd0ba90979d::t_ba2fe7b6de05e2 1,3-165
+  s_769dd0ba90979d::t_579808122a47e0 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "f6ce670e278e0c991521170e79addada6a845ce5",
+  "prompts": {},
+  "sessions": {
+    "s_769dd0ba90979d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a14f113d-b302-4fe0-a540-5c59deae3fce",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_c9008fbf374950": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "14519ca5-b461-493b-8a5a-2c2b55ecc80a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
