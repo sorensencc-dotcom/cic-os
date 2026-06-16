@@ -1,0 +1,64 @@
+# Per-service .gitignore template for services/*/
+# Copy to services/SERVICE_NAME/.gitignore
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# Build outputs
+dist/
+build/
+.tsbuildinfo
+.cache/
+
+# Test & coverage
+coverage/
+.nyc_output/
+.lcov.info
+*.test.tmp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Database files (if service has local DB)
+*.sqlite
+*.sqlite3
+*.db
+
+# Environment (overrides .env from root)
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node package manager temp files
+.npm/
+.pnpm-store/
+
+# Service-specific
+# (add as needed per service type)
+
+# Example for services with TypeScript
+# *.js (except src/ files)
+
+# Example for services with compiled output
+# lib/
+# dist/
+
+# Example for services with data storage
+# data/
+# storage/
+# *.sqlite

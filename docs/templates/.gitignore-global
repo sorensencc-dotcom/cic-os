@@ -1,0 +1,104 @@
+# Global .gitignore template for monorepo root
+# Copy to repo root as .gitignore
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependencies (all package managers)
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+.tsbuildinfo
+.cache/
+
+# IDE & Editor config
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.eclipse/
+
+# Local IDE settings (keep committed if shared)
+# .vscode/settings.json (optional — can be shared)
+# .vscode/launch.json (optional — can be shared)
+
+# Claude Code
+.claude/
+.ijfw/
+
+# Logs & temp files
+*.log
+logs/
+tmp/
+temp/
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# GitHub
+.github/workflows/secrets
+.husky/
+
+# Test coverage
+coverage/
+.nyc_output/
+.lcov.info
+
+# Database files (especially local/test DBs)
+*.sqlite
+*.sqlite3
+*.db
+
+# Compiled files
+*.js
+*.js.map
+*.ts
+# Exception: keep src/**/*.ts
+
+# Native modules (if any)
+build/Release/
+*.node
+
+# Workspace projects (nested git repos or independent services)
+# List here any subdirectories that are separate git repos or intentionally ignored
+CIP/
+charlie-deep-research/
+cic/
+cic-ingestion/
+claude-configs/
+claude-skills/
+financeos/
+rewrite-mcp/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Package manager artifacts
+.npm
+.yarn
+.pnpm-store
+
+# CI/CD artifacts
+.github/workflows/artifacts/
+ci-artifacts/
+
+# Generated files (keep if committed)
+# generated/
+# codegen/
