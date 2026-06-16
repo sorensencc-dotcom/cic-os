@@ -28,6 +28,14 @@ export class TorqueQueryClient {
     this.timeout = timeout;
   }
 
+  private fetchWithTimeout(url: string, options: RequestInit = {}): Promise<Response> {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+    return fetch(url, { ...options, signal: controller.signal }).finally(() =>
+      clearTimeout(timeoutId)
+    );
+  }
+
   /**
    * Fetch events by time range from TorqueQuery
    */
@@ -48,7 +56,7 @@ export class TorqueQueryClient {
     const url = `${this.baseUrl}/api/torque/events?${params.toString()}`;
 
     try {
-      const response = await fetch(url, { timeout: this.timeout });
+      const response = await this.fetchWithTimeout(url);
 
       if (!response.ok) {
         throw new Error(
@@ -78,7 +86,7 @@ export class TorqueQueryClient {
     const url = `${this.baseUrl}/api/torque/events?${params.toString()}`;
 
     try {
-      const response = await fetch(url, { timeout: this.timeout });
+      const response = await this.fetchWithTimeout(url);
 
       if (!response.ok) {
         throw new Error(
@@ -130,9 +138,7 @@ export class TorqueQueryClient {
    */
   async healthCheck(): Promise<boolean> {
     try {
-      const response = await fetch(`${this.baseUrl}/health`, {
-        timeout: this.timeout,
-      });
+      const response = await this.fetchWithTimeout(`${this.baseUrl}/health`);
       return response.ok;
     } catch {
       return false;
@@ -144,9 +150,7 @@ export class TorqueQueryClient {
    */
   async getServiceInfo(): Promise<Record<string, unknown>> {
     try {
-      const response = await fetch(`${this.baseUrl}/api/info`, {
-        timeout: this.timeout,
-      });
+      const response = await this.fetchWithTimeout(`${this.baseUrl}/api/info`);
 
       if (!response.ok) {
         throw new Error(
