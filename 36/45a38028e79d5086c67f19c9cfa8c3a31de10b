@@ -1,0 +1,29 @@
+scripts/audit-build-artifacts.sh
+  s_c9008fbf374950::t_9c5b2af0fa1126 1-67
+docs/architecture/monorepo.md
+  s_c9008fbf374950::t_02dc9b9256e18b 1-185
+docs/architecture/gitignore-strategy.md
+  s_c9008fbf374950::t_081015ca755908 1-190
+docs/templates/.gitignore-global
+  s_c9008fbf374950::t_204281b78eb551 1-104
+docs/templates/.gitignore-service
+  s_c9008fbf374950::t_4d224716839631 1-64
+scripts/audit-build-artifacts.ps1
+  s_c9008fbf374950::t_199e6c917c87e8 1-79
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "3645a38028e79d5086c67f19c9cfa8c3a31de10b",
+  "prompts": {},
+  "sessions": {
+    "s_c9008fbf374950": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "14519ca5-b461-493b-8a5a-2c2b55ecc80a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
