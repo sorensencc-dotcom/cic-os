@@ -24,7 +24,7 @@ jobs:
           node-version: '20'
 
       - name: Run auto-docs
-        run: node rewrite-mcp/skills/auto-docs/cli.js
+        run: node run-auto-docs.js
 
       - name: Commit doc changes
         if: success()
