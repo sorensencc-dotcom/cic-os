@@ -23,9 +23,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install root dependencies
-        run: npm ci
-
       - name: Run auto-docs
         run: node rewrite-mcp/skills/auto-docs/cli.js
 
