@@ -23,13 +23,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install root dependencies
         run: npm ci
-        working-directory: rewrite-mcp
 
       - name: Run auto-docs
-        run: node skills/auto-docs/cli.js
-        working-directory: rewrite-mcp
+        run: node rewrite-mcp/skills/auto-docs/cli.js
 
       - name: Commit doc changes
         if: success()
