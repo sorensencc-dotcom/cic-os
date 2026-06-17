@@ -50,6 +50,48 @@ async function startServer() {
     }
   });
 
+  // Ingest endpoints
+  app.post('/torquequery/memory/ingest', (req, res) => {
+    try {
+      const { validateEvent } = require('./types/TorqueRecord');
+      const validated = validateEvent(req.body);
+      const indexer = torqueQuery.getIndexer();
+      indexer.indexEvent(validated);
+      res.status(201).json({ id: validated.id || 'generated', status: 'indexed' });
+    } catch (err) {
+      const statusCode = (err as any).name === 'ValidationError' ? 400 : 500;
+      res.status(statusCode).json({ error: (err as any).message });
+    }
+  });
+
+  app.post('/torquequery/memory/ingest-batch', (req, res) => {
+    try {
+      const { validateEvent } = require('./types/TorqueRecord');
+      const batch = req.body;
+
+      if (!Array.isArray(batch)) {
+        return res.status(400).json({ error: 'Batch must be array' });
+      }
+
+      const results: any[] = [];
+      const indexer = torqueQuery.getIndexer();
+
+      for (const eventReq of batch) {
+        try {
+          const validated = validateEvent(eventReq);
+          indexer.indexEvent(validated);
+          results.push({ id: validated.id || 'generated', status: 'indexed' });
+        } catch (err) {
+          results.push({ id: eventReq.id || 'unknown', status: 'error', error: (err as any).message });
+        }
+      }
+
+      res.status(201).json({ events: results, total: batch.length, indexed: results.filter((r) => r.status === 'indexed').length });
+    } catch (err) {
+      res.status(500).json({ error: (err as any).message });
+    }
+  });
+
   app.get('/torquequery/agent/:agentId/timeline', (req, res) => {
     try {
       const timeline = torqueQuery.getQueries().agentTimeline(req.params.agentId);
