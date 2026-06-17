@@ -1,3 +1,14 @@
+## Changes (2026-06-17T22:50:13.813Z)
+
+**Categories:** code, phase
+
+**Files:**
+  - services/torquequery/src/server.ts
+  - services/torquequery/src/types/TorqueRecord.ts
+  - services/torquequery/tests/phase-26-ingest.test.ts
+
+<!-- Updated by auto-docs skill -->
+
 # Changelog
 
 ## Docker Torquequery + Vault Build Complete (2026-06-15)
