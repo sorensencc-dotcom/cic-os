@@ -23,6 +23,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Configure git
+        run: |
+          git config user.email "ci@cic.dev"
+          git config user.name "CIC Automation"
+
       - name: Run auto-docs
         run: node run-auto-docs.js
 
