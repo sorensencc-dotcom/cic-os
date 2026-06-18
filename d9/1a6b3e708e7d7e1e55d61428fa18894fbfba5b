@@ -1,0 +1,19 @@
+.github/workflows/auto-docs-pr.yml
+  s_86c418ad72e106::t_e71f7532abbb4b 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "d91a6b3e708e7d7e1e55d61428fa18894fbfba5b",
+  "prompts": {},
+  "sessions": {
+    "s_86c418ad72e106": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "18a9be8c-ab12-4757-a8fc-02d3df2cd9cb",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
