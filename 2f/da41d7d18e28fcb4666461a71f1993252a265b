@@ -1,0 +1,19 @@
+run-auto-docs.js
+  s_86c418ad72e106::t_6b397e1fc414e2 3-4,6,8-9,11-30,32-77,80,85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "2fda41d7d18e28fcb4666461a71f1993252a265b",
+  "prompts": {},
+  "sessions": {
+    "s_86c418ad72e106": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "18a9be8c-ab12-4757-a8fc-02d3df2cd9cb",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
