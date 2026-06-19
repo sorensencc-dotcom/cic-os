@@ -406,16 +406,20 @@ services:
     container_name: cic-ingestion
     restart: unless-stopped
     environment:
-      - NODE_ENV=test
+      - NODE_ENV=development
       - LOG_LEVEL=info
-      - PORT=3116
+      - PORT=3000
       - VAULT_URL=http://vault:3111
       - MEMORY_STORE_URL=http://torquequery:3110
+      - QDRANT_URL=http://qdrant:6333
+    volumes:
+      - ./cic-ingestion/dist:/app/dist
     ports:
       - "3116:3000"
     depends_on:
       - vault
       - torquequery
+      - qdrant
     networks:
       - cic-network
     healthcheck:
@@ -462,6 +466,26 @@ services:
       retries: 5
       start_period: 15s
 
+  # Qdrant: Vector database for memory indexing
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    restart: unless-stopped
+    environment:
+      - QDRANT_API_KEY=dev-key-unsafe
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    networks:
+      - cic-network
+    volumes:
+      - qdrant-storage:/qdrant/storage
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
   # PostgreSQL: Lineage & Artifact Storage
   postgres:
     image: postgres:15-alpine
@@ -475,6 +499,7 @@ services:
       - "5433:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - ./docker-init-db.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - cic-network
     healthcheck:
@@ -485,6 +510,7 @@ services:
 
 volumes:
   postgres-data:
+  qdrant-storage:
 
 networks:
   cic-network:
