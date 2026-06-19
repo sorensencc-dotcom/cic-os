@@ -1,3 +1,12 @@
+## Changes (2026-06-19T20:42:20.171Z)
+
+**Categories:** other
+
+**Files:**
+  - .github/workflows/auto-docs-pr.yml
+
+<!-- Updated by auto-docs skill -->
+
 ## Changes (2026-06-17T22:50:13.813Z)
 
 **Categories:** code, phase
