@@ -1,0 +1,23 @@
+docs/specs/VERTICAL_DRIFT_DETECTION.v2.0.0.md
+  s_a5b979d7a95920::t_50b55718e6de23 1-141
+docs/specs/MULTI_URL_SAMPLING.v2.0.0.md
+  s_a5b979d7a95920::t_4616ba856c7070 1-124
+docs/specs/SPA_SCREENSHOT_HEURISTICS.v2.0.0.md
+  s_a5b979d7a95920::t_b02f9f0c36e304 1-108
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "e0ab5ba9cc455d293d6c14938c0036acbf23c366",
+  "prompts": {},
+  "sessions": {
+    "s_a5b979d7a95920": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3d1ca9bc-dd34-44cc-bdcf-c9f70b862f20",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
