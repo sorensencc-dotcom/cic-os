@@ -1,0 +1,19 @@
+scripts/validate-design-compliance.js
+  s_cadc1056cf8591::t_e98c955d2145ca 1-35,37-95,97-98,100-103,105-112,114-123,125-126,128,131,133-134,137-140,143
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "eb1027bf0d529e040cd10afebba23e5343e73cc9",
+  "prompts": {},
+  "sessions": {
+    "s_cadc1056cf8591": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a1bb9ca0-c671-4f8d-ae69-244d5f101c47",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
