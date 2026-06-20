@@ -1,0 +1,23 @@
+src/extractors/browser/CloakBrowserAdapter.WarmPool.ts
+  s_a5b979d7a95920::t_881b38c26d371b 1-188
+src/extractors/browser/WarmPoolManager.test.ts
+  s_a5b979d7a95920::t_5357129bd7508d 1-372
+src/extractors/browser/WarmPoolManager.ts
+  s_a5b979d7a95920::t_fbe20c427801d6 1-410
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "8660d48abf2f6b630ca217c09d07cdb8b57bc04d",
+  "prompts": {},
+  "sessions": {
+    "s_a5b979d7a95920": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3d1ca9bc-dd34-44cc-bdcf-c9f70b862f20",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
