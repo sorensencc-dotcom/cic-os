@@ -370,7 +370,7 @@ services:
       retries: 3
       start_period: 10s
 
-  # Phase 2: Planning Console (UI dashboard + controls + governance integration)
+  # Phase 5a: Planning Console v3 (Operator Control Center)
   planning-console:
     build:
       context: rewrite-mcp
@@ -378,17 +378,38 @@ services:
     container_name: planning-console
     restart: unless-stopped
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
       - LOG_LEVEL=info
-      - REACT_APP_PLANNING_ENGINE_URL=http://localhost:3114
+      - PORT=3000
+      # Service URLs (container-to-container via bridge network)
+      - UNIFIED_API_URL=http://unified-api:3100
+      - CIC_INGESTION_URL=http://cic-ingestion:3000
+      - GOVERNANCE_URL=http://cic-governance:3113
+      - VAULT_URL=http://vault:3111
+      - TORQUEQUERY_URL=http://torquequery:3110
+      - KNOWLEDGE_GRAPH_URL=http://knowledge-graph:3107
+      - PLANNING_ENGINE_URL=http://planning-engine:3114
+      - HARVESTER_V2_URL=http://harvester-v2:3115
+      # React APP URLs for browser (client-side API calls from host)
+      - REACT_APP_UNIFIED_API_URL=http://localhost:3100
+      - REACT_APP_CICEINGESTION_URL=http://localhost:3116
       - REACT_APP_GOVERNANCE_URL=http://localhost:3113
       - REACT_APP_VAULT_URL=http://localhost:3111
+      - REACT_APP_TORQUEQUERY_URL=http://localhost:3110
+      - REACT_APP_KNOWLEDGE_GRAPH_URL=http://localhost:3107
+      - REACT_APP_PLANNING_ENGINE_URL=http://localhost:3114
+      - REACT_APP_HARVESTER_V2_URL=http://localhost:3115
     ports:
-      - "3200:3000"
+      - "3000:3000"
     depends_on:
-      - planning-engine
+      - unified-api
+      - cic-ingestion
       - cic-governance
       - vault
+      - torquequery
+      - knowledge-graph
+      - planning-engine
+      - harvester-v2
     networks:
       - cic-network
     healthcheck:
@@ -456,7 +477,6 @@ services:
       - cic-governance
       - planning-engine
       - harvester-v2
-      - planning-console
     networks:
       - cic-network
     healthcheck:
