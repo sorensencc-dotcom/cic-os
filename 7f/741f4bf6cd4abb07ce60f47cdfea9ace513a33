@@ -1,0 +1,23 @@
+src/extractors/browser/SpaHydrationDetector.test.ts
+  s_a5b979d7a95920::t_d7493d5e172769 1-206
+src/metrics/VerticalDriftDetector.test.ts
+  s_a5b979d7a95920::t_87aebdb6973a5b 1-302
+src/extractors/browser/DomSampler.test.ts
+  s_a5b979d7a95920::t_1b448e31880916 1-294
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "7f741f4bf6cd4abb07ce60f47cdfea9ace513a33",
+  "prompts": {},
+  "sessions": {
+    "s_a5b979d7a95920": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3d1ca9bc-dd34-44cc-bdcf-c9f70b862f20",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
