@@ -1,0 +1,19 @@
+.env.example
+  s_8a66d98830b8dc::t_32f349ce2d99be 40-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "104cc4a281a988ed5e622cbc30e03faa7fae5534",
+  "prompts": {},
+  "sessions": {
+    "s_8a66d98830b8dc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f00db919-c3b1-4fcd-b13a-e3f32a3b6062",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
