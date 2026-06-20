@@ -1,0 +1,19 @@
+docker-init-db.sql
+  s_cadc1056cf8591::t_e42d52c6dc2008 2-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "7febe8c89e37cdbc1782acf64f074104aa89a048",
+  "prompts": {},
+  "sessions": {
+    "s_cadc1056cf8591": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a1bb9ca0-c671-4f8d-ae69-244d5f101c47",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
