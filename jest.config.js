@@ -1,9 +1,8 @@
 export default {
   preset: "ts-jest",
   testEnvironment: "node",
-  roots: ["<rootDir>/cic", "<rootDir>/src"],
-  testMatch: ["**/*.test.ts", "**/runtime/tests/**/*.test.js"],
-  extensionsToTreatAsEsm: [".js"],
+  roots: ["<rootDir>/cic", "<rootDir>/src", "<rootDir>/cic-runtime"],
+  testMatch: ["**/*.test.ts", "**/runtime/tests/**/*.test.js", "cic-runtime/**/*.test.ts"],
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1"
   },
