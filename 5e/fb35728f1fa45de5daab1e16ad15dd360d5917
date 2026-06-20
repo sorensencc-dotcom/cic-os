@@ -1,0 +1,19 @@
+MEMORY_V1_STAGING_ACTIVATION.md
+  s_33a9990ff037fa::t_cf11b74ca50893 1-129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "5efb35728f1fa45de5daab1e16ad15dd360d5917",
+  "prompts": {},
+  "sessions": {
+    "s_33a9990ff037fa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b9a22d65-f75b-499e-85dd-379969f6e07c",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
