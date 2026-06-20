@@ -1,0 +1,19 @@
+docker-compose.yml
+  s_8027c50dacea60::t_c9b54ce8c34e8b 373,381,383-395,398-401,403,405-406,409-412
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "d88e59e137b1f189049145d0c8102a016767649d",
+  "prompts": {},
+  "sessions": {
+    "s_8027c50dacea60": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "32fa220a-cc10-418f-a933-6d03cceeb196",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
