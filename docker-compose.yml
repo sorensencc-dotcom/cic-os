@@ -280,7 +280,7 @@ services:
     environment:
       - NODE_ENV=test
       - LOG_LEVEL=info
-      - PORT=3112
+      - REPOMIX_PORT=3112
     ports:
       - "3112:3112"
     networks:
@@ -501,7 +501,7 @@ services:
     volumes:
       - qdrant-storage:/qdrant/storage
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:6333/"]
       interval: 10s
       timeout: 5s
       retries: 3
