@@ -1,6 +1,6 @@
 -- Initialize CIC databases
-CREATE DATABASE cic;
-CREATE DATABASE cic_lineage;
+CREATE DATABASE IF NOT EXISTS cic;
+CREATE DATABASE IF NOT EXISTS cic_lineage;
 
 -- Grant permissions
 GRANT ALL PRIVILEGES ON DATABASE cic TO cic;
