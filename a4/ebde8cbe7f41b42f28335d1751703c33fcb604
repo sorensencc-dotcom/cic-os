@@ -1,0 +1,240 @@
+PHASE_5C_INVENTORY_SUMMARY.txt
+  s_8027c50dacea60::t_ca40cb40a362dc 1-216
+cic-os-runtime-test.yml
+  s_8027c50dacea60::t_1b2a0f983569ab 220
+  s_8027c50dacea60::t_c5bf68424a76c3 250
+  s_8027c50dacea60::t_a008ef12403a5f 1-219,221-249,251-397
+DOCKER-COMPOSE-BUILD-PATHS.md
+  s_8027c50dacea60::t_5cf2436265ed9b 1-224
+docs/specs/CLOAKBROWSER_DASHBOARD_UI_COMPONENTS.v0.1.0.md
+  s_0c1eb73d5ecae9::t_8e73f16452e771 1-116
+ui-dashboard.tsx
+  s_8027c50dacea60::t_7004897ea1462f 287-290,292-293,295-300,305
+  s_8027c50dacea60::t_86087dbb53c6b1 411,416-417,421-441,445
+  s_8027c50dacea60::t_8a37c311b3d8f7 59-60
+  s_8027c50dacea60::t_866f400d594daa 64-80,84
+  s_8027c50dacea60::t_5062d1c3e6af96 385,388,391
+  s_8027c50dacea60::t_63599be0051775 169-271
+  s_8027c50dacea60::t_8e63b0fde4d9aa 4,6-7
+scripts/boundary-checker.sh
+  s_d038ea83caca3f::t_06b020aa404798 1-66
+src/lib/logger.ts
+  s_a5b979d7a95920::t_55584dc5449291 1-37
+src/extractors/browser/WarmPoolManager.ts
+  s_a5b979d7a95920::t_8d555ef849cef0 31
+scripts/validate-cloakbrowser.ts
+  s_0c1eb73d5ecae9::t_86337291a39379 1-301,303-316
+  s_0c1eb73d5ecae9::t_64a02494207d54 302
+TASKS-1-2-SUMMARY.txt
+  s_8027c50dacea60::t_1af5dbdb60aa12 1-135
+services/cic-governance/package.json
+  s_a0ea7543f4ba09::t_402326b5b16c77 12
+  s_a0ea7543f4ba09::t_3c4ca140a7a769 16
+services/unified-api/src/server.ts
+  s_a0ea7543f4ba09::t_2b9754a2eb44fe 25-26
+src/extractors/browser/WarmPoolManager.test.ts
+  s_d338468afc386e::t_dab5bbff8b351e 152
+  s_d338468afc386e::t_fccc3f996d7b1c 243-245,249-263
+docker-compose.cic-os.yml
+  s_0da38efff9f510::t_ac639fba7ef82f 584-585
+cic-os-runtime.v0.1.0.yml
+  s_a5b979d7a95920::t_abc6cff2a61f1b 1-496,498-530,532-810
+  s_8027c50dacea60::t_8c6b2bcb932987 531
+  s_8027c50dacea60::t_5499e8471f2418 497
+PHASE_5C_REMOVAL_PLAN.md
+  s_8027c50dacea60::t_83a933d499e040 1-391
+PHASE-5a-COMMIT-SUMMARY.md
+  s_8027c50dacea60::t_befd4ecf4dd147 1-315
+PHASE_5C_PHASE_B_MANIFEST.txt
+  s_8027c50dacea60::t_abc7350508fd67 1-73
+scripts/scan-agents.js
+  s_a2c9e6721edfe3::t_a6b5e4cd86c8e0 1-95
+PLAN_UMM_D3.md
+  s_3788540ccfa616::t_455fb8bf5b6f3e 1-558
+cic-os-runtime-v1-core.yml
+  s_8027c50dacea60::t_016e7bb4f5896f 1-230,232,234,236-262,264,266-294,296,298,300,302,304,306-335
+src/extractors/browser/CloakBrowser.ts
+  s_a5b979d7a95920::t_68d4168d656c33 1-23
+scripts/phase-3-builder.js
+  s_a2c9e6721edfe3::t_461821d4badf14 1-837
+docker-init-db.sql
+  s_a66012df96aa2f::t_f8fad029f8f1a8 1-7
+PHASE-5a-VERIFICATION.md
+  s_8027c50dacea60::t_c1add36e63f336 1-289
+PHASE_5C_FILE_REMOVAL_MATRIX.md
+  s_8027c50dacea60::t_c6d0b01abd6284 1-471
+src/extractors/browser/SpaHydrationDetector.test.ts
+  s_a5b979d7a95920::t_99653dcfa0738b 188,195,203
+services/cic-governance/src/index.ts
+  s_8027c50dacea60::t_639ae54021a288 1-77
+services/repomix-ingestion/package.json
+  s_a0ea7543f4ba09::t_91dcae4fb1bcfa 16
+  s_a0ea7543f4ba09::t_f0acc78a47595e 12
+services/knowledge-graph/Dockerfile
+  s_a0ea7543f4ba09::t_2ee318bf53fccb 1,15-24
+  s_8027c50dacea60::t_92a225bc5a34a3 4-5,28
+  s_8027c50dacea60::t_c084ae331066ba 7,10-11
+docs/specs/CLOAKBROWSER_INGESTION_HARDENING.v2.0.0.md
+  s_0c1eb73d5ecae9::t_b4263c77a7766f 1-130
+services/cic-governance/Dockerfile
+  s_a0ea7543f4ba09::t_8a075a006af2d0 22
+  s_8027c50dacea60::t_f4d7df1338fbee 4,7-8
+  s_8027c50dacea60::t_8d581cad638c4a 21
+  s_a0ea7543f4ba09::t_a5e114f3419a2a 1,12-17
+  s_a0ea7543f4ba09::t_d978a36bb3ec54 18
+PHASE-5E-V1-SERVICE-LOCATIONS.md
+  s_8027c50dacea60::t_1404a2f62eafb8 1-248
+PHASE_5C_DEPRECATION_INVENTORY.md
+  s_8027c50dacea60::t_1aefef04e843cc 1-540
+PHASE_5E_EXECUTION_SUMMARY.md
+  s_8027c50dacea60::t_62f6269e0c5fa4 1-101
+jest.config.js
+  s_a5b979d7a95920::t_da15738ddc3792 4
+cic-os.sh
+  s_0da38efff9f510::t_451583b807a322 3-5
+PHASE-5a-QUICK-START.md
+  s_8027c50dacea60::t_dc92ac368dbbc1 1-186
+cic-os-preflight.sh
+  s_0da38efff9f510::t_322134680fbdda 1-24
+test-harvest-inline.js
+  s_a8c27da584e99f::t_b204d0566ef28a 1-19,22-43,45-50,54-57,59-152
+  s_a8c27da584e99f::t_85213548f999eb 58
+  s_a8c27da584e99f::t_8ec515871d2f50 20-21
+  s_a8c27da584e99f::t_c92adc793892cd 44,51-53
+.env.example
+  s_8027c50dacea60::t_5622726130bfa4 36-39
+services/repomix-ingestion/src/server.ts
+  s_8027c50dacea60::t_3c0088a8e7f5e0 1-76
+services/unified-api/Dockerfile
+  s_a0ea7543f4ba09::t_8b7b58cd6dbd54 1,11-18
+  s_8027c50dacea60::t_a2787a08989ef5 4,9-10
+  s_8027c50dacea60::t_4f4bd042dcfb5a 7-8,21-22
+cic-os-runtime-v1-full.yml
+  s_8027c50dacea60::t_465427729c895a 1-810
+services/torquequery/Dockerfile
+  s_8027c50dacea60::t_3336ea2dbacf29 4-5,10-11,28-29
+  s_a0ea7543f4ba09::t_53c0719ade7cf1 25
+  s_a0ea7543f4ba09::t_1cbd7f2faa3527 1,15-24
+  s_8027c50dacea60::t_5b975fdee63d8c 7
+scripts/qa-004-performance-validation.ts
+  s_0c1eb73d5ecae9::t_5769bc7bf26b9b 299,305
+  s_0c1eb73d5ecae9::t_954f0fca65170e 1-256,258-267,269-280,282-285,287-298,300-304,306-341
+  s_0c1eb73d5ecae9::t_94a046c273f695 268
+  s_0c1eb73d5ecae9::t_8e19cef8b403bd 257
+  s_0c1eb73d5ecae9::t_eb176c5ac7a1ff 281,286
+PHASE_5B_VERIFICATION_REPORT.md
+  s_8027c50dacea60::t_09078290320752 1-350
+services/repomix-ingestion/src/index.ts
+  s_8027c50dacea60::t_8f432a06eeb49c 6-11
+PHASE-5a-EXECUTIVE-SUMMARY.md
+  s_8027c50dacea60::t_03d1b9d100f907 1-279
+services/repomix-ingestion/Dockerfile
+  s_a0ea7543f4ba09::t_fd23a41d5003a8 1,12-17
+  s_a0ea7543f4ba09::t_4f0ee5624189c1 18
+  s_8027c50dacea60::t_95db08f6682211 4,7-8
+  s_8027c50dacea60::t_5f23162b4a6d5c 21
+  s_a0ea7543f4ba09::t_3cf26d4331deb2 22
+services/vault/Dockerfile
+  s_8027c50dacea60::t_a67ba7f0515c1a 7
+  s_a0ea7543f4ba09::t_23df4343ffd88f 1,15-24
+  s_8027c50dacea60::t_cf6c58001bea9e 4-5,10-11,28-29
+  s_a0ea7543f4ba09::t_b363621d42194b 25
+phase-5e-test.ps1
+  s_8027c50dacea60::t_1375f8e614c8ae 1-196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "a4ebde8cbe7f41b42f28335d1751703c33fcb604",
+  "prompts": {},
+  "sessions": {
+    "s_0c1eb73d5ecae9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e9cdc4d5-4259-4d6a-aeb9-df0e83675fe4",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_0da38efff9f510": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "85262260-289b-443d-8d3b-e5d3adc18ce1",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_3788540ccfa616": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ddddbec3-4021-4d31-918b-d8c5be3eab51",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_8027c50dacea60": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "32fa220a-cc10-418f-a933-6d03cceeb196",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_a0ea7543f4ba09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e8dc7deb-ad39-4e6b-8191-97591cac2c0c",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_a2c9e6721edfe3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "df3ec6df-3299-4767-a547-d3ab990f5602",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_a5b979d7a95920": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3d1ca9bc-dd34-44cc-bdcf-c9f70b862f20",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_a66012df96aa2f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1ee0b6e4-0c3a-45b2-8c7f-de12bcf5c825",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_a8c27da584e99f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13d75ce0-4d2c-49ac-a90e-a17cd922de8f",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_d038ea83caca3f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "11c118cb-0fe8-4755-9b25-9d4f8cef160d",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_d338468afc386e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8784db7d-233a-4e67-ba8d-7499b1ba2624",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
