@@ -1,0 +1,35 @@
+services/knowledge-graph/Dockerfile
+  s_391e1617069b03::t_ff0c20dcd0ab2b 19
+  s_391e1617069b03::t_f20ea20a8a2703 7,10-11,21
+docker-init-db.sql
+  s_391e1617069b03::t_ee032cd6a0ea20 2-3,8-9
+services/vault/Dockerfile
+  s_391e1617069b03::t_94be8739bd7d97 19
+  s_391e1617069b03::t_cbe2ab64971bbb 7,10-11
+  s_391e1617069b03::t_7ec3488781c72c 21,25
+services/repomix-ingestion/Dockerfile
+  s_391e1617069b03::t_56e96b5f089a01 4,7-8,17
+  s_391e1617069b03::t_df7c15c3baee82 15-16
+services/unified-api/Dockerfile
+  s_391e1617069b03::t_c59ce7e30ce84f 4,7-8,15-17
+services/cic-governance/Dockerfile
+  s_391e1617069b03::t_e200cad1a0bc40 15-16
+  s_391e1617069b03::t_afb00279048a4b 17
+  s_391e1617069b03::t_a4404ae50d3df4 4,7-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "15294d0c48f2b1b48830bd257676ece0deec01ad",
+  "prompts": {},
+  "sessions": {
+    "s_391e1617069b03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "69dc0899-534b-4b80-965d-246b2149b953",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
