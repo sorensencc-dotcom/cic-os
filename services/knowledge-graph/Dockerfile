@@ -1,19 +1,28 @@
-FROM node:20
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Install Python for better-sqlite3 native module build
-RUN apt-get update && apt-get install -y python3 build-essential && rm -rf /var/lib/apt/lists/*
+# Install Python and build tools for better-sqlite3 native module build
+RUN apk add --no-cache python3 build-base
 
-COPY services/knowledge-graph/package.json ./
+COPY package*.json ./
 RUN npm install
 
-COPY services/knowledge-graph/src ./src
-COPY services/knowledge-graph/tests ./tests
-COPY services/knowledge-graph/tsconfig.json ./
-COPY services/knowledge-graph/jest.config.js ./
+COPY src ./src
+COPY tsconfig.json ./
 
 RUN npm run build
 
+FROM node:20-alpine
+WORKDIR /app
+
+# Install Python and build tools for better-sqlite3 native module
+RUN apk add --no-cache python3 build-base
+
+COPY package*.json ./
+RUN npm install --omit=dev
+
+COPY --from=builder /app/build ./build
+
 EXPOSE 3107
 
-CMD ["npm", "test"]
+CMD ["node", "build/index.js"]

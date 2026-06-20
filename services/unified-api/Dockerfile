@@ -1,13 +1,22 @@
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY src ./src
+COPY tsconfig.json ./
+
+RUN npm run build
+
 FROM node:20-alpine
 WORKDIR /app
 
-COPY services/unified-api/package.json ./
-RUN npm install
+COPY package*.json ./
+RUN npm install --omit=dev
 
-COPY services/unified-api/src ./src
-COPY services/unified-api/tests ./tests
-COPY services/unified-api/tsconfig.json ./
-COPY services/unified-api/jest.config.cjs ./
+COPY --from=builder /app/dist ./dist
 
 EXPOSE 3100
-CMD ["npm", "test"]
+
+CMD ["node", "dist/server.js"]

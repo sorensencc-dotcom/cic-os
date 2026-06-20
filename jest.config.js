@@ -1,15 +1,20 @@
 export default {
   preset: "ts-jest",
   testEnvironment: "node",
-  roots: ["<rootDir>"],
-  testMatch: ["**/*.test.ts"],
+  roots: ["<rootDir>/cic", "<rootDir>/src"],
+  testMatch: ["**/*.test.ts", "**/runtime/tests/**/*.test.js"],
+  extensionsToTreatAsEsm: [".js"],
+  moduleNameMapper: {
+    "^(\\.{1,2}/.*)\\.js$": "$1"
+  },
   transform: {
-    "^.+\\.tsx?$": "ts-jest"
+    "^.+\\.tsx?$": ["ts-jest", { useESM: true }],
+    "^.+\\.js$": ["ts-jest", { useESM: true }]
   },
   collectCoverageFrom: [
-    "**/*.ts",
-    "!**/*.test.ts",
-    "!node_modules/**"
+    "cic/src/**/*.ts",
+    "!cic/src/**/*.test.ts",
+    "!**/node_modules/**"
   ],
   testTimeout: 30000,
   verbose: true,

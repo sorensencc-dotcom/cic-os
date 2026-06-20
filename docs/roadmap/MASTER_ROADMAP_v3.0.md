@@ -1,8 +1,8 @@
-# CIC + Rewrite Labs Unified Master Roadmap v3.0
+# CIC + Rewrite Labs Unified Master Roadmap v3.1
 
-**Version:** 3.0.0  
-**Date:** 2026-06-13  
-**Status:** Active  
+**Version:** 3.1.0  
+**Date:** 2026-06-17  
+**Status:** Active — Phase 6 locked  
 **Replaces:** `rewrite-mcp/docs/cic/CIC_MASTER_ROADMAP.md` as cross-platform authority
 
 ---
@@ -79,7 +79,31 @@ Covers Phases 23–24 from CIC master roadmap. Rewrite Labs inherits governance 
 | Autonomous Governance Model + Evidence Vault | Shipped (Phase 24.1–24.5) |
 | Council voting + Policy rails + Decay logic | Shipped (Phase 24.1) |
 
-### 1.5 Delivery Infrastructure
+### 1.5 Phase 6: Autonomous Cross-Orchestrated Operation (Locked 2026-06-17)
+
+Unified orchestration layer enabling CIC + Labs + Collab to run autonomously with GLM-5 as shared brain and unified router as control plane.
+
+| Subsystem | Status | Phase | Details |
+|---|---|---|---|
+| Config framework (scheduler, collab-task, workflows, registry) | Scaffolding | 6.0 | YAML-based, deterministic |
+| Redis-backed queue + durability | In progress | 6.A | Prod-critical; no task loss |
+| Graceful shutdown handler (SIGTERM drain) | In progress | 6.B | Prod-critical; Docker/K8s safe |
+| Unified router + GLM-5 model routing | Scaffolding | 6.0 | Rules-driven, glm-5.1/5.2 selection |
+| Context builder (CIC + Labs merge) | Scaffolding | 6.0 | Unified frame for GLM-5 |
+| Joint report generator (ROI metrics) | Scaffolding | 6.0 | Combines CIC + Labs metrics |
+| Collab orchestrator (multi-phase workflows) | Scaffolding | 6.0 | Calls CIC + Labs in sequence |
+| Scheduler runtime (cron + task intake) | Scaffolding | 6.0 | Deterministic autonomous scheduling |
+| Worker pool + parallel execution | Scaffolding | 6.0 | Horizontal scaling ready |
+| Telemetry + GLM-5 tracing | Scaffolding | 6.0 | Full observability |
+| Retry engine + exponential backoff | Planned | 6.D | 5 max attempts, post-merge 2026-06-27 |
+| Auth/authz middleware | Deferred | 6.E | Only if external API exposure |
+
+**Execution plan:** [`PLAN_PHASE_6.md`](../../PLAN_PHASE_6.md)  
+**Merge target:** 2026-06-22  
+**Stability soak:** 2026-06-22 through 2026-06-24  
+**Locked decisions:** Redis queue backend | Prod-critical scope (6.A + 6.B only for merge)
+
+### 1.6 Delivery Infrastructure
 
 Planned for RL-4.2. Owned by Rewrite Labs but available to CIC for hosted artifact delivery.
 
@@ -107,15 +131,19 @@ IR Toolkit (packages/ir-toolkit/)
 TorqueQuery (Phase 26)
     ↓ production-scale crawl/scrape/index/search backbone
     ↓
+Phase 6: Autonomous Cross-Orchestration (Redis queue + Graceful shutdown)
+    ↓ unifies CIC + Labs + Collab task execution
+    ↓ feeds telemetry + metrics to GLM-5 strategist
+    ↓
 Delivery Infrastructure (RL-4.2)
     ↓ Cloudflare Workers + R2 + subdomain
     ↓
-    ┌──────────────────────┬────────────────────────┐
-    │ CIC                  │ Rewrite Labs           │
-    │ corpus ingestion     │ SMB site delivery      │
-    │ research engine      │ outreach pipeline      │
-    │ knowledge graph      │ chat editing           │
-    └──────────────────────┴────────────────────────┘
+    ┌──────────────────────┬────────────────────────┬────────────────────┐
+    │ CIC                  │ Rewrite Labs           │ Collab (Phase 6)   │
+    │ corpus ingestion     │ SMB site delivery      │ joint experiments  │
+    │ research engine      │ outreach pipeline      │ cross-orch workflows│
+    │ knowledge graph      │ chat editing           │ shared telemetry   │
+    └──────────────────────┴────────────────────────┴────────────────────┘
 ```
 
 ---
@@ -134,4 +162,5 @@ Delivery Infrastructure (RL-4.2)
 
 | Version | Date | Change |
 |---|---|---|
+| 3.1.0 | 2026-06-17 | Phase 6 locked: Autonomous cross-orchestration; Redis queue + graceful shutdown prod-critical; merge gate 2026-06-22 |
 | 3.0.0 | 2026-06-13 | Initial unified roadmap; extracted from CIC_MASTER_ROADMAP.md after Repaint competitive teardown |

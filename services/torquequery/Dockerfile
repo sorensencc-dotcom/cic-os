@@ -1,18 +1,29 @@
-FROM node:20
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Install Python for better-sqlite3 native module build
-RUN apt-get update && apt-get install -y python3 build-essential && rm -rf /var/lib/apt/lists/*
+# Install build tools for better-sqlite3 native module
+RUN apk add --no-cache python3 make g++
 
-COPY services/torquequery/package.json ./
+COPY package*.json ./
 RUN npm install
 
-COPY services/torquequery/src ./src
-COPY services/torquequery/tests ./tests
-COPY services/torquequery/tsconfig.json ./
-COPY services/torquequery/jest.config.js ./
+COPY src ./src
+COPY tsconfig.json ./
 
 RUN npm run build
 
+FROM node:20-alpine
+WORKDIR /app
+
+# Install build tools for better-sqlite3 native module
+RUN apk add --no-cache python3 make g++
+
+COPY package*.json ./
+RUN npm install --omit=dev
+
+COPY --from=builder /app/dist ./dist
+COPY src/db ./dist/db
+
 EXPOSE 3110
-CMD ["npm", "test"]
+
+CMD ["node", "dist/server.js"]

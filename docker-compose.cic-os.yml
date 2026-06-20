@@ -581,6 +581,8 @@ services:
       retries: 3
 
   promtail:
+    # Log collector sidecar. No healthcheck: promtail has no HTTP health endpoint.
+    # Relies on depends_on loki for startup ordering. Logs eventually delivered via fluent push.
     image: grafana/promtail:3.1.0
     container_name: promtail
     restart: unless-stopped

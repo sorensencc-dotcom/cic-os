@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 set -e
-docker compose -f "$(dirname "$0")/docker-compose.cic-os.yml" "$@"
+DIR="$(dirname "$0")"
+"$DIR/cic-os-preflight.sh"
+docker compose -f "$DIR/docker-compose.cic-os.yml" "$@"

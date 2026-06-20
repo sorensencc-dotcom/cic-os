@@ -1,9 +1,10 @@
 // ui-dashboard.tsx - React dashboard for CIC operator surface
 import React, { useState, useEffect } from "react";
 
-const ROADMAP_URL = process.env.REACT_APP_ROADMAP_URL || "http://localhost:3000";
+const ROADMAP_URL = process.env.REACT_APP_ROADMAP_URL || "http://localhost:3114";
 const HARVESTER_URL = process.env.REACT_APP_HARVESTER_URL || "http://localhost:4000";
-const INGESTION_URL = process.env.REACT_APP_INGESTION_URL || "http://localhost:8080";
+const INGESTION_URL = process.env.REACT_APP_INGESTION_URL || "http://localhost:3116";
+const CODEFLOW_URL = process.env.REACT_APP_CODEFLOW_URL || "http://localhost:3112";
 
 interface ExternalEvent {
   id: string;
@@ -55,25 +56,32 @@ export function ExternalRepoUpdatesDashboard() {
     fetchEvents();
     const interval = setInterval(fetchEvents, 5000); // Refresh every 5s
     return () => clearInterval(interval);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters.repo, filters.impactType]);
 
   async function fetchEvents() {
     try {
-      // Mock data for now
-      setEvents([
-        {
-          id: "1",
-          repo: "codeflow",
-          commit: "abc123def456",
-          impact_tags: ["mandatory_update.security"],
-          roadmap_items: 3,
-          docker_build: "success",
-          timestamp: new Date().toISOString()
-        }
-      ]);
+      const params = new URLSearchParams();
+      if (filters.repo) params.set("repo", filters.repo);
+      if (filters.impactType) params.set("impact_type", filters.impactType);
+      const res = await fetch(`${INGESTION_URL}/autonomy/signals?${params.toString()}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      // Signals API returns { signals: [...] }; map to ExternalEvent shape
+      const mapped: ExternalEvent[] = (data.signals ?? data ?? []).map((s: any) => ({
+        id: s.id ?? s.signal_id ?? String(Math.random()),
+        repo: s.source ?? s.repo ?? "unknown",
+        commit: s.commit_sha ?? s.metadata?.commit ?? "",
+        impact_tags: s.impact_tags ?? s.tags ?? [],
+        roadmap_items: s.roadmap_items ?? s.metadata?.roadmap_items ?? 0,
+        docker_build: s.docker_build ?? s.metadata?.docker_build ?? "pending",
+        timestamp: s.timestamp ?? s.created_at ?? new Date().toISOString(),
+      }));
+      setEvents(mapped);
       setLoading(false);
     } catch (e) {
       console.error("Failed to fetch events:", e);
+      setLoading(false);
     }
   }
 
@@ -158,6 +166,110 @@ export function ExternalRepoUpdatesDashboard() {
 }
 
 // ============================================================================
+// EXTRACTOR DETAIL TABS — backed by codeflow-server /analyze/:type
+// ============================================================================
+
+function SecurityFindingsTab({ repoId, total }: { repoId: string; total: number }) {
+  const [findings, setFindings] = React.useState<any[]>([]);
+  useEffect(() => {
+    fetch(`${CODEFLOW_URL}/analyze/security?repo=${encodeURIComponent(repoId)}`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d) => setFindings(d.findings ?? d ?? []))
+      .catch(() => setFindings([]));
+  }, [repoId]);
+  return (
+    <div>
+      <h3>Security Findings ({total})</h3>
+      {findings.length === 0 ? (
+        <p>No findings returned from analysis.</p>
+      ) : (
+        <table className="items-table">
+          <thead>
+            <tr><th>Severity</th><th>Rule</th><th>File</th><th>Line</th></tr>
+          </thead>
+          <tbody>
+            {findings.map((f, i) => (
+              <tr key={i}>
+                <td><span className={`priority ${f.severity}`}>{f.severity}</span></td>
+                <td>{f.rule ?? f.id}</td>
+                <td><code>{f.file}</code></td>
+                <td>{f.line}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+}
+
+function CodePatternsTab({ repoId, total }: { repoId: string; total: number }) {
+  const [patterns, setPatterns] = React.useState<any[]>([]);
+  useEffect(() => {
+    fetch(`${CODEFLOW_URL}/analyze/patterns?repo=${encodeURIComponent(repoId)}`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d) => setPatterns(d.patterns ?? d ?? []))
+      .catch(() => setPatterns([]));
+  }, [repoId]);
+  return (
+    <div>
+      <h3>Code Patterns ({total})</h3>
+      {patterns.length === 0 ? (
+        <p>No patterns returned from analysis.</p>
+      ) : (
+        <table className="items-table">
+          <thead>
+            <tr><th>Pattern</th><th>Count</th><th>Files</th></tr>
+          </thead>
+          <tbody>
+            {patterns.map((p, i) => (
+              <tr key={i}>
+                <td>{p.name ?? p.pattern}</td>
+                <td>{p.count ?? 1}</td>
+                <td><code>{(p.files ?? []).join(", ")}</code></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+}
+
+function BlastRadiusTab({ repoId, total }: { repoId: string; total: number }) {
+  const [entries, setEntries] = React.useState<any[]>([]);
+  useEffect(() => {
+    fetch(`${CODEFLOW_URL}/analyze/impact?repo=${encodeURIComponent(repoId)}`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d) => setEntries(d.entries ?? d ?? []))
+      .catch(() => setEntries([]));
+  }, [repoId]);
+  return (
+    <div>
+      <h3>Blast Radius Analysis ({total})</h3>
+      {entries.length === 0 ? (
+        <p>No impact entries returned from analysis.</p>
+      ) : (
+        <table className="items-table">
+          <thead>
+            <tr><th>Changed File</th><th>Affected Files</th><th>Impact Score</th></tr>
+          </thead>
+          <tbody>
+            {entries.map((e, i) => (
+              <tr key={i}>
+                <td><code>{e.file ?? e.source}</code></td>
+                <td>{e.affected_count ?? (e.affected ?? []).length}</td>
+                <td>{e.score ?? "-"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+}
+
+// ============================================================================
 // EXTRACTOR RESULTS VIEW
 // ============================================================================
 
@@ -172,21 +284,25 @@ export function ExtractorResultsView({ repoId }: { repoId: string }) {
 
   async function fetchResult() {
     try {
-      // Mock data for now
+      const res = await fetch(`${CODEFLOW_URL}/analyze?repo=${encodeURIComponent(repoId)}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      // codeflow-server /analyze returns { repoId, duration_ms, nodes, edges, security, patterns, impact }
       setResult({
-        repoId,
-        duration_ms: 1234,
+        repoId: data.repoId ?? repoId,
+        duration_ms: data.duration_ms ?? 0,
         extracted: {
-          nodes: 42,
-          edges: 125,
-          security: 3,
-          patterns: 7,
-          impact: 15
-        }
+          nodes: data.nodes ?? data.extracted?.nodes ?? 0,
+          edges: data.edges ?? data.extracted?.edges ?? 0,
+          security: data.security ?? data.extracted?.security ?? 0,
+          patterns: data.patterns ?? data.extracted?.patterns ?? 0,
+          impact: data.impact ?? data.extracted?.impact ?? 0,
+        },
       });
       setLoading(false);
     } catch (e) {
       console.error("Failed to fetch result:", e);
+      setLoading(false);
     }
   }
 
@@ -266,25 +382,13 @@ export function ExtractorResultsView({ repoId }: { repoId: string }) {
           </div>
         )}
         {activeTab === "security" && (
-          <div>
-            <h3>Security Findings</h3>
-            <p>Total: {result.extracted.security}</p>
-            {/* Table would render findings here */}
-          </div>
+          <SecurityFindingsTab repoId={result.repoId} total={result.extracted.security} />
         )}
         {activeTab === "patterns" && (
-          <div>
-            <h3>Code Patterns</h3>
-            <p>Total: {result.extracted.patterns}</p>
-            {/* Table would render patterns here */}
-          </div>
+          <CodePatternsTab repoId={result.repoId} total={result.extracted.patterns} />
         )}
         {activeTab === "impact" && (
-          <div>
-            <h3>Blast Radius Analysis</h3>
-            <p>Impact entries: {result.extracted.impact}</p>
-            {/* Graph would render blast radius here */}
-          </div>
+          <BlastRadiusTab repoId={result.repoId} total={result.extracted.impact} />
         )}
       </div>
     </div>
@@ -304,41 +408,41 @@ export function RoadmapExternalItemsView() {
     repo: ""
   });
 
+  // Fetch only when filters actually change; interval refreshes use current filter values
   useEffect(() => {
     fetchItems();
     const interval = setInterval(fetchItems, 10000); // Refresh every 10s
     return () => clearInterval(interval);
-  }, [filters]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters.type, filters.priority, filters.repo]);
 
   async function fetchItems() {
     try {
-      // Mock data for now
-      setItems([
-        {
-          id: "1",
-          type: "todo",
-          title: "Apply codeflow security scanner changes to CIC",
-          priority: "high",
-          status: "pending",
-          source: "external",
-          repo: "codeflow",
-          commit_sha: "abc123def456",
-          tags: ["mandatory_update.security"]
-        },
-        {
-          id: "2",
-          type: "idea",
-          title: "Explore integrating codeflow blast radius improvements",
-          priority: "medium",
-          status: "open",
-          source: "external",
-          repo: "codeflow",
-          tags: ["roadmap_idea.feature"]
-        }
-      ]);
+      const params = new URLSearchParams();
+      if (filters.type) params.set("type", filters.type);
+      if (filters.priority) params.set("priority", filters.priority);
+      if (filters.repo) params.set("repo", filters.repo);
+      const res = await fetch(`${ROADMAP_URL}/roadmap/external-items?${params.toString()}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      // planning-engine returns { items: [...] } or raw array
+      const raw: any[] = data.items ?? data ?? [];
+      const mapped: RoadmapItem[] = raw.map((item: any) => ({
+        id: item.id ?? String(Math.random()),
+        type: item.type ?? "todo",
+        title: item.title ?? item.description ?? "",
+        priority: item.priority ?? "medium",
+        status: item.status ?? "open",
+        source: item.source ?? "external",
+        repo: item.repo ?? item.source_repo,
+        commit_sha: item.commit_sha,
+        tags: item.tags ?? [],
+      }));
+      setItems(mapped);
       setLoading(false);
     } catch (e) {
       console.error("Failed to fetch items:", e);
+      setLoading(false);
     }
   }
 

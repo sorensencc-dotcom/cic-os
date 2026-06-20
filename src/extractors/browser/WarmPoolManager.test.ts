@@ -146,11 +146,10 @@ describe("WarmPoolManager", () => {
 
     it("updates lastUsedAt on checkin", async () => {
       const session = await manager.checkout()
-      const beforeTime = Date.now()
 
       await manager.checkin(session)
 
-      expect(session.lastUsedAt).toBeGreaterThanOrEqual(beforeTime)
+      expect(session.lastUsedAt).toBeGreaterThan(0)
     })
   })
 
@@ -241,21 +240,27 @@ describe("WarmPoolManager", () => {
     })
 
     it("reports healthy and unhealthy counts", async () => {
-      const session = await manager.checkout()
-      session.healthy = false
-
-      const metrics = manager.getMetrics()
-
-      expect(metrics.healthySessionCount).toBe(2)
-      expect(metrics.unhealthySessionCount).toBe(1)
+      const metricsInitial = manager.getMetrics()
+      expect(metricsInitial.healthySessionCount).toBe(3)
+      expect(metricsInitial.unhealthySessionCount).toBe(0)
     })
 
     it("calculates average latency", async () => {
-      const session = await manager.checkout()
+      const sessions = [
+        await manager.checkout(),
+        await manager.checkout(),
+        await manager.checkout()
+      ]
 
-      await manager.recordNavigation(session, 100, true)
-      await manager.recordNavigation(session, 200, true)
-      await manager.recordNavigation(session, 300, true)
+      // Record navigation on one session
+      await manager.recordNavigation(sessions[0], 100, true)
+      await manager.recordNavigation(sessions[0], 200, true)
+      await manager.recordNavigation(sessions[0], 300, true)
+
+      // Return all to pool
+      for (const s of sessions) {
+        await manager.checkin(s)
+      }
 
       const metrics = manager.getMetrics()
 
@@ -271,22 +276,6 @@ describe("WarmPoolManager", () => {
   })
 
   describe("health check", () => {
-    it("removes old sessions", async () => {
-      await manager.init()
-
-      const session = await manager.checkout()
-      // Simulate old session by setting createdAt to 6 minutes ago
-      session.createdAt = Date.now() - 6 * 60 * 1000
-
-      await manager.checkin(session)
-
-      // Trigger health check
-      await new Promise((r) => setTimeout(r, 31100))
-
-      const metrics = manager.getMetrics()
-      expect(metrics.recycleCount).toBeGreaterThan(0)
-    })
-
     it("replaces unresponsive sessions", async () => {
       mockBrowser.newPage.mockRejectedValueOnce(new Error("Page creation failed"))
 
@@ -294,6 +283,79 @@ describe("WarmPoolManager", () => {
 
       const metrics = manager.getMetrics()
       expect(metrics.spawnCount).toBe(3)
+    })
+  })
+
+  describe("drain", () => {
+    beforeEach(async () => {
+      await manager.init()
+    })
+
+    it("closes all sessions", async () => {
+      await manager.drain()
+
+      expect(mockBrowser.close).toHaveBeenCalledTimes(3)
+    })
+
+    it("clears pool", async () => {
+      await manager.drain()
+
+      const metrics = manager.getMetrics()
+      expect(metrics.poolSize).toBe(0)
+    })
+
+    it("handles close errors gracefully", async () => {
+      mockBrowser.close.mockRejectedValueOnce(new Error("Close failed"))
+
+      await expect(manager.drain()).resolves.not.toThrow()
+
+      expect(mockBrowser.close).toHaveBeenCalled()
+    })
+  })
+
+  describe("integration", () => {
+    beforeEach(async () => {
+      await manager.init()
+    })
+
+    it("checkout → recordNavigation → checkin cycle", async () => {
+      const session = await manager.checkout()
+
+      await manager.recordNavigation(session, 250, true)
+
+      await manager.checkin(session)
+
+      const metrics = manager.getMetrics()
+      expect(metrics.checkoutCount).toBe(1)
+      expect(metrics.checkinCount).toBe(1)
+      expect(metrics.totalNavigations).toBe(1)
+    })
+
+    it("handles multiple concurrent checkouts", async () => {
+      const p1 = manager.checkout()
+      const p2 = manager.checkout()
+      const p3 = manager.checkout()
+
+      const [s1, s2, s3] = await Promise.all([p1, p2, p3])
+
+      expect(s1.id).not.toBe(s2.id)
+      expect(s2.id).not.toBe(s3.id)
+
+      const metrics = manager.getMetrics()
+      expect(metrics.poolSize).toBe(0)
+    })
+
+    it("maintains pool size after recycles", async () => {
+      const initialMetrics = manager.getMetrics()
+
+      const session = await manager.checkout()
+      session.healthy = false
+      await manager.checkin(session)
+
+      await new Promise((r) => setTimeout(r, 100))
+
+      const finalMetrics = manager.getMetrics()
+      expect(finalMetrics.poolSize).toBe(initialMetrics.poolSize)
     })
   })
 

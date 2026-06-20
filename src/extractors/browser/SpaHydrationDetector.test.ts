@@ -185,14 +185,14 @@ describe("SpaHydrationDetector", () => {
       const mockPage = {
         url: () => "https://example.com",
         evaluate: jest.fn().mockResolvedValue({
-          reactNextMarkers: true,
+          reactNextMarkers: false,
           webflowMarker: false,
           framerMarker: false,
           wixMarker: false,
           mutationCount: 100,
           nodeCountDelta: 300,
           nodeCountDeltaPercent: 10,
-          scriptExecutionErrors: 0,
+          scriptExecutionErrors: 3,
           stabilityAchieved: false,
           stabilityTimeMs: 1500
         })
@@ -200,7 +200,7 @@ describe("SpaHydrationDetector", () => {
 
       const result = await detector.detect(mockPage)
 
-      expect(result.score).toBeLessThan(50)
+      expect(result.score).toBeLessThan(20)
     })
   })
 })

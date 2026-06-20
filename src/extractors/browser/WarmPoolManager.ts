@@ -28,7 +28,7 @@ export interface WarmPoolMetrics {
 
 export class WarmPoolManager {
   private pool: WarmPoolSession[] = []
-  private waitingList: Array<() => void> = []
+  private waitingList: Array<(value?: unknown) => void> = []
   private targetSize: number
   private maxSessionAgeMs = 5 * 60 * 1000 // 5 minutes
   private maxNavigationsPerSession = 50

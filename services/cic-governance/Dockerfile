@@ -1,15 +1,22 @@
-FROM node:20-alpine
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-COPY services/cic-governance/package.json ./
+COPY package*.json ./
 RUN npm install
 
-COPY services/cic-governance/src ./src
-COPY services/cic-governance/tests ./tests
-COPY services/cic-governance/tsconfig.json ./
-COPY services/cic-governance/jest.config.js ./
+COPY src ./src
+COPY tsconfig.json ./
 
 RUN npm run build
 
+FROM node:20-alpine
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install --omit=dev
+
+COPY --from=builder /app/dist ./dist
+
 EXPOSE 3113
-CMD ["npm", "test"]
+
+CMD ["node", "dist/index.js"]

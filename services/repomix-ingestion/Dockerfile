@@ -1,15 +1,22 @@
-FROM node:20-alpine
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-COPY services/repomix-ingestion/package.json ./
+COPY package*.json ./
 RUN npm install
 
-COPY services/repomix-ingestion/src ./src
-COPY services/repomix-ingestion/tests ./tests
-COPY services/repomix-ingestion/tsconfig.json ./
-COPY services/repomix-ingestion/jest.config.js ./
+COPY src ./src
+COPY tsconfig.json ./
 
 RUN npm run build
 
+FROM node:20-alpine
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install --omit=dev
+
+COPY --from=builder /app/dist ./dist
+
 EXPOSE 3112
-CMD ["npm", "test"]
+
+CMD ["node", "dist/server.js"]

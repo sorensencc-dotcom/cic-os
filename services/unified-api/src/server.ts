@@ -22,8 +22,8 @@ async function startServer() {
   // CORS: explicit allowlist (block by default)
   const corsOrigins = (process.env.CORS_ORIGINS || 'http://localhost:3000,http://localhost:3100').split(',');
   app.use((req, res, next) => {
-    const origin = req.headers.origin;
-    if (corsOrigins.includes(origin)) {
+    const origin = req.headers.origin as string | undefined;
+    if (origin && corsOrigins.includes(origin)) {
       res.setHeader('Access-Control-Allow-Origin', origin);
       res.setHeader('Access-Control-Allow-Credentials', 'true');
     }
