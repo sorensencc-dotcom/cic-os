@@ -10,6 +10,9 @@ export default {
     "^.+\\.tsx?$": ["ts-jest", { useESM: true }],
     "^.+\\.js$": ["ts-jest", { useESM: true }]
   },
+  transformIgnorePatterns: [
+    "node_modules/(?!(uuid)/)"
+  ],
   collectCoverageFrom: [
     "cic/src/**/*.ts",
     "!cic/src/**/*.test.ts",
@@ -18,5 +21,6 @@ export default {
   testTimeout: 30000,
   verbose: true,
   forceExit: true,
-  clearMocks: true
+  clearMocks: true,
+  extensionsToTreatAsEsm: [".ts"]
 };
