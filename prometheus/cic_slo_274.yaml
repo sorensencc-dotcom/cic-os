@@ -13,7 +13,7 @@ groups:
           slo_id: "SLO-001"
 
       - record: slo:availability:burn_rate:slow
-        expr: (1 - slo:availability:ratio{slo_id="SLO-001"}) / (1 - 0.999)
+        expr: (1 - (1 - (sum(rate(cic_requests_errors_total[1h])) by (slo_id) / sum(rate(cic_requests_total[1h])) by (slo_id)))) / (1 - 0.999)
         labels:
           slo_id: "SLO-001"
 
@@ -49,7 +49,7 @@ groups:
           slo_id: "SLO-003"
 
       - record: slo:adapter_uptime:burn_rate:slow
-        expr: (1 - slo:adapter_uptime:ratio{slo_id="SLO-003"}) / (1 - 0.995)
+        expr: (1 - (1 - (sum(rate(cic_adapter_errors_total[1h])) by (slo_id) / sum(rate(cic_adapter_calls_total[1h])) by (slo_id)))) / (1 - 0.995)
         labels:
           slo_id: "SLO-003"
 
@@ -67,7 +67,7 @@ groups:
           slo_id: "SLO-004"
 
       - record: slo:cost_accuracy:burn_rate:slow
-        expr: (1 - slo:cost_accuracy:ratio{slo_id="SLO-004"}) / (1 - 0.9999)
+        expr: (1 - (1 - (sum(rate(cic_ledger_imbalances_total[1h])) by (slo_id) / sum(rate(cic_ledger_transactions_total[1h])) by (slo_id)))) / (1 - 0.9999)
         labels:
           slo_id: "SLO-004"
 
