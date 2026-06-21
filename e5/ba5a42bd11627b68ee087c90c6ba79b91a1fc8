@@ -1,0 +1,19 @@
+PHASE_2_ROLLOUT.md
+  s_4f062793887b82::t_be7d7214da0db2 1-155
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "e5ba5a42bd11627b68ee087c90c6ba79b91a1fc8",
+  "prompts": {},
+  "sessions": {
+    "s_4f062793887b82": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "571257d8-49f5-465c-b27c-7e3d7b447a93",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
