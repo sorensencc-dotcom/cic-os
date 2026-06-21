@@ -1,0 +1,23 @@
+TOKEN_AUDIT_REPORT.md
+  s_cd0aaa483a96d2::t_ba1c47b17d91eb 1-425
+MISSING_TOKENS_FOR_AGENTS_PANEL.md
+  s_cd0aaa483a96d2::t_6df985eddfecdb 1-405
+TOKEN_COVERAGE_MATRIX.md
+  s_cd0aaa483a96d2::t_3183986d4ac2c7 1-399
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "0544df1bab1fd42bbb9e1a51b3cf53a734cdf0bd",
+  "prompts": {},
+  "sessions": {
+    "s_cd0aaa483a96d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7acd7738-b0b5-4443-8421-5d509070153d",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
