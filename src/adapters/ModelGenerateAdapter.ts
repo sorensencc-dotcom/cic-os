@@ -6,6 +6,7 @@
 import { makeSuccess, makeError, AdapterResponse } from '../validation/envelope';
 import { sanitizeText, validateTextLength, validateJsonCompleteness } from '../validation/guards';
 import { ModelGenerateResultSchema, ModelGenerateResult } from '../validation/schemas';
+import { metricsExporter } from '../metrics/MetricsExporter';
 
 export class ModelGenerateAdapter {
   async run(
@@ -17,6 +18,9 @@ export class ModelGenerateAdapter {
 
     try {
       if (!prompt) {
+        const durationMs = Date.now() - startTime;
+        metricsExporter.recordAdapterCall(adapter, durationMs, 'error');
+        metricsExporter.recordAdapterError(adapter, 'INVALID_INPUT');
         return makeError('INVALID_INPUT', { reason: 'prompt required' }, adapter, startTime);
       }
 
@@ -30,6 +34,10 @@ export class ModelGenerateAdapter {
       // Validate against schema
       const parsed = ModelGenerateResultSchema.safeParse(mockResult);
       if (!parsed.success) {
+        const durationMs = Date.now() - startTime;
+        metricsExporter.recordAdapterCall(adapter, durationMs, 'error');
+        metricsExporter.recordAdapterError(adapter, 'MODEL_INVALID_OUTPUT');
+        metricsExporter.recordSchemaViolation(adapter, 'result');
         return makeError(
           'MODEL_INVALID_OUTPUT',
           { reason: 'schema validation failed', errors: parsed.error },
@@ -45,6 +53,9 @@ export class ModelGenerateAdapter {
 
       // Guard: validate length
       if (!validateTextLength(text)) {
+        const durationMs = Date.now() - startTime;
+        metricsExporter.recordAdapterCall(adapter, durationMs, 'error');
+        metricsExporter.recordAdapterError(adapter, 'MODEL_OVERSIZE_OUTPUT');
         return makeError(
           'MODEL_OVERSIZE_OUTPUT',
           { reason: 'text exceeds size limits', length: text.length },
@@ -55,6 +66,9 @@ export class ModelGenerateAdapter {
 
       // Guard: validate JSON if expected
       if (options?.expectJson && !validateJsonCompleteness(text)) {
+        const durationMs = Date.now() - startTime;
+        metricsExporter.recordAdapterCall(adapter, durationMs, 'error');
+        metricsExporter.recordAdapterError(adapter, 'MODEL_INVALID_JSON');
         return makeError(
           'MODEL_INVALID_JSON',
           { reason: 'expected valid JSON, got invalid' },
@@ -68,8 +82,13 @@ export class ModelGenerateAdapter {
         tokens: parsed.data.tokens,
       };
 
+      const durationMs = Date.now() - startTime;
+      metricsExporter.recordAdapterCall(adapter, durationMs, 'success');
       return makeSuccess(result, adapter, startTime);
     } catch (err) {
+      const durationMs = Date.now() - startTime;
+      metricsExporter.recordAdapterCall(adapter, durationMs, 'error');
+      metricsExporter.recordAdapterError(adapter, 'MODEL_GENERATE_FAILED');
       return makeError(
         'MODEL_GENERATE_FAILED',
         { reason: err instanceof Error ? err.message : 'unknown error' },

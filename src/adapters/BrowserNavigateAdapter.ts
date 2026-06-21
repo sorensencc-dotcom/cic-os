@@ -6,6 +6,7 @@
 import { makeSuccess, makeError, AdapterResponse } from '../validation/envelope';
 import { validateFinalUrl } from '../validation/guards';
 import { NavigateResultSchema, NavigateResult } from '../validation/schemas';
+import { metricsExporter } from '../metrics/MetricsExporter';
 
 export class BrowserNavigateAdapter {
   async run(url: string, timeout: number = 30000): Promise<AdapterResponse<NavigateResult>> {
@@ -16,6 +17,9 @@ export class BrowserNavigateAdapter {
       // TODO: Call actual browser.navigate(url, timeout)
       // For now, simulate a valid response
       if (!url) {
+        const durationMs = Date.now() - startTime;
+        metricsExporter.recordAdapterCall(adapter, durationMs, 'error');
+        metricsExporter.recordAdapterError(adapter, 'INVALID_INPUT');
         return makeError('INVALID_INPUT', { reason: 'url required' }, adapter, startTime);
       }
 
@@ -28,6 +32,10 @@ export class BrowserNavigateAdapter {
       // Validate against schema
       const parsed = NavigateResultSchema.safeParse(mockResult);
       if (!parsed.success) {
+        const durationMs = Date.now() - startTime;
+        metricsExporter.recordAdapterCall(adapter, durationMs, 'error');
+        metricsExporter.recordAdapterError(adapter, 'INVALID_NAVIGATION_RESULT');
+        metricsExporter.recordSchemaViolation(adapter, 'result');
         return makeError(
           'INVALID_NAVIGATION_RESULT',
           { reason: 'schema validation failed', errors: parsed.error },
@@ -38,6 +46,9 @@ export class BrowserNavigateAdapter {
 
       // Guard: validate final URL
       if (!validateFinalUrl(parsed.data.url)) {
+        const durationMs = Date.now() - startTime;
+        metricsExporter.recordAdapterCall(adapter, durationMs, 'error');
+        metricsExporter.recordAdapterError(adapter, 'INVALID_URL');
         return makeError(
           'INVALID_URL',
           { reason: 'final URL rejected', url: parsed.data.url },
@@ -46,8 +57,13 @@ export class BrowserNavigateAdapter {
         );
       }
 
+      const durationMs = Date.now() - startTime;
+      metricsExporter.recordAdapterCall(adapter, durationMs, 'success');
       return makeSuccess(parsed.data, adapter, startTime);
     } catch (err) {
+      const durationMs = Date.now() - startTime;
+      metricsExporter.recordAdapterCall(adapter, durationMs, 'error');
+      metricsExporter.recordAdapterError(adapter, 'NAVIGATION_FAILED');
       return makeError(
         'NAVIGATION_FAILED',
         { reason: err instanceof Error ? err.message : 'unknown error' },
