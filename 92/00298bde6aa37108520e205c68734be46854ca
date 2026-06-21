@@ -1,0 +1,21 @@
+MISSING_TOKENS_FOR_AGENTS_PANEL_PHASE_PROGRESS.md
+  s_cd0aaa483a96d2::t_506b19685bcbcd 1-286
+TOKEN_COVERAGE_MATRIX_PHASE_ROADMAP.md
+  s_cd0aaa483a96d2::t_9d94015ed48e03 1-245
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "9200298bde6aa37108520e205c68734be46854ca",
+  "prompts": {},
+  "sessions": {
+    "s_cd0aaa483a96d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7acd7738-b0b5-4443-8421-5d509070153d",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
