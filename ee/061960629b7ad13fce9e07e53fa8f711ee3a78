@@ -1,0 +1,39 @@
+PHASE_27_4_DISPATCH.md
+  s_bb44ed87ca945f::t_a540f71a64f758 1-219
+CIC_TOKEN_PACK_v2_0_COMPONENT_PATCHES.md
+  s_cd0aaa483a96d2::t_1d5d29cce88c73 1-567
+CIC_TOKEN_PACK_v2_0_tokens.css
+  s_cd0aaa483a96d2::t_bc49b634340781 1-200
+CIC_TOKEN_PACK_v2_0_tokens.ts
+  s_cd0aaa483a96d2::t_fff6325a6183b5 1-323
+CIC_TOKEN_PACK_v2_0_FULL_LIST.md
+  s_cd0aaa483a96d2::t_e9a78f7019a37e 1-478
+CIC_TOKEN_PACK_v2_0_tokens.json
+  s_cd0aaa483a96d2::t_ac7f95194b15eb 1-178
+CIC_TOKEN_PACK_v2_0_IMPLEMENTATION_GUIDE.md
+  s_cd0aaa483a96d2::t_307d5ced6b942e 1-399
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "ee061960629b7ad13fce9e07e53fa8f711ee3a78",
+  "prompts": {},
+  "sessions": {
+    "s_bb44ed87ca945f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae6cea02-bfb4-405f-ad7f-5512f7d721ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_cd0aaa483a96d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7acd7738-b0b5-4443-8421-5d509070153d",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
