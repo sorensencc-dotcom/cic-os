@@ -1,0 +1,25 @@
+deploy/scripts/run_migrations_274.sh
+  s_bb44ed87ca945f::t_a198fcee470885 1-48
+api/openapi/budget_ledger_v2.yaml
+  s_bb44ed87ca945f::t_819e518ddcd927 1-249
+PHASE_27_4_SKELETON_SUMMARY.md
+  s_bb44ed87ca945f::t_7e4b72ddffaee0 1-232
+deploy/scripts/canary_rollout_274.sh
+  s_bb44ed87ca945f::t_aa56d94abdc0ae 1-130
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "e42b2a78623d5794618e738eec8757826911c1bd",
+  "prompts": {},
+  "sessions": {
+    "s_bb44ed87ca945f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae6cea02-bfb4-405f-ad7f-5512f7d721ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
