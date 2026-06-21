@@ -1,0 +1,19 @@
+prometheus/cic_slo_274.yaml
+  s_bb44ed87ca945f::t_a279ed81d60c18 1-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "a35029d1e5228d8fdc00714a3d4be140a6041065",
+  "prompts": {},
+  "sessions": {
+    "s_bb44ed87ca945f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae6cea02-bfb4-405f-ad7f-5512f7d721ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
