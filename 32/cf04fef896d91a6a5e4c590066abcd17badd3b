@@ -1,0 +1,31 @@
+dashboards/adapter-details.json
+  s_7e72bbfdc9ab58::t_1ed95ef271021e 1-354
+src/server/MetricsServer.ts
+  s_7e72bbfdc9ab58::t_1baac99487938a 1-71
+docs/PHASE-27-3-SLO.md
+  s_7e72bbfdc9ab58::t_eba33f725714bf 1-200
+dashboards/runtime-sli.json
+  s_7e72bbfdc9ab58::t_b556c8a62f5416 1-330
+prometheus/alert-rules.yml
+  s_7e72bbfdc9ab58::t_5f784c1e5f8698 1-106
+dashboards/adapter-health.json
+  s_7e72bbfdc9ab58::t_c3b2c821bee628 1-338
+src/metrics/AdapterLogger.ts
+  s_7e72bbfdc9ab58::t_04e00d14973292 1-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "32cf04fef896d91a6a5e4c590066abcd17badd3b",
+  "prompts": {},
+  "sessions": {
+    "s_7e72bbfdc9ab58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "87f3f5bd-adc5-4416-8fe8-1c9f7ea7630a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
