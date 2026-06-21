@@ -1,0 +1,29 @@
+src/metrics/MetricsExporter.ts
+  s_7e72bbfdc9ab58::t_e103c52e5fa919 1-141
+src/adapters/PuppeteerEngine.ts
+  s_7e72bbfdc9ab58::t_3fa9550ffaa417 9,18-19,34-35,48-49,66-67
+src/adapters/BrowserNavigateAdapter.ts
+  s_7e72bbfdc9ab58::t_09f72df9dc29ec 9
+src/clients/AnthropicClient.ts
+  s_7e72bbfdc9ab58::t_84d54c838b5d93 9
+src/adapters/BrowserScreenshotAdapter.ts
+  s_7e72bbfdc9ab58::t_06c381056753c8 9
+src/adapters/ModelGenerateAdapter.ts
+  s_7e72bbfdc9ab58::t_06885297eae35d 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "a6343835f7bda83b81a954640573b9814c4bb927",
+  "prompts": {},
+  "sessions": {
+    "s_7e72bbfdc9ab58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "87f3f5bd-adc5-4416-8fe8-1c9f7ea7630a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
