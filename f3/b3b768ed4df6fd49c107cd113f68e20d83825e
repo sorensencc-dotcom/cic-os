@@ -1,0 +1,20 @@
+src/integration/adapters.integration.test.ts
+  s_7e72bbfdc9ab58::t_23b01508d85aa9 2-106,108-293
+  s_7e72bbfdc9ab58::t_75e4fa380b35e5 107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "f3b3b768ed4df6fd49c107cd113f68e20d83825e",
+  "prompts": {},
+  "sessions": {
+    "s_7e72bbfdc9ab58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "87f3f5bd-adc5-4416-8fe8-1c9f7ea7630a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
