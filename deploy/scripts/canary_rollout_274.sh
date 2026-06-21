@@ -66,7 +66,7 @@ update_replicas() {
 
   echo "Updating $deployment to $replicas replicas..."
 
-  kubectl set replicas deployment/$deployment \
+  kubectl scale deployment/$deployment \
     -n "$NAMESPACE" \
     --replicas=$replicas
 
