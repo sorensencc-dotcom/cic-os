@@ -1,0 +1,44 @@
+src/adapters/ModelGenerateAdapter.ts
+  s_7e72bbfdc9ab58::t_b59763db5b7c95 1-81
+src/validation/schemas.ts
+  s_7e72bbfdc9ab58::t_b5e7aa49844e0a 1-68
+src/validation/guards.ts
+  s_7e72bbfdc9ab58::t_d1af83b9910061 57-59
+  s_7e72bbfdc9ab58::t_0231b76295df3d 1-56,60-92
+src/adapters/BrowserScreenshotAdapter.ts
+  s_7e72bbfdc9ab58::t_ce9f6067b87d18 1-67
+src/clients/AnthropicClient.ts
+  s_7e72bbfdc9ab58::t_ecae79f4d16030 1-81
+src/adapters/BrowserNavigateAdapter.ts
+  s_7e72bbfdc9ab58::t_c6b2f1cd5c84d1 1-59
+src/validation/guards.test.ts
+  s_7e72bbfdc9ab58::t_ccdd3af1a35427 125-130
+  s_7e72bbfdc9ab58::t_62659f47cfac64 6
+  s_7e72bbfdc9ab58::t_27141945fd56b3 186-190
+  s_7e72bbfdc9ab58::t_d10b28620051ee 394-424
+src/adapters/PuppeteerEngine.ts
+  s_7e72bbfdc9ab58::t_d8f01a441351f0 1-73
+src/validation/envelope.test.ts
+  s_7e72bbfdc9ab58::t_06e0b244bd0a6f 6
+  s_7e72bbfdc9ab58::t_1ae00606a53390 276
+  s_7e72bbfdc9ab58::t_43d7d88a32c741 99
+  s_7e72bbfdc9ab58::t_00351bb6bf6a76 83
+src/validation/envelope.ts
+  s_7e72bbfdc9ab58::t_b2b72221b5800b 1-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "c608c1ff82320523e1429855560207a802679a51",
+  "prompts": {},
+  "sessions": {
+    "s_7e72bbfdc9ab58": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "87f3f5bd-adc5-4416-8fe8-1c9f7ea7630a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
