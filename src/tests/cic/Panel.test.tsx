@@ -1,4 +1,5 @@
 /// <reference types="@testing-library/jest-dom" />
+/// <reference types="jest" />
 import React from "react";
 import { render } from "@testing-library/react";
 import { Panel } from "../../components/cic/Panel";
@@ -9,30 +10,26 @@ describe("Panel", () => {
     expect(getByText("Content")).toBeInTheDocument();
   });
 
-  it("applies padding default", () => {
-    const { container } = render(<Panel>Test</Panel>);
-    expect(container.querySelector('[data-padding="default"]')).toBeInTheDocument();
+  test.each<[string, "default" | "none" | undefined]>([
+    ["default", undefined],
+    ["none", "none"],
+  ])("applies padding %s", (expected, padding) => {
+    const { container } = render(<Panel padding={padding}>Test</Panel>);
+    expect(container.querySelector(`[data-padding="${expected}"]`)).toBeInTheDocument();
   });
 
-  it("applies padding none", () => {
-    const { container } = render(<Panel padding="none">Test</Panel>);
-    expect(container.querySelector('[data-padding="none"]')).toBeInTheDocument();
-  });
-
-  it("applies elevation default", () => {
-    const { container } = render(<Panel>Test</Panel>);
-    expect(container.querySelector('[data-elevation="default"]')).toBeInTheDocument();
-  });
-
-  it("applies elevation none", () => {
-    const { container } = render(<Panel elevation="none">Test</Panel>);
-    expect(container.querySelector('[data-elevation="none"]')).toBeInTheDocument();
+  test.each<[string, "default" | "none" | undefined]>([
+    ["default", undefined],
+    ["none", "none"],
+  ])("applies elevation %s", (expected, elevation) => {
+    const { container } = render(<Panel elevation={elevation}>Test</Panel>);
+    expect(container.querySelector(`[data-elevation="${expected}"]`)).toBeInTheDocument();
   });
 
   it("forwards ref", () => {
-    const ref = React.createRef<HTMLDivElement>();
+    const ref = React.createRef<any>();
     render(<Panel ref={ref}>Test</Panel>);
-    expect(ref.current).toBeInstanceOf(HTMLElement);
+    expect(ref.current?.tagName).toBe("SECTION");
   });
 
   it("accepts className", () => {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Panel } from '../../components/cic/Panel';
 import DensityWrapper from './DensityWrapper';
-import DarkModeWrapper from './DarkModeWrapper';
+import { DarkModeWrapper } from '../utils/DarkModeWrapper';
 
 const meta = {
   title: 'CIC/Panel',

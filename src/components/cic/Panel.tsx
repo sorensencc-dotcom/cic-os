@@ -1,13 +1,13 @@
 import React from "react";
 import "./panel.css";
 
-export interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface PanelProps extends React.HTMLAttributes<HTMLElement> {
   padding?: "default" | "none";
   elevation?: "default" | "none";
   children: React.ReactNode;
 }
 
-export const Panel = React.forwardRef<HTMLDivElement, PanelProps>(
+export const Panel = React.forwardRef<HTMLElement, PanelProps>(
   (
     {
       padding = "default",
@@ -24,7 +24,7 @@ export const Panel = React.forwardRef<HTMLDivElement, PanelProps>(
         data-cic-component="panel"
         data-padding={padding}
         data-elevation={elevation}
-        className={["cic-panel", className].filter(Boolean).join(" ")}
+        className={className ? `cic-panel ${className}` : "cic-panel"}
         {...props}
       >
         {children}
