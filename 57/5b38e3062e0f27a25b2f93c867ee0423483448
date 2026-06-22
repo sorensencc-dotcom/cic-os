@@ -1,0 +1,27 @@
+services/repomix-ingestion/Dockerfile
+  s_46387db08b7581::t_9823f61f1a1e22 4,17
+services/unified-api/Dockerfile
+  s_46387db08b7581::t_e4d4e187152704 4,17
+services/cic-governance/Dockerfile
+  s_46387db08b7581::t_838c86f93ae7f5 4,17
+docker/image-manifest.json
+  s_46387db08b7581::t_4e4ff5d919ac9e 58,64,70,76-77,87-88,98-99,109-110,120,126,132,138,144,150
+  s_46387db08b7581::t_bb1b8fd0e4d9ca 7,25-26,47-48,53
+  s_46387db08b7581::t_402502bd01d5a4 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "575b38e3062e0f27a25b2f93c867ee0423483448",
+  "prompts": {},
+  "sessions": {
+    "s_46387db08b7581": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2595e5c1-e91c-4649-bb40-64c2c2b1249e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
