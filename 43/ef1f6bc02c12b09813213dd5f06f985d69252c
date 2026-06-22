@@ -1,0 +1,25 @@
+design-system/STORYBOOK_INTEGRATION.md
+  s_5dfba06a86fb03::t_eab64d03864690 1-267
+tsconfig.json
+  s_5dfba06a86fb03::t_36e7fd9232e91b 6
+.storybook/tsconfig.json
+  s_5dfba06a86fb03::t_3327a077504679 1-9
+src/stories/cic/DensityWrapper.tsx
+  s_5dfba06a86fb03::t_5f58b1522a990e 1-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "43ef1f6bc02c12b09813213dd5f06f985d69252c",
+  "prompts": {},
+  "sessions": {
+    "s_5dfba06a86fb03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc79684b-24ed-4f26-b290-751d907e8f33",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
