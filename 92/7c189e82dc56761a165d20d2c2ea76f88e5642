@@ -1,0 +1,23 @@
+src/components/cic/Alert.tsx
+  s_1ab84a74384312::t_f83fd8eea7e939 1,4-6
+src/components/cic/Table.tsx
+  s_1ab84a74384312::t_59a639499998fd 1,4-6
+jest.setup.js
+  s_1ab84a74384312::t_81b3d8c2b46fb5 3-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "927c189e82dc56761a165d20d2c2ea76f88e5642",
+  "prompts": {},
+  "sessions": {
+    "s_1ab84a74384312": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "25143c04-f754-47c8-b94f-f3f9528c7d65",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
