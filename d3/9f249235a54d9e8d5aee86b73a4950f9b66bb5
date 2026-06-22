@@ -1,0 +1,51 @@
+src/vector/goldenQueries.json
+  s_91bb0beee11b1e::t_37a6baaeb75e5e 1-10
+design-system/COMPONENT_LIBRARY_ROADMAP.md
+  s_5dfba06a86fb03::t_47cc3bd9dbb2af 1-197
+design-system/EXECUTION_CHECKLIST.md
+  s_5dfba06a86fb03::t_00d05c0e97873e 1-292
+docker/image-manifest.json
+  s_46387db08b7581::t_a576a5dafe0677 1-261
+scripts/skills/image-builder.skill.json
+  s_46387db08b7581::t_99d44b87209075 1-85
+scripts/deploy-review.sh
+  s_91bb0beee11b1e::t_b770a39169cb43 404
+cic-runtime/integration.test.ts
+  s_91bb0beee11b1e::t_4f0d3064fd1650 24
+design-system/GENERATOR_GUIDE.md
+  s_5dfba06a86fb03::t_b2a56602d41ae0 1-504
+design-system/COMPONENT_INTEGRATION.md
+  s_5dfba06a86fb03::t_094793ee9b5c30 1-382
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "d39f249235a54d9e8d5aee86b73a4950f9b66bb5",
+  "prompts": {},
+  "sessions": {
+    "s_46387db08b7581": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2595e5c1-e91c-4649-bb40-64c2c2b1249e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_5dfba06a86fb03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc79684b-24ed-4f26-b290-751d907e8f33",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_91bb0beee11b1e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0614379-e130-49de-9c7f-737fa4242e58",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
