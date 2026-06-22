@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 // src/integration/bookstack.integration.test.ts
 import { describe, test, expect, beforeAll, afterAll, jest } from "@jest/globals";
 import { createMockBookStackServer } from "./mocks/mockBookStackServer.js";

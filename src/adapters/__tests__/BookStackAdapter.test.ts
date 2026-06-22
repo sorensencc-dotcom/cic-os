@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 // src/adapters/__tests__/BookStackAdapter.test.ts
 import { describe, test, expect, beforeAll, afterAll } from "@jest/globals";
 import { BookStackAdapter } from "../BookStackAdapter.js";
