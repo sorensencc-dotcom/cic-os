@@ -1,0 +1,38 @@
+deploy-review-report.json
+  s_5dfba06a86fb03::t_2604c5443a78ca 1,3-4,8-11
+  s_46387db08b7581::t_ce7d893a9fe559 2,5-7
+docs/specs/PHASE_2_TIER2_COMPONENTS.md
+  s_bc1139ff4893e4::t_63479baf623485 1-1288
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "7fa47522dce0adb15fc5e5b521cd73f3e4b54430",
+  "prompts": {},
+  "sessions": {
+    "s_46387db08b7581": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2595e5c1-e91c-4649-bb40-64c2c2b1249e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_5dfba06a86fb03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc79684b-24ed-4f26-b290-751d907e8f33",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_bc1139ff4893e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c2dc9ccf-4ddb-493a-aa67-ef9434a71d00",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
