@@ -7,7 +7,8 @@
   "scripts": {
     "start": "tsx cic-runtime/example-entrypoint.ts",
     "test": "jest",
-    "dev": "tsx watch cic-runtime/example-entrypoint.ts"
+    "dev": "tsx watch cic-runtime/example-entrypoint.ts",
+    "cic-ui": "node cic-ui/index.js"
   },
   "dependencies": {
     "dockerode": "^4.0.0",
