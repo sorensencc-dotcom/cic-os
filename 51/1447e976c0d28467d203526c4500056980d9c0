@@ -1,0 +1,30 @@
+design-system/tokens/density/index.ts
+  s_5dfba06a86fb03::t_2f577ed4c1e7e7 1-5
+design-system/tokens/density/density-tokens.ts
+  s_5dfba06a86fb03::t_a970383c743f46 1-81
+design-system/tokens/DENSITY_IMPLEMENTATION.md
+  s_5dfba06a86fb03::t_d4006445c848a2 1-298
+design-system/tokens/density/density.css
+  s_5dfba06a86fb03::t_f328b179dcf1ad 1-109
+design-system/tokens/density/density-validator.ts
+  s_5dfba06a86fb03::t_24417c77e8b826 138,140,144,148-149,151-152,155,157-161,164,168,170,172-173
+  s_5dfba06a86fb03::t_43800cd0830b17 1-137,139,141-143,145-147,150,153-154,156,162-163,165-167,169,171,174
+design-system/tokens/index.ts
+  s_5dfba06a86fb03::t_06ff90f2c2380f 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "511447e976c0d28467d203526c4500056980d9c0",
+  "prompts": {},
+  "sessions": {
+    "s_5dfba06a86fb03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc79684b-24ed-4f26-b290-751d907e8f33",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
