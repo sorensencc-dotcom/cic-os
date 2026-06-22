@@ -21,7 +21,8 @@ import { Client } from 'pg';
 import crypto from 'crypto';
 import fs from 'fs/promises';
 
-const testDir = process.cwd();
+// Resolve test directory: tests run from repo root, cic-runtime/ is relative to root
+const testDir = path.resolve(process.cwd(), 'cic-runtime');
 
 // ---------------------------------------------------------------------------
 // Connection config — environment variables override defaults for Docker runs
@@ -165,7 +166,7 @@ beforeAll(async () => {
   await pgClient.query(SCHEMA_MIGRATION_SQL);
 
   // 4. Resolve manifest
-  const agentPath = path.resolve(__dirname, '../cic-agent');
+  const agentPath = path.resolve(testDir, '../cic-agent');
   const manifestPath = path.join(agentPath, 'pr-reviewer', 'agent.yaml');
 
   if (!(await checkManifestExists(manifestPath))) {

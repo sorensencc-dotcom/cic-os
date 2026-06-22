@@ -4,8 +4,8 @@
   "displayName": "Docker Image Builder",
   "description": "Operator-grade Docker image builder with drift detection, parallel builds, and health verification",
   "command": "/image-builder",
-  "entrypoint": "scripts/image-builder.sh",
-  "language": "bash",
+  "entrypoint": "scripts/image-builder.js",
+  "language": "node",
   "category": "deployment",
   "arguments": [
     {

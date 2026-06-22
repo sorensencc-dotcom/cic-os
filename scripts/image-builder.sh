@@ -9,11 +9,22 @@ set -euo pipefail
 # CONFIGURATION
 # ============================================================================
 
-ENV="${1:-local}"
-PARALLEL_JOBS="${PARALLEL_JOBS:-6}"
+ENV="local"
+PARALLEL_JOBS=6
 SKIP_DRIFT=0
 FORCE_REBUILD=0
 REGISTRY="local"
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --env) ENV="$2"; shift 2 ;;
+    --parallel) PARALLEL_JOBS="$2"; shift 2 ;;
+    --skip-drift) SKIP_DRIFT=1; shift ;;
+    --force-rebuild) FORCE_REBUILD=1; shift ;;
+    *) echo "Unknown option: $1"; exit 1 ;;
+  esac
+done
 
 MANIFEST_FILE="docker/image-manifest.json"
 METRICS_FILE="build-metrics.jsonl"

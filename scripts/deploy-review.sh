@@ -101,16 +101,13 @@ phase_image_builder() {
   fi
 
   # Check if image-builder script exists
-  if [ ! -f "scripts/image-builder.sh" ]; then
-    log_warn "image-builder.sh not found, skipping build phase"
+  if [ ! -f "scripts/image-builder.js" ]; then
+    log_warn "image-builder.js not found, skipping build phase"
     return 0
   fi
 
-  # Make script executable
-  chmod +x scripts/image-builder.sh
-
   # Run image builder with drift detection
-  if bash scripts/image-builder.sh --env "$ENV" --parallel 6; then
+  if node scripts/image-builder.js --env "$ENV" --parallel 6; then
     log_pass "Image build phase complete"
     return 0
   else
