@@ -292,23 +292,20 @@ QUEUED | Phase 26 | Priority: 4
 
 **Location:** `~/.claude/skills/skill-deployer.md`
 
-Complete skill lifecycle management: discover → validate → install → register → activate. Handles all future skill deployments.
+Complete skill lifecycle management: 8 phases from discovery to verification. Handles deployments, validation, cleanup, and health checks.
 
-### skill-deployer Invocation
+### skill-deployer Phases
 
-```bash
-/skill-deployer [command] [args]
-```
-
-### skill-deployer Commands
-
-| Command | Arguments | Description |
-|---------|-----------|-------------|
-| `deploy` | `<skill-name>` | Full lifecycle: discover, validate, install, register, activate |
-| `validate` | `<path>` | Check skill format, frontmatter, content structure |
-| `register` | `<path>` | Add skill to system manifest + metadata |
-| `activate` | `<name>` | Verify triggers load + callable |
-| `status` | — | Show all registered skills + status |
+| Phase | Goal |
+| --- | --- |
+| 1. Discover | Find all candidate skills (local, global, named) |
+| 2. Validate | Check frontmatter, format, content structure |
+| 3. Install | Write to ~/.claude/skills/ with auto-backup |
+| 4. Register | Add to Skill tool system (frontmatter = contract) |
+| 5. Activate | Test trigger phrases + confirm callable |
+| 6. Validate & Fix | Remove duplicates, flag malformed, cleanup |
+| 7. Report | Detailed deployment + status summary |
+| 8. Verify Health | Final audit: count, conflicts, triggers test |
 
 ### Features
 
@@ -316,20 +313,37 @@ Complete skill lifecycle management: discover → validate → install → regis
 - ✅ Format validation (frontmatter, kebab-case, markdown)
 - ✅ Auto-backup (keeps last 3 versions)
 - ✅ SHA-256 checksum validation
-- ✅ System manifest registration
+- ✅ System manifest registration (auto-discovered by Skill tool)
+- ✅ Duplicate detection + removal (-SKILL.md, -REVIEW.md cleanup)
+- ✅ Health audit (malformed detection, conflict checking)
 - ✅ Platform-specific paths (Desktop/Web/CLI/IDE)
 - ✅ Permission checks + error recovery
 
+### Invocation
+
+Via trigger phrase:
+
+```text
+"deploy skill"
+"validate skills"
+"register skill"
+"skill health check"
+```
+
+Or use skill directly in conversation requesting skill deployment, validation, or cleanup.
+
 ### Example
 
-```bash
-/skill-deployer deploy integration-test-reporter
-# Discovers skill
-# Validates format + content
-# Installs to ~/.claude/skills/ (with backup)
-# Registers in ~/.claude/skill-manifest.json
-# Activates + verifies triggers
-# Reports: deployment status + next steps
+```text
+User: "Deploy and validate all operational skills"
+→ Phase 1: Discover — 4 target + 18 total found
+→ Phase 2: Validate — 4 target ✅, 12 flagged for frontmatter
+→ Phase 3: Install — Already present; skip
+→ Phase 4: Register — 4 registered in Skill tool
+→ Phase 5: Activate — Trigger phrases confirmed
+→ Phase 6: Validate & Fix — 6 duplicates removed, 18 valid remain
+→ Phase 7: Report — ✅ 4/4 deployed + active
+→ Phase 8: Verify — ✅ HEALTHY (all triggers working)
 ```
 
 ---
