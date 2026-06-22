@@ -1,0 +1,29 @@
+cic-runtime/agents/pr-reviewer/agent.yaml
+  s_1ab84a74384312::t_d3752f98ca471d 1-26
+.github/workflows/phase0.7-deploy.yml
+  s_91bb0beee11b1e::t_05d3098310a341 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "d9f3bcd538df5f45678fb7f16262d66aca155326",
+  "prompts": {},
+  "sessions": {
+    "s_1ab84a74384312": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "25143c04-f754-47c8-b94f-f3f9528c7d65",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_91bb0beee11b1e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0614379-e130-49de-9c7f-737fa4242e58",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
