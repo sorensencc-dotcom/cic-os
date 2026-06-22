@@ -1,0 +1,37 @@
+src/charts/useCicColorScale.ts
+  s_bc1139ff4893e4::t_49efb640cb4d24 1-10
+src/charts/LineChart.tsx
+  s_bc1139ff4893e4::t_f6ed5ed2944e7f 1-49
+playwright.config.ts
+  s_bc1139ff4893e4::t_3336cd39fff619 1-34
+src/charts/index.ts
+  s_bc1139ff4893e4::t_7329f469b3e8c1 1-4
+tests/snapshots/CicAlert.spec.ts
+  s_bc1139ff4893e4::t_667e4681e63b5d 1-28
+src/charts/useDimensions.ts
+  s_bc1139ff4893e4::t_e7d3100bbb1c5c 1-21
+tests/snapshots/CicPanel.spec.ts
+  s_bc1139ff4893e4::t_ae9256f6484196 1-23
+src/charts/BarChart.tsx
+  s_bc1139ff4893e4::t_de6aac8a139ac9 1-51
+tests/snapshots/CicInput.spec.ts
+  s_bc1139ff4893e4::t_bb14bb07b20330 1-24
+tests/snapshots/CicButton.spec.ts
+  s_bc1139ff4893e4::t_11d68567de93cd 1-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "9f153b8b61a734d9641ff022e5137a57e16a3d00",
+  "prompts": {},
+  "sessions": {
+    "s_bc1139ff4893e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c2dc9ccf-4ddb-493a-aa67-ef9434a71d00",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
