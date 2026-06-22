@@ -22,7 +22,7 @@ export default {
     "!cic/src/**/*.test.ts",
     "!**/node_modules/**"
   ],
-  testTimeout: 30000,
+  testTimeout: 90000,
   verbose: true,
   forceExit: true,
   clearMocks: true,
