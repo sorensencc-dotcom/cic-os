@@ -1,0 +1,19 @@
+scripts/drift-detector.js
+  s_fb9a74f035a490::t_94f54bc0e21944 1-250
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "ef08c53df84ee550545d4b8e8a823fac92f9246e",
+  "prompts": {},
+  "sessions": {
+    "s_fb9a74f035a490": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "693077e6-abc5-4802-a4f7-e58c7e1e913b",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
