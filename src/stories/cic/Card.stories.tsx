@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Panel } from '../../components/cic/Panel';
+import { Card } from '../../components/cic/Card';
 import DensityWrapper from './DensityWrapper';
 import DarkModeWrapper from './DarkModeWrapper';
 
 const meta = {
-  title: 'CIC/Panel',
-  component: Panel,
+  title: 'CIC/Card',
+  component: Card,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],
-} satisfies Meta<typeof Panel>;
+} satisfies Meta<typeof Card>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -16,23 +16,15 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <DarkModeWrapper>
-      <Panel>Panel content</Panel>
+      <Card>Default card</Card>
     </DarkModeWrapper>
   ),
 };
 
-export const NoPadding: Story = {
+export const Subtle: Story = {
   render: () => (
     <DarkModeWrapper>
-      <Panel padding="none">No padding</Panel>
-    </DarkModeWrapper>
-  ),
-};
-
-export const NoElevation: Story = {
-  render: () => (
-    <DarkModeWrapper>
-      <Panel elevation="none">Flat panel</Panel>
+      <Card variant="subtle">Subtle card</Card>
     </DarkModeWrapper>
   ),
 };
@@ -40,7 +32,7 @@ export const NoElevation: Story = {
 export const Density: Story = {
   render: () => (
     <DensityWrapper>
-      <Panel>Density test</Panel>
+      <Card>Density test</Card>
     </DensityWrapper>
   ),
 };

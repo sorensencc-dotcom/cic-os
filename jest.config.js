@@ -1,10 +1,12 @@
 export default {
   preset: "ts-jest",
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   roots: ["<rootDir>/cic", "<rootDir>/src", "<rootDir>/cic-runtime", "<rootDir>/cic-ingestion"],
-  testMatch: ["**/*.test.ts", "**/runtime/tests/**/*.test.js", "cic-runtime/**/*.test.ts"],
+  testMatch: ["**/*.test.ts", "**/*.test.tsx", "**/runtime/tests/**/*.test.js", "cic-runtime/**/*.test.ts"],
   moduleNameMapper: {
-    "^(\\.{1,2}/.*)\\.js$": "$1"
+    "^(\\.{1,2}/.*)\\.js$": "$1",
+    "\\.css$": "<rootDir>/jest-mock-css.js"
   },
   transform: {
     "^.+\\.tsx?$": ["ts-jest", {
