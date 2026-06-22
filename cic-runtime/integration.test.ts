@@ -17,13 +17,11 @@ import { test, expect, beforeAll, afterAll, describe } from '@jest/globals';
 import { defineAgent } from './defineAgent';
 import pino from 'pino';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { Client } from 'pg';
 import crypto from 'crypto';
 import fs from 'fs/promises';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const testDir = process.cwd();
 
 // ---------------------------------------------------------------------------
 // Connection config — environment variables override defaults for Docker runs

@@ -1,0 +1,261 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-06-22T00:00:00Z",
+  "registry": "local",
+  "services": {
+    "aperture": {
+      "dockerfile": "cic-ingestion/src/aperture/Dockerfile",
+      "context": "cic-ingestion",
+      "base_image": "node:20-alpine",
+      "port": 3117,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["vault", "torquequery", "knowledge-graph"],
+      "health_check": "curl -f http://localhost:3117/health",
+      "priority": "critical"
+    },
+    "cic-runtime": {
+      "dockerfile": "cic-runtime/Dockerfile",
+      "context": "cic-runtime",
+      "base_image": "node:20-alpine",
+      "port": 3118,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["postgres", "vault", "torquequery"],
+      "health_check": "curl -f http://localhost:3118/health",
+      "priority": "critical"
+    },
+    "cic-governance": {
+      "dockerfile": "cic-governance/Dockerfile",
+      "context": "cic-governance",
+      "base_image": "node:20-alpine",
+      "port": 3113,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["postgres", "redis"],
+      "health_check": "curl -f http://localhost:3113/health",
+      "priority": "critical"
+    },
+    "cic-ingestion": {
+      "dockerfile": "cic-ingestion/Dockerfile",
+      "context": "cic-ingestion",
+      "base_image": "node:20-alpine",
+      "port": 3116,
+      "build_time_sla_ms": 60000,
+      "size_limit_mb": 768,
+      "dependencies": ["postgres", "qdrant"],
+      "health_check": "curl -f http://localhost:3116/health",
+      "priority": "high"
+    },
+    "unified-api": {
+      "dockerfile": "cic-ingestion/unified-api/Dockerfile",
+      "context": "cic-ingestion",
+      "base_image": "node:20-alpine",
+      "port": 3100,
+      "build_time_sla_ms": 30000,
+      "size_limit_mb": 256,
+      "dependencies": ["aperture", "cic-runtime", "cic-governance"],
+      "health_check": "curl -f http://localhost:3100/health",
+      "priority": "critical"
+    },
+    "planning-console": {
+      "dockerfile": "planning-system/console/Dockerfile",
+      "context": "planning-system/console",
+      "base_image": "node:20-alpine",
+      "port": 3000,
+      "build_time_sla_ms": 30000,
+      "size_limit_mb": 256,
+      "dependencies": [],
+      "health_check": "curl -f http://localhost:3000/health",
+      "priority": "high"
+    },
+    "planning-engine": {
+      "dockerfile": "planning-system/engine/Dockerfile",
+      "context": "planning-system/engine",
+      "base_image": "node:20-alpine",
+      "port": 3114,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["redis", "postgres"],
+      "health_check": "curl -f http://localhost:3114/health",
+      "priority": "high"
+    },
+    "harvester-v2": {
+      "dockerfile": "cic-ingestion/harvester-v2/Dockerfile",
+      "context": "cic-ingestion",
+      "base_image": "node:20-alpine",
+      "port": 3115,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["postgres"],
+      "health_check": "curl -f http://localhost:3115/health",
+      "priority": "high"
+    },
+    "repomix-ingestion": {
+      "dockerfile": "repomix-ingestion/Dockerfile",
+      "context": "repomix-ingestion",
+      "base_image": "node:20-alpine",
+      "port": 3112,
+      "build_time_sla_ms": 60000,
+      "size_limit_mb": 1024,
+      "dependencies": ["postgres", "qdrant"],
+      "health_check": "curl -f http://localhost:3112/health",
+      "priority": "medium"
+    },
+    "torquequery": {
+      "dockerfile": "torquequery/Dockerfile",
+      "context": "torquequery",
+      "base_image": "python:3.11-slim",
+      "port": 3110,
+      "build_time_sla_ms": 60000,
+      "size_limit_mb": 768,
+      "dependencies": ["qdrant", "redis"],
+      "health_check": "curl -f http://localhost:3110/health",
+      "priority": "high"
+    },
+    "vault": {
+      "dockerfile": "cic-ingestion/vault/Dockerfile",
+      "context": "cic-ingestion",
+      "base_image": "node:20-alpine",
+      "port": 3111,
+      "build_time_sla_ms": 30000,
+      "size_limit_mb": 256,
+      "dependencies": ["redis"],
+      "health_check": "curl -f http://localhost:3111/health",
+      "priority": "critical"
+    },
+    "knowledge-graph": {
+      "dockerfile": "knowledge-graph/Dockerfile",
+      "context": "knowledge-graph",
+      "base_image": "node:20-alpine",
+      "port": 3107,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["postgres", "qdrant"],
+      "health_check": "curl -f http://localhost:3107/health",
+      "priority": "high"
+    },
+    "lineage-registry": {
+      "dockerfile": "build-system/docker/Dockerfile.lineage-registry",
+      "context": ".",
+      "base_image": "node:20-alpine",
+      "port": 3102,
+      "build_time_sla_ms": 30000,
+      "size_limit_mb": 256,
+      "dependencies": ["postgres"],
+      "health_check": "curl -f http://localhost:3102/health",
+      "priority": "medium"
+    },
+    "routing-validator": {
+      "dockerfile": "build-system/docker/Dockerfile.routing-validator",
+      "context": ".",
+      "base_image": "node:20-alpine",
+      "port": 3103,
+      "build_time_sla_ms": 30000,
+      "size_limit_mb": 256,
+      "dependencies": [],
+      "health_check": "curl -f http://localhost:3103/health",
+      "priority": "medium"
+    },
+    "build-executor": {
+      "dockerfile": "build-system/docker/Dockerfile.build-executor",
+      "context": ".",
+      "base_image": "node:20-alpine",
+      "port": 3101,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["lineage-registry", "routing-validator", "redis"],
+      "health_check": "curl -f http://localhost:3101/health",
+      "priority": "high"
+    },
+    "build-orchestrator": {
+      "dockerfile": "build-system/docker/Dockerfile.build-orchestrator",
+      "context": ".",
+      "base_image": "node:20-alpine",
+      "port": 3104,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["build-executor", "lineage-registry"],
+      "health_check": "curl -f http://localhost:3104/health",
+      "priority": "high"
+    },
+    "performance-store": {
+      "dockerfile": "monitoring/performance-store/Dockerfile",
+      "context": "monitoring",
+      "base_image": "node:20-alpine",
+      "port": 3108,
+      "build_time_sla_ms": 30000,
+      "size_limit_mb": 256,
+      "dependencies": ["postgres"],
+      "health_check": "curl -f http://localhost:3108/health",
+      "priority": "medium"
+    },
+    "predictive-routing-engine": {
+      "dockerfile": "routing-engine/Dockerfile",
+      "context": "routing-engine",
+      "base_image": "python:3.11-slim",
+      "port": 3109,
+      "build_time_sla_ms": 60000,
+      "size_limit_mb": 512,
+      "dependencies": ["performance-store", "redis"],
+      "health_check": "curl -f http://localhost:3109/health",
+      "priority": "medium"
+    },
+    "postgres": {
+      "type": "external",
+      "image": "postgres:16-alpine",
+      "port": 5432,
+      "priority": "critical",
+      "note": "Pre-built image, not built locally"
+    },
+    "qdrant": {
+      "type": "external",
+      "image": "qdrant/qdrant:latest",
+      "port": 6333,
+      "priority": "high",
+      "note": "Pre-built image, not built locally"
+    },
+    "redis": {
+      "type": "external",
+      "image": "redis:7-alpine",
+      "port": 6380,
+      "priority": "high",
+      "note": "Pre-built image, not built locally"
+    }
+  },
+  "build_order": [
+    "lineage-registry",
+    "routing-validator",
+    "build-executor",
+    "build-orchestrator",
+    "vault",
+    "planning-console",
+    "performance-store",
+    "knowledge-graph",
+    "repomix-ingestion",
+    "torquequery",
+    "cic-governance",
+    "harvester-v2",
+    "planning-engine",
+    "cic-ingestion",
+    "aperture",
+    "cic-runtime",
+    "unified-api",
+    "predictive-routing-engine"
+  ],
+  "cleanup": {
+    "dangling_images_prune_interval_days": 7,
+    "keep_last_n_builds": 5,
+    "auto_cleanup_enabled": true
+  },
+  "observability": {
+    "metrics_file": "build-metrics.jsonl",
+    "audit_log": "build-audit.log",
+    "prometheus_metrics": [
+      "docker_build_duration_seconds",
+      "docker_image_size_bytes",
+      "docker_layer_cache_hits",
+      "docker_build_failures_total"
+    ]
+  }
+}

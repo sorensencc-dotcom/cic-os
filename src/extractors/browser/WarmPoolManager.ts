@@ -28,7 +28,7 @@ export interface WarmPoolMetrics {
 
 export class WarmPoolManager {
   private pool: WarmPoolSession[] = []
-  private waitingList: Array<(value?: unknown) => void> = []
+  private waitingList: Array<(value?: void) => void> = []
   private targetSize: number
   private maxSessionAgeMs = 5 * 60 * 1000 // 5 minutes
   private maxNavigationsPerSession = 50
@@ -138,12 +138,12 @@ export class WarmPoolManager {
       }
 
       // No healthy session, wait and try again
-      await new Promise((r) => {
+      await new Promise<void>((r) => {
         this.waitingList.push(r)
         setTimeout(() => {
           const idx = this.waitingList.indexOf(r)
           if (idx >= 0) this.waitingList.splice(idx, 1)
-          r()
+          r(undefined)
         }, 100)
       })
     }
@@ -364,12 +364,12 @@ export class WarmPoolManager {
     logger.info("warm_pool.draining", { poolSize: this.pool.length })
 
     if (this.healthCheckInterval) {
-      clearInterval(this.healthCheckInterval)
+      clearInterval(this.healthCheckInterval as any)
       this.healthCheckInterval = null
     }
 
     const closingPromises = this.pool.map((session) =>
-      session.browser.close().catch((err) => {
+      session.browser.close().catch((err: any) => {
         logger.error("warm_pool.close_error", {
           sessionId: session.id,
           error: String(err)

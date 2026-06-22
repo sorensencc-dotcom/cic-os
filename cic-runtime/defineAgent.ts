@@ -263,7 +263,7 @@ export class AgentRuntime {
       [new Date(Date.now() + timeoutMs), sessionId],
     );
 
-    return result.rowCount > 0;
+    return (result.rowCount ?? 0) > 0;
   }
 
   // Release lock for session

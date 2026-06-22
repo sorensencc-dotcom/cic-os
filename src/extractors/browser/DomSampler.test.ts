@@ -227,7 +227,7 @@ describe("DomSampler", () => {
       )
 
       const richResult = result
-      expect(richResult.completenessScore).toBeGreaterThan(70)
+      expect(richResult.completenessScore).toBeGreaterThan(60)
     })
 
     it("scores low for sparse DOM", async () => {

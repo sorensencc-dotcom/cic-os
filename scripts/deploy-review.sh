@@ -89,6 +89,37 @@ phase_preflight() {
 }
 
 # ============================================================================
+# PHASE 1.5: IMAGE BUILDER (Auto-Build Missing/Stale Images)
+# ============================================================================
+
+phase_image_builder() {
+  log_phase "Image Builder"
+
+  if [ "$DRY_RUN" -eq 1 ]; then
+    log_pass "Dry-run: Skipping image builds"
+    return 0
+  fi
+
+  # Check if image-builder script exists
+  if [ ! -f "scripts/image-builder.sh" ]; then
+    log_warn "image-builder.sh not found, skipping build phase"
+    return 0
+  fi
+
+  # Make script executable
+  chmod +x scripts/image-builder.sh
+
+  # Run image builder with drift detection
+  if bash scripts/image-builder.sh --env "$ENV" --parallel 6; then
+    log_pass "Image build phase complete"
+    return 0
+  else
+    log_fail "Image build phase failed"
+    return 1
+  fi
+}
+
+# ============================================================================
 # PHASE 2: STARTUP (Parallel)
 # ============================================================================
 
@@ -370,6 +401,7 @@ main() {
 
   # Run phases
   phase_preflight || exit 1
+  phase_image_builder || exit 1
   phase_startup || exit 1
   phase_tests || exit 1
   phase_e2e || true
