@@ -1,0 +1,37 @@
+src/components/cic/Panel.tsx
+  s_e6e2fe6bcf0d85::t_001e64779dcda0 27
+  s_e6e2fe6bcf0d85::t_58e775bd5d5505 4,10
+scripts/validate-storybook-wrappers.js
+  s_e6e2fe6bcf0d85::t_6ab898664afe22 1-3,5-15
+  s_e6e2fe6bcf0d85::t_d3bdcb5d815cff 4
+  s_e6e2fe6bcf0d85::t_08a9a3ae8d315b 16
+src/stories/cic/Panel.stories.tsx
+  s_e6e2fe6bcf0d85::t_2094551b9dc1cb 4
+src/stories/utils/DarkModeWrapper.tsx
+  s_e6e2fe6bcf0d85::t_88c68cdfbc65e9 1-14
+scripts/validate-tokens.js
+  s_e6e2fe6bcf0d85::t_1b3c4df2872431 35
+  s_e6e2fe6bcf0d85::t_b742913d97f6c6 1-34
+src/tests/cic/Panel.test.tsx
+  s_e6e2fe6bcf0d85::t_ef1cd443581943 32
+  s_e6e2fe6bcf0d85::t_d079bedbd8fbe6 2
+  s_e6e2fe6bcf0d85::t_2d959cbc894ded 13-15,17,21-23,25
+  s_e6e2fe6bcf0d85::t_bc8466c397025b 16,18,24,26
+  s_e6e2fe6bcf0d85::t_c541f4eb953230 30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "68e3e2f6ae494b0381892d1ce68613dfaee0801e",
+  "prompts": {},
+  "sessions": {
+    "s_e6e2fe6bcf0d85": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e2b7034-396b-42ca-9045-a52cd9f7315a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
