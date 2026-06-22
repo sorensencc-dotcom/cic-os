@@ -1,0 +1,31 @@
+src/tests/cic/Checkbox.test.tsx
+  s_bc1139ff4893e4::t_db7a471ee0011d 1-51
+src/components/cic/Input.tsx
+  s_bc1139ff4893e4::t_17c140299ca80a 1-35
+src/components/cic/button.css
+  s_bc1139ff4893e4::t_3be55180cc1c13 2-84
+src/components/cic/Checkbox.tsx
+  s_bc1139ff4893e4::t_b88be39a66dde0 1-36
+src/components/cic/checkbox.css
+  s_bc1139ff4893e4::t_8f055467dbd62f 1-72
+src/tests/cic/Input.test.tsx
+  s_bc1139ff4893e4::t_121b847c3a83ab 1-46
+src/components/cic/input.css
+  s_bc1139ff4893e4::t_145b4a081dd6d5 1-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "77bfca01375a9006da346a175d09c52ded2fb951",
+  "prompts": {},
+  "sessions": {
+    "s_bc1139ff4893e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c2dc9ccf-4ddb-493a-aa67-ef9434a71d00",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
