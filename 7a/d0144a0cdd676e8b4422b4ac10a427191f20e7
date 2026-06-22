@@ -1,0 +1,31 @@
+tests/density.test.ts
+  s_bc1139ff4893e4::t_95485d2f445e3d 1-91
+src/stores/densityStore.ts
+  s_bc1139ff4893e4::t_a588bde143ddab 1-17
+src/stores/index.ts
+  s_bc1139ff4893e4::t_12d70e7d144fb7 1-2
+src/tokens/density.css
+  s_bc1139ff4893e4::t_80c4e8f4549371 1-93
+tests/dark-mode.test.ts
+  s_bc1139ff4893e4::t_43e489a9a71321 1-87
+src/stores/darkModeStore.ts
+  s_bc1139ff4893e4::t_08397bf2aa8026 1-25
+src/tokens/dark-mode.css
+  s_bc1139ff4893e4::t_b6ff1e619206df 1-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "7ad0144a0cdd676e8b4422b4ac10a427191f20e7",
+  "prompts": {},
+  "sessions": {
+    "s_bc1139ff4893e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c2dc9ccf-4ddb-493a-aa67-ef9434a71d00",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
