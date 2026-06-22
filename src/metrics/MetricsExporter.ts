@@ -28,6 +28,9 @@ export class MetricsExporter {
   private orchestratorChainSuccessTotal: Counter;
   private guardDurationMs: Histogram;
 
+  // Test tracking
+  private records: Array<{ name: string; value: number; labels: Record<string, string> }> = [];
+
   constructor(registry = defaultRegister) {
     this.registry = registry;
 
@@ -89,6 +92,48 @@ export class MetricsExporter {
       buckets: [1, 5, 10, 50, 100],
       registers: [this.registry],
     });
+  }
+
+  // Test helper methods
+  reset(): void {
+    this.records = [];
+  }
+
+  get(metric: string, labels: Record<string, string>): number {
+    const matches = this.records.filter(r => r.name === metric && 
+      Object.keys(labels).every(k => r.labels[k] === labels[k])
+    );
+    return matches.reduce((sum, r) => sum + r.value, 0);
+  }
+
+  getAll(metric: string): Array<{ name: string; value: number; labels: Record<string, string> }> {
+    return this.records.filter(r => r.name === metric);
+  }
+
+  increment(metric: string, labels: { adapter: string; operation?: string; code?: string; status?: 'success' | 'error' }): void {
+    this.records.push({
+      name: metric,
+      value: 1,
+      labels: labels as any
+    });
+
+    if (metric === 'cic_adapter_calls_total') {
+      this.recordAdapterCall(labels.adapter, 0, labels.status || 'success');
+    } else if (metric === 'cic_adapter_errors_total') {
+      this.recordAdapterError(labels.adapter, labels.code || 'ERROR');
+    }
+  }
+
+  observe(metric: string, value: number, labels: { adapter: string; operation?: string; status?: 'success' | 'error' }): void {
+    this.records.push({
+      name: metric,
+      value,
+      labels: labels as any
+    });
+
+    if (metric === 'cic_adapter_duration_ms') {
+      this.recordAdapterCall(labels.adapter, value, labels.status || 'success');
+    }
   }
 
   // Adapter call timing

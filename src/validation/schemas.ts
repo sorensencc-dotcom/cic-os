@@ -66,3 +66,47 @@ export const AdapterResponseSchema = z.object({
 export type AdapterResponse<T = any> = z.infer<typeof AdapterResponseSchema> & {
   data?: T;
 };
+
+// BookStack adapter schemas
+export const BookStackPageMetadataSchema = z.object({
+  phase: z.number().int().optional(),
+  commit: z.string().optional(),
+  generated_by: z.string().optional(),
+  timestamp: z.string().optional(),
+  artifact_type: z.string().optional(),
+  component: z.string().optional(),
+});
+
+export type BookStackPageMetadata = z.infer<typeof BookStackPageMetadataSchema>;
+
+export const BookStackPageSchema = z.object({
+  page_id: z.string(),
+  title: z.string(),
+  content: z.string(),
+  metadata: BookStackPageMetadataSchema.optional(),
+});
+
+export type BookStackPage = z.infer<typeof BookStackPageSchema>;
+
+export const BookStackUpsertResponseSchema = z.object({
+  id: z.string(),
+  status: z.enum(['created', 'updated']),
+  version: z.number().int().optional(),
+});
+
+export type BookStackUpsertResponse = z.infer<typeof BookStackUpsertResponseSchema>;
+
+export const BookStackSearchResultsSchema = z.object({
+  query: z.string(),
+  results: z.array(BookStackPageSchema),
+});
+
+export type BookStackSearchResults = z.infer<typeof BookStackSearchResultsSchema>;
+
+export const BookStackHealthStatusSchema = z.object({
+  status: z.enum(['ok', 'degraded', 'down']),
+  details: z.record(z.any()).optional(),
+});
+
+export type BookStackHealthStatus = z.infer<typeof BookStackHealthStatusSchema>;
+

@@ -90,3 +90,21 @@ export function detectCrashInLogs(logs: string[]): boolean {
     log => log.includes('Target closed') || log.includes('Protocol error')
   );
 }
+
+export function validatePageContent(content: string): void {
+  if (typeof content !== 'string' || content.trim().length === 0) {
+    throw new Error('Page content must not be empty');
+  }
+
+  const bytes = Buffer.byteLength(content, 'utf8');
+  if (bytes > 128 * 1024) {
+    throw new Error(`Page content exceeds maximum size of 128 KB (got ${bytes} bytes)`);
+  }
+
+  const utf8Buffer = Buffer.from(content, 'utf8');
+  const decoded = utf8Buffer.toString('utf8');
+  if (decoded !== content) {
+    throw new Error('Page content is not UTF-8 safe');
+  }
+}
+
