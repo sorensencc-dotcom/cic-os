@@ -1,0 +1,51 @@
+design-system/dashboard/sections/TypographySection.tsx
+  s_5dfba06a86fb03::t_c7fa2e9fe2a1cb 1-134
+design-system/dashboard/sections/InteractionsSection.tsx
+  s_5dfba06a86fb03::t_5b3cebe7635835 1-252
+docs/specs/SNAPSHOT_TESTING_SUITE.v1.0.0.md
+  s_5dfba06a86fb03::t_e6fa1035d2d183 1-127
+design-system/dashboard/sections/SpacingSection.tsx
+  s_5dfba06a86fb03::t_ca8d4c79976b2a 1-141
+docs/specs/DARK_MODE_V2_0_MOTION_RULES.v1.0.0.md
+  s_5dfba06a86fb03::t_e4762b80f54f8e 1-57
+docs/specs/VISX_CHARTING_FRAMEWORK.v1.0.0.md
+  s_5dfba06a86fb03::t_eaa6b0828452d1 1-89
+design-system/dashboard/sections/ColorSection.tsx
+  s_5dfba06a86fb03::t_f586b77ad4caca 1-152
+docs/specs/ZUSTAND_STORE_ARCHITECTURE.v1.0.0.md
+  s_5dfba06a86fb03::t_33ad7b30d17ca3 1-99
+design-system/dashboard/components/TokenPreview.tsx
+  s_5dfba06a86fb03::t_fc23250e03240c 1-94
+design-system/dashboard/sections/ComponentsSection.tsx
+  s_5dfba06a86fb03::t_34d53352ebcd1a 1-194
+docs/specs/CIC_DESIGN_SYSTEM_DASHBOARD.v1.0.0.md
+  s_5dfba06a86fb03::t_542b8202a060b4 1-78
+docs/specs/COMPONENT_LIBRARY_ROADMAP_Q3_Q4.v1.0.0.md
+  s_5dfba06a86fb03::t_1fed33fbc20100 1-94
+design-system/dashboard/index.tsx
+  s_5dfba06a86fb03::t_5053543ecefa92 1-97
+design-system/dashboard/README.md
+  s_5dfba06a86fb03::t_c8019bdf3e9f97 1-155
+docs/specs/DENSITY_SYSTEM.v1.0.0.md
+  s_5dfba06a86fb03::t_f4202830ba5f5e 1-64
+design-system/dashboard/dashboard.css
+  s_5dfba06a86fb03::t_83a067feb1c317 1-185
+docs/specs/TANSTACK_QUERY_INTEGRATION.v1.0.0.md
+  s_5dfba06a86fb03::t_53f618dde0da11 1-70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "6aa1eb8fd3e6fef73baf99ad026ce3c1aef00267",
+  "prompts": {},
+  "sessions": {
+    "s_5dfba06a86fb03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc79684b-24ed-4f26-b290-751d907e8f33",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
