@@ -419,6 +419,66 @@ services:
       retries: 3
       start_period: 15s
 
+  # Phase 27.3: Aperture Execution Engine (Policy Registry + Sandbox Runtime)
+  aperture:
+    build:
+      context: .
+      dockerfile: cic-ingestion/Dockerfile.aperture
+    container_name: aperture
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - PORT=3117
+      - VAULT_URL=http://vault:3111
+      - TORQUEQUERY_URL=http://torquequery:3110
+      - KNOWLEDGE_GRAPH_URL=http://knowledge-graph:3107
+    ports:
+      - "3117:3117"
+    depends_on:
+      - vault
+      - torquequery
+      - knowledge-graph
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3117/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # Phase 27: CIC Agent Runtime (Agent Deployment + Execution Platform)
+  cic-runtime:
+    build:
+      context: .
+      dockerfile: cic-runtime/Dockerfile
+    container_name: cic-runtime
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - PORT=3118
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=cic_agents
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+    ports:
+      - "3118:3118"
+    depends_on:
+      - postgres
+      - vault
+      - torquequery
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3118/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
   # Phase 2.5: Autonomy API Server (Autonomy + Config System)
   cic-ingestion:
     build:
@@ -468,6 +528,8 @@ services:
       - PLANNING_ENGINE_URL=http://planning-engine:3114
       - HARVESTER_V2_URL=http://harvester-v2:3115
       - PLANNING_CONSOLE_URL=http://planning-console:3000
+      - APERTURE_URL=http://aperture:3117
+      - CIC_RUNTIME_URL=http://cic-runtime:3118
     ports:
       - "3100:3100"
     depends_on:
@@ -477,6 +539,8 @@ services:
       - cic-governance
       - planning-engine
       - harvester-v2
+      - aperture
+      - cic-runtime
     networks:
       - cic-network
     healthcheck:
@@ -506,7 +570,7 @@ services:
       timeout: 5s
       retries: 3
 
-  # PostgreSQL: Lineage & Artifact Storage
+  # PostgreSQL: Lineage & Artifact Storage (5433) + CIC Agents (5434)
   postgres:
     image: postgres:15-alpine
     container_name: postgres-cic
@@ -515,11 +579,14 @@ services:
       - POSTGRES_DB=cic_lineage
       - POSTGRES_USER=cic
       - POSTGRES_PASSWORD=cic_dev_pass
+      - POSTGRES_INITDB_ARGS=-c shared_buffers=256MB -c max_connections=200
     ports:
       - "5433:5432"
+      - "5434:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ./docker-init-db.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker-init-db.sql:/docker-entrypoint-initdb.d/001-init.sql
+      - ./cic-runtime/schema.sql:/docker-entrypoint-initdb.d/002-cic-agents.sql
     networks:
       - cic-network
     healthcheck:
