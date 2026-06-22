@@ -1,0 +1,41 @@
+scripts/deploy-review.ps1
+  s_46387db08b7581::t_088a07cf25c313 1-389
+scripts/deploy-review.sh
+  s_46387db08b7581::t_fd6080634154c2 1-382
+cic-runtime/server.ts
+  s_46387db08b7581::t_01891c0c6359fc 1-119
+cic-runtime/Dockerfile
+  s_46387db08b7581::t_c074d89ade6582 21
+  s_46387db08b7581::t_87f97669dada36 1-20,22-56
+services/cic-governance/src/__tests__/council-voting.integration.test.ts
+  s_46387db08b7581::t_edf1a3cb751cea 1-122,126-135,141-315
+  s_46387db08b7581::t_0278124b8ca4f1 123-125,136-140
+scripts/skills/DEPLOY_REVIEW_SKILL.md
+  s_46387db08b7581::t_72cd4ddb9059d0 1-289
+scripts/skills/deploy-review.skill.json
+  s_46387db08b7581::t_7673726b306aff 1-123
+cic-runtime/schema.sql
+  s_46387db08b7581::t_0601dde9e95dbc 1-57
+DEPLOY_PLAN_UNDEPLOYED_SYSTEMS.md
+  s_46387db08b7581::t_93c1475b3c9999 1-397
+DEPLOYMENT_FIXES_COMPLETED.md
+  s_46387db08b7581::t_426e4802baba49 1-311
+cic-runtime/integration.test.ts
+  s_46387db08b7581::t_0204ec3dfcb05d 10-13,16,23,28-141,143,145-149,153-157,160-163,166-169,173-178,181,187-200,204-207,209-212,215,222-223,227-239,243-246,258-261,300-361,363-366,369,398-401,420,426-429,432,446-449
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "288dda4a96380963c3defe0ab701aeeea6bd8ce8",
+  "prompts": {},
+  "sessions": {
+    "s_46387db08b7581": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2595e5c1-e91c-4649-bb40-64c2c2b1249e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
