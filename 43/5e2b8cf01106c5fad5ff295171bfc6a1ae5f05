@@ -1,0 +1,49 @@
+tests/snapshots/components/CicPanel.spec.ts
+  s_5dfba06a86fb03::t_d097e7ab1c77a7 1-45
+design-system/dashboard/charts/components/BarChart.tsx
+  s_bc1139ff4893e4::t_3f0cecded16dec 1-36
+tests/snapshots/SNAPSHOT_TESTING_SETUP.md
+  s_5dfba06a86fb03::t_ad010b96d6e3ff 1-151
+design-system/dashboard/charts/index.ts
+  s_5dfba06a86fb03::t_346e245c509581 1-3
+tests/snapshots/components/CicButton.spec.ts
+  s_5dfba06a86fb03::t_a47e19359b4f5e 1-50
+design-system/dashboard/charts/components/index.ts
+  s_bc1139ff4893e4::t_3f0cecded16dec 1-2
+design-system/dashboard/charts/components/LineChart.tsx
+  s_bc1139ff4893e4::t_3f0cecded16dec 1-38
+tests/snapshots/components/CicInput.spec.ts
+  s_5dfba06a86fb03::t_fe29e170a4ffd5 1-47
+design-system/dashboard/VISX_IMPLEMENTATION_SUMMARY.md
+  s_5dfba06a86fb03::t_0d45f683be87e5 1-102
+design-system/dashboard/charts/tokens/chart-colors.css
+  s_bc1139ff4893e4::t_3f0cecded16dec 1-30
+design-system/dashboard/charts/tokens/chart-scales.ts
+  s_bc1139ff4893e4::t_3f0cecded16dec 1-32
+tests/snapshots/components/CicAlert.spec.ts
+  s_5dfba06a86fb03::t_89e400933dd2c8 1-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "435e2b8cf01106c5fad5ff295171bfc6a1ae5f05",
+  "prompts": {},
+  "sessions": {
+    "s_5dfba06a86fb03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc79684b-24ed-4f26-b290-751d907e8f33",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_bc1139ff4893e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c2dc9ccf-4ddb-493a-aa67-ef9434a71d00",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
