@@ -1,0 +1,57 @@
+design-system/dashboard/DashboardWithProvider.tsx
+  s_5dfba06a86fb03::t_30bf2bf89923a9 1-20
+design-system/dashboard/sections/PipelinesPanel.tsx
+  s_5dfba06a86fb03::t_28103b6191c81a 1-219
+design-system/dashboard/hooks/useIngestion.ts
+  s_5dfba06a86fb03::t_3141e0293fedb8 1-64
+design-system/dashboard/hooks/usePipelines.ts
+  s_5dfba06a86fb03::t_960700b9c5e4cb 1-60
+design-system/dashboard/sections/MemoryPanel.tsx
+  s_5dfba06a86fb03::t_276b2d04cd94ac 1-172
+design-system/dashboard/hooks/useSettings.ts
+  s_5dfba06a86fb03::t_0e423c1be4076f 1-32
+design-system/dashboard/sections/IngestionPanel.tsx
+  s_5dfba06a86fb03::t_3302c0733e43f3 1-261
+design-system/dashboard/PEER_DEPENDENCIES.md
+  s_5dfba06a86fb03::t_54d364c1f3ba38 1-190
+design-system/dashboard/hooks/useDrift.ts
+  s_5dfba06a86fb03::t_83630cfab20ec5 1-70
+design-system/dashboard/hooks/useQueryClient.ts
+  s_5dfba06a86fb03::t_a08f7c9d842c52 1-16
+design-system/dashboard/hooks/useAgents.ts
+  s_5dfba06a86fb03::t_d16c73d81b0c1e 1-85
+design-system/dashboard/sections/AgentsPanel.tsx
+  s_5dfba06a86fb03::t_624296d204dada 1-197
+design-system/dashboard/sections/index.ts
+  s_5dfba06a86fb03::t_6a8e1e180879bc 1-10
+design-system/dashboard/sections/DriftPanel.tsx
+  s_5dfba06a86fb03::t_604667d7065ae8 1-261
+design-system/dashboard/hooks/useWebSocketInvalidation.ts
+  s_5dfba06a86fb03::t_1f2afcc02cc950 62-63
+  s_5dfba06a86fb03::t_f727f194f34dd9 69
+  s_5dfba06a86fb03::t_73532a389eba64 1-61,64-68,70-85
+design-system/dashboard/hooks/index.ts
+  s_5dfba06a86fb03::t_5723b7a5f2f47b 1-14
+design-system/dashboard/TANSTACK_QUERY_INTEGRATION.md
+  s_5dfba06a86fb03::t_f76dd767cb5a6b 1-316
+design-system/dashboard/hooks/useMemory.ts
+  s_5dfba06a86fb03::t_18896633a8b336 1-48
+design-system/dashboard/IMPLEMENTATION_SUMMARY.md
+  s_5dfba06a86fb03::t_b3254d41d06cc7 1-175
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "8704970f9a7e39f2a07b01b62872ea4af0cb248a",
+  "prompts": {},
+  "sessions": {
+    "s_5dfba06a86fb03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc79684b-24ed-4f26-b290-751d907e8f33",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
