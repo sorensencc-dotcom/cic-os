@@ -1,6 +1,6 @@
-# Build Automation Skills Reference
+# Build & Operational Automation Skills Reference
 
-Three reusable Claude skills for build automation. Available globally at `~/.claude/skills/`.
+Seven reusable Claude skills for build automation, operational monitoring, and skill lifecycle management. Available globally at `~/.claude/skills/`.
 
 ---
 
@@ -284,6 +284,156 @@ COMPLETE | Phase 28a | Priority: 1
 COMPLETE | Phase 24.5 | Priority: 2
 BLOCKED | Phase 23.2 | Priority: 3
 QUEUED | Phase 26 | Priority: 4
+```
+
+---
+
+## 4. Skill Deployer (Meta-Skill)
+
+**Location:** `~/.claude/skills/skill-deployer.md`
+
+Complete skill lifecycle management: discover → validate → install → register → activate. Handles all future skill deployments.
+
+### skill-deployer Invocation
+
+```bash
+/skill-deployer [command] [args]
+```
+
+### skill-deployer Commands
+
+| Command | Arguments | Description |
+|---------|-----------|-------------|
+| `deploy` | `<skill-name>` | Full lifecycle: discover, validate, install, register, activate |
+| `validate` | `<path>` | Check skill format, frontmatter, content structure |
+| `register` | `<path>` | Add skill to system manifest + metadata |
+| `activate` | `<name>` | Verify triggers load + callable |
+| `status` | — | Show all registered skills + status |
+
+### Features
+
+- ✅ Automatic skill discovery from project outputs
+- ✅ Format validation (frontmatter, kebab-case, markdown)
+- ✅ Auto-backup (keeps last 3 versions)
+- ✅ SHA-256 checksum validation
+- ✅ System manifest registration
+- ✅ Platform-specific paths (Desktop/Web/CLI/IDE)
+- ✅ Permission checks + error recovery
+
+### Example
+
+```bash
+/skill-deployer deploy integration-test-reporter
+# Discovers skill
+# Validates format + content
+# Installs to ~/.claude/skills/ (with backup)
+# Registers in ~/.claude/skill-manifest.json
+# Activates + verifies triggers
+# Reports: deployment status + next steps
+```
+
+---
+
+## 5. Integration Test Reporter
+
+**Location:** `~/.claude/skills/integration-test-reporter.md`
+
+Daily integration test status report. Aggregates test results, flags flaky tests, identifies coverage gaps.
+
+### integration-test-reporter Invocation
+
+```bash
+/integration-test-reporter [command]
+```
+
+### integration-test-reporter Commands
+
+| Command | Description |
+| ------- | ----------- |
+| `report` | 7-day test health summary |
+| `flaky` | Tests with >20% failure rate |
+| `coverage` | Coverage gaps (<80%) |
+| `trends` | Pass rate trend + velocity |
+
+### integration-test-reporter Output Example
+
+```text
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TEST HEALTH REPORT (7-day)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pass Rate: 96.8% (1478/1525)
+Flaky Tests: 3 (spec-a, spec-b, spec-c)
+Coverage Gaps: 7 files <80%
+Last Update: 2026-06-22 11:51:16
+```
+
+---
+
+## 6. CIC Pipeline Health Check
+
+**Location:** `~/.claude/skills/cic-pipeline-health-check.md`
+
+Monitor CIC ingestion pipeline health across 7 stages (harvest → audit). Reports progress, error rates, blockers.
+
+### cic-pipeline-health-check Invocation
+
+```bash
+/cic-pipeline-health-check [command]
+```
+
+### cic-pipeline-health-check Commands
+
+| Command | Description |
+| ------- | ----------- |
+| `status` | Full 7-stage pipeline status |
+| `health` | Error rates + phase transitions |
+| `blockers` | Current blockers + recommendations |
+| `trends` | 7-day throughput + latency |
+
+### cic-pipeline-health-check Output Example
+
+```text
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CIC PIPELINE STATUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[HARVEST]     75% | 15000 items | 0.2% error
+[AUDIT]       100% | 20000 items | 0% error
+[INGEST]      45% | 9000 items | 1.1% error
+Phase Ready: AUDIT → INGEST transition OK
+Blocker: INGEST DB connection pool exhausted
+```
+
+---
+
+## 7. CIC Phase Completion Tracker
+
+**Location:** `~/.claude/skills/cic-phase-completion-tracker.md`
+
+Auto-verify CIC sprint phase completion. Grades acceptance criteria against evidence. Sign-off gates: Ship / Conditional / Hold.
+
+### cic-phase-completion-tracker Invocation
+
+```bash
+/cic-phase-completion-tracker [phase-number]
+```
+
+### cic-phase-completion-tracker Output
+
+```text
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASE 27 COMPLETION AUDIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AC1: Registry implementation        ✅ PASS
+AC2: 75+ unit tests                 ✅ PASS (76/76)
+AC3: Commit hygiene                 ✅ PASS (types, coverage, docs)
+AC4: Code review findings           ⚠️  CONDITIONAL (3 minor fixes)
+
+SIGN-OFF: CONDITIONAL
+  Fix: Line 142 type narrowing
+  Fix: Add error log for timeout
+  Fix: Update test coverage comment
+
+Next: Apply fixes, re-verify, ship.
 ```
 
 ---
