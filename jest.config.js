@@ -8,11 +8,7 @@ export default {
   },
   transform: {
     "^.+\\.tsx?$": ["ts-jest", {
-      useESM: true,
-      tsconfig: {
-        module: "ES2020",
-        target: "ES2020"
-      }
+      useESM: true
     }],
     "^.+\\.js$": ["ts-jest", { useESM: true }]
   },

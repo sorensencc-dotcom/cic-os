@@ -42,6 +42,9 @@ docker-compose.override.yml
 # Generated
 coverage/
 .nyc_output/
+build-report.json
+build-metrics.jsonl
+build-audit.log
 
 # Nested Git Repos (workspace projects)
 CIP/

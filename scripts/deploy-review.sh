@@ -27,6 +27,7 @@ RESULTS=()
 FAILURES=()
 CRITICAL_FAILURES=()
 START_TIME=$(date +%s)
+DURATION=0
 
 # Logging
 log_phase() {
@@ -344,14 +345,14 @@ phase_risk_gate() {
 
   # Generate report
   local end_time=$(date +%s)
-  local duration=$((end_time - START_TIME))
+  DURATION=$((end_time - START_TIME))
 
   cat > "$REPORT_FILE" <<EOF
 {
   "timestamp": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')",
   "environment": "$ENV",
   "result": "$result",
-  "duration_seconds": $duration,
+  "duration_seconds": $DURATION,
   "critical_failures": $(printf '%s\n' "${CRITICAL_FAILURES[@]}" | jq -R . | jq -s .),
   "non_critical_failures": $(printf '%s\n' "${FAILURES[@]}" | jq -R . | jq -s .),
   "services_verified": $SERVICES_COUNT,
@@ -405,7 +406,7 @@ main() {
   phase_risk_gate || exit 1
 
   echo ""
-  echo "Deploy review complete in ${duration}s"
+  echo "Deploy review complete in ${DURATION}s"
 }
 
 main "$@"
