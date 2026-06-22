@@ -1,0 +1,19 @@
+bookstack-docker/mariadb_data/custom.cnf
+  s_43b610c3ebfc6a::t_f6f65023a0bdf9 1-198
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "a311063b305844d8038b24c98bb05d1a23696461",
+  "prompts": {},
+  "sessions": {
+    "s_43b610c3ebfc6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cf18015f-c325-4d8e-93bf-a024174d82d5",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
