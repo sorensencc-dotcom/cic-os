@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-06-22T05:14:45Z",
+  "environment": "local",
+  "result": "PASS",
+  "duration_seconds": 33,
+  "critical_failures": [],
+  "non_critical_failures": [],
+  "services_verified": 15,
+  "dry_run": 1,
+  "skip_tests": 0
+}
