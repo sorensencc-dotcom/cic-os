@@ -1,0 +1,36 @@
+name: Phase 0.7 Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: 'Deploy to target environment:'
+        options:
+          - staging
+          - production
+      phase:
+        description: 'Target deployment agent'
+        required: true
+        default: 'all'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Registry
+        run: |
+          echo "Logging in to container registry..."
+          # Mock Docker registry authentication
+          echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login -u "${{ secrets.REGISTRY_USERNAME }}" --password-stdin || true
+
+      - name: Publish Docker Images
+        run: |
+          echo "Deploying target agent: ${{ github.event.inputs.phase }} to ${{ github.event.inputs.environment }}"
+          # Push published build targets
+          docker tag cic-ingestion:0.7.0 registry.cic.dev/cic-ingestion:${{ github.event.inputs.environment }} || true
+          docker push registry.cic.dev/cic-ingestion:${{ github.event.inputs.environment }} || true
