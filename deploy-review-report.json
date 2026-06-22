@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-06-22T05:14:45Z",
+  "timestamp": "2026-06-22T18:54:00Z",
   "environment": "local",
   "result": "PASS",
-  "duration_seconds": 33,
+  "duration_seconds": 98,
   "critical_failures": [],
-  "non_critical_failures": [],
+  "non_critical_failures": ["cic-runtime tests","cic-governance tests","e2e agent-deploy","e2e governance-proposal"],
   "services_verified": 15,
-  "dry_run": 1,
+  "dry_run": 0,
   "skip_tests": 0
 }

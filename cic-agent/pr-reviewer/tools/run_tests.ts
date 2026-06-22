@@ -34,7 +34,7 @@ export default defineTool({
   outputSchema,
 
   async execute(input, ctx: ToolContext) {
-    ctx.logger.info({ branch: input.branch, package: input.package }, 'Running tests');
+    ctx.logger.info('Running tests', { branch: input.branch, package: input.package });
 
     const start = Date.now();
     const cmd = input.coverage ? 'npm' : 'npm';
@@ -66,8 +66,8 @@ export default defineTool({
       const duration_ms = Date.now() - start;
 
       ctx.logger.info(
-        { exitCode: result.code, duration_ms, coverage },
         'Tests completed',
+        { exitCode: result.code, duration_ms, coverage },
       );
 
       return {
@@ -80,7 +80,7 @@ export default defineTool({
       };
     } catch (err) {
       const duration_ms = Date.now() - start;
-      ctx.logger.error({ err, duration_ms }, 'Test execution failed');
+      ctx.logger.error('Test execution failed', { err, duration_ms });
 
       return {
         success: false,

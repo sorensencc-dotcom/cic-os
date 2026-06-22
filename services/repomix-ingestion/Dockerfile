@@ -1,11 +1,11 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-COPY services/repomix-ingestion/package*.json ./
+COPY package*.json ./
 RUN npm install
 
-COPY services/repomix-ingestion/src ./src
-COPY services/repomix-ingestion/tsconfig.json ./
+COPY src ./src
+COPY tsconfig.json ./
 
 RUN npm run build
 
@@ -14,7 +14,7 @@ WORKDIR /app
 
 RUN apk add --no-cache curl
 
-COPY services/repomix-ingestion/package*.json ./
+COPY package*.json ./
 RUN npm install --omit=dev
 
 COPY --from=builder /app/dist ./dist

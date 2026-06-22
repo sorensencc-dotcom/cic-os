@@ -34,7 +34,7 @@ export default defineTool({
   outputSchema,
 
   async execute(input, ctx: ToolContext) {
-    ctx.logger.info({ query: input.query }, 'Querying CIC state');
+    ctx.logger.info('Querying CIC state', { query: input.query });
 
     try {
       let result: any = { success: false, data: null, message: '' };
@@ -53,7 +53,7 @@ export default defineTool({
           break;
 
         case 'build_logs':
-          result = await queryBuildLogs(input.branch || 'main', input.limit, ctx);
+          result = await queryBuildLogs(input.branch || 'main', input.limit || 10, ctx);
           break;
 
         case 'governance_state':
@@ -61,7 +61,7 @@ export default defineTool({
           break;
 
         case 'recent_commits':
-          result = await queryRecentCommits(input.branch || 'main', input.limit, ctx);
+          result = await queryRecentCommits(input.branch || 'main', input.limit || 10, ctx);
           break;
 
         default:
@@ -74,7 +74,7 @@ export default defineTool({
 
       return result;
     } catch (err) {
-      ctx.logger.error({ err }, 'Query failed');
+      ctx.logger.error('Query failed', { err });
       return {
         success: false,
         data: null,
@@ -85,7 +85,7 @@ export default defineTool({
 });
 
 async function queryPRDiff(prNumber: number, ctx: ToolContext) {
-  ctx.logger.info({ prNumber }, 'Fetching PR diff');
+  ctx.logger.info('Fetching PR diff', { prNumber });
 
   // In real implementation, would call GitHub API
   // For now, return mock data
@@ -167,7 +167,7 @@ async function queryArchitecture(ctx: ToolContext) {
 }
 
 async function queryDependencies(branch: string, ctx: ToolContext) {
-  ctx.logger.info({ branch }, 'Fetching dependencies');
+  ctx.logger.info('Fetching dependencies', { branch });
 
   return {
     success: true,
@@ -191,7 +191,7 @@ async function queryDependencies(branch: string, ctx: ToolContext) {
 }
 
 async function queryBuildLogs(branch: string, limit: number, ctx: ToolContext) {
-  ctx.logger.info({ branch, limit }, 'Fetching build logs');
+  ctx.logger.info('Fetching build logs', { branch, limit });
 
   return {
     success: true,
@@ -236,7 +236,7 @@ async function queryGovernanceState(ctx: ToolContext) {
 }
 
 async function queryRecentCommits(branch: string, limit: number, ctx: ToolContext) {
-  ctx.logger.info({ branch, limit }, 'Fetching recent commits');
+  ctx.logger.info('Fetching recent commits', { branch, limit });
 
   return {
     success: true,

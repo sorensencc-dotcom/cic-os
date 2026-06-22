@@ -8,6 +8,7 @@
     "start": "tsx cic-runtime/example-entrypoint.ts",
     "test": "jest",
     "dev": "tsx watch cic-runtime/example-entrypoint.ts",
+    "build": "tsc",
     "cic-ui": "node cic-ui/index.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

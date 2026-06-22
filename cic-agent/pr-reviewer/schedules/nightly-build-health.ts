@@ -21,7 +21,7 @@ export async function run(ctx: ScheduleContext) {
 
   try {
     // Query recent builds on main
-    ctx.logger.info({ sessionId }, 'Querying build logs');
+    ctx.logger.info('Querying build logs', { sessionId });
 
     const buildLogsResult = await ctx.runTool(
       sessionId,
@@ -33,7 +33,7 @@ export async function run(ctx: ScheduleContext) {
       },
     );
 
-    ctx.logger.info({ sessionId, buildLogsResult }, 'Build logs retrieved');
+    ctx.logger.info('Build logs retrieved', { sessionId, buildLogsResult });
 
     // Analyze build health
     const builds = (buildLogsResult as any).data?.builds || [];
@@ -48,8 +48,8 @@ export async function run(ctx: ScheduleContext) {
           : 'critical';
 
     ctx.logger.info(
-      { sessionId, successCount, failureCount, healthStatus },
       'Build health check completed',
+      { sessionId, successCount, failureCount, healthStatus },
     );
 
     // Checkpoint
@@ -60,8 +60,8 @@ export async function run(ctx: ScheduleContext) {
 
   } catch (err) {
     ctx.logger.error(
-      { sessionId, err },
       'Nightly build health check failed',
+      { sessionId, err },
     );
     throw err;
   }

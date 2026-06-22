@@ -9,8 +9,11 @@ export type ToolContext = {
   agentId: string;
   logger: {
     info(msg: string, meta?: Record<string, unknown>): void;
+    info(meta: Record<string, unknown>, msg: string): void;
     warn(msg: string, meta?: Record<string, unknown>): void;
+    warn(meta: Record<string, unknown>, msg: string): void;
     error(msg: string, meta?: Record<string, unknown>): void;
+    error(meta: Record<string, unknown>, msg: string): void;
   };
   sandbox: {
     exec(command: string, args: string[]): Promise<{ code: number; stdout: string; stderr: string }>;

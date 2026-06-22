@@ -1,11 +1,11 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-COPY services/unified-api/package*.json ./
+COPY package*.json ./
 RUN npm install
 
-COPY services/unified-api/src ./src
-COPY services/unified-api/tsconfig.json ./
+COPY src ./src
+COPY tsconfig.json ./
 
 RUN npm run build
 
@@ -14,7 +14,7 @@ WORKDIR /app
 
 RUN apk add --no-cache curl
 
-COPY services/unified-api/package*.json ./
+COPY package*.json ./
 RUN npm install --omit=dev
 
 COPY --from=builder /app/dist ./dist

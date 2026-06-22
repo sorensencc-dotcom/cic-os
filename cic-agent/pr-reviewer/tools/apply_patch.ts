@@ -29,7 +29,7 @@ export default defineTool({
   outputSchema,
 
   async execute(input, ctx: ToolContext) {
-    ctx.logger.info({ branch: input.branch, dryRun: input.dryRun }, 'Applying patch');
+    ctx.logger.info('Applying patch', { branch: input.branch, dryRun: input.dryRun });
 
     // Write patch to temp file
     const patchFile = path.join(os.tmpdir(), `patch-${Date.now()}.patch`);
@@ -57,7 +57,7 @@ export default defineTool({
     ]);
 
     if (dryRunResult.code !== 0) {
-      ctx.logger.error({ stderr: dryRunResult.stderr }, 'Patch check failed');
+      ctx.logger.error('Patch check failed', { stderr: dryRunResult.stderr });
       return {
         success: false,
         message: `Patch check failed: ${dryRunResult.stderr}`,
@@ -83,7 +83,7 @@ export default defineTool({
     const applyResult = await ctx.sandbox.exec('git', ['apply', patchFile]);
 
     if (applyResult.code !== 0) {
-      ctx.logger.error({ stderr: applyResult.stderr }, 'Patch application failed');
+      ctx.logger.error('Patch application failed', { stderr: applyResult.stderr });
       return {
         success: false,
         message: `Patch application failed: ${applyResult.stderr}`,
@@ -121,8 +121,8 @@ export default defineTool({
     });
 
     ctx.logger.info(
-      { filesChanged: filesChanged.length, linesAdded, linesRemoved },
       'Patch applied',
+      { filesChanged: filesChanged.length, linesAdded, linesRemoved },
     );
 
     return {

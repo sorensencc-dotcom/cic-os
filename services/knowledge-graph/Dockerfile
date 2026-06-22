@@ -4,11 +4,11 @@ WORKDIR /app
 # Install Python and build tools for better-sqlite3 native module build
 RUN apk add --no-cache python3 build-base
 
-COPY services/knowledge-graph/package*.json ./
+COPY package*.json ./
 RUN npm install
 
-COPY services/knowledge-graph/src ./src
-COPY services/knowledge-graph/tsconfig.json ./
+COPY src ./src
+COPY tsconfig.json ./
 
 RUN npm run build
 
@@ -18,7 +18,7 @@ WORKDIR /app
 # Install Python and build tools for better-sqlite3 native module
 RUN apk add --no-cache python3 build-base curl
 
-COPY services/knowledge-graph/package*.json ./
+COPY package*.json ./
 RUN npm install --omit=dev
 
 COPY --from=builder /app/build ./build

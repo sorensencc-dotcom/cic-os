@@ -191,8 +191,8 @@ services:
   # Phase 29: Knowledge Graph (unified semantic memory)
   knowledge-graph:
     build:
-      context: .
-      dockerfile: services/knowledge-graph/Dockerfile
+      context: ./services/knowledge-graph
+      dockerfile: Dockerfile
     container_name: knowledge-graph
     restart: unless-stopped
     environment:
@@ -250,8 +250,8 @@ services:
   # M3: Persistent Vault (Governance Storage)
   vault:
     build:
-      context: .
-      dockerfile: services/vault/Dockerfile
+      context: ./services/vault
+      dockerfile: Dockerfile
     container_name: vault
     restart: unless-stopped
     environment:
@@ -273,8 +273,8 @@ services:
   # Phase 4.4: Repomix Ingestion (Repo Analysis Pipeline)
   repomix-ingestion:
     build:
-      context: .
-      dockerfile: services/repomix-ingestion/Dockerfile
+      context: ./services/repomix-ingestion
+      dockerfile: Dockerfile
     container_name: repomix-ingestion
     restart: unless-stopped
     environment:
@@ -295,8 +295,8 @@ services:
   # Phase 24.2: CIC Governance (Evolution Loop)
   cic-governance:
     build:
-      context: .
-      dockerfile: services/cic-governance/Dockerfile
+      context: ./services/cic-governance
+      dockerfile: Dockerfile
     container_name: cic-governance
     restart: unless-stopped
     environment:
@@ -420,33 +420,35 @@ services:
       start_period: 15s
 
   # Phase 27.3: Aperture Execution Engine (Policy Registry + Sandbox Runtime)
-  aperture:
-    build:
-      context: .
-      dockerfile: cic-ingestion/Dockerfile.aperture
-    container_name: aperture
-    restart: unless-stopped
-    environment:
-      - NODE_ENV=production
-      - LOG_LEVEL=info
-      - PORT=3117
-      - VAULT_URL=http://vault:3111
-      - TORQUEQUERY_URL=http://torquequery:3110
-      - KNOWLEDGE_GRAPH_URL=http://knowledge-graph:3107
-    ports:
-      - "3117:3117"
-    depends_on:
-      - vault
-      - torquequery
-      - knowledge-graph
-    networks:
-      - cic-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3117/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 15s
+  # NOTE: Aperture is external (in separate CIC_MEDIA_LIBRARY workspace)
+  # Commented out until Dockerfile.aperture is properly configured
+  # aperture:
+  #   build:
+  #     context: .
+  #     dockerfile: cic-ingestion/Dockerfile.aperture
+  #   container_name: aperture
+  #   restart: unless-stopped
+  #   environment:
+  #     - NODE_ENV=production
+  #     - LOG_LEVEL=info
+  #     - PORT=3117
+  #     - VAULT_URL=http://vault:3111
+  #     - TORQUEQUERY_URL=http://torquequery:3110
+  #     - KNOWLEDGE_GRAPH_URL=http://knowledge-graph:3107
+  #   ports:
+  #     - "3117:3117"
+  #   depends_on:
+  #     - vault
+  #     - torquequery
+  #     - knowledge-graph
+  #   networks:
+  #     - cic-network
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:3117/health"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 3
+  #     start_period: 15s
 
   # Phase 27: CIC Agent Runtime (Agent Deployment + Execution Platform)
   cic-runtime:
@@ -513,8 +515,8 @@ services:
   # Unified API (Routes all services)
   unified-api:
     build:
-      context: .
-      dockerfile: services/unified-api/Dockerfile
+      context: ./services/unified-api
+      dockerfile: Dockerfile
     container_name: unified-api
     restart: unless-stopped
     environment:
@@ -528,7 +530,7 @@ services:
       - PLANNING_ENGINE_URL=http://planning-engine:3114
       - HARVESTER_V2_URL=http://harvester-v2:3115
       - PLANNING_CONSOLE_URL=http://planning-console:3000
-      - APERTURE_URL=http://aperture:3117
+      # - APERTURE_URL=http://aperture:3117
       - CIC_RUNTIME_URL=http://cic-runtime:3118
     ports:
       - "3100:3100"
@@ -539,7 +541,7 @@ services:
       - cic-governance
       - planning-engine
       - harvester-v2
-      - aperture
+      # - aperture
       - cic-runtime
     networks:
       - cic-network
