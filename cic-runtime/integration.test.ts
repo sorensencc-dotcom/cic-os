@@ -159,7 +159,7 @@ test('Session persists after webhook', async () => {
   });
 
   expect(response.status).toBe(200);
-  const result = await response.json();
+  const result = await response.json() as { success: boolean };
   expect(result.success).toBe(true);
 
   // Wait for async handler
