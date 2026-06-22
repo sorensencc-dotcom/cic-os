@@ -3,7 +3,7 @@ import "./input.css";
 
 type InputType = "text" | "email" | "password" | "number";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   type?: InputType;
   size?: "small" | "medium" | "large";
   error?: boolean;

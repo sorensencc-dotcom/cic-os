@@ -1,6 +1,11 @@
+import React from "react";
 import "./alert.css";
 
-export function Alert(props) {
+interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
+  children?: React.ReactNode;
+}
+
+export const Alert: React.FC<AlertProps> = (props) => {
   const { className = "", children, ...rest } = props;
 
   return (

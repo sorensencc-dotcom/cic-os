@@ -15,7 +15,8 @@ export default {
     "^.+\\.js$": ["ts-jest", { useESM: true }]
   },
   transformIgnorePatterns: [
-    "node_modules/(?!(uuid)/)"
+    "node_modules/(?!(uuid|@paralleldrive|@noble|cuid2)/)",
+    "node-cron.*uuid"
   ],
   collectCoverageFrom: [
     "cic/src/**/*.ts",

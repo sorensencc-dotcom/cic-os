@@ -1,6 +1,11 @@
+import React from "react";
 import "./table.css";
 
-export function Table(props) {
+interface TableProps extends React.HTMLAttributes<HTMLDivElement> {
+  children?: React.ReactNode;
+}
+
+export const Table: React.FC<TableProps> = (props) => {
   const { className = "", children, ...rest } = props;
 
   return (
