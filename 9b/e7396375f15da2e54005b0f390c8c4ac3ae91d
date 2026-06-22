@@ -1,0 +1,50 @@
+cic-ui/templates/visual.spec.ts
+  s_5dfba06a86fb03::t_fbb2dd34e0851e 1-2,19
+  s_5dfba06a86fb03::t_534e034f054bc9 3-18
+docs/tokens/usage/Button.md
+  s_5dfba06a86fb03::t_202c551fe19659 1-10
+docs/tokens/usage/Panel.md
+  s_5dfba06a86fb03::t_31ce89c9f69914 1-10
+cic-ui/templates/styles.css
+  s_5dfba06a86fb03::t_da61bdecbfb254 1-8
+cic-ui/README.md
+  s_5dfba06a86fb03::t_a356fb7c8b6585 1-59
+cic-ui/templates/story.tsx
+  s_5dfba06a86fb03::t_650e41214dcfe0 2-8
+  s_5dfba06a86fb03::t_84c9428e3c55e5 1,9-16
+cic-ui/templates/test.tsx
+  s_5dfba06a86fb03::t_ff42021aa7a7c2 1,23
+  s_5dfba06a86fb03::t_bbea5d77879f92 2-22
+docs/tokens/usage/Table.md
+  s_5dfba06a86fb03::t_26d077cecbbb8d 1-10
+cic-ui/templates/token-map.md
+  s_5dfba06a86fb03::t_faa9b313b2c27e 1-10
+docs/tokens/usage/Alert.md
+  s_5dfba06a86fb03::t_c23ab4d36ff1ba 1-10
+cic-ui/index.js
+  s_5dfba06a86fb03::t_265f6f43d955ee 37
+  s_5dfba06a86fb03::t_6e8640f6aaf4cd 27
+  s_5dfba06a86fb03::t_b9733458fc9f38 9-14
+  s_5dfba06a86fb03::t_9d598da652a3a5 1-8,15,18-26,28-36,38-63
+  s_5dfba06a86fb03::t_fdace0397768dc 16-17
+cic-ui/config.json
+  s_5dfba06a86fb03::t_91dfc9daf373ef 1-8
+cic-ui/templates/component.tsx
+  s_5dfba06a86fb03::t_80f30ad71e78f7 1-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "9be7396375f15da2e54005b0f390c8c4ac3ae91d",
+  "prompts": {},
+  "sessions": {
+    "s_5dfba06a86fb03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc79684b-24ed-4f26-b290-751d907e8f33",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
