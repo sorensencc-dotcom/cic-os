@@ -1,0 +1,21 @@
+docs/automation/skills.md
+  s_70f8d17871d656::t_3d05763167a544 325-326,337
+  s_70f8d17871d656::t_0195d1d67a9590 295,297,299,301-308,316-318,322-324,327-334,338-346
+  s_70f8d17871d656::t_1c32140fa1cd37 300
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "2af4a8e45f94b40325655f2d7a73a0b45016b74c",
+  "prompts": {},
+  "sessions": {
+    "s_70f8d17871d656": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eab3dbe5-4e17-4416-be15-6dc7bd520b97",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
