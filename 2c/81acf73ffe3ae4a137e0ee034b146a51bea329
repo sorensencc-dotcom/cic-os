@@ -1,0 +1,27 @@
+design-system/tokens/dark-mode/index.ts
+  s_5dfba06a86fb03::t_3cb6361151ec09 1-2
+design-system/tokens/dark-mode/dark-mode-tokens.ts
+  s_5dfba06a86fb03::t_ca136ef371ca83 1-46
+design-system/tokens/dark-mode/dark-mode.css
+  s_5dfba06a86fb03::t_5e4fc9d284da9b 1-87
+design-system/tokens/dark-mode/motion-rules.css
+  s_5dfba06a86fb03::t_c1b11ac7c20477 1-109
+design-system/tokens/dark-mode/contrast-validator.ts
+  s_5dfba06a86fb03::t_9d140d43837dbc 1-96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "2c81acf73ffe3ae4a137e0ee034b146a51bea329",
+  "prompts": {},
+  "sessions": {
+    "s_5dfba06a86fb03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc79684b-24ed-4f26-b290-751d907e8f33",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
