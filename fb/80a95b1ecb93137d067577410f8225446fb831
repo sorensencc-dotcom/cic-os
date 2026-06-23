@@ -1,0 +1,19 @@
+src/components/cic/cic-component-tokens.css
+  s_d5ca7b095a0062::t_6b3bbe04aae456 1-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "fb80a95b1ecb93137d067577410f8225446fb831",
+  "prompts": {},
+  "sessions": {
+    "s_d5ca7b095a0062": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bba4aa14-87cc-4e63-988f-2bb260d1c278",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
