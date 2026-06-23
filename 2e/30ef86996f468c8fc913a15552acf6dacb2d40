@@ -1,0 +1,40 @@
+scripts/validate-dark-mode.js
+  s_315fc89257027a::t_2d699e1a1a7ab4 4,7-11,99
+  s_315fc89257027a::t_1461960b3e842e 128-129
+src/components/cic/Row.tsx
+  s_d5ca7b095a0062::t_ee9ba5121b2ad6 33-34
+src/components/cic/checkbox.css
+  s_d5ca7b095a0062::t_5f4eb5c57d244e 51
+src/components/cic/button.css
+  s_315fc89257027a::t_893d36b21c4f52 36
+  s_315fc89257027a::t_cfda95690b9e82 72
+  s_315fc89257027a::t_d40702dfd432f5 10
+  s_315fc89257027a::t_b284d8b646a4b3 54
+  s_d5ca7b095a0062::t_c163f1bfee37ab 59
+  s_d5ca7b095a0062::t_e4b929fabbb17a 85-89
+  s_315fc89257027a::t_a3a7fb2817496b 48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "2e30ef86996f468c8fc913a15552acf6dacb2d40",
+  "prompts": {},
+  "sessions": {
+    "s_315fc89257027a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b5debf30-c61e-4d01-90ac-81c8d552f1d3",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_d5ca7b095a0062": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bba4aa14-87cc-4e63-988f-2bb260d1c278",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
