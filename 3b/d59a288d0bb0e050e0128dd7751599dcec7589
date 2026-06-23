@@ -1,0 +1,19 @@
+.dockerignore
+  s_505aa2e7f0f4ce::t_19b17eca53765f 1,11-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "3bd59a288d0bb0e050e0128dd7751599dcec7589",
+  "prompts": {},
+  "sessions": {
+    "s_505aa2e7f0f4ce": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d7e525c4-66c1-4ff2-af27-b0c005a59b6e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
