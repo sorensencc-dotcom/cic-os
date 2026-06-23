@@ -17,9 +17,9 @@
   font-size: 14px;
   border: 1px solid var(--cic-color-border);
   border-radius: 4px;
-  background-color: var(--cic-surface-layer-0);
+  background-color: var(--cic-color-surface-0);
   color: var(--cic-color-text);
-  transition: all 120ms ease;
+  transition: all var(--cic-motion-duration-fast) var(--cic-motion-ease);
   outline: none;
 }
 

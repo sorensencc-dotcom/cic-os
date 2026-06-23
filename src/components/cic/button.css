@@ -33,7 +33,7 @@
 /* Variants */
 .cic-button--primary {
   background-color: var(--cic-color-accent);
-  color: #fff;
+  color: #0a0a0a;
 }
 
 .cic-button--primary:hover:not(:disabled) {
@@ -45,18 +45,18 @@
 }
 
 .cic-button--secondary {
-  background-color: var(--cic-surface-layer-1, #1a1a1a);
+  background-color: var(--cic-color-surface-1, #1a1a1a);
   color: var(--cic-color-text);
   border: 1px solid var(--cic-color-border);
 }
 
 .cic-button--secondary:hover:not(:disabled) {
-  background-color: var(--cic-surface-layer-2, #262626);
+  background-color: var(--cic-color-surface-2, #262626);
 }
 
 .cic-button--danger {
   background-color: var(--cic-color-danger);
-  color: #fff;
+  color: #0a0a0a;
 }
 
 .cic-button--danger:hover:not(:disabled) {
@@ -69,7 +69,7 @@
 }
 
 .cic-button--ghost:hover:not(:disabled) {
-  background-color: var(--cic-surface-layer-1, #1a1a1a);
+  background-color: var(--cic-color-surface-1, #1a1a1a);
 }
 
 /* States */

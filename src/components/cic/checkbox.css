@@ -32,8 +32,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border: 2px solid var(--cic-color-border);
   border-radius: 4px;
   background-color: transparent;

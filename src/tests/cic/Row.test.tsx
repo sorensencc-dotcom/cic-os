@@ -3,6 +3,15 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { Row } from "../../components/cic/Row";
 
+const renderWithTheme = (component: React.ReactElement, theme: "light" | "dark" = "light") => {
+  const { container, ...rest } = render(
+    <div data-theme={theme} style={{ padding: "20px" }}>
+      {component}
+    </div>
+  );
+  return { container, ...rest };
+};
+
 describe("Row", () => {
   it("renders row with children", () => {
     const { getByText } = render(<Row>Content</Row>);
@@ -30,9 +39,14 @@ describe("Row", () => {
     expect(container.querySelector(".cic-row.custom")).toBeInTheDocument();
   });
 
-  it("has tabindex for keyboard navigation", () => {
-    const { container } = render(<Row>Test</Row>);
+  it("has tabindex for keyboard navigation when interactive", () => {
+    const { container } = render(<Row onClick={() => {}}>Test</Row>);
     expect(container.querySelector("[tabindex='0']")).toBeInTheDocument();
+  });
+
+  it("has negative tabindex when not interactive", () => {
+    const { container } = render(<Row>Test</Row>);
+    expect(container.querySelector("[tabindex='-1']")).toBeInTheDocument();
   });
 
   it("has data-cic-component attribute", () => {
@@ -51,23 +65,47 @@ describe("Row", () => {
     expect(getByText("Cell 2")).toBeInTheDocument();
   });
 
-  describe("snapshots", () => {
+  describe("light mode snapshots", () => {
     it("renders default row snapshot", () => {
-      const { container } = render(<Row>Content</Row>);
+      const { container } = renderWithTheme(<Row>Content</Row>, "light");
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders selected row snapshot", () => {
-      const { container } = render(<Row selected>Content</Row>);
+      const { container } = renderWithTheme(<Row selected>Content</Row>, "light");
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders multiple cells snapshot", () => {
-      const { container } = render(
+      const { container } = renderWithTheme(
         <Row>
           <span>Cell 1</span>
           <span>Cell 2</span>
-        </Row>
+        </Row>,
+        "light"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe("dark mode snapshots", () => {
+    it("renders default row in dark mode", () => {
+      const { container } = renderWithTheme(<Row>Content</Row>, "dark");
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders selected row in dark mode", () => {
+      const { container } = renderWithTheme(<Row selected>Content</Row>, "dark");
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders multiple cells in dark mode", () => {
+      const { container } = renderWithTheme(
+        <Row>
+          <span>Cell 1</span>
+          <span>Cell 2</span>
+        </Row>,
+        "dark"
       );
       expect(container.firstChild).toMatchSnapshot();
     });

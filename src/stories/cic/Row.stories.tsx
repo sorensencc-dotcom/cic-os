@@ -57,7 +57,7 @@ export const LongContent: Story = {
 export const Interactive: Story = {
   render: () => (
     <DarkModeWrapper>
-      <Row className="hover:bg-gray-100 cursor-pointer">
+      <Row onClick={() => {}} className="hover:bg-gray-100 cursor-pointer">
         Click me to interact
       </Row>
     </DarkModeWrapper>

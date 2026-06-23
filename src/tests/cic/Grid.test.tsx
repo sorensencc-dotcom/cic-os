@@ -3,6 +3,15 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { Grid } from "../../components/cic/Grid";
 
+const renderWithTheme = (component: React.ReactElement, theme: "light" | "dark" = "light") => {
+  const { container, ...rest } = render(
+    <div data-theme={theme} style={{ padding: "20px" }}>
+      {component}
+    </div>
+  );
+  return { container, ...rest };
+};
+
 describe("Grid", () => {
   it("renders grid with children", () => {
     const { container } = render(
@@ -64,32 +73,69 @@ describe("Grid", () => {
     expect(c3.querySelector(".cic-grid")).toHaveStyle("grid-template-columns: repeat(4, 1fr)");
   });
 
-  describe("snapshots", () => {
+  describe("light mode snapshots", () => {
     it("renders default grid snapshot", () => {
-      const { container } = render(
+      const { container } = renderWithTheme(
         <Grid>
           <div>Item</div>
-        </Grid>
+        </Grid>,
+        "light"
       );
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders grid with custom cols snapshot", () => {
-      const { container } = render(
+      const { container } = renderWithTheme(
         <Grid cols={6}>
           <div>Item</div>
-        </Grid>
+        </Grid>,
+        "light"
       );
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders multiple items snapshot", () => {
-      const { container } = render(
+      const { container } = renderWithTheme(
         <Grid cols={3}>
           <div>Item 1</div>
           <div>Item 2</div>
           <div>Item 3</div>
-        </Grid>
+        </Grid>,
+        "light"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe("dark mode snapshots", () => {
+    it("renders default grid in dark mode", () => {
+      const { container } = renderWithTheme(
+        <Grid>
+          <div>Item</div>
+        </Grid>,
+        "dark"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders grid with custom cols in dark mode", () => {
+      const { container } = renderWithTheme(
+        <Grid cols={6}>
+          <div>Item</div>
+        </Grid>,
+        "dark"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders multiple items in dark mode", () => {
+      const { container } = renderWithTheme(
+        <Grid cols={3}>
+          <div>Item 1</div>
+          <div>Item 2</div>
+          <div>Item 3</div>
+        </Grid>,
+        "dark"
       );
       expect(container.firstChild).toMatchSnapshot();
     });

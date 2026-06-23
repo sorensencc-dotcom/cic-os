@@ -3,6 +3,15 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { Card } from "../../components/cic/Card";
 
+const renderWithTheme = (component: React.ReactElement, theme: "light" | "dark" = "light") => {
+  const { container, ...rest } = render(
+    <div data-theme={theme} style={{ padding: "20px" }}>
+      {component}
+    </div>
+  );
+  return { container, ...rest };
+};
+
 describe("Card", () => {
   it("renders card with children", () => {
     const { getByText } = render(<Card>Content</Card>);
@@ -46,23 +55,53 @@ describe("Card", () => {
     expect(container.querySelector('[data-cic-component="card"]')).toBeInTheDocument();
   });
 
-  describe("snapshots", () => {
+  describe("light mode snapshots", () => {
     it("renders default card snapshot", () => {
-      const { container } = render(<Card>Content</Card>);
+      const { container } = renderWithTheme(<Card>Content</Card>, "light");
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders subtle variant snapshot", () => {
-      const { container } = render(<Card variant="subtle">Content</Card>);
+      const { container } = renderWithTheme(
+        <Card variant="subtle">Content</Card>,
+        "light"
+      );
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders with multiple children snapshot", () => {
-      const { container } = render(
+      const { container } = renderWithTheme(
         <Card>
           <span>Child 1</span>
           <span>Child 2</span>
-        </Card>
+        </Card>,
+        "light"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe("dark mode snapshots", () => {
+    it("renders default card in dark mode", () => {
+      const { container } = renderWithTheme(<Card>Content</Card>, "dark");
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders subtle variant in dark mode", () => {
+      const { container } = renderWithTheme(
+        <Card variant="subtle">Content</Card>,
+        "dark"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders with multiple children in dark mode", () => {
+      const { container } = renderWithTheme(
+        <Card>
+          <span>Child 1</span>
+          <span>Child 2</span>
+        </Card>,
+        "dark"
       );
       expect(container.firstChild).toMatchSnapshot();
     });

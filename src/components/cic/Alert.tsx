@@ -11,6 +11,7 @@ export const Alert: React.FC<AlertProps> = (props) => {
   return (
     <div
       data-cic-component="alert"
+      role="alert"
       className={`cic-alert ${className}`}
       {...rest}
     >

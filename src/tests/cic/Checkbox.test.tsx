@@ -2,6 +2,15 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Checkbox } from "../../components/cic/Checkbox";
 
+const renderWithTheme = (component: React.ReactElement, theme: "light" | "dark" = "light") => {
+  const { container, ...rest } = render(
+    <div data-theme={theme} style={{ padding: "20px" }}>
+      {component}
+    </div>
+  );
+  return { container, ...rest };
+};
+
 describe("Checkbox Component", () => {
   test("renders checkbox", () => {
     render(<Checkbox />);
@@ -47,5 +56,51 @@ describe("Checkbox Component", () => {
     expect(label1?.getAttribute("for")).not.toBe(
       label2?.getAttribute("for")
     );
+  });
+
+  describe("light mode snapshots", () => {
+    it("renders checkbox in light mode", () => {
+      const { container } = renderWithTheme(<Checkbox />, "light");
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders checkbox with label in light mode", () => {
+      const { container } = renderWithTheme(
+        <Checkbox label="Accept terms" />,
+        "light"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders checkbox with description in light mode", () => {
+      const { container } = renderWithTheme(
+        <Checkbox label="Test" description="This is a test" />,
+        "light"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe("dark mode snapshots", () => {
+    it("renders checkbox in dark mode", () => {
+      const { container } = renderWithTheme(<Checkbox />, "dark");
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders checkbox with label in dark mode", () => {
+      const { container } = renderWithTheme(
+        <Checkbox label="Accept terms" />,
+        "dark"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders checkbox with description in dark mode", () => {
+      const { container } = renderWithTheme(
+        <Checkbox label="Test" description="This is a test" />,
+        "dark"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
   });
 });

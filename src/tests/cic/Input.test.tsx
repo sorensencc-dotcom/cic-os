@@ -2,6 +2,15 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Input } from "../../components/cic/Input";
 
+const renderWithTheme = (component: React.ReactElement, theme: "light" | "dark" = "light") => {
+  const { container, ...rest } = render(
+    <div data-theme={theme} style={{ padding: "20px" }}>
+      {component}
+    </div>
+  );
+  return { container, ...rest };
+};
+
 describe("Input Component", () => {
   test("renders input with type", () => {
     render(<Input type="text" />);
@@ -42,5 +51,45 @@ describe("Input Component", () => {
     const { container } = render(<Input />);
     const input = container.querySelector(".cic-input--medium");
     expect(input).toBeInTheDocument();
+  });
+
+  describe("light mode snapshots", () => {
+    it("renders input in light mode", () => {
+      const { container } = renderWithTheme(<Input type="text" />, "light");
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders input with label in light mode", () => {
+      const { container } = renderWithTheme(
+        <Input label="Email" type="email" />,
+        "light"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders error input in light mode", () => {
+      const { container } = renderWithTheme(<Input error />, "light");
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe("dark mode snapshots", () => {
+    it("renders input in dark mode", () => {
+      const { container } = renderWithTheme(<Input type="text" />, "dark");
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders input with label in dark mode", () => {
+      const { container } = renderWithTheme(
+        <Input label="Email" type="email" />,
+        "dark"
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders error input in dark mode", () => {
+      const { container } = renderWithTheme(<Input error />, "dark");
+      expect(container.firstChild).toMatchSnapshot();
+    });
   });
 });

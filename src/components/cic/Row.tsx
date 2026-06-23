@@ -27,11 +27,10 @@ export const Row = React.forwardRef<HTMLDivElement, RowProps>(
     const isInteractive = !!onClick;
 
     const ariaProps: Record<string, string> = {};
+    ariaProps['aria-selected'] = selected ? 'true' : 'false';
     if (isInteractive) {
       ariaProps['role'] = 'button';
-      if (selected) {
-        ariaProps['aria-pressed'] = 'true';
-      }
+      ariaProps['aria-pressed'] = selected ? 'true' : 'false';
     }
 
     return (
