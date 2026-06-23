@@ -1,0 +1,19 @@
+.storybook/preview.ts
+  s_d5ca7b095a0062::t_906c2310d82c6b 2-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "cf7f251c194e38d7c3a1aaf8be955d83a03d02a2",
+  "prompts": {},
+  "sessions": {
+    "s_d5ca7b095a0062": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bba4aa14-87cc-4e63-988f-2bb260d1c278",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
