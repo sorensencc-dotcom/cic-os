@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card snapshots renders default card snapshot 1`] = `
+<div
+  class="cic-card"
+  data-cic-component="card"
+  data-variant="default"
+>
+  Content
+</div>
+`;
+
+exports[`Card snapshots renders subtle variant snapshot 1`] = `
+<div
+  class="cic-card"
+  data-cic-component="card"
+  data-variant="subtle"
+>
+  Content
+</div>
+`;
+
+exports[`Card snapshots renders with multiple children snapshot 1`] = `
+<div
+  class="cic-card"
+  data-cic-component="card"
+  data-variant="default"
+>
+  <span>
+    Child 1
+  </span>
+  <span>
+    Child 2
+  </span>
+</div>
+`;

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid snapshots renders default grid snapshot 1`] = `
+<div
+  class="cic-grid"
+  data-cic-component="grid"
+  style="grid-template-columns: repeat(12, 1fr);"
+>
+  <div>
+    Item
+  </div>
+</div>
+`;
+
+exports[`Grid snapshots renders grid with custom cols snapshot 1`] = `
+<div
+  class="cic-grid"
+  data-cic-component="grid"
+  style="grid-template-columns: repeat(6, 1fr);"
+>
+  <div>
+    Item
+  </div>
+</div>
+`;
+
+exports[`Grid snapshots renders multiple items snapshot 1`] = `
+<div
+  class="cic-grid"
+  data-cic-component="grid"
+  style="grid-template-columns: repeat(3, 1fr);"
+>
+  <div>
+    Item 1
+  </div>
+  <div>
+    Item 2
+  </div>
+  <div>
+    Item 3
+  </div>
+</div>
+`;

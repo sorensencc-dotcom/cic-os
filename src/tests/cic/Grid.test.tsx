@@ -96,7 +96,12 @@ describe("Grid", () => {
   });
 
   describe("responsive", () => {
-    const sizes = [
+    const sizes: Array<{
+      name: string;
+      width: number;
+      height: number;
+      cols: 1 | 2 | 3 | 4 | 6 | 12;
+    }> = [
       { name: "mobile", width: 375, height: 667, cols: 1 },
       { name: "tablet", width: 768, height: 1024, cols: 2 },
       { name: "desktop", width: 1920, height: 1080, cols: 4 },

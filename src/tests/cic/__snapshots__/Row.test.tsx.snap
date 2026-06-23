@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row snapshots renders default row snapshot 1`] = `
+<div
+  class="cic-row"
+  data-cic-component="row"
+  data-selected="false"
+  tabindex="0"
+>
+  Content
+</div>
+`;
+
+exports[`Row snapshots renders multiple cells snapshot 1`] = `
+<div
+  class="cic-row"
+  data-cic-component="row"
+  data-selected="false"
+  tabindex="0"
+>
+  <span>
+    Cell 1
+  </span>
+  <span>
+    Cell 2
+  </span>
+</div>
+`;
+
+exports[`Row snapshots renders selected row snapshot 1`] = `
+<div
+  class="cic-row"
+  data-cic-component="row"
+  data-selected="true"
+  tabindex="0"
+>
+  Content
+</div>
+`;

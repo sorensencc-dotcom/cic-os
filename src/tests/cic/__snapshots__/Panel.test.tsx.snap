@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel snapshots renders default panel snapshot 1`] = `
+<section
+  class="cic-panel"
+  data-cic-component="panel"
+  data-elevation="default"
+  data-loading="false"
+  data-padding="default"
+>
+  <div
+    class="cic-panel-body"
+  >
+    Content
+  </div>
+</section>
+`;
+
+exports[`Panel snapshots renders loading panel snapshot 1`] = `
+<section
+  class="cic-panel"
+  data-cic-component="panel"
+  data-elevation="default"
+  data-loading="true"
+  data-padding="default"
+>
+  <div
+    class="cic-panel-body"
+  >
+    Content
+  </div>
+</section>
+`;
+
+exports[`Panel snapshots renders panel with header+footer snapshot 1`] = `
+<section
+  class="cic-panel"
+  data-cic-component="panel"
+  data-elevation="default"
+  data-loading="false"
+  data-padding="default"
+>
+  <div
+    class="cic-panel-header"
+  >
+    Title
+  </div>
+  <div
+    class="cic-panel-body"
+  >
+    Content
+  </div>
+  <div
+    class="cic-panel-footer"
+  >
+    Footer
+  </div>
+</section>
+`;
