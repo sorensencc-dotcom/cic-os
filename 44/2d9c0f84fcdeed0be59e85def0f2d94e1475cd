@@ -1,0 +1,42 @@
+design-system/tokens/dark-mode/dark-mode.css
+  s_d5ca7b095a0062::t_80d89a10f61719 14
+public/test-components.html
+  s_ce37c767c92153::t_92bdae08689fd0 1-211
+src/stories/cic/Card.stories.tsx
+  s_d5ca7b095a0062::t_ea1d638a7f64ad 49
+src/stories/PHASE3_TEST_PLAN.md
+  s_ce37c767c92153::t_0a7e5e090e31b0 1-152
+src/components/cic/Row.tsx
+  s_d5ca7b095a0062::t_cee417b792c52b 15,20-26,28,43-45
+  s_d5ca7b095a0062::t_386c7dc4352d51 27
+  s_d5ca7b095a0062::t_7ffb41a9d2cd9e 29-36,46
+src/components/cic/Panel.tsx
+  s_d5ca7b095a0062::t_48d665ae0dccd3 34
+  s_d5ca7b095a0062::t_c25dc21c0e0450 39-41
+src/stories/utils/DarkModeWrapper.tsx
+  s_d5ca7b095a0062::t_bb1e79e5917377 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "442d9c0f84fcdeed0be59e85def0f2d94e1475cd",
+  "prompts": {},
+  "sessions": {
+    "s_ce37c767c92153": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b803e721-9440-4185-8ab8-558367dda8af",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_d5ca7b095a0062": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bba4aa14-87cc-4e63-988f-2bb260d1c278",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
