@@ -7,6 +7,9 @@
   "scripts": {
     "start": "tsx cic-runtime/example-entrypoint.ts",
     "test": "jest",
+    "test:snapshot": "playwright test",
+    "test:snapshot:headed": "playwright test --headed",
+    "test:snapshot:debug": "playwright test --debug",
     "dev": "tsx watch cic-runtime/example-entrypoint.ts",
     "build": "tsc",
     "cic-ui": "node cic-ui/index.js",
@@ -40,6 +43,7 @@
     "zustand": "^4.4.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.0",
     "@storybook/addon-docs": "^8.0.0",
     "@storybook/addon-essentials": "^8.0.0",
     "@storybook/react": "^8.0.0",
