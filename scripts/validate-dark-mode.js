@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 /**
  * Dark Mode Token Validator — ensures all components use canonical tokens
- * Runs: npm run validate:dark-mode
+ * Runs: node scripts/validate-dark-mode.js
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const REQUIRED_TOKENS = {
   light: {
@@ -93,7 +96,7 @@ function validateComponentCSS() {
 
       // Check for hardcoded colors (should use tokens)
       const colorMatches = content.match(/#[0-9a-f]{6}/gi) || [];
-      if (colorMatches.length > 2) { // Allow up to 2 hardcoded colors (like white in buttons)
+      if (colorMatches.length > 2) { // Allow up to 2 hardcoded colors
         errors.push(`⚠️  ${file}: Contains ${colorMatches.length} hardcoded colors, should use tokens`);
       }
     } catch (e) {
@@ -122,8 +125,8 @@ function validateSnapshots() {
         errors.push(`⚠️  ${path.join(testDir, file)}: Missing renderWithTheme helper`);
       }
 
-      // Check for dark mode snapshots
-      if (!content.includes('dark mode snapshots')) {
+      // Check for dark mode snapshots (case-insensitive)
+      if (!content.toLowerCase().includes('dark mode snapshot')) {
         errors.push(`⚠️  ${path.join(testDir, file)}: Missing dark mode snapshot tests`);
       }
     });

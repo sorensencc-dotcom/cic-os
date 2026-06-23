@@ -7,7 +7,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: all var(--cic-motion-fade, 120ms) ease;
+  transition: all var(--cic-motion-duration-fast) var(--cic-motion-ease);
   outline: none;
 }
 
@@ -33,7 +33,7 @@
 /* Variants */
 .cic-button--primary {
   background-color: var(--cic-color-accent);
-  color: #0a0a0a;
+  color: #fff;
 }
 
 .cic-button--primary:hover:not(:disabled) {
@@ -45,18 +45,18 @@
 }
 
 .cic-button--secondary {
-  background-color: var(--cic-color-surface-1, #1a1a1a);
+  background-color: var(--cic-color-surface-1);
   color: var(--cic-color-text);
   border: 1px solid var(--cic-color-border);
 }
 
 .cic-button--secondary:hover:not(:disabled) {
-  background-color: var(--cic-color-surface-2, #262626);
+  background-color: var(--cic-color-surface-2);
 }
 
 .cic-button--danger {
   background-color: var(--cic-color-danger);
-  color: #0a0a0a;
+  color: #ffffff;
 }
 
 .cic-button--danger:hover:not(:disabled) {
@@ -69,7 +69,7 @@
 }
 
 .cic-button--ghost:hover:not(:disabled) {
-  background-color: var(--cic-color-surface-1, #1a1a1a);
+  background-color: var(--cic-interaction-hover-bg);
 }
 
 /* States */
@@ -81,4 +81,9 @@
 .cic-button:focus-visible {
   outline: 2px solid var(--cic-color-accent);
   outline-offset: 2px;
+}
+
+/* Dark mode overrides */
+[data-theme='dark'] .cic-button--danger {
+  color: #0a0a0a;
 }

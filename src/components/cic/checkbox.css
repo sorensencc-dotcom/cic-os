@@ -48,7 +48,7 @@
 
 .cic-checkbox:checked + .cic-checkbox-label .cic-checkbox-box::after {
   content: "✓";
-  color: #fff;
+  color: #0a0a0a;
   font-size: 12px;
   font-weight: bold;
 }
