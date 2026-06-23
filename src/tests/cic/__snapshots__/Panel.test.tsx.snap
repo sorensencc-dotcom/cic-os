@@ -2,6 +2,7 @@
 
 exports[`Panel snapshots renders default panel snapshot 1`] = `
 <section
+  aria-busy="false"
   class="cic-panel"
   data-cic-component="panel"
   data-elevation="default"
@@ -9,6 +10,8 @@ exports[`Panel snapshots renders default panel snapshot 1`] = `
   data-padding="default"
 >
   <div
+    aria-atomic="false"
+    aria-live="polite"
     class="cic-panel-body"
   >
     Content
@@ -18,6 +21,7 @@ exports[`Panel snapshots renders default panel snapshot 1`] = `
 
 exports[`Panel snapshots renders loading panel snapshot 1`] = `
 <section
+  aria-busy="true"
   class="cic-panel"
   data-cic-component="panel"
   data-elevation="default"
@@ -25,6 +29,8 @@ exports[`Panel snapshots renders loading panel snapshot 1`] = `
   data-padding="default"
 >
   <div
+    aria-atomic="false"
+    aria-live="polite"
     class="cic-panel-body"
   >
     Content
@@ -34,6 +40,7 @@ exports[`Panel snapshots renders loading panel snapshot 1`] = `
 
 exports[`Panel snapshots renders panel with header+footer snapshot 1`] = `
 <section
+  aria-busy="false"
   class="cic-panel"
   data-cic-component="panel"
   data-elevation="default"
@@ -46,6 +53,8 @@ exports[`Panel snapshots renders panel with header+footer snapshot 1`] = `
     Title
   </div>
   <div
+    aria-atomic="false"
+    aria-live="polite"
     class="cic-panel-body"
   >
     Content

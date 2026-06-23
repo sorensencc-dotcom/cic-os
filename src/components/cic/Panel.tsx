@@ -31,11 +31,14 @@ export const Panel = React.forwardRef<HTMLElement, PanelProps>(
         data-padding={padding}
         data-elevation={elevation}
         data-loading={loading}
+        aria-busy={loading ? 'true' : 'false'}
         className={className ? `cic-panel ${className}` : "cic-panel"}
         {...props}
       >
         {header && <div className="cic-panel-header">{header}</div>}
-        <div className="cic-panel-body">{children}</div>
+        <div className="cic-panel-body" aria-live="polite" aria-atomic="false">
+          {children}
+        </div>
         {footer && <div className="cic-panel-footer">{footer}</div>}
       </section>
     );

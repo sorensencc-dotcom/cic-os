@@ -12,17 +12,38 @@ export const Row = React.forwardRef<HTMLDivElement, RowProps>(
       selected = false,
       children,
       className,
+      onClick,
       ...props
     },
     ref
   ) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if ((e.key === 'Enter' || e.key === ' ') && onClick) {
+        e.preventDefault();
+        onClick(e as any);
+      }
+    };
+
+    const isInteractive = !!onClick;
+
+    const ariaProps: Record<string, string> = {};
+    if (isInteractive) {
+      ariaProps['role'] = 'button';
+      if (selected) {
+        ariaProps['aria-pressed'] = 'true';
+      }
+    }
+
     return (
       <div
         ref={ref}
         data-cic-component="row"
         data-selected={selected}
         className={["cic-row", className].filter(Boolean).join(" ")}
-        tabIndex={0}
+        tabIndex={isInteractive ? 0 : -1}
+        onClick={onClick}
+        onKeyDown={handleKeyDown}
+        {...ariaProps}
         {...props}
       >
         {children}

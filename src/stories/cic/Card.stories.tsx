@@ -46,7 +46,7 @@ export const Interactive: Story = {
   render: () => (
     <DarkModeWrapper>
       <Card className="hover:shadow-lg cursor-pointer">
-        <button className="w-full p-2 bg-blue-500 text-white rounded">
+        <button className="w-full p-2 bg-blue-600 text-white rounded">
           Click me
         </button>
       </Card>

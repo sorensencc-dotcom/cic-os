@@ -1,3 +1,5 @@
+import React from 'react';
+
 // Dark Mode Wrapper — renders component in light and dark themes side-by-side for snapshot testing
 
 export function DarkModeWrapper({ children }: { children: React.ReactNode }) {
