@@ -1,0 +1,19 @@
+PLAN.md
+  s_ceb1b7ecddd04d::t_9458500f2bb6cb 3-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "1652c726c7da24cbcc91592261f9e9c3f270f79e",
+  "prompts": {},
+  "sessions": {
+    "s_ceb1b7ecddd04d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "969cacd2-ffc8-4ac9-bee9-157ef801db11",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
