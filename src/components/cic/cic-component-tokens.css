@@ -27,6 +27,7 @@
   /* Text colors */
   --cic-color-text: #111827;
   --cic-color-text-muted: #6b7280;
+  --cic-color-text-inverse: #ffffff;
 
   /* Accent and status */
   --cic-color-accent: #3b82f6;
