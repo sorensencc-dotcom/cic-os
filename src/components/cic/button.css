@@ -33,7 +33,7 @@
 /* Variants */
 .cic-button--primary {
   background-color: var(--cic-color-accent);
-  color: #fff;
+  color: #0a0a0a;
 }
 
 .cic-button--primary:hover:not(:disabled) {
