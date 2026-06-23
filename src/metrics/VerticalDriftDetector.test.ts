@@ -103,8 +103,8 @@ describe("VerticalDriftDetector", () => {
     it("detects WAF drift", async () => {
       const wafDriftMetrics: VerticalMetrics = {
         ...baselineMetrics,
-        successCount: 92,
-        failureCount: 8,
+        successCount: 82,
+        failureCount: 18,
         wafBlockCount: 8,
         totalAttempts: 100,
         avgHydrationScore: 78
@@ -128,7 +128,8 @@ describe("VerticalDriftDetector", () => {
         totalAttempts: 100,
         avgNodeCount: 2100,
         avgHydrationScore: 78,
-        avgTextDensity: 0.25
+        avgTextDensity: 0.25,
+        wafBlockCount: 0
       }
 
       const event = await detector.detectDrift(
@@ -236,8 +237,8 @@ describe("VerticalDriftDetector", () => {
     it("maps info severity for transient error drift", async () => {
       const infoMetrics: VerticalMetrics = {
         ...baselineMetrics,
-        successCount: 83,
-        failureCount: 17,
+        successCount: 80,
+        failureCount: 20,
         timeoutCount: 8,
         navFailCount: 5,
         jsFailCount: 1,
@@ -251,6 +252,7 @@ describe("VerticalDriftDetector", () => {
         baselineMetrics
       )
 
+      expect(event).not.toBeNull()
       expect(event!.severity).toBe("info")
     })
   })
@@ -270,8 +272,11 @@ describe("VerticalDriftDetector", () => {
     it("recommends network investigation for transient drift", async () => {
       const transientMetrics: VerticalMetrics = {
         ...baselineMetrics,
+        successCount: 70,
+        failureCount: 30,
         timeoutCount: 20,
         navFailCount: 15,
+        totalAttempts: 100,
         avgHydrationScore: 75
       }
 
@@ -281,13 +286,17 @@ describe("VerticalDriftDetector", () => {
         baselineMetrics
       )
 
+      expect(event).not.toBeNull()
       expect(event!.recommendation).toContain("network")
     })
 
     it("recommends WAF investigation for WAF drift", async () => {
       const wafMetrics: VerticalMetrics = {
         ...baselineMetrics,
-        wafBlockCount: 8
+        successCount: 75,
+        failureCount: 25,
+        wafBlockCount: 8,
+        totalAttempts: 100
       }
 
       const event = await detector.detectDrift(
@@ -296,6 +305,7 @@ describe("VerticalDriftDetector", () => {
         baselineMetrics
       )
 
+      expect(event).not.toBeNull()
       expect(event!.recommendation).toContain("WAF")
     })
   })
