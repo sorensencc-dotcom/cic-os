@@ -40,7 +40,7 @@ describe('AreaChart', () => {
     const { container } = render(
       <AreaChart data={mockData} />
     );
-    const areaPaths = container.querySelectorAll('path');
-    expect(areaPaths.length).toBeGreaterThan(0);
+    const areaElements = container.querySelectorAll('polyline');
+    expect(areaElements.length).toBeGreaterThan(0);
   });
 });

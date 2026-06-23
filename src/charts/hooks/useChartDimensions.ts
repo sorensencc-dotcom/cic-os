@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-interface ChartDimensions {
+export interface ChartDimensions {
   width: number;
   height: number;
   ref: React.RefObject<HTMLDivElement>;

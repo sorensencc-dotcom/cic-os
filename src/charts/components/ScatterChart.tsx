@@ -1,5 +1,5 @@
 import React from 'react';
-import { XYChart, ScatterSeries, XAxis, YAxis, Tooltip, Grid } from '@visx/xychart';
+import { scaleLinear } from '@visx/scale';
 import { chartTokens } from '../tokens/chart-scales';
 import { useChartDimensions } from '../hooks/useChartDimensions';
 import { useChartData, DataPoint } from '../hooks/useChartData';
@@ -44,47 +44,84 @@ export const ScatterChart = React.forwardRef<HTMLDivElement, ScatterChartProps>(
       );
     }
 
+    const innerWidth = finalWidth - chartTokens.margins.left - chartTokens.margins.right;
+    const innerHeight = finalHeight - (title ? 32 : 0) - chartTokens.margins.top - chartTokens.margins.bottom;
+
+    const xValues = chartData.data.map(xAccessor);
+    const xMin = Math.min(...xValues);
+    const xMax = Math.max(...xValues);
+
+    const xScale = scaleLinear({
+      domain: [xMin, xMax],
+      range: [0, innerWidth],
+    });
+
+    const yScale = scaleLinear({
+      domain: chartData.yExtent,
+      range: [innerHeight, 0],
+    });
+
     return (
       <div ref={dimRef || ref} style={{ width: '100%', height: finalHeight }} className="chart-wrapper">
         {title && <h3 style={{ margin: '8px 16px 0', fontSize: '14px', fontWeight: 600 }}>{title}</h3>}
-        <XYChart
-          width={finalWidth}
-          height={finalHeight - (title ? 32 : 0)}
-          margin={chartTokens.margins}
-          xScale={{
-            type: 'linear',
-            domain: [Math.min(...chartData.data.map(xAccessor)), Math.max(...chartData.data.map(xAccessor))],
-            range: [chartTokens.margins.left, finalWidth - chartTokens.margins.right],
-          }}
-          yScale={{
-            type: 'linear',
-            domain: chartData.yExtent,
-            range: [finalHeight - (title ? 32 : 0) - chartTokens.margins.bottom, chartTokens.margins.top],
-          }}
-        >
-          <Grid rows columns strokeOpacity={0.1} strokeWidth={1} />
-          <XAxis label={xLabel} labelOffset={12} tickLabelProps={() => ({ className: 'chart-axis-label' })} />
-          <YAxis label={yLabel} labelOffset={12} tickLabelProps={() => ({ className: 'chart-axis-label' })} />
-          <ScatterSeries
-            dataKey="scatter"
-            data={chartData.data}
-            xAccessor={xAccessor}
-            yAccessor={yAccessor}
-            fill={color}
-            size={50}
-          />
-          <Tooltip
-            snapTooltipToCursor
-            renderTooltip={({ tooltipData }) =>
-              tooltipData ? (
-                <div className="chart-tooltip">
-                  <div>{xLabel}: {tooltipData.nearestDatum?.datum?.x}</div>
-                  <div>{yLabel}: {tooltipData.nearestDatum?.datum?.y}</div>
-                </div>
-              ) : null
-            }
-          />
-        </XYChart>
+        <svg width={finalWidth} height={finalHeight - (title ? 32 : 0)}>
+          <g transform={`translate(${chartTokens.margins.left},${chartTokens.margins.top})`}>
+            {/* Grid lines */}
+            {xScale.ticks(5).map((tick, i) => (
+              <line
+                key={`grid-x-${i}`}
+                x1={xScale(tick)}
+                x2={xScale(tick)}
+                y1={0}
+                y2={innerHeight}
+                stroke={chartTokens.colors.neutral}
+                strokeOpacity={0.1}
+                strokeWidth={1}
+              />
+            ))}
+            {yScale.ticks(5).map((tick, i) => (
+              <line
+                key={`grid-y-${i}`}
+                x1={0}
+                x2={innerWidth}
+                y1={yScale(tick)}
+                y2={yScale(tick)}
+                stroke={chartTokens.colors.neutral}
+                strokeOpacity={0.1}
+                strokeWidth={1}
+              />
+            ))}
+
+            {/* Data points */}
+            {chartData.data.map((d, i) => (
+              <circle
+                key={`point-${i}`}
+                cx={xScale(xAccessor(d))}
+                cy={yScale(yAccessor(d))}
+                r={4}
+                fill={color}
+                opacity={0.7}
+              />
+            ))}
+          </g>
+
+          {/* Axes labels */}
+          <text
+            x={finalWidth / 2}
+            y={finalHeight - (title ? 32 : 0) - 8}
+            textAnchor="middle"
+            className="chart-axis-label"
+          >
+            {xLabel}
+          </text>
+          <text
+            transform={`rotate(-90) translate(-${(finalHeight - (title ? 32 : 0)) / 2}, 12)`}
+            textAnchor="middle"
+            className="chart-axis-label"
+          >
+            {yLabel}
+          </text>
+        </svg>
       </div>
     );
   },

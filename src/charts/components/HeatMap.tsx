@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ScaleLinear, scaleLinear } from '@visx/scale';
+import { scaleLinear } from '@visx/scale';
 import { chartTokens } from '../tokens/chart-scales';
 import { useChartDimensions } from '../hooks/useChartDimensions';
 import '../tokens/chart-colors.css';
@@ -79,9 +79,8 @@ export const HeatMap = React.forwardRef<HTMLDivElement, HeatMapProps>(
         <svg
           width={finalWidth}
           height={finalHeight - (title ? 32 : 0)}
-          style={{ background: chartTokens.colors.neutral, opacity: 0.05 }}
         >
-          <g transform={`translate(${chartTokens.margins.left}, ${chartTokens.margins.top})`}>
+          <g transform={`translate(${chartTokens.margins.left},${chartTokens.margins.top})`}>
             {rows.map((row, ri) =>
               cols.map((col, ci) => {
                 const value = dataMap.get(`${row}:${col}`) ?? 0;

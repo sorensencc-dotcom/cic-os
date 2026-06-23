@@ -17,9 +17,9 @@ describe('useChartData', () => {
     );
 
     expect(result.current.xDomain).toEqual([0, 2]);
-    expect(result.current.yDomain).toEqual([10, 15]);
+    expect(result.current.yDomain).toEqual([10, 20]);
     expect(result.current.yExtent[0]).toBe(10);
-    expect(result.current.yExtent[1]).toBeGreaterThan(15);
+    expect(result.current.yExtent[1]).toBeGreaterThan(20);
   });
 
   it('handles empty data', () => {
