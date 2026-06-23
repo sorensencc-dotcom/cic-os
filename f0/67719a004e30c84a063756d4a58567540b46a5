@@ -1,0 +1,35 @@
+tests/snapshots/components/input.spec.ts
+  s_b731e4528fc84c::t_f8247fdc175503 1-29
+tests/snapshots/components/alert.spec.ts
+  s_b731e4528fc84c::t_529c92bc13a2b3 1-33
+tests/snapshots/pages/dashboard.spec.ts
+  s_b731e4528fc84c::t_3c01a2e470dc7b 1-34
+tests/snapshots/components/panel.spec.ts
+  s_b731e4528fc84c::t_ada40d3d12e720 1-21
+playwright.config.ts
+  s_b731e4528fc84c::t_be7199659d8f64 1,4,9,11-12,14,18,21-22,25,27-28
+tests/snapshots/components/table.spec.ts
+  s_b731e4528fc84c::t_53bb9d48b3afbe 1-28
+tests/snapshots/components/button.spec.ts
+  s_b731e4528fc84c::t_1024a45288185e 1-28
+tests/snapshots/README.md
+  s_b731e4528fc84c::t_98bfa5c0c50eec 1-67
+tests/snapshots/pages/tokens.spec.ts
+  s_b731e4528fc84c::t_8dd095bd2f8388 1-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "f067719a004e30c84a063756d4a58567540b46a5",
+  "prompts": {},
+  "sessions": {
+    "s_b731e4528fc84c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "471894b9-8fdd-4084-b923-c553e8d77b81",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
