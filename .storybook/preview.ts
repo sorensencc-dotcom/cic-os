@@ -1,4 +1,6 @@
 import type { Preview } from '@storybook/react';
+import '../CIC_TOKEN_PACK_v2_0_tokens.css';
+import '../src/components/cic/cic-component-tokens.css';
 import '../design-system/tokens/dark-mode/dark-mode.css';
 import '../design-system/tokens/density/density.css';
 import './storybook.css';
