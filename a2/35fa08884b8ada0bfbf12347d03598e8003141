@@ -1,0 +1,22 @@
+build-system/docker/cic/Dockerfile.evolution
+  s_505aa2e7f0f4ce::t_21127e0caad9ae 1-34
+build-system/docker/cic/Dockerfile.ingestion
+  s_505aa2e7f0f4ce::t_923ebb1e46e35e 1-2,11-12,15-17,19,27,29,31-33,36-37,39,42,44
+  s_505aa2e7f0f4ce::t_59bad226115ab5 3-10,13-14,18,20-26,28,30,34-35,38,40-41,43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "a235fa08884b8ada0bfbf12347d03598e8003141",
+  "prompts": {},
+  "sessions": {
+    "s_505aa2e7f0f4ce": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d7e525c4-66c1-4ff2-af27-b0c005a59b6e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
