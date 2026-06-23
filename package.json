@@ -11,7 +11,12 @@
     "build": "tsc",
     "cic-ui": "node cic-ui/index.js",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "canary-gates": "tsx canary-gates.ts",
+    "canary-gates:A": "tsx canary-gates.ts A",
+    "canary-gates:B": "tsx canary-gates.ts B",
+    "canary-gates:C": "tsx canary-gates.ts C",
+    "fire-drills": "tsx fire-drills.ts"
   },
   "dependencies": {
     "dockerode": "^4.0.0",

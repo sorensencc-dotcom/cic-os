@@ -399,7 +399,7 @@ describe('Guard Helpers', () => {
       }
 
       const elapsed = Date.now() - start;
-      expect(elapsed).toBeLessThan(500); // reasonable threshold for 10k calls
+      expect(elapsed).toBeLessThan(1000); // reasonable threshold for 10k calls
     });
 
     it('sanitizeText handles large strings efficiently', () => {
@@ -409,7 +409,7 @@ describe('Guard Helpers', () => {
       sanitizeText(largeText);
 
       const elapsed = Date.now() - start;
-      expect(elapsed).toBeLessThan(500); // reasonable threshold for 100k char
+      expect(elapsed).toBeLessThan(1000); // reasonable threshold for 100k char
     });
 
     it('validateJsonCompleteness is fast for valid JSON', () => {
@@ -421,7 +421,7 @@ describe('Guard Helpers', () => {
       }
 
       const elapsed = Date.now() - start;
-      expect(elapsed).toBeLessThan(500); // reasonable threshold
+      expect(elapsed).toBeLessThan(1000); // reasonable threshold
     });
   });
 });

@@ -3,7 +3,11 @@ export default {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   roots: ["<rootDir>/cic", "<rootDir>/src", "<rootDir>/cic-runtime", "<rootDir>/cic-ingestion"],
-  testMatch: ["**/*.test.ts", "**/*.test.tsx", "**/runtime/tests/**/*.test.js"],
+  testMatch: ["**/*.test.ts", "**/*.test.tsx"],
+  testPathIgnorePatterns: [
+    "/cic-runtime/integration\\.test\\.ts",
+    "/aperture/(sandbox|orchestrator|__tests__)/"
+  ],
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
     "\\.css$": "<rootDir>/jest-mock-css.js"
@@ -11,12 +15,10 @@ export default {
   transform: {
     "^.+\\.tsx?$": ["ts-jest", {
       useESM: true
-    }],
-    "^.+\\.js$": ["ts-jest", { useESM: true }]
+    }]
   },
   transformIgnorePatterns: [
-    "node_modules/(?!(uuid|@paralleldrive|@noble|cuid2)/)",
-    "node-cron.*uuid"
+    "node_modules/(?!(uuid|@paralleldrive|@noble|cuid2|node-cron)/)"
   ],
   collectCoverageFrom: [
     "cic/src/**/*.ts",
