@@ -37,15 +37,6 @@ jobs:
           docker-compose build cic-ingestion || \
           echo "Build failed; image may need manual creation"
 
-      - name: Log in to Docker Registry
-        run: |
-          echo "Logging in to container registry..."
-          if [ -n "${{ secrets.REGISTRY_USERNAME }}" ] && [ -n "${{ secrets.REGISTRY_PASSWORD }}" ]; then
-            echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login -u "${{ secrets.REGISTRY_USERNAME }}" --password-stdin
-          else
-            echo "Registry credentials not configured; skipping login"
-          fi
-
       - name: Publish Docker Images
         run: |
           echo "Deploying target agent: ${{ github.event.inputs.phase }} to ${{ github.event.inputs.environment }}"
