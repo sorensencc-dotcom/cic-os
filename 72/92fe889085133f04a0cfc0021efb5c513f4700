@@ -1,0 +1,85 @@
+src/slo-controller/types.ts
+  s_505aa2e7f0f4ce::t_dff7e49ef0c7e6 1-58
+src/charts/components/LineChart.tsx
+  s_b731e4528fc84c::t_b5d292b87013d3 1-82
+src/charts/hooks/useChartData.ts
+  s_b731e4528fc84c::t_891d9d2295ba2b 1-45
+src/charts/components/AreaChart.test.tsx
+  s_b731e4528fc84c::t_d97c964f642173 1-46
+src/charts/components/HeatMap.test.tsx
+  s_b731e4528fc84c::t_122409ba9b7e2c 1-45
+src/charts/components/AreaChart.tsx
+  s_b731e4528fc84c::t_1dc334da795c06 1-91
+src/tests/cic/Grid.test.tsx
+  s_ce37c767c92153::t_a7bf32f505ef4d 66-116
+src/charts/components/BarChart.test.tsx
+  s_b731e4528fc84c::t_5403d185a20640 1-45
+src/charts/components/ScatterChart.test.tsx
+  s_b731e4528fc84c::t_6547c87703b930 1-53
+src/tests/cic/Row.test.tsx
+  s_ce37c767c92153::t_2e6372e2563c66 53-89
+src/observability/metrics-endpoint.ts
+  s_505aa2e7f0f4ce::t_7ad7a2f1447723 1-216
+src/charts/hooks/useChartDimensions.test.ts
+  s_b731e4528fc84c::t_d6fb4b8f9b2ea5 1-33
+src/charts/components/HeatMap.tsx
+  s_b731e4528fc84c::t_8206573bfcae6b 1-158
+src/charts/components/LineChart.test.tsx
+  s_b731e4528fc84c::t_37eb165c23ca22 1-46
+src/charts/components/ScatterChart.tsx
+  s_b731e4528fc84c::t_7024493586539d 1-93
+src/tests/cic/Panel.test.tsx
+  s_ce37c767c92153::t_7fdefa3b5dcf1f 55-90
+WS-B-C-SCAFFOLD.md
+  s_505aa2e7f0f4ce::t_c8e31e7a2db081 1-149
+src/charts/hooks/useChartDimensions.ts
+  s_b731e4528fc84c::t_9c62a6efa3bd80 1-31
+src/charts/index.ts
+  s_b731e4528fc84c::t_21368f68b17433 1-11
+src/charts/components/BarChart.tsx
+  s_b731e4528fc84c::t_21c907b5a46c00 1-82
+src/charts/hooks/useChartData.test.ts
+  s_b731e4528fc84c::t_ec6a6126fd9d69 1-76
+src/tests/cic/Card.test.tsx
+  s_ce37c767c92153::t_0c804767f527cc 48-84
+src/charts/tokens/chart-colors.css
+  s_b731e4528fc84c::t_20a1f6a74072a7 1-45
+src/adapter-gateway/cache.ts
+  s_505aa2e7f0f4ce::t_1286ce3ad342ae 1-209
+src/slo-controller/slo-controller.ts
+  s_505aa2e7f0f4ce::t_eb80d6420ee13a 1-108
+src/charts/tokens/chart-scales.ts
+  s_b731e4528fc84c::t_c399023e949216 1-42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "7292fe889085133f04a0cfc0021efb5c513f4700",
+  "prompts": {},
+  "sessions": {
+    "s_505aa2e7f0f4ce": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d7e525c4-66c1-4ff2-af27-b0c005a59b6e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_b731e4528fc84c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "471894b9-8fdd-4084-b923-c553e8d77b81",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_ce37c767c92153": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b803e721-9440-4185-8ab8-558367dda8af",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
