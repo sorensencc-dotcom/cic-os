@@ -1,0 +1,90 @@
+/* CIC Component Token Mapping — maps v2.0 component references to available tokens */
+
+:root {
+  /* Surface layers (for light/dark mode override) */
+  --cic-surface-layer-0: var(--color-bg-primary, #0a0a0a);
+  --cic-surface-layer-1: var(--color-bg-secondary, #111111);
+  --cic-surface-layer-2: var(--color-bg-panel, #141414);
+
+  /* Surface colors */
+  --cic-color-surface-0: var(--color-bg-primary, #0a0a0a);
+  --cic-color-surface-1: var(--color-bg-secondary, #111111);
+  --cic-color-surface: var(--color-bg-panel, #141414);
+
+  /* Card surfaces */
+  --cic-card-surface: var(--color-bg-panel, #141414);
+  --cic-card-border: #222222;
+
+  /* Panel */
+  --cic-panel-border: #222222;
+  --cic-panel-elevation: var(--elevation-med, 6px);
+
+  /* Text colors */
+  --cic-color-text: var(--color-text-primary, #ffffff);
+  --cic-color-text-muted: var(--color-text-muted, #888888);
+
+  /* Accent and status */
+  --cic-color-accent: var(--color-accent-primary, #00ff88);
+  --cic-color-danger: var(--color-alert-error, #ff4444);
+  --cic-color-border: #222222;
+
+  /* Focus and interaction */
+  --cic-interaction-focus-ring: 2px solid var(--cic-focus-ring, #00ff88);
+
+  /* Spacing — mapped to existing space tokens */
+  --cic-space-4: var(--space-xs, 4px);
+  --cic-space-12: var(--space-sm, 8px);
+  --cic-space-16: var(--space-md, 16px);
+  --cic-space-24: var(--space-lg, 24px);
+
+  /* Motion/transitions */
+  --cic-motion-duration-fast: 120ms;
+  --cic-motion-duration-medium: 200ms;
+  --cic-motion-ease: ease-in-out;
+}
+
+/* Override for dark theme if needed */
+[data-theme='dark'] {
+  --cic-surface-layer-0: #0a0a0a;
+  --cic-surface-layer-1: #1a1a1a;
+  --cic-surface-layer-2: #262626;
+
+  --cic-color-surface-0: #0a0a0a;
+  --cic-color-surface-1: #1a1a1a;
+  --cic-color-surface: #1a1a1a;
+
+  --cic-card-surface: #1a1a1a;
+  --cic-card-border: #333333;
+
+  --cic-panel-border: #333333;
+
+  --cic-color-text: #f3f4f6;
+  --cic-color-text-muted: #9ca3af;
+
+  --cic-color-accent: #60a5fa;
+  --cic-color-danger: #f87171;
+  --cic-color-border: #374151;
+}
+
+/* Override for light theme */
+[data-theme='light'] {
+  --cic-surface-layer-0: #ffffff;
+  --cic-surface-layer-1: #f9fafb;
+  --cic-surface-layer-2: #f3f4f6;
+
+  --cic-color-surface-0: #ffffff;
+  --cic-color-surface-1: #f9fafb;
+  --cic-color-surface: #f9fafb;
+
+  --cic-card-surface: #f9fafb;
+  --cic-card-border: #e5e7eb;
+
+  --cic-panel-border: #e5e7eb;
+
+  --cic-color-text: #111827;
+  --cic-color-text-muted: #6b7280;
+
+  --cic-color-accent: #3b82f6;
+  --cic-color-danger: #dc2626;
+  --cic-color-border: #d1d5db;
+}
