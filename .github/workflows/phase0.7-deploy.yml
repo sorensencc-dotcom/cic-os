@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment }}
     steps:
+      - name: Configure Git
+        run: git config --global submodule.recurse false
+
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
