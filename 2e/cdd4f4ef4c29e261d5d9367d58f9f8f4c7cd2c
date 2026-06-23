@@ -1,0 +1,20 @@
+jest.config.js
+  s_364b84448a6a24::t_0635acfbfe8fad 7
+  s_364b84448a6a24::t_d967172c4fa04f 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "2ecdd4f4ef4c29e261d5d9367d58f9f8f4c7cd2c",
+  "prompts": {},
+  "sessions": {
+    "s_364b84448a6a24": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "39348d4a-ea3b-4770-9a70-03a4d04006b7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
