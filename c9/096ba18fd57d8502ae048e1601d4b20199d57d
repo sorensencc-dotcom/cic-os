@@ -1,0 +1,23 @@
+src/components/cic/cic-component-tokens.css
+  s_315fc89257027a::t_73cf0ed37145b7 30
+src/components/cic/button.css
+  s_315fc89257027a::t_2d25fe4a7d6f9f 88
+  s_315fc89257027a::t_26f35d7e87f348 36
+  s_315fc89257027a::t_e51e06bc03e560 59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "c9096ba18fd57d8502ae048e1601d4b20199d57d",
+  "prompts": {},
+  "sessions": {
+    "s_315fc89257027a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b5debf30-c61e-4d01-90ac-81c8d552f1d3",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
