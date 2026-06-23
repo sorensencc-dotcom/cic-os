@@ -1,6 +1,11 @@
 # PHASE 8 — COST OPTIMIZATION + DYNAMIC MODEL SELECTION
 
-## Architecture (A–D Locked)
+**Status:** ✓ COMPLETE  
+**Date:** 2026-06-23  
+**Commits:** 71f7b5c, 832e36c, 081b20d, 89bbfda, b373620  
+**LOC:** 860 lines (types + cost + models + integration)
+
+## Architecture (A–D Implemented)
 
 ### A. Phase 8 ↔ Phase 7 Integration
 - State machine extended: `DEGRADED_COST`, `ONLINE_COST_OPTIMIZED`
