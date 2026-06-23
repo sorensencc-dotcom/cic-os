@@ -1,0 +1,92 @@
+.storybook/main.ts
+  s_ce37c767c92153::t_5d066e7f8f72ae 1,4
+src/charts/components/BarChart.tsx
+  s_b731e4528fc84c::t_ff12e6b4354e6f 2,47-64,68-119
+bookstack-docker/docker-compose.yml
+  s_1ab84a74384312::t_76e97dc5ae5aa1 11
+test-results.txt
+  s_91bb0beee11b1e::t_c580acab146dda 1-4
+  s_1ab84a74384312::t_76e97dc5ae5aa1 5-7844
+docs/m2/M2_FRAMEWORK.md
+  s_505aa2e7f0f4ce::t_607fb037643674 1-148
+docs/m2/WS-B.md
+  s_505aa2e7f0f4ce::t_22c3b4d95600a2 1-152
+docs/m2/WS-C.md
+  s_505aa2e7f0f4ce::t_d3c7a008fe2f1e 1-175
+src/charts/components/AreaChart.test.tsx
+  s_b731e4528fc84c::t_f536440451e14d 43-44
+src/charts/components/HeatMap.tsx
+  s_b731e4528fc84c::t_c8b6d20ac018e0 2,83
+src/stories/cic/Panel.stories.tsx
+  s_ce37c767c92153::t_b13852461ab32c 16,25-51,68-88,96-108
+src/charts/components/LineChart.tsx
+  s_b731e4528fc84c::t_6261019c219192 2-4,6,48-66,70-118
+src/charts/hooks/useChartData.test.ts
+  s_b731e4528fc84c::t_c6e85270a278ba 20,22
+src/stories/cic/Grid.stories.tsx
+  s_ce37c767c92153::t_5d50abd4c44f1d 17,48-131,149-182
+canary-report-A-1782183150667.json
+  s_505aa2e7f0f4ce::t_f9cae0f2b4db09 1-61
+src/stories/cic/Card.stories.tsx
+  s_ce37c767c92153::t_1296cefa700bab 16,33-92,100-116
+docs/m2/WS-A.md
+  s_505aa2e7f0f4ce::t_66351da769c292 1-124
+src/stories/cic/Row.stories.tsx
+  s_ce37c767c92153::t_3b3f6804e6eb0d 16,33-86,94-118
+src/charts/components/ScatterChart.tsx
+  s_b731e4528fc84c::t_62d7aff14e4fb8 2,47-63,67-124
+src/charts/components/AreaChart.tsx
+  s_b731e4528fc84c::t_d1e9f8511a2f53 2-3,48-66,70-130
+src/charts/hooks/useChartDimensions.ts
+  s_b731e4528fc84c::t_458b9d3e70d802 3
+fire-drill-report-1782185851435.json
+  s_505aa2e7f0f4ce::t_0816d8b6767876 1-103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "fc6f1cffd90932f575f67959275bc01dae738161",
+  "prompts": {},
+  "sessions": {
+    "s_1ab84a74384312": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "25143c04-f754-47c8-b94f-f3f9528c7d65",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_505aa2e7f0f4ce": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d7e525c4-66c1-4ff2-af27-b0c005a59b6e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_91bb0beee11b1e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0614379-e130-49de-9c7f-737fa4242e58",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_b731e4528fc84c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "471894b9-8fdd-4084-b923-c553e8d77b81",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_ce37c767c92153": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b803e721-9440-4185-8ab8-558367dda8af",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
