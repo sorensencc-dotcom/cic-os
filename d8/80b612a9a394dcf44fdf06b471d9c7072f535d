@@ -1,0 +1,21 @@
+scripts/skill-deployer-backend-test.js
+  s_364b84448a6a24::t_5432dbbcc90d9e 1-221
+scripts/skill-deployer-backend.js
+  s_364b84448a6a24::t_5432dbbcc90d9e 1-552
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "d880b612a9a394dcf44fdf06b471d9c7072f535d",
+  "prompts": {},
+  "sessions": {
+    "s_364b84448a6a24": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "39348d4a-ea3b-4770-9a70-03a4d04006b7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
