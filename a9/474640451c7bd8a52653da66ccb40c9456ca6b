@@ -1,0 +1,19 @@
+src/tests/cic/Grid.test.tsx
+  s_ce37c767c92153::t_933f3a9215d2e5 99-104
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "a9474640451c7bd8a52653da66ccb40c9456ca6b",
+  "prompts": {},
+  "sessions": {
+    "s_ce37c767c92153": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b803e721-9440-4185-8ab8-558367dda8af",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
