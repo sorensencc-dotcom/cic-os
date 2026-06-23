@@ -1,0 +1,22 @@
+.github/workflows/phase0.7-build.yml
+  s_91bb0beee11b1e::t_cf335cb759cb0d 39-41
+  s_91bb0beee11b1e::t_3b369f35d78786 17-19
+.github/workflows/phase0.7-deploy.yml
+  s_91bb0beee11b1e::t_85a075bcd0d552 22-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "c3578462cbb3cc59b1eb420780281ca8e75dee84",
+  "prompts": {},
+  "sessions": {
+    "s_91bb0beee11b1e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c0614379-e130-49de-9c7f-737fa4242e58",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
