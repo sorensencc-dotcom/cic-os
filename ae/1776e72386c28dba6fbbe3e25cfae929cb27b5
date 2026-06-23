@@ -1,0 +1,23 @@
+src/tests/cic/Panel.test.tsx
+  s_7f1fca6dd52804::t_54fe4fc6dd7275 39-54
+src/components/cic/Panel.tsx
+  s_7f1fca6dd52804::t_9eaff3733890f0 7-9,18-20,33,37-39
+PHASE_2_COMPLETION.md
+  s_7f1fca6dd52804::t_4c9760271acd89 1-300
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "ae1776e72386c28dba6fbbe3e25cfae929cb27b5",
+  "prompts": {},
+  "sessions": {
+    "s_7f1fca6dd52804": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "659da61e-3c6c-4922-8368-67292e28d6fb",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
