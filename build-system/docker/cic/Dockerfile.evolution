@@ -1,0 +1,34 @@
+# Dockerfile.evolution - CIC Evolution Agent
+# Note: This Dockerfile is a placeholder. The evolution agent is not yet
+# implemented in the current codebase structure.
+#
+# Expected structure (when ready):
+# - /c/dev/cic/evolution/ with TypeScript source
+# - /c/dev/cic/evolution/src/loopRunner.ts entry point
+#
+# For now, this image is intentionally non-functional.
+
+FROM node:20-alpine
+
+WORKDIR /app
+
+RUN apk add --no-cache curl bash
+
+# Copy package files (when evolution service exists)
+# COPY cic/evolution/package.json .
+# COPY cic/evolution/package-lock.json .
+# RUN npm ci --production
+
+# Copy source (when ready)
+# COPY cic/evolution/dist ./dist
+
+ENV NODE_ENV=production
+ENV PORT=3101
+
+EXPOSE 3101
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3101/health || exit 1
+
+# Placeholder: will fail if run (service not yet implemented)
+CMD ["echo", "Evolution agent not yet implemented"]
