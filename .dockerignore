@@ -1,19 +1,31 @@
+# Build artifacts & caches (can be regenerated in container)
 node_modules
 .git
-.venv
-*.venv
-venv
-charlie-deep-research
-logs
 dist
 build
 coverage
 .next
-.env*
-.ijfw
-.claude
-data/temp
 .pytest_cache
 __pycache__
 *.pyc
+
+# Temporary & transient files
+.venv
+*.venv
+venv
+logs
+data/temp
+
+# IDE & workspace metadata
+.ijfw
+.claude
+
+# Secrets (explicit — use .env.example instead)
+.env*
+!.env.example
+
+# OS
 .DS_Store
+
+# Allow everything else for Docker builds
+# Dockerfiles will COPY only what they need
