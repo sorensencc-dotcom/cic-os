@@ -52,4 +52,40 @@ describe("Panel", () => {
     const panel = container.querySelector(".cic-panel");
     expect(panel).toHaveAttribute("data-loading", "true");
   });
+
+  describe("snapshots", () => {
+    it("renders default panel snapshot", () => {
+      const { container } = render(<Panel>Content</Panel>);
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders panel with header+footer snapshot", () => {
+      const { container } = render(
+        <Panel header="Title" footer="Footer">
+          Content
+        </Panel>
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders loading panel snapshot", () => {
+      const { container } = render(<Panel loading>Content</Panel>);
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe("responsive", () => {
+    const sizes = [
+      { name: "mobile", width: 375, height: 667 },
+      { name: "tablet", width: 768, height: 1024 },
+      { name: "desktop", width: 1920, height: 1080 },
+    ];
+
+    test.each(sizes)("renders at $name ($width×$height)", ({ width, height }) => {
+      window.innerWidth = width;
+      window.innerHeight = height;
+      const { container } = render(<Panel>Content</Panel>);
+      expect(container.querySelector(".cic-panel")).toBeInTheDocument();
+    });
+  });
 });

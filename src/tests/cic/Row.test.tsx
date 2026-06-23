@@ -50,4 +50,41 @@ describe("Row", () => {
     expect(getByText("Cell 1")).toBeInTheDocument();
     expect(getByText("Cell 2")).toBeInTheDocument();
   });
+
+  describe("snapshots", () => {
+    it("renders default row snapshot", () => {
+      const { container } = render(<Row>Content</Row>);
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders selected row snapshot", () => {
+      const { container } = render(<Row selected>Content</Row>);
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders multiple cells snapshot", () => {
+      const { container } = render(
+        <Row>
+          <span>Cell 1</span>
+          <span>Cell 2</span>
+        </Row>
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe("responsive", () => {
+    const sizes = [
+      { name: "mobile", width: 375, height: 667 },
+      { name: "tablet", width: 768, height: 1024 },
+      { name: "desktop", width: 1920, height: 1080 },
+    ];
+
+    test.each(sizes)("renders at $name ($width×$height)", ({ width, height }) => {
+      window.innerWidth = width;
+      window.innerHeight = height;
+      const { container } = render(<Row>Content</Row>);
+      expect(container.querySelector(".cic-row")).toBeInTheDocument();
+    });
+  });
 });

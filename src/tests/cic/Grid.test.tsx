@@ -63,4 +63,55 @@ describe("Grid", () => {
     expect(c2.querySelector(".cic-grid")).toHaveStyle("grid-template-columns: repeat(2, 1fr)");
     expect(c3.querySelector(".cic-grid")).toHaveStyle("grid-template-columns: repeat(4, 1fr)");
   });
+
+  describe("snapshots", () => {
+    it("renders default grid snapshot", () => {
+      const { container } = render(
+        <Grid>
+          <div>Item</div>
+        </Grid>
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders grid with custom cols snapshot", () => {
+      const { container } = render(
+        <Grid cols={6}>
+          <div>Item</div>
+        </Grid>
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders multiple items snapshot", () => {
+      const { container } = render(
+        <Grid cols={3}>
+          <div>Item 1</div>
+          <div>Item 2</div>
+          <div>Item 3</div>
+        </Grid>
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe("responsive", () => {
+    const sizes = [
+      { name: "mobile", width: 375, height: 667, cols: 1 },
+      { name: "tablet", width: 768, height: 1024, cols: 2 },
+      { name: "desktop", width: 1920, height: 1080, cols: 4 },
+    ];
+
+    test.each(sizes)(
+      "renders $name layout ($width×$height with $cols cols)",
+      ({ width, height, cols }) => {
+        window.innerWidth = width;
+        window.innerHeight = height;
+        const { container } = render(<Grid cols={cols}>Content</Grid>);
+        expect(container.querySelector(".cic-grid")).toHaveStyle(
+          `grid-template-columns: repeat(${cols}, 1fr)`
+        );
+      }
+    );
+  });
 });

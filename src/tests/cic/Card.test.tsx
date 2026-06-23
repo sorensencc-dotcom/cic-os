@@ -45,4 +45,41 @@ describe("Card", () => {
     const { container } = render(<Card>Test</Card>);
     expect(container.querySelector('[data-cic-component="card"]')).toBeInTheDocument();
   });
+
+  describe("snapshots", () => {
+    it("renders default card snapshot", () => {
+      const { container } = render(<Card>Content</Card>);
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders subtle variant snapshot", () => {
+      const { container } = render(<Card variant="subtle">Content</Card>);
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("renders with multiple children snapshot", () => {
+      const { container } = render(
+        <Card>
+          <span>Child 1</span>
+          <span>Child 2</span>
+        </Card>
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe("responsive", () => {
+    const sizes = [
+      { name: "mobile", width: 375, height: 667 },
+      { name: "tablet", width: 768, height: 1024 },
+      { name: "desktop", width: 1920, height: 1080 },
+    ];
+
+    test.each(sizes)("renders at $name ($width×$height)", ({ width, height }) => {
+      window.innerWidth = width;
+      window.innerHeight = height;
+      const { container } = render(<Card>Content</Card>);
+      expect(container.querySelector(".cic-card")).toBeInTheDocument();
+    });
+  });
 });
