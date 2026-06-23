@@ -4,6 +4,9 @@ import "./panel.css";
 export interface PanelProps extends React.HTMLAttributes<HTMLElement> {
   padding?: "default" | "none";
   elevation?: "default" | "none";
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
+  loading?: boolean;
   children: React.ReactNode;
 }
 
@@ -12,6 +15,9 @@ export const Panel = React.forwardRef<HTMLElement, PanelProps>(
     {
       padding = "default",
       elevation = "default",
+      header,
+      footer,
+      loading = false,
       children,
       className,
       ...props
@@ -24,10 +30,13 @@ export const Panel = React.forwardRef<HTMLElement, PanelProps>(
         data-cic-component="panel"
         data-padding={padding}
         data-elevation={elevation}
+        data-loading={loading}
         className={className ? `cic-panel ${className}` : "cic-panel"}
         {...props}
       >
-        {children}
+        {header && <div className="cic-panel-header">{header}</div>}
+        <div className="cic-panel-body">{children}</div>
+        {footer && <div className="cic-panel-footer">{footer}</div>}
       </section>
     );
   }

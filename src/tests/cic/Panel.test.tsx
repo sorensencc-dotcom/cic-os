@@ -36,4 +36,20 @@ describe("Panel", () => {
     const { container } = render(<Panel className="custom">Test</Panel>);
     expect(container.querySelector(".cic-panel.custom")).toBeInTheDocument();
   });
+
+  it("renders header when provided", () => {
+    const { getByText } = render(<Panel header="Title">Content</Panel>);
+    expect(getByText("Title")).toBeInTheDocument();
+  });
+
+  it("renders footer when provided", () => {
+    const { getByText } = render(<Panel footer="Footer text">Content</Panel>);
+    expect(getByText("Footer text")).toBeInTheDocument();
+  });
+
+  it("applies loading state", () => {
+    const { container } = render(<Panel loading>Content</Panel>);
+    const panel = container.querySelector(".cic-panel");
+    expect(panel).toHaveAttribute("data-loading", "true");
+  });
 });
