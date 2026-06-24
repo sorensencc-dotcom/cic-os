@@ -1,0 +1,35 @@
+src/ui/console-v3/ConsoleV3.test.tsx
+  s_7e2ff542e09c84::t_2cb2c09b755d98 1-82
+src/ui/console-v3/ConsoleV3.tsx
+  s_7e2ff542e09c84::t_bf8b5ce92febbd 1-15,25,27,36,38,47,49,58,60,69,71-331
+  s_7e2ff542e09c84::t_61adbcdf8b4710 16-21,23-24,26,28-32,34-35,37,39-43,45-46,48,50-54,56-57,59,61-65,67-68,70
+  s_7e2ff542e09c84::t_5a6ebda42adab5 22
+  s_7e2ff542e09c84::t_4a2b0104835435 33,44,55,66
+src/ui/console-v3/index.ts
+  s_7e2ff542e09c84::t_0780d912c56945 6
+  s_f1e5a6cf541f4d::t_fe044660083c77 1-5,7-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "9dee42e9532174f7f3d893c388f120d6553d4ec8",
+  "prompts": {},
+  "sessions": {
+    "s_7e2ff542e09c84": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cc188e59-e207-4e01-8481-41c1895421b7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_f1e5a6cf541f4d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c1f1dcf3-c5b7-477e-8371-b0d74574b7f9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
