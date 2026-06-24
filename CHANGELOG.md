@@ -1,5 +1,25 @@
 # Changelog
 
+## Changes (2026-06-24T00:00:00Z)
+
+**Categories:** fix, review, storybook
+
+**Summary:** Code review fixes — restored DarkModeWrapper dual-theme rendering; enabled Storybook TypeScript checking for HMR feedback.
+
+**Files:**
+- src/stories/utils/DarkModeWrapper.tsx (restored side-by-side light+dark rendering)
+- .storybook/main.ts (enabled check: true for TypeScript verification)
+
+**Status:** ✓ CODE REVIEW COMPLETE — 2/2 findings addressed
+
+**Phase 27 CIC Integration Status:**
+- 14 files generated (adapters, services, detectors, routes, utilities, tests)
+- 35 unit tests passing
+- Full API documentation (PHASE_27_README.md + PHASE_27_INTEGRATION.md)
+- Production-ready for TorqueQuery/Chat-Agent integration
+
+<!-- Code review fixes + Phase 27 reconstruction -->
+
 ## Changes (2026-06-22T18:54:00Z)
 
 **Categories:** code, deployment, infrastructure
