@@ -1,11 +1,12 @@
-import { callModel, ChatPayload } from "../core/modelRouter.js";
-import { getModelSpec } from "../core/modelRegistry.js";
+import { callModel, ChatPayload, ModelRouter } from "../core/modelRouter.js";
+import { getModelSpec, loadModelRegistry } from "../core/modelRegistry.js";
 import { ModelSpec } from "../core/modelSpec.js";
 import { AgentRoutingProfile } from "./routingProfile.js";
 
 export abstract class BaseAgent {
   protected abstract routingProfile: AgentRoutingProfile;
   protected agentName: string = this.constructor.name;
+  protected router = new ModelRouter(loadModelRegistry());
 
   protected async llm(
     messages: ChatPayload["messages"],
@@ -14,18 +15,28 @@ export abstract class BaseAgent {
       temperature: number;
       maxTokens: number;
       tools?: any[];
+      requires?: ChatPayload["requires"];
     }> = {}
   ) {
-    const modelName = opts.model ?? this.routingProfile.pickModel();
-    const spec = getModelSpec(modelName);
-
     const payload: ChatPayload = {
-      model: modelName,
-      messages: this.formatMessagesForModel(messages, spec),
+      model: "",
+      messages,
       temperature: opts.temperature,
-      maxTokens: opts.maxTokens ?? spec.maxTokens,
-      tools: opts.tools
+      maxTokens: opts.maxTokens,
+      tools: opts.tools,
+      requires: opts.requires
     };
+
+    let spec: ModelSpec;
+    if (opts.model) {
+      spec = getModelSpec(opts.model);
+    } else {
+      spec = this.router.selectModel(this.routingProfile, payload);
+    }
+
+    payload.model = spec.name;
+    payload.messages = this.formatMessagesForModel(messages, spec);
+    payload.maxTokens = opts.maxTokens ?? spec.maxTokens;
 
     return callModel(payload, this.agentName);
   }

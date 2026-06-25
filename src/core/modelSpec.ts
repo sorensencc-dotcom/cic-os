@@ -4,7 +4,8 @@ export type ModelType =
   | "google"
   | "ollama"
   | "local-gguf"
-  | "azure-openai";
+  | "azure-openai"
+  | "mock";
 
 export interface ModelCapabilities {
   chat: boolean;
@@ -30,4 +31,5 @@ export interface ModelSpec {
     score: number;
     domains?: string[];
   };
+  routingBias?: number;
 }

@@ -7,7 +7,7 @@ export class OrchestratorAgent extends BaseAgent {
 
   async runPlan(plan: string) {
     const messages = this.buildOrchestratorPrompt(plan);
-    const res = await this.llm(messages);
+    const res = await this.llm(messages, { requires: { toolCalls: true } });
     return this.parseOrchestration(res.text);
   }
 

@@ -4,7 +4,8 @@ import { RoutingError } from "../core/errors.js";
 export class AgentRoutingProfile {
   constructor(
     private readonly preferredModels: string[],
-    private readonly fallbackModels: string[] = []
+    private readonly fallbackModels: string[] = [],
+    public readonly mode?: "local" | "hybrid" | "cloud"
   ) {
     this.validateModels();
   }

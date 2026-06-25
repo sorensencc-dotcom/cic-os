@@ -15,12 +15,28 @@ export interface AuditResult {
 export class AuditAgent extends BaseAgent {
   protected routingProfile = new AgentRoutingProfile(["claude-3.7"], ["fugu"]);
 
-  async audit(result: string): Promise<AuditResult> {
+  async audit(primary: string, secondary?: string): Promise<AuditResult>;
+  async audit(result: string): Promise<AuditResult>;
+  async audit(a: any, b?: any): Promise<AuditResult> {
+    let primaryInput: string;
+    let secondaryInput: string | undefined;
+
+    if (typeof b === "string") {
+      primaryInput = a;
+      secondaryInput = b;
+    } else {
+      primaryInput = a;
+    }
+
+    return this.auditImplementation(primaryInput, secondaryInput);
+  }
+
+  private async auditImplementation(result: string, secondaryOverride?: string): Promise<AuditResult> {
     const messages = this.buildAuditPrompt(result);
 
     let primaryResult = "";
     let primaryModel = "claude-3.7";
-    let secondaryResult = "";
+    let secondaryResult = secondaryOverride || "";
     let secondaryModel = "fugu";
 
     // Try primary model (claude-3.7)
@@ -41,14 +57,16 @@ export class AuditAgent extends BaseAgent {
       }
     }
 
-    // Try secondary model (fugu)
-    try {
-      const secondary = await this.llm(messages, { model: "fugu" });
-      secondaryResult = secondary.text;
-    } catch (e) {
-      // Secondary failed, degrade gracefully by using a stripped version
-      secondaryResult = primaryResult;
-      secondaryModel = primaryModel;
+    // Try secondary model if not provided
+    if (!secondaryOverride) {
+      try {
+        const secondary = await this.llm(messages, { model: "fugu" });
+        secondaryResult = secondary.text;
+      } catch (e) {
+        // Secondary failed, degrade gracefully by using a stripped version
+        secondaryResult = primaryResult;
+        secondaryModel = primaryModel;
+      }
     }
 
     const { score, issues } = this.computeConsistency(primaryResult, secondaryResult);

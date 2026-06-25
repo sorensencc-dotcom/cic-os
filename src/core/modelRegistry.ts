@@ -21,6 +21,14 @@ export function loadModelRegistry(): Map<string, ModelSpec> {
     const raw = fs.readFileSync(path.join(MODELS_DIR, file), "utf8");
     const spec = JSON.parse(raw) as ModelSpec;
     validateModelSpec(spec);
+
+    if (spec.routingBias == null) {
+      spec.routingBias =
+        spec.provider === "mock" || spec.provider === "ollama" || spec.provider === "local"
+          ? 100
+          : 10;
+    }
+
     registry.set(spec.name, spec);
   }
 
