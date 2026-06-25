@@ -60,13 +60,13 @@ describe("Checkbox Component", () => {
 
   describe("light mode snapshots", () => {
     it("renders checkbox in light mode", () => {
-      const { container } = renderWithTheme(<Checkbox />, "light");
+      const { container } = renderWithTheme(<Checkbox id="test-checkbox-1" />, "light");
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders checkbox with label in light mode", () => {
       const { container } = renderWithTheme(
-        <Checkbox label="Accept terms" />,
+        <Checkbox label="Accept terms" id="test-checkbox-2" />,
         "light"
       );
       expect(container.firstChild).toMatchSnapshot();
@@ -74,7 +74,7 @@ describe("Checkbox Component", () => {
 
     it("renders checkbox with description in light mode", () => {
       const { container } = renderWithTheme(
-        <Checkbox label="Test" description="This is a test" />,
+        <Checkbox label="Test" description="This is a test" id="test-checkbox-3" />,
         "light"
       );
       expect(container.firstChild).toMatchSnapshot();
@@ -83,13 +83,13 @@ describe("Checkbox Component", () => {
 
   describe("dark mode snapshots", () => {
     it("renders checkbox in dark mode", () => {
-      const { container } = renderWithTheme(<Checkbox />, "dark");
+      const { container } = renderWithTheme(<Checkbox id="test-checkbox-4" />, "dark");
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders checkbox with label in dark mode", () => {
       const { container } = renderWithTheme(
-        <Checkbox label="Accept terms" />,
+        <Checkbox label="Accept terms" id="test-checkbox-5" />,
         "dark"
       );
       expect(container.firstChild).toMatchSnapshot();
@@ -97,7 +97,7 @@ describe("Checkbox Component", () => {
 
     it("renders checkbox with description in dark mode", () => {
       const { container } = renderWithTheme(
-        <Checkbox label="Test" description="This is a test" />,
+        <Checkbox label="Test" description="This is a test" id="test-checkbox-6" />,
         "dark"
       );
       expect(container.firstChild).toMatchSnapshot();

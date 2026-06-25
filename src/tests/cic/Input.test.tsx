@@ -55,40 +55,40 @@ describe("Input Component", () => {
 
   describe("light mode snapshots", () => {
     it("renders input in light mode", () => {
-      const { container } = renderWithTheme(<Input type="text" />, "light");
+      const { container } = renderWithTheme(<Input type="text" id="test-input-1" />, "light");
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders input with label in light mode", () => {
       const { container } = renderWithTheme(
-        <Input label="Email" type="email" />,
+        <Input label="Email" type="email" id="test-input-2" />,
         "light"
       );
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders error input in light mode", () => {
-      const { container } = renderWithTheme(<Input error />, "light");
+      const { container } = renderWithTheme(<Input error id="test-input-3" />, "light");
       expect(container.firstChild).toMatchSnapshot();
     });
   });
 
   describe("dark mode snapshots", () => {
     it("renders input in dark mode", () => {
-      const { container } = renderWithTheme(<Input type="text" />, "dark");
+      const { container } = renderWithTheme(<Input type="text" id="test-input-4" />, "dark");
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders input with label in dark mode", () => {
       const { container } = renderWithTheme(
-        <Input label="Email" type="email" />,
+        <Input label="Email" type="email" id="test-input-5" />,
         "dark"
       );
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("renders error input in dark mode", () => {
-      const { container } = renderWithTheme(<Input error />, "dark");
+      const { container } = renderWithTheme(<Input error id="test-input-6" />, "dark");
       expect(container.firstChild).toMatchSnapshot();
     });
   });
