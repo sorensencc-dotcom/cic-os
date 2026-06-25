@@ -1,0 +1,23 @@
+services/cic-substrate/src/agentic/mcp/getDrift.ts
+  s_c94c9880cc28e6::t_72c8d0a6654374 38,42-43,47,51
+services/gemini-coach/src/routing/routing-algorithm.ts
+  s_c94c9880cc28e6::t_11ce9635ce5bdf 23-53
+  s_c94c9880cc28e6::t_f59ffb491efe01 20-22
+  s_c94c9880cc28e6::t_169934e21efdac 54-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "448f822ccea0e31896ba6f1913d5fc1ee8c97c28",
+  "prompts": {},
+  "sessions": {
+    "s_c94c9880cc28e6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "43b76c2f-253a-4322-9348-05b84ffe0098",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
