@@ -1,0 +1,69 @@
+services/chat-agent/src/handlers/pipeline.ts
+  s_c94c9880cc28e6::t_b1c7ee458051a4 1-91
+shared/index.ts
+  s_c94c9880cc28e6::t_17b7db8d9b1242 1-3
+src/ui/console-v3/index.ts
+  s_10afe31f7cd72a::t_4929b51d3e9f4d 3,12
+src/stories/console-v3/ConsoleV3.stories.tsx
+  s_10afe31f7cd72a::t_2c41d3e6a6b4b0 1-72
+services/chat-agent/package.json
+  s_c94c9880cc28e6::t_394056402d26be 1-24
+services/chat-agent/src/server.ts
+  s_c94c9880cc28e6::t_ce8d384549c509 1-2,5,8-16,18-25,27-31,33-37,39-43
+  s_c94c9880cc28e6::t_ff9b11d86e14a3 3,17
+  s_c94c9880cc28e6::t_3f2cc2421f9228 4,6-7,26,32,38
+shared/webhook-listener.ts
+  s_c94c9880cc28e6::t_14e2f5cabb4d17 1-250
+src/ui/console-v3/ConsoleV3.a11y.test.ts
+  s_10afe31f7cd72a::t_8ab3af7eb21b47 1-217
+services/torquequery/src/server.ts
+  s_c94c9880cc28e6::t_3b9a760c155155 5-6
+  s_c94c9880cc28e6::t_f206cc5eb45002 7-8,20-22
+services/chat-agent/jest.config.js
+  s_c94c9880cc28e6::t_18f6c7aa2b7beb 1-7
+shared/README.md
+  s_c94c9880cc28e6::t_904f0224dcb0ec 1-89
+src/ui/console-v3/useConsoleAPI.ts
+  s_10afe31f7cd72a::t_b791218823a90d 1-168
+src/ui/console-v3/ConsoleV3.tsx
+  s_10afe31f7cd72a::t_8292d668011814 15
+  s_10afe31f7cd72a::t_78c09ef165fd75 18-25,28-29,36-42,45,63-69,72
+  s_10afe31f7cd72a::t_bd867aeae410a1 231-245,256-268
+  s_10afe31f7cd72a::t_a039bd3ed5c0f1 106-114,116,122,124-126,128,130-139,141,143-152,154-162
+services/chat-agent/src/routes/pipeline.ts
+  s_c94c9880cc28e6::t_1f3a4c57405e27 1-104
+services/chat-agent/Dockerfile
+  s_c94c9880cc28e6::t_5d6832794da288 1-20
+PHASE_27_STEP3_COMPLETE.md
+  s_c94c9880cc28e6::t_6118bb71b9ef1d 1-216
+services/chat-agent/src/index.ts
+  s_c94c9880cc28e6::t_c119b286aebd7b 1
+services/chat-agent/tsconfig.json
+  s_c94c9880cc28e6::t_af8ad3d7ea658d 1-16
+shared/utils/logger.ts
+  s_c94c9880cc28e6::t_de32ed84b88492 1-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "056bcdf45500018a0b5f71909e286a1f1bcc5db1",
+  "prompts": {},
+  "sessions": {
+    "s_10afe31f7cd72a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6bb74c90-8151-491e-9910-1597cef987d9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_c94c9880cc28e6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "43b76c2f-253a-4322-9348-05b84ffe0098",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
