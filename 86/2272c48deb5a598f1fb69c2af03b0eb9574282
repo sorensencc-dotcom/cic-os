@@ -1,0 +1,83 @@
+src/components/agents/AgentsPanel.tsx
+  s_c2279b537f9a47::t_2d265ee7ebce41 1-65
+src/hooks/useAgent.ts
+  s_c2279b537f9a47::t_ebb2c2a5256eab 1-137
+src/components/agents/metric.css
+  s_c2279b537f9a47::t_6318b5fa35b02d 1-29
+src/ui/console-v3/focus-order.test.tsx
+  s_f1e5a6cf541f4d::t_17ca1abc924b16 307-310,326-333
+  s_f1e5a6cf541f4d::t_fa7608575238d8 317-318
+  s_f1e5a6cf541f4d::t_107479239659be 206
+  s_f1e5a6cf541f4d::t_28f61034a82498 7
+src/components/agents/index.ts
+  s_c2279b537f9a47::t_d480446b7ef4d7 1-6
+src/components/agents/SkillsList.tsx
+  s_c2279b537f9a47::t_010f78367db2e4 1-18
+src/components/agents/AgentDetailPanel.tsx
+  s_c2279b537f9a47::t_c6b25f80d8857e 184,186-187,189-190,192-193,195
+  s_c2279b537f9a47::t_7c77b645715dea 1-183,185,188,191,194,196-258
+src/components/agents/status-pill.css
+  s_c2279b537f9a47::t_b140e46bbb2d24 1-49
+src/stories/agents/AgentsPanel.stories.tsx
+  s_c2279b537f9a47::t_f2a81507b25dee 1-51
+src/mocks/agents.ts
+  s_c2279b537f9a47::t_b658f01eb07b36 1-138
+src/components/agents/AgentCard.tsx
+  s_c2279b537f9a47::t_08d388efea8f1e 1-67
+src/components/agents/skills-list.css
+  s_c2279b537f9a47::t_471f3a506d5886 1-21
+src/components/agents/agent-card.css
+  s_c2279b537f9a47::t_1982693274dc13 1-69
+src/ui/console-v3/live-regions.test.tsx
+  s_f1e5a6cf541f4d::t_aa232cce84620f 82-84,95,103,107,115,122-124
+  s_f1e5a6cf541f4d::t_8b58f1b79381ab 24-26,37,45,48
+  s_f1e5a6cf541f4d::t_22dbe68b1290c7 53,63,72-73
+  s_f1e5a6cf541f4d::t_6b1ccf78926f33 133-135,143,146,158,165,172-174
+  s_f1e5a6cf541f4d::t_732a3e19775058 1-23,27-36,38-44,46-47,49-52,54-62,64-71,74-81,85-94,96-102,104-106,108-114,116-121,125-132,136-142,144-145,147-157,159-164,166-171,175-366
+src/types/agents.ts
+  s_c2279b537f9a47::t_d72f8c755cc677 1-71
+src/components/agents/agents-panel.css
+  s_c2279b537f9a47::t_0e49c453240093 1-56
+src/ui/console-v3/keyboard-shortcuts.test.tsx
+  s_f1e5a6cf541f4d::t_f4b221b1d8403e 6
+src/stories/agents/AgentDetailPanel.stories.tsx
+  s_c2279b537f9a47::t_715f3f707920ca 1-85
+src/ui/console-v3/keyboard-shortcuts.ts
+  s_f1e5a6cf541f4d::t_969e440fb8eccf 193,197
+  s_f1e5a6cf541f4d::t_84111c42d6ed3e 1-139,141-158,161-172,174-192,194-196,198-241
+  s_f1e5a6cf541f4d::t_2bc012ddcaa9b7 140,159-160,173
+src/ui/console-v3/live-regions.tsx
+  s_f1e5a6cf541f4d::t_01d3ceecaf1cb6 1-344
+src/components/agents/agent-detail-panel.css
+  s_c2279b537f9a47::t_1b0df1f2fe83ca 1-259
+src/stories/agents/AgentCard.stories.tsx
+  s_c2279b537f9a47::t_c32d37adac1f50 1-86
+src/hooks/useAgentList.ts
+  s_c2279b537f9a47::t_8065a77d38f680 1-59
+src/components/agents/Metric.tsx
+  s_c2279b537f9a47::t_29a03502553231 1-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "862272c48deb5a598f1fb69c2af03b0eb9574282",
+  "prompts": {},
+  "sessions": {
+    "s_c2279b537f9a47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ab700931-b50d-4ae4-b31d-b6be9c44b3e7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_f1e5a6cf541f4d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c1f1dcf3-c5b7-477e-8371-b0d74574b7f9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
