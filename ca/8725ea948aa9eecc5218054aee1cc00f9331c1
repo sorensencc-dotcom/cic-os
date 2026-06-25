@@ -1,0 +1,19 @@
+services/chat-agent/src/server.ts
+  s_c94c9880cc28e6::t_c8e3f36346e305 3-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "ca8725ea948aa9eecc5218054aee1cc00f9331c1",
+  "prompts": {},
+  "sessions": {
+    "s_c94c9880cc28e6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "43b76c2f-253a-4322-9348-05b84ffe0098",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
