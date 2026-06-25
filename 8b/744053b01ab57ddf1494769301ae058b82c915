@@ -1,0 +1,36 @@
+services/cic-substrate/src/agentic/skills/index.ts
+  s_10803700c7fcba::t_cab0f6049884e9 1
+services/cic-substrate/src/agentic/rules/registry.ts
+  s_10803700c7fcba::t_8ac5c0f34cc75a 4,7,10,15-17,22-176
+services/cic-substrate/src/agentic/mcp/getSkillDetections.ts
+  s_10803700c7fcba::t_d674db432cef96 1-63
+services/cic-substrate/src/agentic/metrics/drift.ts
+  s_10803700c7fcba::t_974020e6b3185f 1-13,18-19,24-111,113-117
+services/cic-substrate/README.md
+  s_10803700c7fcba::t_38055c2e9fbe23 94
+  s_10803700c7fcba::t_e5a7e50ed22ca6 43
+  s_10803700c7fcba::t_894d86a43e8dab 63
+  s_10803700c7fcba::t_66845af360230b 79
+  s_10803700c7fcba::t_272fcd0889f128 73
+  s_10803700c7fcba::t_9d75f4e408fae4 11-42,44-62,64-72,74-78,80-93,95-100
+services/cic-substrate/src/agentic/metrics.ts
+  s_10803700c7fcba::t_9e1ec4483fa6bc 38,40,42-44,46-55,58-59,68-69,72-73,83,85-87,91,97-104,107-118,121,127-129,131,133,135
+services/cic-substrate/src/agentic/skills/extraction.ts
+  s_10803700c7fcba::t_37c7c4f6835701 1-143
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "8b744053b01ab57ddf1494769301ae058b82c915",
+  "prompts": {},
+  "sessions": {
+    "s_10803700c7fcba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "45ab3f3c-7556-4cff-a7e7-250f36c3a430",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
