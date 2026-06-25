@@ -1,0 +1,29 @@
+services/cic-substrate/src/agentic/README.md
+  s_789a1614afe839::t_87c41bf5a8a3a0 60-68,70-72,77-79
+  s_789a1614afe839::t_6dc87caee6915e 69,73-76
+services/cic-substrate/src/agentic/types.ts
+  s_789a1614afe839::t_0bd5a46ec5a1ac 51,59-64
+  s_789a1614afe839::t_8fc7a729781fe6 65
+services/cic-substrate/src/agentic/rules/engine.ts
+  s_789a1614afe839::t_2c5f7d3511a80c 21-23,25
+  s_789a1614afe839::t_cab75fd643fc01 3
+services/cic-substrate/src/agentic/metrics.ts
+  s_789a1614afe839::t_904848b248320e 1
+  s_789a1614afe839::t_02dab7991c96e1 32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "81933f1263bffdca053a751086e8677fcc4b4ce7",
+  "prompts": {},
+  "sessions": {
+    "s_789a1614afe839": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "437070a0-932f-40f0-a081-d304e57dba7e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
