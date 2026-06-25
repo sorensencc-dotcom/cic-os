@@ -2,27 +2,12 @@
 
 ## Milestones
 
-### v0.8.0 — Deploy → Heal → Optimize
-**Status:** Complete (2026-06-23)
-
-First fully integrated control-plane slice of CIC. Captures Phase 6 (Skill Deployer), Phase 7 (Autonomous Self-Healing), and Phase 8 (Cost Optimization + Dynamic Model Selection).
-
-- [x] Phase 6: Skill Deployer — deterministic packaging + registration
-- [x] Phase 7: Autonomous Self-Healing + Drift Control — SLA monitors, circuit breakers, 6-state machine, recovery loop
-- [x] Phase 8: Cost Optimization + Dynamic Model Selection — cost telemetry, forecast engine, budget policy, dynamic routing
-
-**Artifacts:**
-- PHASE_8_SPEC.md (8k+ LOC spec)
-- PHASE_8_TEST_MATRICES.md (45+ test cases)
-- 56 test suites, 679/699 passing
-- Memory: [[phase-8-cost-optimization-locked]]
-
-**Tag:** v0.8.0
+- [x] **v0.8.0** — Deploy → Heal → Optimize (shipped 2026-06-23). See `.planning/_archive/v0.8.0/SUMMARY.md`.
 
 ---
 
 ### v0.9.0 — Adaptive Memory + Semantic Caching
-**Status:** Planned (2026-06-24)
+**Status:** [ ] Next (2026-06-24)
 
 Make CIC economically intelligent about memory. Reuse past reasoning when safe, cache semantic work products, avoid recomputation under stable drift, auto-invalidate memory when cost or SLA pressure rises.
 
