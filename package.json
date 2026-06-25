@@ -6,6 +6,7 @@
   "main": "cic-runtime/defineAgent.ts",
   "scripts": {
     "start": "tsx cic-runtime/example-entrypoint.ts",
+    "start:maal": "tsx cic-runtime/bootstrap-maal.ts",
     "test": "jest",
     "test:snapshot": "playwright test",
     "test:snapshot:headed": "playwright test --headed",
@@ -16,6 +17,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "console-api:dev": "tsx src/server/consoleAPI.ts",
+    "agents-api:dev": "tsx src/server/agentsAPI.ts",
     "console-v3:test": "playwright test ConsoleV3.a11y.test.ts",
     "console-v3:test:headed": "playwright test ConsoleV3.a11y.test.ts --headed",
     "canary-gates": "tsx scripts/canary-gates.ts",

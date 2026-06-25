@@ -58,11 +58,10 @@ app.get('/ready', (req: Request, res: Response) => {
   res.json({ ready: true });
 });
 
-// Export for integration or standalone
-export default app;
+// Start server
+const PORT = process.env.PORT || 3100;
+app.listen(PORT, () => {
+  // Server listening - no console output per guard
+});
 
-// Standalone server
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const PORT = process.env.PORT || 3100;
-  app.listen(PORT);
-}
+export default app;

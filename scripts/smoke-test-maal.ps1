@@ -61,27 +61,11 @@ function Invoke-Stage1-Boot {
   # Clear old logs
   if (Test-Path $EventsLog) { Remove-Item $EventsLog }
 
-  # Find entry point
-  $entryPoint = if (Test-Path "cic-runtime/example-entrypoint.ts") {
-    @("cic-runtime/example-entrypoint.ts", "tsx")
-  } elseif (Test-Path "src/main.js") {
-    @("src/main.js", "node")
-  } elseif (Test-Path "dist/main.js") {
-    @("dist/main.js", "node")
-  } else {
-    Log-Event "STAGE_1_BOOT" "FAIL" "No entry point found (cic-runtime/example-entrypoint.ts, src/main.js, or dist/main.js)"
-    return $false
-  }
-
-  # Start CIC
+  # Start CIC via npm start (uses tsx per package.json)
   try {
-    if ($entryPoint[1] -eq "tsx") {
-      $script:CicProcess = Start-Process -FilePath "npx" -ArgumentList "tsx", $entryPoint[0] -NoNewWindow -PassThru -RedirectStandardOutput $BootLog -RedirectStandardError "$BootLog.err" -ErrorAction Stop
-    } else {
-      $script:CicProcess = Start-Process -FilePath "node" -ArgumentList $entryPoint[0] -NoNewWindow -PassThru -RedirectStandardOutput $BootLog -RedirectStandardError "$BootLog.err" -ErrorAction Stop
-    }
+    $script:CicProcess = Start-Process -FilePath "npm" -ArgumentList "start" -NoNewWindow -PassThru -RedirectStandardOutput $BootLog -RedirectStandardError "$BootLog.err" -ErrorAction Stop -WorkingDirectory (Get-Location)
   } catch {
-    Log-Event "STAGE_1_BOOT" "FAIL" "Failed to start CIC: $_"
+    Log-Event "STAGE_1_BOOT" "FAIL" "Failed to start CIC via npm: $_"
     return $false
   }
 
