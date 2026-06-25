@@ -1,0 +1,47 @@
+cic-runtime/bootstrap-maal.ts
+  s_9852c545731b6e::t_a639e790af7d81 178-180,184-186,190-192,196-199,208-209
+  s_4ecdbff3f939c0::t_e46c97b3434c48 12
+  s_9852c545731b6e::t_8a2335334d71ae 4,13,26-49,51-62,64,67-68
+  s_4ecdbff3f939c0::t_3280319b8e1405 50,63,65-66
+  s_9852c545731b6e::t_ee37e868527827 129-137
+  s_9852c545731b6e::t_8c3c66a4c00d24 152-160
+  s_9852c545731b6e::t_f6158721bfd7d3 83-91
+  s_9852c545731b6e::t_3346c9b5e35fba 220
+  s_9852c545731b6e::t_28f3ea234cb951 106-114
+src/agents/routingProfile.ts
+  s_4ecdbff3f939c0::t_eb4091dd504b05 18,34-47
+src/ui/console-v3/useConsoleAPI.ts
+  s_51c9e7affe4228::t_987cdf9ea0a9d4 30-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "6e83358a4d68206a619a36c5c4139bf5f5479ea3",
+  "prompts": {},
+  "sessions": {
+    "s_4ecdbff3f939c0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb905f0-5189-4324-b9e8-3bb438755e99",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_51c9e7affe4228": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "219d540c-0752-4eda-b6b9-e88059db870f",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_9852c545731b6e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e8f91d9a-6b13-4e68-a441-229296638400",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
