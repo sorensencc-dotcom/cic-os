@@ -1,0 +1,36 @@
+services/cic-substrate/src/agentic/utils.ts
+  s_10803700c7fcba::t_21339cf7cf1c07 1-10
+services/cic-substrate/src/agentic/skills/extraction.ts
+  s_10803700c7fcba::t_951651b159f219 49-51
+  s_10803700c7fcba::t_af675497663cd3 80-82
+  s_10803700c7fcba::t_0d9cdfc9153085 2
+services/cic-substrate/src/agentic/metrics/drift.ts
+  s_10803700c7fcba::t_a410b8bc2025ea 1-2
+services/cic-substrate/src/agentic/mcp/getSkillDetections.ts
+  s_10803700c7fcba::t_cc362d0e819939 11-12,18-22
+  s_10803700c7fcba::t_0f60a81d6be9ed 23-24
+services/cic-substrate/src/agentic/rules/registry.ts
+  s_10803700c7fcba::t_99fdafd469a9fc 16,35
+  s_10803700c7fcba::t_06b563d836b899 1-6
+services/cic-substrate/src/agentic/metrics.ts
+  s_10803700c7fcba::t_3628710f93845d 41-43
+  s_10803700c7fcba::t_ad01893a848cc5 113-121
+  s_10803700c7fcba::t_9d8df413ab7f42 4
+  s_10803700c7fcba::t_fc2e8ac4f64628 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "497d4d27d733b5d1c4f10acb4ab14e1d68651d8f",
+  "prompts": {},
+  "sessions": {
+    "s_10803700c7fcba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "45ab3f3c-7556-4cff-a7e7-250f36c3a430",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
