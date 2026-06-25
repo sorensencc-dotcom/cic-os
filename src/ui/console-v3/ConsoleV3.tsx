@@ -12,24 +12,37 @@ import {
   AnnouncementEvent,
 } from './live-regions';
 import { installKeyboardHook, KeyboardHookCallbacks } from './keyboard-shortcuts';
+import { useConsolePolling } from './useConsoleAPI';
 
 // Panel component placeholders (with forwardRef support)
-const HealthPanel = React.forwardRef<HTMLDivElement, { onRefresh?: () => void }>(
-  ({ onRefresh }, ref) => (
+interface HealthPanelProps {
+  onRefresh?: () => void;
+  status?: string;
+  serviceCount?: number;
+}
+
+const HealthPanel = React.forwardRef<HTMLDivElement, HealthPanelProps>(
+  ({ onRefresh, status = 'OK', serviceCount = 0 }, ref) => (
     <div ref={ref} role="region" aria-labelledby="health-title" tabIndex={0} className="panel health-panel">
       <h2 id="health-title">Health</h2>
-      <div>Services: OK</div>
+      <div>Status: {status}</div>
+      <div>Services: {serviceCount}</div>
       <button type="button" onClick={onRefresh}>Refresh</button>
     </div>
   )
 );
 HealthPanel.displayName = 'HealthPanel';
 
-const PipelinesPanel = React.forwardRef<HTMLDivElement, { onRefresh?: () => void }>(
-  ({ onRefresh }, ref) => (
+interface PipelinesPanelProps {
+  onRefresh?: () => void;
+  pipelineCount?: number;
+}
+
+const PipelinesPanel = React.forwardRef<HTMLDivElement, PipelinesPanelProps>(
+  ({ onRefresh, pipelineCount = 0 }, ref) => (
     <div ref={ref} role="region" aria-labelledby="pipelines-title" tabIndex={0} className="panel pipelines-panel">
       <h2 id="pipelines-title">Pipelines</h2>
-      <div>No active pipelines</div>
+      <div>{pipelineCount} active pipelines</div>
       <button type="button" onClick={onRefresh}>Refresh</button>
     </div>
   )
@@ -47,11 +60,16 @@ const AgentsPanel = React.forwardRef<HTMLDivElement, { onRefresh?: () => void }>
 );
 AgentsPanel.displayName = 'AgentsPanel';
 
-const AlertsPanel = React.forwardRef<HTMLDivElement, { onRefresh?: () => void }>(
-  ({ onRefresh }, ref) => (
+interface AlertsPanelProps {
+  onRefresh?: () => void;
+  alertCount?: number;
+}
+
+const AlertsPanel = React.forwardRef<HTMLDivElement, AlertsPanelProps>(
+  ({ onRefresh, alertCount = 0 }, ref) => (
     <div ref={ref} role="region" aria-labelledby="alerts-title" tabIndex={0} className="panel alerts-panel">
       <h2 id="alerts-title">Alerts</h2>
-      <div>No active alerts</div>
+      <div>{alertCount} active alerts</div>
       <button type="button" onClick={onRefresh}>Refresh</button>
     </div>
   )
@@ -85,91 +103,63 @@ export const ConsoleV3: React.FC = () => {
   const consoleRef = useRef<HTMLDivElement>(null);
   const { statusRef, alertRef, logRef, announce } = useConsoleAnnouncements();
 
-  // Polling state
-  const [healthStatus, setHealthStatus] = useState<PollingAnnouncements.HealthPollResult | null>(null);
-  const [previousHealthStatus, setPreviousHealthStatus] = useState<PollingAnnouncements.HealthPollResult | null>(null);
-  const [pipelines, setPipelines] = useState<PollingAnnouncements.PipelinePollResult[]>([]);
+  // API polling
+  const { health: healthData, pipelines: pipelinesData, alerts: alertsData, start: startPolling } = useConsolePolling({
+    health: 10000,
+    pipelines: 5000,
+    alerts: 3000,
+  });
+
+  // Track previous state for announcements
+  const [previousHealthStatus, setPreviousHealthStatus] = useState<any>(null);
   const [previousPipelines, setPreviousPipelines] = useState<Map<string, string>>(new Map());
-  const [alerts, setAlerts] = useState<PollingAnnouncements.AlertPollResult[]>([]);
-  const [previousAlerts, setPreviousAlerts] = useState<PollingAnnouncements.AlertPollResult[]>([]);
+  const [previousAlerts, setPreviousAlerts] = useState<any[]>([]);
 
   // Panel ref for focus navigation
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [focusedPanelIndex, setFocusedPanelIndex] = useState(0);
 
-  // Health polling (10s)
+  // Setup polling on mount
   useEffect(() => {
-    const pollHealth = async () => {
-      try {
-        // Mock data for now
-        const newHealth: PollingAnnouncements.HealthPollResult = {
-          status: 'OK',
-          serviceCount: 5,
-          timestamp: Date.now(),
-        };
+    const cleanup = startPolling();
+    return cleanup;
+  }, [startPolling]);
 
-        const announcement = PollingAnnouncements.formatHealthAnnouncement(newHealth, previousHealthStatus);
-        if (announcement) {
-          announce(announcement);
-        }
-
-        setHealthStatus(newHealth);
-        setPreviousHealthStatus(newHealth);
-      } catch (e) {
-        console.error('Health poll failed:', e);
-      }
-    };
-
-    pollHealth();
-    const interval = setInterval(pollHealth, 10000);
-    return () => clearInterval(interval);
-  }, [previousHealthStatus, announce]);
-
-  // Pipelines polling (5s)
+  // Announce health changes
   useEffect(() => {
-    const pollPipelines = async () => {
-      try {
-        const newPipelines: PollingAnnouncements.PipelinePollResult[] = [];
+    if (!healthData) return;
+    const announcement = PollingAnnouncements.formatHealthAnnouncement(
+      { status: healthData.status, serviceCount: healthData.serviceCount, timestamp: healthData.timestamp },
+      previousHealthStatus
+    );
+    if (announcement) {
+      announce(announcement);
+    }
+    setPreviousHealthStatus(healthData);
+  }, [healthData, announce, previousHealthStatus]);
 
-        const previousMap = new Map(previousPipelines);
-        const announcements = PollingAnnouncements.formatPipelineAnnouncement(newPipelines, previousMap);
-        announcements.forEach((a) => announce(a));
-
-        setPipelines(newPipelines);
-        const newMap = new Map(newPipelines.map((p) => [p.id, p.state]));
-        setPreviousPipelines(newMap);
-      } catch (e) {
-        console.error('Pipelines poll failed:', e);
-      }
-    };
-
-    pollPipelines();
-    const interval = setInterval(pollPipelines, 5000);
-    return () => clearInterval(interval);
-  }, [announce]);
-
-  // Alerts polling (3s)
+  // Announce pipeline changes
   useEffect(() => {
-    const pollAlerts = async () => {
-      try {
-        const newAlerts: PollingAnnouncements.AlertPollResult[] = [];
+    if (!pipelinesData || pipelinesData.length === 0) return;
+    const previousMap = new Map(previousPipelines);
+    const announcements = PollingAnnouncements.formatPipelineAnnouncement(
+      pipelinesData.map((p: any) => ({ id: p.id, state: p.state })),
+      previousMap
+    );
+    announcements.forEach((a) => announce(a));
+    const newMap = new Map(pipelinesData.map((p: any) => [p.id, p.state]));
+    setPreviousPipelines(newMap);
+  }, [pipelinesData, announce, previousPipelines]);
 
-        const announcement = PollingAnnouncements.formatAlertAnnouncement(newAlerts, previousAlerts);
-        if (announcement) {
-          announce(announcement);
-        }
-
-        setAlerts(newAlerts);
-        setPreviousAlerts(newAlerts);
-      } catch (e) {
-        console.error('Alerts poll failed:', e);
-      }
-    };
-
-    pollAlerts();
-    const interval = setInterval(pollAlerts, 3000);
-    return () => clearInterval(interval);
-  }, [announce]);
+  // Announce alert changes
+  useEffect(() => {
+    if (!alertsData || alertsData.length === 0) return;
+    const announcement = PollingAnnouncements.formatAlertAnnouncement(alertsData, previousAlerts);
+    if (announcement) {
+      announce(announcement);
+    }
+    setPreviousAlerts(alertsData);
+  }, [alertsData, announce, previousAlerts]);
 
   // Keyboard shortcuts handler
   const handleKeyboardAction = useCallback<KeyboardHookCallbacks>({
@@ -238,8 +228,21 @@ export const ConsoleV3: React.FC = () => {
 
       {/* Tier 1: Health (60%) + Pipelines (40%) */}
       <div className="tier-1">
-        <HealthPanel onRefresh={() => announce({ type: 'status', message: 'Health refreshed' })} />
-        <PipelinesPanel onRefresh={() => announce({ type: 'status', message: 'Pipelines refreshed' })} />
+        <HealthPanel
+          status={healthData?.status || 'UNKNOWN'}
+          serviceCount={healthData?.serviceCount || 0}
+          onRefresh={() => announce({ type: 'status', message: 'Health refreshed' })}
+          ref={(el) => {
+            panelRefs.current[0] = el;
+          }}
+        />
+        <PipelinesPanel
+          pipelineCount={pipelinesData?.length || 0}
+          onRefresh={() => announce({ type: 'status', message: 'Pipelines refreshed' })}
+          ref={(el) => {
+            panelRefs.current[1] = el;
+          }}
+        />
       </div>
 
       {/* Tier 2: Agents (33%) + Alerts (33%) + Workspace (33%) */}
@@ -250,8 +253,19 @@ export const ConsoleV3: React.FC = () => {
             panelRefs.current[2] = el;
           }}
         />
-        <AlertsPanel onRefresh={() => announce({ type: 'status', message: 'Alerts refreshed' })} />
-        <WorkspacePanel onRefresh={() => announce({ type: 'status', message: 'Workspace refreshed' })} />
+        <AlertsPanel
+          alertCount={alertsData?.length || 0}
+          onRefresh={() => announce({ type: 'status', message: 'Alerts refreshed' })}
+          ref={(el) => {
+            panelRefs.current[3] = el;
+          }}
+        />
+        <WorkspacePanel
+          onRefresh={() => announce({ type: 'status', message: 'Workspace refreshed' })}
+          ref={(el) => {
+            panelRefs.current[4] = el;
+          }}
+        />
       </div>
 
       {/* Tier 3: Controls (100%) */}

@@ -2,6 +2,10 @@
 
 import express from 'express';
 import { getTorqueQueryServer } from './server/TorqueQueryServer';
+import { createWebhookRouter } from '../../shared/webhook-listener';
+import { Logger } from '../../shared/utils/logger';
+
+const logger = new Logger('TorqueQueryServer');
 
 async function startServer() {
   const app = express();
@@ -12,6 +16,9 @@ async function startServer() {
 
   // Initialize TorqueQuery
   const torqueQuery = await getTorqueQueryServer();
+
+  // Webhook routes (Phase 27)
+  app.use('/webhooks', createWebhookRouter());
 
   // Routes
   app.get('/torquequery/memory/by-type/:type', (req, res) => {
@@ -45,6 +52,50 @@ async function startServer() {
     try {
       const signals = torqueQuery.getQueries().bySignal(req.params.signalType);
       res.json({ signals, count: signals.length });
+    } catch (err) {
+      res.status(500).json({ error: (err as any).message });
+    }
+  });
+
+  // CIC Adapter Routes (Phase 27)
+  app.post('/execute/:adapterName', async (req, res) => {
+    try {
+      const { ingestViaAdapter } = require('./handlers/cic-ingest');
+      const result = await ingestViaAdapter(req.params.adapterName, req.body);
+      res.json(result);
+    } catch (err) {
+      res.status(500).json({ error: (err as any).message });
+    }
+  });
+
+  app.post('/execute/batch/:adapterName', async (req, res) => {
+    try {
+      const { batchIngest } = require('./handlers/cic-ingest');
+      if (!Array.isArray(req.body)) {
+        return res.status(400).json({ error: 'Payload must be array' });
+      }
+      const result = await batchIngest(req.params.adapterName, req.body);
+      res.json(result);
+    } catch (err) {
+      res.status(500).json({ error: (err as any).message });
+    }
+  });
+
+  app.get('/execute/status', async (req, res) => {
+    try {
+      const { checkAdapterStatus } = require('./handlers/cic-ingest');
+      const status = await checkAdapterStatus();
+      res.json(status);
+    } catch (err) {
+      res.status(500).json({ error: (err as any).message });
+    }
+  });
+
+  app.post('/execute/invalidate', async (req, res) => {
+    try {
+      const { invalidateCache } = require('./handlers/cic-ingest');
+      const result = await invalidateCache();
+      res.json({ status: 'invalidated', data: result });
     } catch (err) {
       res.status(500).json({ error: (err as any).message });
     }
@@ -122,20 +173,20 @@ async function startServer() {
 
   // Error handler
   app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    console.error('Error:', err);
+    logger.error('Unhandled error', { message: err.message });
     res.status(500).json({ error: err.message });
   });
 
   // Start
   app.listen(port, () => {
-    console.log(`TorqueQuery server listening on port ${port}`);
+    logger.info('TorqueQuery server listening', { port });
   });
 }
 
 // Start if run directly
 if (require.main === module) {
   startServer().catch(err => {
-    console.error('Failed to start server:', err);
+    logger.error('Failed to start server', { error: err instanceof Error ? err.message : String(err) });
     process.exit(1);
   });
 }
