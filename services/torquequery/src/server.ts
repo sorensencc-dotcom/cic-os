@@ -2,8 +2,8 @@
 
 import express from 'express';
 import { getTorqueQueryServer } from './server/TorqueQueryServer';
-import { createWebhookRouter } from '../../shared/webhook-listener';
-import { Logger } from '../../shared/utils/logger';
+import { createWebhookRouter } from './shared/webhook-listener';
+import { Logger } from './shared/utils/logger';
 
 const logger = new Logger('TorqueQueryServer');
 

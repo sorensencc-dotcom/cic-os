@@ -1,7 +1,7 @@
 import express from 'express';
 import pipelineRouter from './routes/pipeline';
-import { createWebhookRouter } from '../../shared/webhook-listener';
-import { Logger } from '../../shared/utils/logger';
+import { createWebhookRouter } from './shared/webhook-listener';
+import { Logger } from './shared/utils/logger';
 
 const logger = new Logger('ChatAgentServer');
 
