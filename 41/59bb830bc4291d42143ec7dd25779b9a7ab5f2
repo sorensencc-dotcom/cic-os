@@ -1,0 +1,26 @@
+src/hooks/useAgentList.ts
+  s_c2279b537f9a47::t_fa4ac999d90b9b 31-36,38
+  s_c2279b537f9a47::t_2e7c841468aca9 15-20,23
+src/hooks/useAgent.ts
+  s_c2279b537f9a47::t_d83b41584187f2 35-39,41
+  s_c2279b537f9a47::t_f5e37c2beb31f2 47-51,53
+  s_c2279b537f9a47::t_b1236a9083db3e 20-24,27
+  s_c2279b537f9a47::t_1f309e4938fc8a 59-65,67,73-76,78,80,84-87,89,91
+  s_c2279b537f9a47::t_2f55496fbf329e 95-99,101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "4159bb830bc4291d42143ec7dd25779b9a7ab5f2",
+  "prompts": {},
+  "sessions": {
+    "s_c2279b537f9a47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ab700931-b50d-4ae4-b31d-b6be9c44b3e7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
