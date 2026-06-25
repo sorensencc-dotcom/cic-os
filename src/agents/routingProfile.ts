@@ -15,7 +15,7 @@ export class AgentRoutingProfile {
         let score = 0;
         try {
           const spec = getModelSpec(name);
-          score = spec.routing?.score ?? 0;
+          score = this.computeModelScore(spec, this.preferredModels.includes(name));
         } catch {
           // Model spec might be missing; score remains 0
         }
@@ -29,6 +29,22 @@ export class AgentRoutingProfile {
     }
 
     return candidates[0].name;
+  }
+
+  private computeModelScore(spec: any, isPreferred: boolean): number {
+    let score = 50; // baseline
+
+    // Preferred models get boost
+    if (isPreferred) score += 50;
+
+    // Capability bonus
+    if (spec.supports?.toolCalls) score += 20;
+    if (spec.supports?.streaming) score += 10;
+
+    // Explicit routing score if present
+    if (spec.routing?.score) score = spec.routing.score;
+
+    return Math.max(1, score); // ensure non-zero
   }
 
   private validateModels(): void {

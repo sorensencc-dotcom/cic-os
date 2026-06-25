@@ -1,19 +1,20 @@
 {
-  "name": "fugu-ultra",
-  "provider": "sakana",
-  "type": "openai-compatible",
-  "apiBase": "https://api.sakana.ai/v1",
-  "env": "SAKANA_API_KEY",
+  "env": "GOOGLE_API_KEY",
   "supports": {
     "chat": true,
-    "completion": true,
-    "toolCalls": true,
-    "streaming": true,
     "vision": true,
-    "embeddings": false
+    "embeddings": false,
+    "streaming": true,
+    "toolCalls": true
   },
-  "routing": {
-    "score": 80,
-    "domains": ["coding", "reasoning", "multi-agent", "vision"]
-  }
+  "costPer1kTokens": {
+    "output": 0.003,
+    "input": 0.00075
+  },
+  "provider": "google",
+  "version": "2.0",
+  "contextWindow": 1000000,
+  "apiBase": "https://generativelanguage.googleapis.com",
+  "name": "fugu-ultra",
+  "type": "chat"
 }

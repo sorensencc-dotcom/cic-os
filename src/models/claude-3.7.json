@@ -1,19 +1,20 @@
 {
-  "name": "claude-3.7",
-  "provider": "anthropic",
-  "type": "anthropic",
-  "apiBase": "https://api.anthropic.com/v1",
   "env": "ANTHROPIC_API_KEY",
   "supports": {
     "chat": true,
-    "completion": true,
-    "toolCalls": true,
-    "streaming": true,
     "vision": true,
-    "embeddings": false
+    "embeddings": false,
+    "streaming": true,
+    "toolCalls": true
   },
-  "routing": {
-    "score": 90,
-    "domains": ["coding", "reasoning", "multi-agent"]
-  }
+  "costPer1kTokens": {
+    "output": 0.015,
+    "input": 0.003
+  },
+  "provider": "anthropic",
+  "version": "3.7",
+  "contextWindow": 200000,
+  "apiBase": "https://api.anthropic.com",
+  "name": "claude-3.7",
+  "type": "chat"
 }

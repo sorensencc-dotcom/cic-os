@@ -27,9 +27,9 @@ export interface Alert {
 }
 
 // API endpoints - configure via env or defaults
-const HEALTH_ENDPOINT = process.env.REACT_APP_HEALTH_ENDPOINT || 'http://localhost:3100/health';
-const PIPELINES_ENDPOINT = process.env.REACT_APP_PIPELINES_ENDPOINT || 'http://localhost:3100/pipelines';
-const ALERTS_ENDPOINT = process.env.REACT_APP_ALERTS_ENDPOINT || 'http://localhost:3100/alerts';
+const HEALTH_ENDPOINT = process.env.REACT_APP_HEALTH_ENDPOINT || 'http://localhost:8000/console/health';
+const PIPELINES_ENDPOINT = process.env.REACT_APP_PIPELINES_ENDPOINT || 'http://localhost:8000/console/pipelines';
+const ALERTS_ENDPOINT = process.env.REACT_APP_ALERTS_ENDPOINT || 'http://localhost:8000/console/alerts';
 
 export function useHealthStatus() {
   const [health, setHealth] = useState<HealthStatus | null>(null);
