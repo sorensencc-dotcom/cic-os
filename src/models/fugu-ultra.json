@@ -1,0 +1,19 @@
+{
+  "name": "fugu-ultra",
+  "provider": "sakana",
+  "type": "openai-compatible",
+  "apiBase": "https://api.sakana.ai/v1",
+  "env": "SAKANA_API_KEY",
+  "supports": {
+    "chat": true,
+    "completion": true,
+    "toolCalls": true,
+    "streaming": true,
+    "vision": true,
+    "embeddings": false
+  },
+  "routing": {
+    "score": 80,
+    "domains": ["coding", "reasoning", "multi-agent", "vision"]
+  }
+}

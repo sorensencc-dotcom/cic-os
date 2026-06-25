@@ -1,0 +1,34 @@
+export type ModelType =
+  | "openai-compatible"
+  | "anthropic"
+  | "google"
+  | "ollama"
+  | "local-gguf"
+  | "azure-openai";
+
+export interface ModelCapabilities {
+  chat: boolean;
+  completion: boolean;
+  toolCalls: boolean;
+  streaming: boolean;
+  vision: boolean;
+  embeddings: boolean;
+}
+
+export interface ModelSpec {
+  name: string;
+  provider: string;
+  type: ModelType;
+  apiBase: string;
+  env: string; // env var name for API key
+  maxTokens?: number;
+  pricing?: {
+    input?: number;
+    output?: number;
+  };
+  supports: ModelCapabilities;
+  routing?: {
+    score: number;
+    domains?: string[];
+  };
+}

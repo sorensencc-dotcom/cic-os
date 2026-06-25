@@ -1,0 +1,19 @@
+{
+  "name": "gpt-4.1",
+  "provider": "openai",
+  "type": "openai-compatible",
+  "apiBase": "https://api.openai.com/v1",
+  "env": "OPENAI_API_KEY",
+  "supports": {
+    "chat": true,
+    "completion": true,
+    "toolCalls": true,
+    "streaming": true,
+    "vision": true,
+    "embeddings": true
+  },
+  "routing": {
+    "score": 85,
+    "domains": ["coding", "reasoning"]
+  }
+}

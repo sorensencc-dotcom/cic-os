@@ -1,0 +1,19 @@
+{
+  "name": "gemini-2.0",
+  "provider": "google",
+  "type": "google",
+  "apiBase": "https://generativelanguage.googleapis.com/v1beta",
+  "env": "GEMINI_API_KEY",
+  "supports": {
+    "chat": true,
+    "completion": true,
+    "toolCalls": true,
+    "streaming": true,
+    "vision": true,
+    "embeddings": true
+  },
+  "routing": {
+    "score": 88,
+    "domains": ["coding", "reasoning", "multimodal"]
+  }
+}

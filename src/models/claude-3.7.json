@@ -1,0 +1,19 @@
+{
+  "name": "claude-3.7",
+  "provider": "anthropic",
+  "type": "anthropic",
+  "apiBase": "https://api.anthropic.com/v1",
+  "env": "ANTHROPIC_API_KEY",
+  "supports": {
+    "chat": true,
+    "completion": true,
+    "toolCalls": true,
+    "streaming": true,
+    "vision": true,
+    "embeddings": false
+  },
+  "routing": {
+    "score": 90,
+    "domains": ["coding", "reasoning", "multi-agent"]
+  }
+}
