@@ -48,15 +48,18 @@ export interface ReviewEvent {
   commentsCount: number;
 }
 
-export interface AgenticMetrics {
-  userId: string;
-  workspace: string;
-  windowStart: string;
-  windowEnd: string;
+export interface AgenticMetricsData {
   promptDiscipline: number;
   contextHealth: number;
   reviewRigor: number;
   skillReuse: number;
   driftIndex: number;
   readinessIndex: number;
+}
+
+export interface AgenticMetrics extends AgenticMetricsData {
+  userId: string;
+  workspace: string;
+  windowStart: string;
+  windowEnd: string;
 }

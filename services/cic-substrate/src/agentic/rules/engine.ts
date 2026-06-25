@@ -1,5 +1,6 @@
 import { RuleContext, AgenticRule, RuleFinding } from './types';
 import { computeMetrics } from '../metrics';
+import { createHash } from 'crypto';
 
 export class RuleEngine {
   private rules: AgenticRule[];
@@ -17,8 +18,11 @@ export class RuleEngine {
 
         // Normalize rule output
         for (const f of result) {
+          // Deterministic ID: hash of rule + finding content
+          const findingKey = `${rule.id}|${f.severity ?? 'info'}|${f.message}|${f.sessionRequestId ?? ''}`;
+          const hash = createHash('sha256').update(findingKey).digest('hex').slice(0, 12);
           findings.push({
-            id: f.id ?? `finding-${rule.id}-${Math.random().toString(36).slice(2)}`,
+            id: f.id ?? `finding-${rule.id}-${hash}`,
             ruleId: rule.id,
             severity: f.severity ?? 'info',
             message: f.message,

@@ -1,4 +1,4 @@
-import { AgenticMetrics } from './types';
+import { AgenticMetrics, AgenticMetricsData } from './types';
 import { RuleContext, RuleFinding } from './rules/types';
 
 export interface AgenticMetricsClient {
@@ -29,7 +29,7 @@ export function createAgenticMetricsClient(): AgenticMetricsClient {
   };
 }
 
-export function computeMetrics(ctx: RuleContext, findings: RuleFinding[]): AgenticMetrics {
+export function computeMetrics(ctx: RuleContext, findings: RuleFinding[]): AgenticMetricsData {
   const requests = ctx.requests;
   const contexts = ctx.contexts;
   const reviews = ctx.reviews;

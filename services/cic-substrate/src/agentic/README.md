@@ -57,6 +57,26 @@ Backed by the following tables:
 5. MCP endpoints expose readiness, drift, and findings.
 6. CIC governance consumes these metrics to gate operations.
 
+## Materialization Job
+
+`materializeMetricsForUserWorkspace(userId, workspace)` computes metrics over three rolling windows:
+
+- **24h window**: Last 24 hours of telemetry
+- **7d window**: Last 7 days of telemetry
+- **30d window**: Last 30 days of telemetry
+
+Each window:
+
+1. Loads bounded `RuleContext` from ingestion tables
+2. Runs `RuleEngine.evaluate()` (synchronous, deterministic)
+3. Persists metrics to `agentic_metrics` via upsert
+
+**Scheduling:** Job is called externally (cron, scheduler, or on-demand). Not self-scheduled.
+
+**Latency:** ~500–2000ms per window depending on data volume.
+
+**Fallback:** MCP endpoints query `agentic_metrics_latest` materialized view if no recent run exists.
+
 ## Extensibility
 
 - Add new rules in `rules/registry.ts`.
