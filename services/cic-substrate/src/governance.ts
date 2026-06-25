@@ -1,3 +1,5 @@
+import { agenticMetricsClient } from './agentic';
+
 export type ChunkType = 'SYSTEM' | 'STATE' | 'LIVING' | 'SCRATCH';
 
 export interface ChunkInput {
@@ -54,4 +56,43 @@ export function applyGovernance(chunk: ChunkInput): ChunkInput {
   }
 
   return chunk;
+}
+
+export interface GovernanceOptions {
+  minReadiness?: number;
+  maxDrift?: number;
+}
+
+export interface GovernanceDecision {
+  requireClaudeReview: boolean;
+  requireMaalAudit: boolean;
+  reason?: string;
+}
+
+export function createGovernanceMiddleware(opts: GovernanceOptions = { minReadiness: 0.6, maxDrift: 0.4 }) {
+  return async function evaluateGovernance(
+    userId: string,
+    workspace: string
+  ): Promise<GovernanceDecision> {
+    const metrics = await agenticMetricsClient.getAgenticMetrics(userId, workspace);
+    if (!metrics) {
+      return { requireClaudeReview: false, requireMaalAudit: false };
+    }
+
+    const requireClaudeReview =
+      metrics.readinessIndex < (opts.minReadiness ?? 0.6) ||
+      metrics.driftIndex > (opts.maxDrift ?? 0.4);
+
+    const requireMaalAudit = metrics.reviewRigor < 0.7;
+
+    return {
+      requireClaudeReview,
+      requireMaalAudit,
+      reason: requireClaudeReview
+        ? 'Agentic readiness low or drift high'
+        : requireMaalAudit
+        ? 'Review rigor below threshold'
+        : undefined,
+    };
+  };
 }

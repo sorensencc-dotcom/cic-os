@@ -1,8 +1,11 @@
 import { searchHybrid, HybridSearchOptions } from './retrieval';
+import { agenticEventSink } from './agentic';
+import * as crypto from 'crypto';
 
 export interface ContextTaskOptions {
   namespace: string;
   task: string;
+  sessionRequestId?: string;
   embedding?: number[];
   max_context_tokens?: number;
   preferred_types?: string[];
@@ -16,7 +19,7 @@ const DEFAULT_TYPE_PREFERENCE: Record<string, number> = {
 };
 
 export async function getContextForTask(options: ContextTaskOptions) {
-  const { namespace, task, embedding, max_context_tokens = 4000, preferred_types } = options;
+  const { namespace, task, sessionRequestId, embedding, max_context_tokens = 4000, preferred_types } = options;
 
   // Build the active type preference map
   const activeTypePreference: Record<string, number> = {};
@@ -64,6 +67,17 @@ export async function getContextForTask(options: ContextTaskOptions) {
       continue;
     }
   }
+
+  // Emit context slice telemetry
+  const ctxSlice = {
+    id: `ctx-${crypto.randomUUID()}`,
+    sessionRequestId: sessionRequestId || `req-${crypto.randomUUID()}`,
+    source: 'files' as const,
+    sizeBytes: currentTokens * 4,
+    coverageScore: 0.85,
+    freshnessScore: 0.90
+  };
+  await agenticEventSink.emitContextSlice(ctxSlice);
 
   return {
     chunks: packedChunks,

@@ -8,46 +8,53 @@ const meta = {
   component: AgentCard,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
+  args: {
+    agent: mockAgentsList[0],
+  },
 } satisfies Meta<typeof AgentCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Healthy: Story = {
-  render: () => (
+  args: { agent: mockAgentsList[0] },
+  render: (args) => (
     <DarkModeWrapper>
       <div style={{ width: "300px" }}>
-        <AgentCard agent={mockAgentsList[0]} />
+        <AgentCard {...args} />
       </div>
     </DarkModeWrapper>
   ),
 };
 
 export const Degraded: Story = {
-  render: () => (
+  args: { agent: mockAgentsList[2] },
+  render: (args) => (
     <DarkModeWrapper>
       <div style={{ width: "300px" }}>
-        <AgentCard agent={mockAgentsList[2]} />
+        <AgentCard {...args} />
       </div>
     </DarkModeWrapper>
   ),
 };
 
 export const Offline: Story = {
-  render: () => (
+  args: { agent: mockAgentsList[3] },
+  render: (args) => (
     <DarkModeWrapper>
       <div style={{ width: "300px" }}>
-        <AgentCard agent={mockAgentsList[3]} />
+        <AgentCard {...args} />
       </div>
     </DarkModeWrapper>
   ),
 };
 
 export const Starting: Story = {
-  render: () => (
+  args: { agent: mockAgentsList[4] },
+  render: (args) => (
     <DarkModeWrapper>
       <div style={{ width: "300px" }}>
-        <AgentCard agent={mockAgentsList[4]} />
+        <AgentCard {...args} />
       </div>
     </DarkModeWrapper>
   ),
@@ -66,20 +73,22 @@ export const Grid: Story = {
 };
 
 export const DarkMode: Story = {
-  render: () => (
+  args: { agent: mockAgentsList[0] },
+  render: (args) => (
     <div data-theme="dark" style={{ padding: "2rem", background: "#1a1a1a" }}>
       <div style={{ width: "300px" }}>
-        <AgentCard agent={mockAgentsList[0]} />
+        <AgentCard {...args} />
       </div>
     </div>
   ),
 };
 
 export const HighContrast: Story = {
-  render: () => (
+  args: { agent: mockAgentsList[0] },
+  render: (args) => (
     <div data-theme="dark" data-density="compact" style={{ padding: "2rem", background: "#0a0a0a" }}>
       <div style={{ width: "300px" }}>
-        <AgentCard agent={mockAgentsList[0]} />
+        <AgentCard {...args} />
       </div>
     </div>
   ),

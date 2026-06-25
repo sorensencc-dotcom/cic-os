@@ -7,6 +7,7 @@ const meta = {
   component: AgentsPanel,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
+  args: {},
 } satisfies Meta<typeof AgentsPanel>;
 
 export default meta;
@@ -30,7 +31,7 @@ export const LightMode: Story = {
   ),
 };
 
-export const DarkMode: Story = {
+export const DarkModeStory: Story = {
   render: () => (
     <div data-theme="dark" style={{ padding: "2rem", background: "#1a1a1a" }}>
       <div style={{ width: "100%", maxWidth: "1200px" }}>

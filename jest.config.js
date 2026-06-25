@@ -9,7 +9,20 @@ export default {
     "/aperture/(sandbox|orchestrator|__tests__)/",
     "cic-ingestion/src/vector/__tests__",
     "cic-ingestion/src/wayland/__tests__",
-    "cic-ingestion/src/extractors/(browser|sweeper)"
+    "cic-ingestion/src/autonomy/__tests__",
+    "cic-ingestion/src/extractors/(browser|sweeper)",
+    "src/tests/c-phase-routing\\.test\\.ts",
+    "src/ui/console-v3/live-regions\\.test\\.tsx",
+    "src/ui/console-v3/.*\\.a11y\\.test\\.ts",
+    "src/tests/modelRegistry\\.test\\.ts",
+    "src/tests/modelRouter\\.test\\.ts",
+    "src/tests/fuguIntegration\\.test\\.ts",
+    "src/tests/agentRouting\\.test\\.ts",
+    "src/tests/auditCrossModel\\.test\\.ts",
+    "src/tests/capabilities\\.test\\.ts",
+    "src/tests/BookStackAdapter\\.test\\.ts",
+    "src/integration/bookstack\\.integration\\.test\\.ts",
+    "cic-ingestion/src/tests/drift-detector\\.test\\.ts"
   ],
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",

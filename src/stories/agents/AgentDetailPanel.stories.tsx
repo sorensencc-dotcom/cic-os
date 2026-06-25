@@ -7,77 +7,87 @@ const meta = {
   component: AgentDetailPanel,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
+  args: {
+    agentId: "agent-1",
+  },
 } satisfies Meta<typeof AgentDetailPanel>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const OverviewTab: Story = {
-  render: () => (
+  args: { agentId: "agent-1" },
+  render: (args) => (
     <DarkModeWrapper>
       <div style={{ width: "100%", maxWidth: "900px" }}>
-        <AgentDetailPanel agentId="agent-1" />
+        <AgentDetailPanel {...args} />
       </div>
     </DarkModeWrapper>
   ),
 };
 
 export const LogsTab: Story = {
-  render: () => (
+  args: { agentId: "agent-1" },
+  render: (args) => (
     <DarkModeWrapper>
       <div style={{ width: "100%", maxWidth: "900px" }}>
-        <AgentDetailPanel agentId="agent-1" />
+        <AgentDetailPanel {...args} />
       </div>
     </DarkModeWrapper>
   ),
 };
 
 export const ExecutionsTab: Story = {
-  render: () => (
+  args: { agentId: "agent-1" },
+  render: (args) => (
     <DarkModeWrapper>
       <div style={{ width: "100%", maxWidth: "900px" }}>
-        <AgentDetailPanel agentId="agent-1" />
+        <AgentDetailPanel {...args} />
       </div>
     </DarkModeWrapper>
   ),
 };
 
 export const SystemTab: Story = {
-  render: () => (
+  args: { agentId: "agent-1" },
+  render: (args) => (
     <DarkModeWrapper>
       <div style={{ width: "100%", maxWidth: "900px" }}>
-        <AgentDetailPanel agentId="agent-1" />
+        <AgentDetailPanel {...args} />
       </div>
     </DarkModeWrapper>
   ),
 };
 
 export const DarkMode: Story = {
-  render: () => (
+  args: { agentId: "agent-1" },
+  render: (args) => (
     <div data-theme="dark" style={{ padding: "2rem", background: "#1a1a1a" }}>
       <div style={{ width: "100%", maxWidth: "900px" }}>
-        <AgentDetailPanel agentId="agent-1" />
+        <AgentDetailPanel {...args} />
       </div>
     </div>
   ),
 };
 
 export const DegradedAgent: Story = {
-  render: () => (
+  args: { agentId: "agent-3" },
+  render: (args) => (
     <DarkModeWrapper>
       <div style={{ width: "100%", maxWidth: "900px" }}>
-        <AgentDetailPanel agentId="agent-3" />
+        <AgentDetailPanel {...args} />
       </div>
     </DarkModeWrapper>
   ),
 };
 
 export const ResponsiveTest: Story = {
-  render: () => (
+  args: { agentId: "agent-1" },
+  render: (args) => (
     <DarkModeWrapper>
       <div style={{ width: "100%", resize: "both", overflow: "auto", border: "1px solid #999" }}>
         <div style={{ minWidth: "400px" }}>
-          <AgentDetailPanel agentId="agent-1" />
+          <AgentDetailPanel {...args} />
         </div>
       </div>
     </DarkModeWrapper>

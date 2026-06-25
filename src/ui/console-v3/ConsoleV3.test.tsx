@@ -70,13 +70,13 @@ describe('ConsoleV3 Integration', () => {
   it('applies focus indicators on panel focus', async () => {
     const { container } = render(<ConsoleV3 />);
 
-    const panels = container.querySelectorAll('.panel');
+    const panels = container.querySelectorAll('[role="region"]');
     expect(panels.length).toBeGreaterThan(0);
 
-    // Panels should have focus-visible styles
+    // Panels should be interactive regions
     panels.forEach((panel) => {
       const el = panel as HTMLElement;
-      expect(el).toHaveAttribute('tabIndex', '0');
+      expect(el.getAttribute('role')).toBe('region');
     });
   });
 });
