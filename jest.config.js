@@ -14,7 +14,12 @@ export default {
   },
   transform: {
     "^.+\\.tsx?$": ["ts-jest", {
-      useESM: true
+      useESM: true,
+      isolatedModules: true,
+      tsconfig: {
+        module: "esnext",
+        target: "esnext"
+      }
     }]
   },
   transformIgnorePatterns: [
