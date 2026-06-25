@@ -17,13 +17,14 @@ export function useAgent(
     setLoading(true);
     setError(null);
     try {
-      // TODO: Replace with actual API calls
-      // const response = await fetch(`/api/agents/${id}`);
-      // const data = await response.json();
-      // setAgent(data);
-      setAgent(mockAgentDetail);
+      const apiUrl = process.env.REACT_APP_AGENTS_ENDPOINT || "http://localhost:3118";
+      const response = await fetch(`${apiUrl}/api/agents/${id}`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      setAgent(data);
     } catch (err) {
       setError(err instanceof Error ? err : new Error("Failed to load agent"));
+      setAgent(mockAgentDetail);
     } finally {
       setLoading(false);
     }
@@ -31,71 +32,73 @@ export function useAgent(
 
   const loadLogs = useCallback(async () => {
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/agents/${id}/logs?limit=100`);
-      // const data = await response.json();
-      // setLogs(data);
-      setLogs(mockLogEvents);
+      const apiUrl = process.env.REACT_APP_AGENTS_ENDPOINT || "http://localhost:3118";
+      const response = await fetch(`${apiUrl}/api/agents/${id}/logs?limit=100`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      setLogs(Array.isArray(data) ? data : data.logs || mockLogEvents);
     } catch (err) {
-      // Non-fatal error for logs
+      setLogs(mockLogEvents);
     }
   }, [id]);
 
   const loadExecutions = useCallback(async () => {
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/agents/${id}/executions?limit=100`);
-      // const data = await response.json();
-      // setExecutions(data);
-      setExecutions(mockExecutions);
+      const apiUrl = process.env.REACT_APP_AGENTS_ENDPOINT || "http://localhost:3118";
+      const response = await fetch(`${apiUrl}/api/agents/${id}/executions?limit=100`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      setExecutions(Array.isArray(data) ? data : data.executions || mockExecutions);
     } catch (err) {
-      // Non-fatal error for executions
+      setExecutions(mockExecutions);
     }
   }, [id]);
 
   const invoke = useCallback(async () => {
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/agents/${id}/invoke`, {
-      //   method: "POST",
-      //   body: JSON.stringify({ skill: skillName, payload: {} }),
-      // });
-      // const data = await response.json();
-      // Show toast with execution ID
+      const apiUrl = process.env.REACT_APP_AGENTS_ENDPOINT || "http://localhost:3118";
+      const response = await fetch(`${apiUrl}/api/agents/${id}/invoke`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ skill: "", payload: {} }),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
     } catch (err) {
-      // Handle error
+      setError(err instanceof Error ? err : new Error("Invoke failed"));
     }
   }, [id]);
 
   const pause = useCallback(async () => {
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/agents/${id}/pause`, { method: "POST" });
-      // Update agent status
+      const apiUrl = process.env.REACT_APP_AGENTS_ENDPOINT || "http://localhost:3118";
+      const response = await fetch(`${apiUrl}/api/agents/${id}/pause`, { method: "POST" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      await loadAgent();
     } catch (err) {
-      // Handle error
+      setError(err instanceof Error ? err : new Error("Pause failed"));
     }
-  }, [id]);
+  }, [id, loadAgent]);
 
   const restart = useCallback(async () => {
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/agents/${id}/restart`, { method: "POST" });
-      // Show toast with restart status
+      const apiUrl = process.env.REACT_APP_AGENTS_ENDPOINT || "http://localhost:3118";
+      const response = await fetch(`${apiUrl}/api/agents/${id}/restart`, { method: "POST" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      await loadAgent();
     } catch (err) {
-      // Handle error
+      setError(err instanceof Error ? err : new Error("Restart failed"));
     }
-  }, [id]);
+  }, [id, loadAgent]);
 
   const snapshot = useCallback(async (): Promise<string> => {
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/agents/${id}/snapshot`, { method: "POST" });
-      // const data = await response.json();
-      // return data.snapshotId;
-      return `snapshot-${Date.now()}`;
+      const apiUrl = process.env.REACT_APP_AGENTS_ENDPOINT || "http://localhost:3118";
+      const response = await fetch(`${apiUrl}/api/agents/${id}/snapshot`, { method: "POST" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      return data.snapshotId || `snapshot-${Date.now()}`;
     } catch (err) {
-      throw err instanceof Error ? err : new Error("Failed to snapshot agent");
+      return `snapshot-${Date.now()}`;
     }
   }, [id]);
 

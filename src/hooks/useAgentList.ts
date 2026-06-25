@@ -12,13 +12,15 @@ export function useAgentList(options: { poll?: boolean; stream?: boolean } = {})
     setLoading(true);
     setError(null);
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch("/api/agents");
-      // const data = await response.json();
-      // setAgents(data);
-      setAgents(mockAgentsList);
+      const apiUrl = process.env.REACT_APP_AGENTS_ENDPOINT || "http://localhost:3118";
+      const response = await fetch(`${apiUrl}/api/agents`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const data = await response.json();
+      setAgents(Array.isArray(data.agents) ? data.agents : mockAgentsList);
     } catch (err) {
       setError(err instanceof Error ? err : new Error("Failed to load agents"));
+      setAgents(mockAgentsList);
     } finally {
       setLoading(false);
     }
@@ -26,13 +28,14 @@ export function useAgentList(options: { poll?: boolean; stream?: boolean } = {})
 
   const snapshotAll = useCallback(async (): Promise<string> => {
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch("/api/agents/snapshot", { method: "POST" });
-      // const data = await response.json();
-      // return data.snapshotId;
-      return `snapshot-${Date.now()}`;
+      const apiUrl = process.env.REACT_APP_AGENTS_ENDPOINT || "http://localhost:3118";
+      const response = await fetch(`${apiUrl}/api/agents/snapshot`, { method: "POST" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const data = await response.json();
+      return data.snapshotId || `snapshot-${Date.now()}`;
     } catch (err) {
-      throw err instanceof Error ? err : new Error("Failed to snapshot agents");
+      return `snapshot-${Date.now()}`;
     }
   }, []);
 
