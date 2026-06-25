@@ -1,0 +1,21 @@
+scripts/test-console-v3-setup.ps1
+  s_51c9e7affe4228::t_b501c7890889c1 1-52
+PHASE-3-6-SETUP-COMPLETE.md
+  s_51c9e7affe4228::t_9b4f2ff8da9e48 1-101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "2506ca5cdd312b00ebc6d38d0797d5b51ba14b9b",
+  "prompts": {},
+  "sessions": {
+    "s_51c9e7affe4228": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "219d540c-0752-4eda-b6b9-e88059db870f",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
