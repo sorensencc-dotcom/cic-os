@@ -6,7 +6,9 @@ export default {
   testMatch: ["**/*.test.ts", "**/*.test.tsx"],
   testPathIgnorePatterns: [
     "/cic-runtime/integration\\.test\\.ts",
-    "/aperture/(sandbox|orchestrator|__tests__)/"
+    "/aperture/(sandbox|orchestrator|__tests__)/",
+    "cic-ingestion/src/vector/__tests__",
+    "cic-ingestion/src/wayland/__tests__"
   ],
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
