@@ -1,4 +1,5 @@
 import { RuleContext } from '../rules/types';
+import { clamp } from '../utils';
 
 export interface DetectedSkill {
   promptHash: string;
@@ -45,9 +46,9 @@ export function extractSkills(ctx: RuleContext): DetectedSkill[] {
   for (const [hash, data] of hashData.entries()) {
     for (const req of data.requests) {
       const matchingContexts = ctx.contexts.filter(c => c.sessionId === req.sessionId);
-      for (const ctx of matchingContexts) {
-        data.coverage.push(ctx.coverageScore);
-        data.freshness.push(ctx.freshnessScore);
+      for (const context of matchingContexts) {
+        data.coverage.push(context.coverageScore);
+        data.freshness.push(context.freshnessScore);
       }
     }
   }
@@ -76,7 +77,9 @@ export function extractSkills(ctx: RuleContext): DetectedSkill[] {
     const coverageVariance = computeVariance(data.coverage);
     const freshnessVariance = computeVariance(data.freshness);
     const maxVariance = Math.max(coverageVariance, freshnessVariance);
-    const stabilityScore = clamp(1 - maxVariance); // Lower variance = higher stability
+    // Stability score: assumes variance (std dev) ≤ 1.0 for normalized [0,1] scores.
+    // Higher variance = less stable (more deviation from mean score).
+    const stabilityScore = clamp(1 - maxVariance);
 
     // Success rate
     const successRate = data.successCount / frequency;
@@ -136,8 +139,4 @@ function computeVariance(values: number[]): number {
   const squaredDiffs = values.map(v => (v - mean) ** 2);
   const avgSquaredDiff = squaredDiffs.reduce((a, b) => a + b, 0) / values.length;
   return Math.sqrt(avgSquaredDiff); // Standard deviation
-}
-
-function clamp(n: number): number {
-  return Math.max(0, Math.min(1, n));
 }

@@ -1,4 +1,9 @@
-import { AgenticRule } from './types';
+import { AgenticRule, RuleContext, RuleFinding } from './types';
+
+// Helper: check if a request has been reviewed
+function isUnreviewed(ctx: RuleContext, requestId: string): boolean {
+  return !ctx.reviews.some(rv => rv.sessionRequestId === requestId);
+}
 
 export const ruleRegistry: AgenticRule[] = [
   // Rule 1: Large Output Without Review (refined)
@@ -8,7 +13,7 @@ export const ruleRegistry: AgenticRule[] = [
     evaluate(ctx) {
       return ctx.requests
         .filter(r => r.tokensOut > 1500 && r.tokensOut <= 8000)
-        .filter(r => !ctx.reviews.some(rv => rv.sessionRequestId === r.id))
+        .filter(r => isUnreviewed(ctx, r.id))
         .map(r => ({
           id: `finding-${r.id}`,
           ruleId: 'large-output-without-review',
@@ -27,7 +32,7 @@ export const ruleRegistry: AgenticRule[] = [
     evaluate(ctx) {
       return ctx.requests
         .filter(r => r.tokensOut > 8000)
-        .filter(r => !ctx.reviews.some(rv => rv.sessionRequestId === r.id))
+        .filter(r => isUnreviewed(ctx, r.id))
         .map(r => ({
           id: `finding-${r.id}`,
           ruleId: 'critical-output-unreviewed',

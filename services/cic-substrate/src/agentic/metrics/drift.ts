@@ -1,3 +1,5 @@
+import { clamp } from '../utils';
+
 export interface DriftContributor {
   category: string;
   severity: 'low' | 'medium' | 'high' | 'critical';
@@ -115,8 +117,4 @@ export function computeDriftIndex({
     driftIndex,
     contributors: contributors.sort((a, b) => b.weight - a.weight),
   };
-}
-
-function clamp(n: number) {
-  return Math.max(0, Math.min(1, n));
 }

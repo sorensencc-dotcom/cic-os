@@ -8,10 +8,18 @@ export async function getSkillDetections(req: Request, res: Response) {
     const workspace = req.query.workspace as string;
     const windowStart = req.query.windowStart as string;
     const windowEnd = req.query.windowEnd as string;
-    const minConfidence = parseFloat((req.query.minConfidence as string) || '0.6');
+    const minConfidenceInput = (req.query.minConfidence as string) || '0.6';
+    const minConfidence = parseFloat(minConfidenceInput);
 
     if (!userId || !workspace) {
       return res.status(400).json({ error: 'userId and workspace are required' });
+    }
+
+    if (isNaN(minConfidence) || minConfidence < 0 || minConfidence > 1) {
+      return res.status(400).json({
+        error: 'minConfidence must be a number between 0 and 1',
+        received: minConfidenceInput,
+      });
     }
 
     // Load context for the specified window (default: 24h)

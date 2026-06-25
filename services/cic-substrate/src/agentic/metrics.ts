@@ -1,5 +1,7 @@
 import { AgenticMetrics, AgenticMetricsData } from './types';
 import { RuleContext, RuleFinding } from './rules/types';
+import { computeDriftIndex } from './metrics/drift';
+import { clamp, normalize } from './utils';
 
 export interface AgenticMetricsClient {
   getAgenticMetrics(
@@ -36,6 +38,9 @@ export function computeMetrics(ctx: RuleContext, findings: RuleFinding[]): Agent
 
   // --- 1. Prompt Discipline ---
   // Measures quality of outputs: review coverage + error-free execution
+  // Token thresholds:
+  //   1500 = "large" output, should be reviewed (typical context: ~2-3 paragraphs)
+  //   8000 = "critical" output, must be reviewed (typical context: ~10-15 paragraphs, near max window)
   const largeOutputs = requests.filter(r => r.tokensOut > 1500).length;
   const criticalOutputs = requests.filter(r => r.tokensOut > 8000).length;
   const unreviewedLarge = findings.filter(f => f.ruleId === 'large-output-without-review').length;
@@ -105,23 +110,15 @@ export function computeMetrics(ctx: RuleContext, findings: RuleFinding[]): Agent
 
   // --- 5. Drift Index ---
   // Measures workflow decay and rule violations
-  // Count high/critical severity findings only (low noise)
-  const severeFinding = findings.filter(
-    f => f.severity === 'high' || f.severity === 'critical'
-  ).length;
-  const violationRate = severeFinding / Math.max(1, requests.length);
-
-  // Suppress noise: single violations are not significant drift
-  const violationThreshold = Math.max(1, Math.ceil(requests.length * 0.02));
-  const noisyViolations = Math.min(severeFinding, violationThreshold);
-  const significantViolations = Math.max(0, severeFinding - noisyViolations);
-  const adjustedViolationRate = significantViolations / Math.max(1, requests.length);
-
-  const driftIndex = clamp(
-    0.5 * adjustedViolationRate +
-      0.3 * errorRate +
-      0.2 * (1 - contextHealth)
-  );
+  // Computed by drift.ts with contributor tracking
+  const driftAnalysis = computeDriftIndex({
+    violationRate: 0, // drift.ts computes this from findings
+    errorRate,
+    contextHealth,
+    findings,
+    totalRequests: requests.length,
+  });
+  const driftIndex = driftAnalysis.driftIndex;
 
   // --- 6. Readiness Index ---
   // Composite signal: how ready is the workflow for production?
@@ -145,12 +142,3 @@ export function computeMetrics(ctx: RuleContext, findings: RuleFinding[]): Agent
   };
 }
 
-// --- Helpers ---
-function clamp(n: number) {
-  return Math.max(0, Math.min(1, n));
-}
-
-function normalize(value: number, min: number, max: number) {
-  if (max === min) return 0;
-  return clamp((value - min) / (max - min));
-}
