@@ -1,0 +1,19 @@
+.planning/ROADMAP.md
+  s_875b5d42e4131e::t_94ff539bb10f56 5,10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "dca8c8fd55fc1b1ad89d0e17209667108487697c",
+  "prompts": {},
+  "sessions": {
+    "s_875b5d42e4131e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a629d18b-b46b-41cc-86af-866ec1829385",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
