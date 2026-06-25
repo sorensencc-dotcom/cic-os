@@ -1,0 +1,19 @@
+.env.development
+  s_51c9e7affe4228::t_6a0b2168543f95 1-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "f2423a0b48334dac1ad9eabe35af04e262de795d",
+  "prompts": {},
+  "sessions": {
+    "s_51c9e7affe4228": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "219d540c-0752-4eda-b6b9-e88059db870f",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
