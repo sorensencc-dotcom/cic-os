@@ -8,7 +8,6 @@ export type ModelType =
 
 export interface ModelCapabilities {
   chat: boolean;
-  completion: boolean;
   toolCalls: boolean;
   streaming: boolean;
   vision: boolean;
@@ -20,7 +19,7 @@ export interface ModelSpec {
   provider: string;
   type: ModelType;
   apiBase: string;
-  env: string; // env var name for API key
+  env: string;
   maxTokens?: number;
   pricing?: {
     input?: number;

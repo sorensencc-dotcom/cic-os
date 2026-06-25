@@ -9,8 +9,8 @@ export const anthropicProvider: Provider = {
       throw new ProviderError(`Missing API key for ${spec.name} (${spec.env})`);
     }
 
-    const systemMessages = payload.messages.filter(m => m.role === "system");
-    const userMessages = payload.messages.filter(m => m.role !== "system");
+    const systemMessages = payload.messages.filter((m) => m.role === "system");
+    const userMessages = payload.messages.filter((m) => m.role !== "system");
 
     const body: any = {
       model: spec.name,
@@ -21,7 +21,7 @@ export const anthropicProvider: Provider = {
     };
 
     if (systemMessages.length > 0) {
-      body.system = systemMessages.map(m => m.content).join("\n");
+      body.system = systemMessages.map((m) => m.content).join("\n");
     }
 
     if (payload.tools && spec.supports.toolCalls) {
@@ -43,16 +43,18 @@ export const anthropicProvider: Provider = {
       throw new ProviderError(`Anthropic error (${spec.name}): ${res.status} ${text}`);
     }
 
-    const json = await res.json() as any;
+    const json = (await res.json()) as any;
     const text = json.content?.[0]?.text ?? "";
 
     return {
       raw: json,
       text,
-      tokensUsed: json.usage ? {
-        input: json.usage.input_tokens ?? 0,
-        output: json.usage.output_tokens ?? 0
-      } : undefined
+      tokensUsed: json.usage
+        ? {
+            input: json.usage.input_tokens ?? 0,
+            output: json.usage.output_tokens ?? 0
+          }
+        : undefined
     };
   }
 };

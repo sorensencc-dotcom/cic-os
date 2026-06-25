@@ -29,17 +29,19 @@ export const localProvider: Provider = {
       throw new ProviderError(`Local GGUF error (${spec.name}): ${res.status} ${text}`);
     }
 
-    const json = await res.json() as any;
+    const json = (await res.json()) as any;
     const choice = json.choices?.[0];
     const text = choice?.message?.content ?? "";
 
     return {
       raw: json,
       text,
-      tokensUsed: json.usage ? {
-        input: json.usage.prompt_tokens ?? 0,
-        output: json.usage.completion_tokens ?? 0
-      } : undefined
+      tokensUsed: json.usage
+        ? {
+            input: json.usage.prompt_tokens ?? 0,
+            output: json.usage.completion_tokens ?? 0
+          }
+        : undefined
     };
   }
 };

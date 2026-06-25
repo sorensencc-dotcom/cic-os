@@ -9,13 +9,16 @@ export const azureOpenAIProvider: Provider = {
       throw new ProviderError(`Missing API key for ${spec.name} (${spec.env})`);
     }
 
-    const body = {
+    const body: any = {
       messages: payload.messages,
-      tools: spec.supports.toolCalls ? payload.tools : undefined,
       stream: payload.stream ?? false,
       max_tokens: payload.maxTokens,
       temperature: payload.temperature
     };
+
+    if (payload.tools && spec.supports.toolCalls) {
+      body.tools = payload.tools;
+    }
 
     const res = await fetch(`${spec.apiBase}/chat/completions?api-version=2024-02-15-preview`, {
       method: "POST",
@@ -31,17 +34,19 @@ export const azureOpenAIProvider: Provider = {
       throw new ProviderError(`Azure OpenAI error (${spec.name}): ${res.status} ${text}`);
     }
 
-    const json = await res.json() as any;
+    const json = (await res.json()) as any;
     const choice = json.choices?.[0];
     const text = choice?.message?.content ?? "";
 
     return {
       raw: json,
       text,
-      tokensUsed: json.usage ? {
-        input: json.usage.prompt_tokens ?? 0,
-        output: json.usage.completion_tokens ?? 0
-      } : undefined
+      tokensUsed: json.usage
+        ? {
+            input: json.usage.prompt_tokens ?? 0,
+            output: json.usage.completion_tokens ?? 0
+          }
+        : undefined
     };
   }
 };

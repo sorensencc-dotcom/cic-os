@@ -2,6 +2,29 @@ import { ModelSpec } from "../core/modelSpec.js";
 import { ChatPayload, ChatResult, Provider } from "../core/modelRouter.js";
 import { ProviderError } from "../core/errors.js";
 
+interface GooglePart {
+  text: string;
+}
+
+interface GoogleContent {
+  role: "user" | "model";
+  parts: GooglePart[];
+}
+
+interface GoogleSystemInstruction {
+  parts: GooglePart[];
+}
+
+interface GoogleRequestBody {
+  contents: GoogleContent[];
+  systemInstruction?: GoogleSystemInstruction;
+  generationConfig: {
+    temperature?: number;
+    maxOutputTokens?: number;
+  };
+  tools?: any[];
+}
+
 export const googleProvider: Provider = {
   async callChat(spec: ModelSpec, payload: ChatPayload): Promise<ChatResult> {
     const apiKey = process.env[spec.env];
@@ -9,12 +32,14 @@ export const googleProvider: Provider = {
       throw new ProviderError(`Missing API key for ${spec.name} (${spec.env})`);
     }
 
-    let systemInstruction;
-    const contents = [];
+    let systemInstruction: GoogleSystemInstruction | undefined;
+    const contents: GoogleContent[] = [];
 
     for (const m of payload.messages) {
       if (m.role === "system") {
-        if (!systemInstruction) systemInstruction = { parts: [] };
+        if (!systemInstruction) {
+          systemInstruction = { parts: [] };
+        }
         systemInstruction.parts.push({ text: m.content });
       } else {
         contents.push({
@@ -24,7 +49,7 @@ export const googleProvider: Provider = {
       }
     }
 
-    const body: any = {
+    const body: GoogleRequestBody = {
       contents,
       generationConfig: {
         temperature: payload.temperature,
@@ -53,16 +78,18 @@ export const googleProvider: Provider = {
       throw new ProviderError(`Google error (${spec.name}): ${res.status} ${text}`);
     }
 
-    const json = await res.json() as any;
+    const json = (await res.json()) as any;
     const text = json.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
 
     return {
       raw: json,
       text,
-      tokensUsed: json.usageMetadata ? {
-        input: json.usageMetadata.promptTokenCount ?? 0,
-        output: json.usageMetadata.candidatesTokenCount ?? 0
-      } : undefined
+      tokensUsed: json.usageMetadata
+        ? {
+            input: json.usageMetadata.promptTokenCount ?? 0,
+            output: json.usageMetadata.candidatesTokenCount ?? 0
+          }
+        : undefined
     };
   }
 };

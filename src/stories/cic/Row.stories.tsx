@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Row } from '../../components/cic/Row';
 import DensityWrapper from './DensityWrapper';
-import DarkModeWrapper from './DarkModeWrapper';
+import DarkModeWrapper from '../utils/DarkModeWrapper';
 
 const meta = {
   title: 'CIC/Row',

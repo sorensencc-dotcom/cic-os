@@ -5,10 +5,27 @@ export interface EventPayload {
   tokensUsed?: { input: number; output: number };
   error?: string;
   agent?: string;
+  primaryModel?: string;
+  secondaryModel?: string;
+  score?: number;
   [key: string]: any;
 }
 
 export function logEvent(payload: EventPayload): void {
-  // Real implementation wires into CIC observability layer
-  // Event emission placeholder
+  const timestamp = new Date().toISOString();
+  const entry = { timestamp, ...payload };
+
+  // Log to stderr for structured observability systems to capture
+  if (process.env.LOG_LEVEL === "debug") {
+    console.error(JSON.stringify(entry));
+  }
+
+  // For production, wire into CIC observability layer via environment hook
+  if (typeof globalThis !== "undefined" && (globalThis as any).__cicEventBus) {
+    try {
+      (globalThis as any).__cicEventBus.emit(payload.eventName, entry);
+    } catch (e) {
+      // Silently fail if event bus is not available
+    }
+  }
 }

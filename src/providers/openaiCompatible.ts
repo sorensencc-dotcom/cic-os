@@ -9,19 +9,22 @@ export const openaiCompatibleProvider: Provider = {
       throw new ProviderError(`Missing API key for ${spec.name} (${spec.env})`);
     }
 
-    const body = {
+    const body: any = {
       model: spec.name,
       messages: payload.messages,
-      tools: payload.tools,
       stream: payload.stream ?? false,
       max_tokens: payload.maxTokens,
       temperature: payload.temperature
     };
 
+    if (payload.tools && spec.supports.toolCalls) {
+      body.tools = payload.tools;
+    }
+
     const res = await fetch(`${spec.apiBase}/chat/completions`, {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${apiKey}`,
+        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(body)
@@ -32,7 +35,7 @@ export const openaiCompatibleProvider: Provider = {
       throw new ProviderError(`OpenAI-compatible error (${spec.name}): ${res.status} ${text}`);
     }
 
-    const json = await res.json() as any;
+    const json = (await res.json()) as any;
 
     const choice = json.choices?.[0];
     const text = choice?.message?.content ?? "";

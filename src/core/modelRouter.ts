@@ -40,7 +40,10 @@ const providers: Record<ModelSpec["type"], Provider> = {
   "azure-openai": azureOpenAIProvider
 };
 
-export async function callModel(payload: ChatPayload, agentName: string = "UnknownAgent"): Promise<ChatResult> {
+export async function callModel(
+  payload: ChatPayload,
+  agentName: string = "UnknownAgent"
+): Promise<ChatResult> {
   const spec = getModelSpec(payload.model);
   const provider = providers[spec.type];
   if (!provider) {
@@ -74,7 +77,7 @@ export async function callModel(payload: ChatPayload, agentName: string = "Unkno
       model: spec.name,
       agent: agentName,
       latencyMs,
-      error: err.message
+      error: err.message ?? String(err)
     });
     throw err;
   }

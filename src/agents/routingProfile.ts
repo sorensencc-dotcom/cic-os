@@ -5,11 +5,13 @@ export class AgentRoutingProfile {
   constructor(
     private readonly preferredModels: string[],
     private readonly fallbackModels: string[] = []
-  ) {}
+  ) {
+    this.validateModels();
+  }
 
   pickModel(): string {
     const candidates = [...this.preferredModels, ...this.fallbackModels]
-      .map(name => {
+      .map((name) => {
         let score = 0;
         try {
           const spec = getModelSpec(name);
@@ -19,7 +21,7 @@ export class AgentRoutingProfile {
         }
         return { name, score };
       })
-      .filter(c => c.score > 0)
+      .filter((c) => c.score > 0)
       .sort((a, b) => b.score - a.score);
 
     if (!candidates.length) {
@@ -27,5 +29,11 @@ export class AgentRoutingProfile {
     }
 
     return candidates[0].name;
+  }
+
+  private validateModels(): void {
+    if (this.preferredModels.length === 0 && this.fallbackModels.length === 0) {
+      throw new RoutingError("AgentRoutingProfile requires at least one model");
+    }
   }
 }

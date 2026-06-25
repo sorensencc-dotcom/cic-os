@@ -31,7 +31,7 @@ export const ollamaProvider: Provider = {
       throw new ProviderError(`Ollama error (${spec.name}): ${res.status} ${text}`);
     }
 
-    const json = await res.json() as any;
+    const json = (await res.json()) as any;
     const text = json.message?.content ?? "";
 
     return {

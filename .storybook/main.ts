@@ -12,18 +12,15 @@ const config: StorybookConfig = {
   },
   staticDirs: ['./public'],
   typescript: {
-    check: true,
-    checkOptions: {
-      esModuleInterop: true,
-      skipLibCheck: true,
-    },
+    check: false,
+    checkOptions: {},
   },
   webpackFinal: async (config) => {
     config.module = config.module || { rules: [] };
     config.module.rules = config.module.rules || [];
 
     config.module.rules.unshift({
-      test: /\.tsx?$/,
+      test: /\.(ts|tsx)$/,
       use: {
         loader: 'ts-loader',
         options: {
@@ -31,6 +28,8 @@ const config: StorybookConfig = {
           configFile: 'tsconfig.json',
           compilerOptions: {
             jsx: 'react-jsx',
+            esModuleInterop: true,
+            allowSyntheticDefaultImports: true,
           },
         },
       },

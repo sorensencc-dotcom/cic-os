@@ -38,6 +38,16 @@ export function getModelSpec(name: string): ModelSpec {
 
 function validateModelSpec(spec: ModelSpec): void {
   if (!spec.name || !spec.provider || !spec.type || !spec.apiBase || !spec.env) {
-    throw new ConfigurationError(`Invalid model spec: ${spec?.name || 'unknown'}`);
+    throw new ConfigurationError(`Invalid model spec: ${spec?.name || "unknown"}`);
+  }
+
+  if (!spec.supports || typeof spec.supports !== "object") {
+    throw new ConfigurationError(`Invalid supports object in model spec: ${spec.name}`);
+  }
+
+  if (typeof spec.supports.chat !== "boolean" || typeof spec.supports.toolCalls !== "boolean") {
+    throw new ConfigurationError(
+      `Invalid capabilities in model spec: ${spec.name}`
+    );
   }
 }

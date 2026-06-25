@@ -7,7 +7,15 @@ export abstract class BaseAgent {
   protected abstract routingProfile: AgentRoutingProfile;
   protected agentName: string = this.constructor.name;
 
-  protected async llm(messages: ChatPayload["messages"], opts: Partial<{ model: string; temperature: number; maxTokens: number }> = {}) {
+  protected async llm(
+    messages: ChatPayload["messages"],
+    opts: Partial<{
+      model: string;
+      temperature: number;
+      maxTokens: number;
+      tools?: any[];
+    }> = {}
+  ) {
     const modelName = opts.model ?? this.routingProfile.pickModel();
     const spec = getModelSpec(modelName);
 
@@ -15,7 +23,8 @@ export abstract class BaseAgent {
       model: modelName,
       messages: this.formatMessagesForModel(messages, spec),
       temperature: opts.temperature,
-      maxTokens: opts.maxTokens ?? spec.maxTokens
+      maxTokens: opts.maxTokens ?? spec.maxTokens,
+      tools: opts.tools
     };
 
     return callModel(payload, this.agentName);
@@ -39,26 +48,43 @@ export abstract class BaseAgent {
   }
 
   private stripToolCallInstructions(messages: ChatPayload["messages"]): ChatPayload["messages"] {
-    return messages.map(m => {
+    return messages.map((m) => {
       if (m.role === "system") {
-        return { ...m, content: m.content.replace(/Use tools to.+/gi, "").replace(/<tools>[\s\S]*?<\/tools>/gi, "") };
+        let content = m.content;
+        // Remove tool usage instructions
+        content = content.replace(/[Uu]se tools to.+?(?=\n|$)/g, "");
+        // Remove XML-style tool blocks
+        content = content.replace(/<tools>[\s\S]*?<\/tools>/gi, "");
+        // Remove function calling instructions
+        content = content.replace(/\{[^}]*type[^}]*function[^}]*\}/g, "");
+        return { ...m, content: content.trim() };
       }
       return m;
     });
   }
 
   private stripImageContent(messages: ChatPayload["messages"]): ChatPayload["messages"] {
-    // In a full implementation, this parses multi-part content
-    return messages;
+    // For non-vision models, strip image URLs and content blocks
+    return messages.map((m) => {
+      if (m.role !== "system") {
+        // In production, parse multi-part content and remove image parts
+        // For now, just return as-is since messages are string-based
+        return m;
+      }
+      return m;
+    });
   }
 
   private normalizeSystemPrompts(messages: ChatPayload["messages"], spec: ModelSpec): ChatPayload["messages"] {
-    // Basic normalization: specific handling per provider is done in the provider itself
-    // We just return them cleanly.
+    // Normalize system prompts per provider requirements
+    // Most providers handle system messages the same way
+    // Specific normalization is done in provider implementations
     return messages;
   }
 
   private normalizeMessageRoles(messages: ChatPayload["messages"], spec: ModelSpec): ChatPayload["messages"] {
+    // Most providers use standard role names (system, user, assistant)
+    // No normalization needed at this layer
     return messages;
   }
 }
