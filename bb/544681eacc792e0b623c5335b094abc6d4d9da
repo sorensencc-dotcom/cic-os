@@ -1,0 +1,31 @@
+src/core/modelRegistry.ts
+  s_9852c545731b6e::t_27e97e96507a72 3,7-8
+src/tests/cic/Checkbox.test.tsx
+  s_4ecdbff3f939c0::t_7535c7bb7322a5 63,69,77,86,92,100
+src/tests/cic/Input.test.tsx
+  s_4ecdbff3f939c0::t_24f4f7f8ecf410 58,64,71,78,84,91
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "bb544681eacc792e0b623c5335b094abc6d4d9da",
+  "prompts": {},
+  "sessions": {
+    "s_4ecdbff3f939c0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb905f0-5189-4324-b9e8-3bb438755e99",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_9852c545731b6e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e8f91d9a-6b13-4e68-a441-229296638400",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
