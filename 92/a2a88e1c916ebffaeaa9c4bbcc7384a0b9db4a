@@ -1,0 +1,49 @@
+TORQUEQUERY_BUILD_SUMMARY.md
+  s_4ecdbff3f939c0::t_6d97dcb34fca86 1-406
+TORQUEQUERY_EXECUTIVE_SUMMARY.md
+  s_4ecdbff3f939c0::t_4ee7435d5187b2 1-424
+scripts/smoke-test-maal-http-only.ps1
+  s_9852c545731b6e::t_1327550388bf75 1-308
+cic-runtime/bootstrap-maal.ts
+  s_9852c545731b6e::t_0f17d4482e1ce3 1-157
+src/server/agentsAPI.ts
+  s_c94c9880cc28e6::t_160177e9c769df 1-145
+TORQUEQUERY_INDEX.md
+  s_4ecdbff3f939c0::t_96e8d07c4a5004 1-485
+TORQUEQUERY_MCP_REFERENCE.md
+  s_4ecdbff3f939c0::t_2bcb62100d5a2e 1-634
+TORQUEQUERY_DELIVERY_CHECKLIST.md
+  s_4ecdbff3f939c0::t_08e798180ff6bc 1-574
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "92a2a88e1c916ebffaeaa9c4bbcc7384a0b9db4a",
+  "prompts": {},
+  "sessions": {
+    "s_4ecdbff3f939c0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb905f0-5189-4324-b9e8-3bb438755e99",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_9852c545731b6e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e8f91d9a-6b13-4e68-a441-229296638400",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_c94c9880cc28e6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "43b76c2f-253a-4322-9348-05b84ffe0098",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
