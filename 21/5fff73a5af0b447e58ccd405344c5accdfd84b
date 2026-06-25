@@ -1,0 +1,99 @@
+scripts/smoke-test-maal.ps1
+  s_c94c9880cc28e6::t_d268cb7421742e 1-63,77,82-83,85-306
+src/agents/baseAgent.ts
+  s_9852c545731b6e::t_c38d18a5c47af2 10-18,26-27,51,53-58,60,67-75,79-81,86-87
+  s_9852c545731b6e::t_a14a8c6cc198a9 59
+src/observability/events.ts
+  s_9852c545731b6e::t_71f856792130c9 8-10,15-30
+P1_IMPLEMENTATION_COMPLETE.md
+  s_c2279b537f9a47::t_6693b899b7627e 1-268
+src/agents/routingProfile.ts
+  s_9852c545731b6e::t_4aebe3d50b47ba 8-10,14,24,33-38
+PHASE_8_TEST_MATRICES.md
+  s_875b5d42e4131e::t_4deffc54ea32f2 1-260
+src/providers/ollama.ts
+  s_9852c545731b6e::t_990b88da10484f 34
+src/ui/console-v3/README.md
+  s_10afe31f7cd72a::t_ca0fc74d87e54a 1-185
+services/torquequery/src/handlers/cic-ingest.ts
+  s_c94c9880cc28e6::t_f584fbb8373404 1-101
+src/agents/auditAgent.ts
+  s_9852c545731b6e::t_0990b89ebeb0ac 9-10,22,24,26,28,31-41,44,49-51,59-62,68-69,77-82,86-89,94,97,99-100,103-104,106,119-125,128-143,146-151,153
+src/providers/index.ts
+  s_9852c545731b6e::t_7c1d796f6190f9 1-7
+src/providers/openaiCompatible.ts
+  s_9852c545731b6e::t_3eb430ce966952 12,20-23,27,38
+docs/OPERATOR_KB.md
+  s_f1e5a6cf541f4d::t_9eac45fb4b26ea 1-133
+docs/ACCESSIBILITY.md
+  s_f1e5a6cf541f4d::t_3a4715a3aa7a02 1-233
+src/server/consoleAPI.ts
+  s_10afe31f7cd72a::t_34b6103ce308f0 67
+src/providers/google.ts
+  s_9852c545731b6e::t_a8969f08d9ccfa 5-27,35-36,40-42,52
+  s_9852c545731b6e::t_6cb9f0e67accb9 81,87-92
+src/core/index.ts
+  s_9852c545731b6e::t_e4eebb4a57d8fb 1-9
+PHASE_8_SPEC.md
+  s_875b5d42e4131e::t_6064278327c18e 1-716
+PHASE_27_FILES_GENERATED.md
+  s_c94c9880cc28e6::t_32d3ae12ddbcf8 1-283
+scripts/smoke-test-maal.sh
+  s_9852c545731b6e::t_693ae543eb3e25 1-307
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "215fff73a5af0b447e58ccd405344c5accdfd84b",
+  "prompts": {},
+  "sessions": {
+    "s_10afe31f7cd72a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6bb74c90-8151-491e-9910-1597cef987d9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_875b5d42e4131e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a629d18b-b46b-41cc-86af-866ec1829385",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_9852c545731b6e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e8f91d9a-6b13-4e68-a441-229296638400",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_c2279b537f9a47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ab700931-b50d-4ae4-b31d-b6be9c44b3e7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_c94c9880cc28e6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "43b76c2f-253a-4322-9348-05b84ffe0098",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_f1e5a6cf541f4d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c1f1dcf3-c5b7-477e-8371-b0d74574b7f9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
