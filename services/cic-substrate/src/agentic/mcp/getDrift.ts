@@ -35,18 +35,20 @@ export async function getDrift(req: Request, res: Response) {
         Math.max(1, ctx.requests.length);
       const contextDecay = 1 - metrics.contextHealth;
 
-      const driftIndex = computeDriftIndex({
+      const driftAnalysis = computeDriftIndex({
         violationRate,
         errorRate,
         contextHealth: metrics.contextHealth,
+        findings,
+        totalRequests: ctx.requests.length,
       });
 
       return res.json({
-        driftIndex,
+        driftIndex: driftAnalysis.driftIndex,
         violationRate,
         errorRate,
         contextDecay,
-        contributors: findings,
+        contributors: driftAnalysis.contributors,
       });
     }
 
