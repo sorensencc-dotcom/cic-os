@@ -1,0 +1,33 @@
+services/cic-substrate/src/index.ts
+  s_4ecdbff3f939c0::t_71770f7e1948b8 58
+services/cic-substrate/scripts/agentic-smoke.ts
+  s_4ecdbff3f939c0::t_d5d3feb7eb6ad3 77
+services/cic-substrate/src/agentic/metrics/drift.ts
+  s_4ecdbff3f939c0::t_3559b4b752f69d 1-19
+services/cic-substrate/src/agentic/jobs/materializeMetrics.ts
+  s_4ecdbff3f939c0::t_3559b4b752f69d 1-68
+services/cic-substrate/schema.sql
+  s_4ecdbff3f939c0::t_3559b4b752f69d 131-146
+src/tests/c-phase-harness.ts
+  s_4ecdbff3f939c0::t_30e81795d921a3 1-281,283-284
+  s_4ecdbff3f939c0::t_f4e5f64be55d62 282
+services/cic-substrate/src/handlers.ts
+  s_4ecdbff3f939c0::t_4fe1c4029a797b 180,183
+  s_4ecdbff3f939c0::t_1da3c23e8a48e4 6-8,159-179,181-182,184-201
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "dec7110cd8619cb4ec9105ba20b658bd4ec62392",
+  "prompts": {},
+  "sessions": {
+    "s_4ecdbff3f939c0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb905f0-5189-4324-b9e8-3bb438755e99",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
