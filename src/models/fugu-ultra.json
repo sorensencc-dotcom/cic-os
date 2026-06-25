@@ -16,5 +16,5 @@
   "contextWindow": 1000000,
   "apiBase": "https://generativelanguage.googleapis.com",
   "name": "fugu-ultra",
-  "type": "chat"
+  "type": "google"
 }

@@ -16,5 +16,5 @@
   "contextWindow": 200000,
   "apiBase": "https://api.anthropic.com",
   "name": "claude-3.7",
-  "type": "chat"
+  "type": "anthropic"
 }

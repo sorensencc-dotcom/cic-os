@@ -3,8 +3,9 @@ import { query } from './db';
 import { processIngestion } from './ingestion';
 import { searchHybrid } from './retrieval';
 import { getContextForTask } from './context';
-import { applyGovernance } from './governance';
-
+import { applyGovernance, createGovernanceMiddleware } from './governance';
+import { agenticEventSink } from './agentic';
+import * as crypto from 'crypto';
 // POST /chunks
 export const storeChunk = async (req: Request, res: Response) => {
   try {
@@ -151,6 +152,53 @@ export const getStats = async (req: Request, res: Response) => {
       GROUP BY type, namespace;
     `);
     res.json(result.rows);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// POST /workflow/start
+export const handleWorkflow = async (req: Request, res: Response) => {
+  try {
+    const userId = req.body.userId || 'system';
+    const workspace = req.body.workspace || 'default';
+
+    const session = {
+      id: `sess-${crypto.randomUUID()}`,
+      userId,
+      harness: 'cic' as const,
+      workspace,
+      startTime: new Date().toISOString(),
+    };
+    await agenticEventSink.emitSession(session);
+
+    // Evaluate Governance based on agentic metrics
+    const evaluateGovernance = createGovernanceMiddleware();
+    const decision = await evaluateGovernance(userId, workspace);
+
+    if (decision.requireClaudeReview) {
+      // Governance review required
+    }
+    if (decision.requireMaalAudit) {
+      // MAAL audit required
+    }
+
+    const sessionRequest = {
+      id: `req-${crypto.randomUUID()}`,
+      sessionId: session.id,
+      timestamp: new Date().toISOString(),
+      model: req.body.model || 'gemini-2.0-pro',
+      surface: 'chat' as const,
+      promptHash: 'mock-hash',
+      promptSummary: 'mock summary',
+      tokensIn: 100,
+      tokensOut: 200,
+      latencyMs: 1500,
+      status: 'ok' as const,
+    };
+    await agenticEventSink.emitSessionRequest(sessionRequest);
+
+    res.status(201).json({ success: true, session, sessionRequest });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }

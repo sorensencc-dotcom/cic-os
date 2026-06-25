@@ -128,3 +128,19 @@ CREATE INDEX IF NOT EXISTS idx_agentic_reviews_reviewer ON agentic_review_events
 -- agentic_metrics
 CREATE INDEX IF NOT EXISTS idx_agentic_metrics_user_ws_window ON agentic_metrics (user_id, workspace, window_end);
 CREATE INDEX IF NOT EXISTS idx_agentic_metrics_drift ON agentic_metrics (drift_index);
+
+-- Materialized View for latest metrics (TQ-016)
+CREATE OR REPLACE VIEW agentic_metrics_latest AS
+SELECT DISTINCT ON (user_id, workspace)
+  user_id,
+  workspace,
+  window_start,
+  window_end,
+  prompt_discipline,
+  context_health,
+  review_rigor,
+  skill_reuse,
+  drift_index,
+  readiness_index
+FROM agentic_metrics
+ORDER BY user_id, workspace, window_end DESC;

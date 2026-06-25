@@ -7,7 +7,7 @@
   "contextWindow": 2048,
   "name": "mock",
   "env": null,
-  "type": "chat",
+  "type": "mock",
   "supports": {
     "embeddings": false,
     "vision": false,

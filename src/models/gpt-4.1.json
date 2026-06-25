@@ -16,5 +16,5 @@
   "contextWindow": 128000,
   "apiBase": "https://api.openai.com/v1",
   "name": "gpt-4.1",
-  "type": "chat"
+  "type": "openai-compatible"
 }
