@@ -8,7 +8,8 @@ export default {
     "/cic-runtime/integration\\.test\\.ts",
     "/aperture/(sandbox|orchestrator|__tests__)/",
     "cic-ingestion/src/vector/__tests__",
-    "cic-ingestion/src/wayland/__tests__"
+    "cic-ingestion/src/wayland/__tests__",
+    "cic-ingestion/src/extractors/(browser|sweeper)"
   ],
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
