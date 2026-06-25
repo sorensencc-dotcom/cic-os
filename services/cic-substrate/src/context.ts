@@ -5,9 +5,10 @@ export interface ContextTaskOptions {
   task: string;
   embedding?: number[];
   max_context_tokens?: number;
+  preferred_types?: string[];
 }
 
-const TYPE_PREFERENCE: Record<string, number> = {
+const DEFAULT_TYPE_PREFERENCE: Record<string, number> = {
   'SYSTEM': 4,
   'LIVING': 3,
   'STATE': 2,
@@ -15,7 +16,18 @@ const TYPE_PREFERENCE: Record<string, number> = {
 };
 
 export async function getContextForTask(options: ContextTaskOptions) {
-  const { namespace, task, embedding, max_context_tokens = 4000 } = options;
+  const { namespace, task, embedding, max_context_tokens = 4000, preferred_types } = options;
+
+  // Build the active type preference map
+  const activeTypePreference: Record<string, number> = {};
+  if (preferred_types && preferred_types.length > 0) {
+    preferred_types.forEach((type, index) => {
+      // Highest priority gets the largest number
+      activeTypePreference[type] = preferred_types.length - index;
+    });
+  } else {
+    Object.assign(activeTypePreference, DEFAULT_TYPE_PREFERENCE);
+  }
 
   // 1. Run hybrid search
   const searchResult = await searchHybrid({
@@ -26,15 +38,9 @@ export async function getContextForTask(options: ContextTaskOptions) {
   });
 
   // 2. Sort by fused score and type preference
-  // searchHybrid already sorts by fused score.
-  // We'll further refine the sort by type preference if scores are close, 
-  // but RRF usually dominates. Let's incorporate type preference.
   searchResult.sort((a, b) => {
-    // Primary: Type Preference (as required: SYSTEM > LIVING > STATE > SCRATCH)
-    // Actually, prompt says: "Greedily pack chunks into a token budget. Prefer types in this order..."
-    // Let's sort primarily by fused score, but we can bucket by type or boost.
-    // Easiest is to sort by type preference first, then by fused score.
-    const typeDiff = (TYPE_PREFERENCE[b.type] || 0) - (TYPE_PREFERENCE[a.type] || 0);
+    // Primary: Type Preference (as required: SYSTEM > LIVING > STATE > SCRATCH, or custom)
+    const typeDiff = (activeTypePreference[b.type] || 0) - (activeTypePreference[a.type] || 0);
     if (typeDiff !== 0) return typeDiff;
     
     // Secondary: Fused Score
