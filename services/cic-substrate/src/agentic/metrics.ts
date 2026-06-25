@@ -35,17 +35,28 @@ export function computeMetrics(ctx: RuleContext, findings: RuleFinding[]): Agent
   const reviews = ctx.reviews;
 
   // --- 1. Prompt Discipline ---
+  // Measures quality of outputs: review coverage + error-free execution
   const largeOutputs = requests.filter(r => r.tokensOut > 1500).length;
+  const criticalOutputs = requests.filter(r => r.tokensOut > 8000).length;
   const unreviewedLarge = findings.filter(f => f.ruleId === 'large-output-without-review').length;
-  const errorRate = requests.filter(r => r.status !== 'ok').length / Math.max(1, requests.length);
+  const unreviewedCritical = findings.filter(f => f.ruleId === 'critical-output-unreviewed').length;
+  const errorCount = requests.filter(r => r.status !== 'ok').length;
+  const errorRate = errorCount / Math.max(1, requests.length);
 
-  const promptDiscipline = clamp(
-    1 -
-      (0.4 * (unreviewedLarge / Math.max(1, largeOutputs))) -
-      (0.3 * errorRate)
-  );
+  // Large outputs need review: 0.4 of score
+  // Critical outputs MUST be reviewed: 0.3 of score
+  // Errors: 0.3 of score
+  const largeReviewPenalty =
+    largeOutputs > 0 ? (unreviewedLarge / largeOutputs) * 0.4 : 0;
+  const criticalReviewPenalty =
+    criticalOutputs > 0 ? (unreviewedCritical / criticalOutputs) * 0.3 : 0;
+  const errorPenalty = errorRate * 0.3;
+
+  const promptDiscipline = clamp(1 - largeReviewPenalty - criticalReviewPenalty - errorPenalty);
 
   // --- 2. Context Health ---
+  // Measures how well contexts are loaded and maintained
+  // Freshness (how recent) is weighted higher than coverage (breadth)
   const avgCoverage =
     contexts.reduce((sum, c) => sum + c.coverageScore, 0) /
     Math.max(1, contexts.length);
@@ -54,11 +65,12 @@ export function computeMetrics(ctx: RuleContext, findings: RuleFinding[]): Agent
     contexts.reduce((sum, c) => sum + c.freshnessScore, 0) /
     Math.max(1, contexts.length);
 
-  const contextHealth = clamp((avgCoverage + avgFreshness) / 2);
+  // Freshness is 60% of health (recency matters more), coverage is 40%
+  const contextHealth = clamp(avgFreshness * 0.6 + avgCoverage * 0.4);
 
   // --- 3. Review Rigor ---
-  const reviewed = reviews.length;
-  const reviewRate = reviewed / Math.max(1, requests.length);
+  // Measures depth and frequency of code reviews
+  const reviewRate = reviews.length / Math.max(1, requests.length);
 
   const avgDiff =
     reviews.reduce((sum, r) => sum + r.diffSizeLines, 0) /
@@ -68,37 +80,59 @@ export function computeMetrics(ctx: RuleContext, findings: RuleFinding[]): Agent
     reviews.reduce((sum, r) => sum + r.commentsCount, 0) /
     Math.max(1, reviews.length);
 
+  // Review rate (50%) + diff depth (25%) + comment density (25%)
   const reviewRigor = clamp(
-    0.6 * reviewRate +
-      0.2 * normalize(avgDiff, 0, 200) +
-      0.2 * normalize(avgComments, 0, 20)
+    0.5 * reviewRate +
+      0.25 * normalize(avgDiff, 0, 200) +
+      0.25 * normalize(avgComments, 0, 20)
   );
 
   // --- 4. Skill Reuse ---
+  // Measures how much prompts are reused across requests
   const hashCounts = new Map<string, number>();
   for (const r of requests) {
     hashCounts.set(r.promptHash, (hashCounts.get(r.promptHash) || 0) + 1);
   }
 
-  const repeatedHashes = [...hashCounts.values()].filter(c => c > 1).length;
-  const skillReuse = clamp(repeatedHashes / Math.max(1, hashCounts.size));
+  // Calculate reuse: sum of (count-1) for each unique hash, divided by total requests
+  // This gives higher scores when fewer unique prompts handle more requests
+  let totalReuse = 0;
+  for (const count of hashCounts.values()) {
+    totalReuse += Math.max(0, count - 1); // Only count repetitions beyond first use
+  }
+
+  const skillReuse = clamp(totalReuse / Math.max(1, requests.length));
 
   // --- 5. Drift Index ---
-  const violationRate = findings.length / Math.max(1, requests.length);
+  // Measures workflow decay and rule violations
+  // Count high/critical severity findings only (low noise)
+  const severeFinding = findings.filter(
+    f => f.severity === 'high' || f.severity === 'critical'
+  ).length;
+  const violationRate = severeFinding / Math.max(1, requests.length);
+
+  // Suppress noise: single violations are not significant drift
+  const violationThreshold = Math.max(1, Math.ceil(requests.length * 0.02));
+  const noisyViolations = Math.min(severeFinding, violationThreshold);
+  const significantViolations = Math.max(0, severeFinding - noisyViolations);
+  const adjustedViolationRate = significantViolations / Math.max(1, requests.length);
 
   const driftIndex = clamp(
-    0.5 * violationRate +
+    0.5 * adjustedViolationRate +
       0.3 * errorRate +
       0.2 * (1 - contextHealth)
   );
 
   // --- 6. Readiness Index ---
+  // Composite signal: how ready is the workflow for production?
+  // Higher = more ready, lower = needs attention
+  // Weights: discipline (35%) + context (30%) + review (25%) + reuse (10%) - drift penalty
   const readinessIndex = clamp(
-    0.4 * promptDiscipline +
+    0.35 * promptDiscipline +
       0.3 * contextHealth +
-      0.2 * reviewRigor +
+      0.25 * reviewRigor +
       0.1 * skillReuse -
-      0.5 * driftIndex
+      0.3 * driftIndex // Drift reduces readiness but doesn't eliminate it
   );
 
   return {
