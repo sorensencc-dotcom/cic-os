@@ -6,16 +6,14 @@
 export interface SLORule {
   id: string;
   name: string;
-  metric: 'latency' | 'error_rate' | 'saturation';
-  target: number; // target value (e.g., 99.9 for 99.9%)
-  window: number; // time window in seconds
-  burnRateThreshold: number; // multiplier (e.g., 2 = 2x burn rate)
+  metric: string;
+  target: number;
+  window: "1m" | "5m" | "30m";
+  burnRateThreshold: number;
 }
 
 export interface Metrics {
-  latency: LatencyMetrics;
-  errorRate: ErrorRateMetrics;
-  saturation: SaturationMetrics;
+  [key: string]: number;
 }
 
 export interface LatencyMetrics {
@@ -28,7 +26,7 @@ export interface LatencyMetrics {
 export interface ErrorRateMetrics {
   total: number;
   failed: number;
-  rate: number; // percentage 0-100
+  rate: number;
 }
 
 export interface SaturationMetrics {
@@ -44,15 +42,15 @@ export interface BurnRateResult {
   threshold: number;
   isViolating: boolean;
   remainingBudget: number;
-  estimatedBudgetExhaustion: Date | null;
+  estimatedBudgetExhaustion: number | null;
 }
 
 export interface SLOViolationEvent {
-  timestamp: Date;
+  timestamp: Date | number;
   sloId: string;
   metric: string;
   value: number;
   threshold: number;
   burnRate: number;
-  severity: 'warning' | 'critical';
+  severity: "warning" | "critical";
 }

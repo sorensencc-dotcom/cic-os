@@ -1,7 +1,7 @@
-import { SLOController } from './slo-controller';
-import { BurnRateResult } from './types';
-import { triggerCanaryAbort } from './canary-abort';
-import { executeCanaryRollback } from './canary-rollback';
+import { SLOController } from "./slo-controller";
+import { BurnRateResult } from "./types";
+import { triggerCanaryAbort } from "./canary-abort";
+import { executeCanaryRollback } from "./canary-rollback";
 
 export interface EnforcementAction {
   type: 'none' | 'abort' | 'rollback';

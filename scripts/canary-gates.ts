@@ -138,7 +138,73 @@ async function checkBlockers(): Promise<number> {
   }
 }
 
+async function validateGatesB(): Promise<CanaryReport> {
+  // Special handler for WS-B (SLO enforcement gates)
+  const { runWSBValidation, formatWSBReport } = await import('../src/autonomy/firedrills/wsb-runner');
+
+  console.log(`\n🚀 Validating Canary Gates for Workstream: B (SLO Enforcement)`);
+  console.log('='.repeat(60));
+
+  const wsbReport = await runWSBValidation();
+  console.log(formatWSBReport(wsbReport));
+
+  const results: GateResult[] = [
+    {
+      name: 'B1: Burn-Rate Spike Gate',
+      status: wsbReport.scenarios.B1.passed ? 'pass' : 'fail',
+      value: `Rollback: ${wsbReport.scenarios.B1.rollbackMs}ms`,
+      threshold: '≤300ms',
+      message: wsbReport.scenarios.B1.passed
+        ? `✅ Abort triggered, rollback ${wsbReport.scenarios.B1.rollbackMs}ms < 300ms`
+        : `❌ Failed (abort=${wsbReport.scenarios.B1.abortTriggered}, rollback=${wsbReport.scenarios.B1.rollbackMs}ms)`,
+    },
+    {
+      name: 'B2: Latency Regression Gate',
+      status: wsbReport.scenarios.B2.passed ? 'pass' : 'fail',
+      value: `Rollback: ${wsbReport.scenarios.B2.rollbackMs}ms`,
+      threshold: '≤300ms',
+      message: wsbReport.scenarios.B2.passed
+        ? `✅ Abort triggered, rollback ${wsbReport.scenarios.B2.rollbackMs}ms < 300ms`
+        : `❌ Failed (abort=${wsbReport.scenarios.B2.abortTriggered}, rollback=${wsbReport.scenarios.B2.rollbackMs}ms)`,
+    },
+    {
+      name: 'B3: Error-Rate Drift Gate',
+      status: wsbReport.scenarios.B3.passed ? 'pass' : 'fail',
+      value: `Rollback: ${wsbReport.scenarios.B3.rollbackMs}ms`,
+      threshold: '≤300ms',
+      message: wsbReport.scenarios.B3.passed
+        ? `✅ Abort triggered, rollback ${wsbReport.scenarios.B3.rollbackMs}ms < 300ms`
+        : `❌ Failed (abort=${wsbReport.scenarios.B3.abortTriggered}, rollback=${wsbReport.scenarios.B3.rollbackMs}ms)`,
+    },
+    {
+      name: 'B4: Saturation Gate',
+      status: wsbReport.scenarios.B4.passed ? 'pass' : 'fail',
+      value: `Rollback: ${wsbReport.scenarios.B4.rollbackMs}ms`,
+      threshold: '≤300ms',
+      message: wsbReport.scenarios.B4.passed
+        ? `✅ Abort triggered, rollback ${wsbReport.scenarios.B4.rollbackMs}ms < 300ms`
+        : `❌ Failed (abort=${wsbReport.scenarios.B4.abortTriggered}, rollback=${wsbReport.scenarios.B4.rollbackMs}ms)`,
+    },
+  ];
+
+  return {
+    timestamp: new Date().toISOString(),
+    workstream: 'B',
+    overallStatus: wsbReport.pass ? 'pass' : 'fail',
+    gates: results,
+    summary: {
+      passed: wsbReport.passCount,
+      failed: wsbReport.failCount,
+      warnings: 0,
+    },
+  };
+}
+
 async function validateGates(workstream: string): Promise<CanaryReport> {
+  if (workstream === 'B') {
+    return validateGatesB();
+  }
+
   console.log(`\n🚀 Validating Canary Gates for Workstream: ${workstream}`);
   console.log('='.repeat(60));
 

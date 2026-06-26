@@ -5,8 +5,13 @@
  * Wired to E-Phase enforcement engine for deterministic abort/rollback flow
  */
 
-import { SLORule, Metrics, BurnRateResult, SLOViolationEvent } from './types';
-import { enforcementIntegration } from './enforcement-integration';
+import {
+  SLORule,
+  Metrics,
+  BurnRateResult,
+  SLOViolationEvent,
+} from "./types";
+import { metricsExporter } from "../observability/metrics-endpoint";
 
 export class SLOController {
   private rules: Map<string, SLORule> = new Map();
@@ -97,8 +102,18 @@ export class SLOController {
   /**
    * Get current SLO status for canary gate integration
    */
-  getCanaryGateStatus(): { passes: boolean; violations: SLOViolationEvent[] } {
-    // TODO: Implement
-    return { passes: true, violations: [] };
+  getCanaryGateStatus(): { passes: number; violations: number } {
+    let passes = 0;
+    let violations = 0;
+
+    for (const rule of this.rules.values()) {
+      const result = this.calculateBurnRate(rule);
+      if (result.isViolating) violations += 1;
+      else passes += 1;
+    }
+
+    return { passes, violations };
   }
 }
+
+export const sloController = new SLOController();

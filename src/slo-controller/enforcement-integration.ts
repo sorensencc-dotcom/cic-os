@@ -1,16 +1,15 @@
-import { SLOController } from './slo-controller';
-import { EnforcementEngine } from './enforcement-engine';
-import { SLOViolationEvent } from './types';
-import { canaryEventBus } from './canary-signals';
+import { sloController } from "./slo-controller";
+import { EnforcementEngine } from "./enforcement-engine";
+import { SLOViolationEvent } from "./types";
+import { canaryEventBus } from "./canary-signals";
 
 export class EnforcementIntegration {
-  private sloController: SLOController;
+  private sloController = sloController;
   private enforcementEngine: EnforcementEngine;
   private evaluationIntervalMs = 1000;
   private evaluationTimer: any = null;
 
   constructor() {
-    this.sloController = new SLOController();
     this.enforcementEngine = new EnforcementEngine(this.sloController);
 
     this.sloController.onViolation((event) => this.handleViolation(event));
