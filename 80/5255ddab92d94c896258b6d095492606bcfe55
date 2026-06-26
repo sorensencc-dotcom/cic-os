@@ -1,0 +1,49 @@
+src/providers/openaiCompatible.ts
+  s_feb29f5c1d3af4::t_f7fe2a422dc9a3 46
+src/providers/mock.ts
+  s_feb29f5c1d3af4::t_57f5ebaf052af3 9
+src/tests/d-phase/d-phase.test.ts
+  s_feb29f5c1d3af4::t_3a650d5e286a8c 1-10,12-101
+  s_feb29f5c1d3af4::t_ce67fcf240b5ef 11
+src/providers/ollama.ts
+  s_feb29f5c1d3af4::t_969d19c3a74c34 40
+src/providers/anthropic.ts
+  s_feb29f5c1d3af4::t_9648da6206edb8 52
+src/providers/local.ts
+  s_feb29f5c1d3af4::t_aea29b8bbfdd1f 39
+src/tests/d-phase/d-phase-simple.test.ts
+  s_feb29f5c1d3af4::t_0cd91d702435c0 1-42,44-73
+  s_feb29f5c1d3af4::t_784e9fb3fd1489 43
+src/observability/events.ts
+  s_feb29f5c1d3af4::t_44ecdd693445d8 2,11
+src/core/modelRouter.ts
+  s_feb29f5c1d3af4::t_afea454ee67f9a 36-37,44-67
+  s_feb29f5c1d3af4::t_8092aa61e55a51 68,140-141,143-211,214,216-220,223-253
+  s_feb29f5c1d3af4::t_8ef345e1987e08 69
+src/tests/mocks/mockProvider.ts
+  s_feb29f5c1d3af4::t_ce9f699152597b 1-84
+src/providers/azureOpenAI.ts
+  s_feb29f5c1d3af4::t_1c9ae53f7766ec 44
+src/providers/google.ts
+  s_feb29f5c1d3af4::t_5ee9a701b1097b 87
+src/tests/d-phase/fire-drill-harness.ts
+  s_feb29f5c1d3af4::t_7cadd8e7cc6be0 3-13,29-31,33-50,53-61,65-74,77-86,90-99,102-111,121-140
+  s_feb29f5c1d3af4::t_67750ee4c84b11 2,14-28,51,63,75,87,100,117-118
+  s_feb29f5c1d3af4::t_7e59bb7475c5a6 1,32,52,62,64,76,88-89,101,112-116,119-120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "805255ddab92d94c896258b6d095492606bcfe55",
+  "prompts": {},
+  "sessions": {
+    "s_feb29f5c1d3af4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9dfe3b0d-2f7d-4534-94eb-6eee4265d042",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
