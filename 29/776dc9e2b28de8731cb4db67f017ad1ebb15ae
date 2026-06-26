@@ -1,0 +1,1937 @@
+src/slo-controller/canary-rollback.ts
+  s_feb29f5c1d3af4::t_d48b0e8f9baa45 1-52
+src/slo-controller/enforcement-engine.ts
+  s_feb29f5c1d3af4::t_3a938e0bd2aa2f 5-70
+  s_feb29f5c1d3af4::t_be9e29abcacc41 2-4
+  s_feb29f5c1d3af4::t_ad5becbbc153f0 1
+src/slo-controller/types.ts
+  s_feb29f5c1d3af4::t_4d3bdcdd6c61a1 1-56
+  s_feb29f5c1d3af4::t_e32ba30485d22b 57-58
+src/slo-controller/canary-abort.ts
+  s_feb29f5c1d3af4::t_db667433a8e3bd 1-30
+src/slo-controller/enforcement-integration.ts
+  s_feb29f5c1d3af4::t_859b6f4d08d4cc 5-6,8-51
+  s_feb29f5c1d3af4::t_06f6938405957f 2-4
+  s_feb29f5c1d3af4::t_1891a8f8251d05 7
+  s_feb29f5c1d3af4::t_637f5a9facd0a1 52
+  s_feb29f5c1d3af4::t_58fa4f404d5fb8 1
+src/slo-controller/index.ts
+  s_feb29f5c1d3af4::t_d6a22cf2f9c56c 1-7
+src/slo-controller/canary-signals.ts
+  s_feb29f5c1d3af4::t_d89d37d1bfda6f 1-28
+src/slo-controller/slo-controller.ts
+  s_feb29f5c1d3af4::t_8843fd76183be4 1-2,6,16,24,27-42,50,56-62,70,74,76-77,79-96,99-100
+  s_feb29f5c1d3af4::t_c3cf00e6e60613 8-14
+  s_feb29f5c1d3af4::t_eb3858a6825702 3-5
+  s_feb29f5c1d3af4::t_04e38e85d3d08e 7
+  s_feb29f5c1d3af4::t_8105c519c5b743 15
+  s_feb29f5c1d3af4::t_645d31b765f4cb 17-19,21-23
+  s_feb29f5c1d3af4::t_142cc7b8af3d56 25-26
+  s_feb29f5c1d3af4::t_1b1465c5528261 43-45,47-49
+  s_feb29f5c1d3af4::t_82ed32c370c5a5 51-55
+  s_feb29f5c1d3af4::t_10590facf27680 63-65,67-69
+  s_feb29f5c1d3af4::t_997078a73cac2f 71-73
+  s_feb29f5c1d3af4::t_4712bbd3e8837f 75
+  s_feb29f5c1d3af4::t_3e859e78ba9435 78
+  s_feb29f5c1d3af4::t_f174189c1b848f 97-98
+  s_feb29f5c1d3af4::t_5d7bfa6daef838 101-103
+  s_feb29f5c1d3af4::t_a3e42669edb63a 20,46,66,104
+.gitignore
+  s_11e6db4e871c6a::t_551804f41c7275 10-11
+  s_11e6db4e871c6a::t_44c02306a506d8 7-9
+  s_11e6db4e871c6a::t_2a196ba1aec355 20-23,25-27,35-62
+package.json
+  s_11e6db4e871c6a::t_1093069461f91b 2-6,8-9,11-14,16-27,30-43,45-48,51-60,62-68,70-77
+tsconfig.json
+  s_11e6db4e871c6a::t_12f11ac9e1a3cb 4-8,10-11,13,16-21,23-34
+.dockerignore
+  s_feb29f5c1d3af4::t_9a8e001f406cdf 1-31
+.env.development
+  s_feb29f5c1d3af4::t_185377a3e841ec 1-3
+.env.example
+  s_feb29f5c1d3af4::t_87cc946f19f913 1-59
+.github/workflows/auto-docs-pr.yml
+  s_feb29f5c1d3af4::t_a63c3cd42f507a 1-45
+.github/workflows/cic-governance-ci.yml
+  s_feb29f5c1d3af4::t_277321d04addf7 1-118
+.github/workflows/cic-ingestion-build.yml
+  s_feb29f5c1d3af4::t_4c4a5440f75059 1-31
+.github/workflows/phase-0-8-build.yml
+  s_feb29f5c1d3af4::t_31710960c5684c 1-170
+.github/workflows/phase0.7-build.yml
+  s_feb29f5c1d3af4::t_ee58e802bfec42 1-68
+.github/workflows/phase0.7-deploy.yml
+  s_feb29f5c1d3af4::t_7a18db872df07b 1-45
+.planning/ROADMAP.md
+  s_feb29f5c1d3af4::t_b3e9acb0780f65 1-36
+.planning/_archive/v0.8.0/LEARNINGS.md
+  s_feb29f5c1d3af4::t_a78a15553d6517 1-185
+.planning/_archive/v0.8.0/Phase6/SUMMARY.md
+  s_feb29f5c1d3af4::t_51abc7045f4910 1-14
+.planning/_archive/v0.8.0/Phase7/SUMMARY.md
+  s_feb29f5c1d3af4::t_056cf1057e2e65 1-20
+.planning/_archive/v0.8.0/Phase8/SUMMARY.md
+  s_feb29f5c1d3af4::t_240433be157578 1-25
+.planning/_archive/v0.8.0/SUMMARY.md
+  s_feb29f5c1d3af4::t_b4299436ed500b 1-129
+.storybook/main.ts
+  s_feb29f5c1d3af4::t_436af5d4dff520 1-43
+.storybook/preview.tsx
+  s_feb29f5c1d3af4::t_b8754e2f58f0f5 1-36
+.storybook/storybook.css
+  s_feb29f5c1d3af4::t_3d32ed8859bdde 1-70
+.storybook/tsconfig.json
+  s_feb29f5c1d3af4::t_69bf0de7869b4a 1-9
+AGENTS.md
+  s_feb29f5c1d3af4::t_d088a311c1523b 1-592
+AGENTS_API.md
+  s_feb29f5c1d3af4::t_f06d970b25533a 1-337
+BUILD-SUMMARY.md
+  s_feb29f5c1d3af4::t_e06047732c0625 1-428
+CANARY_GATES.md
+  s_feb29f5c1d3af4::t_9d95f508d0a0c6 1-294
+CHANGELOG.md
+  s_feb29f5c1d3af4::t_3fd5baf896e0d0 1-462
+CIC_RUNTIME_OBSERVABILITY_PLAN.md
+  s_feb29f5c1d3af4::t_c7aa9d0ea3a923 1-395
+CIC_TOKEN_PACK_v2_0_COMPONENT_PATCHES.md
+  s_feb29f5c1d3af4::t_8eca6b7f52c65c 1-567
+CIC_TOKEN_PACK_v2_0_FULL_LIST.md
+  s_feb29f5c1d3af4::t_5352bda3439e6d 1-478
+CIC_TOKEN_PACK_v2_0_IMPLEMENTATION_GUIDE.md
+  s_feb29f5c1d3af4::t_7799a9d019edcc 1-399
+CIC_TOKEN_PACK_v2_0_tokens.css
+  s_feb29f5c1d3af4::t_c9052bad67dd6a 1-200
+CIC_TOKEN_PACK_v2_0_tokens.json
+  s_feb29f5c1d3af4::t_0f461e17b8f864 1-178
+CIC_TOKEN_PACK_v2_0_tokens.ts
+  s_feb29f5c1d3af4::t_b8f5937982e176 1-323
+CLAUDE.md
+  s_feb29f5c1d3af4::t_c4fc58e48df6d6 1-44
+CLAUDE.original.md
+  s_feb29f5c1d3af4::t_b665e3c0baaca1 1-43
+DARK_MODE_COMPLETION_REPORT.md
+  s_feb29f5c1d3af4::t_cfd5b94f6f7328 1-341
+DARK_MODE_V2_IMPLEMENTATION.md
+  s_feb29f5c1d3af4::t_3e362f2f54b041 1-359
+DEPLOYMENT.md
+  s_feb29f5c1d3af4::t_0ff1da865df440 1-335
+DEPLOYMENT_FIXES_COMPLETED.md
+  s_feb29f5c1d3af4::t_41f35f8d313ecd 1-311
+DEPLOY_PLAN_UNDEPLOYED_SYSTEMS.md
+  s_feb29f5c1d3af4::t_13513277283345 1-397
+DEPLOY_SUMMARY.md
+  s_feb29f5c1d3af4::t_a0549768d1a459 1-260
+DOCKER-BUILD-SUMMARY.md
+  s_feb29f5c1d3af4::t_2d3965efb01441 1-270
+DOCKER-COMPOSE-BUILD-PATHS.md
+  s_feb29f5c1d3af4::t_07f510d1aeb8a4 1-224
+DOCKER-QUICKSTART.md
+  s_feb29f5c1d3af4::t_d445c21b46f4ca 1-120
+DOCKER-UPDATED.md
+  s_feb29f5c1d3af4::t_db3effeb9c5403 1-102
+DOCKER.md
+  s_feb29f5c1d3af4::t_1735534258c202 1-205
+Dockerfile
+  s_feb29f5c1d3af4::t_4c762cdc366a1d 1-87
+Dockerfile.cli
+  s_feb29f5c1d3af4::t_4399926de1af5a 1-20
+Dockerfile.codeflow
+  s_feb29f5c1d3af4::t_da37ec86bfcd07 1-32
+Dockerfile.smoke
+  s_feb29f5c1d3af4::t_5d5988321fc059 1-15
+Dockerfile.test
+  s_feb29f5c1d3af4::t_342340deb2aa18 1-19
+Dockerfile.ui
+  s_feb29f5c1d3af4::t_ca6462a6c3986b 1-18
+EXECUTION-POLICY-PHASE-A-B-SUMMARY.md
+  s_feb29f5c1d3af4::t_4148487e8d0cee 1-264
+GIT-REMEDIATION-REVIEW.md
+  s_feb29f5c1d3af4::t_05256874513ef3 1-32
+GIT-REVIEW.md
+  s_feb29f5c1d3af4::t_4eb02fb6a87760 1-29
+GOVERNANCE.md
+  s_feb29f5c1d3af4::t_5a3c739d5f1628 1-375
+HUMANIZER_GUIDE.md
+  s_feb29f5c1d3af4::t_48ea7787e8cc9c 1-197
+INTEGRATION_GUIDE.md
+  s_feb29f5c1d3af4::t_dc8835599f0501 1-264
+MEMORY_V1_STAGING_ACTIVATION.md
+  s_feb29f5c1d3af4::t_ef9f95211530d3 1-129
+MIGRATION_LOG.md
+  s_feb29f5c1d3af4::t_ee328730ff6b5c 1-440
+MISSING_TOKENS_FOR_AGENTS_PANEL.md
+  s_feb29f5c1d3af4::t_a7d58858f7656a 1-405
+MISSING_TOKENS_FOR_AGENTS_PANEL_PHASE_PROGRESS.md
+  s_feb29f5c1d3af4::t_771c863fae20ef 1-286
+P1_IMPLEMENTATION_COMPLETE.md
+  s_feb29f5c1d3af4::t_71f53db2b9a2c5 1-268
+PHASE-3-6-SETUP-COMPLETE.md
+  s_feb29f5c1d3af4::t_c5bdbf9d79004b 1-101
+PHASE-30-MVP-SPEC-REVIEW.md
+  s_feb29f5c1d3af4::t_a1e122c878d453 1-55
+PHASE-30-MVP-SPEC.md
+  s_feb29f5c1d3af4::t_b41e818c346c6e 1-2104
+PHASE-5E-V1-SERVICE-LOCATIONS.md
+  s_feb29f5c1d3af4::t_c4cb15aeb62b07 1-248
+PHASE-5a-COMMIT-SUMMARY.md
+  s_feb29f5c1d3af4::t_760bcaf10d4fcd 1-315
+PHASE-5a-EXECUTIVE-SUMMARY.md
+  s_feb29f5c1d3af4::t_8c5b637f14c038 1-279
+PHASE-5a-QUICK-START.md
+  s_feb29f5c1d3af4::t_e3a05afed72e8d 1-186
+PHASE-5a-VERIFICATION.md
+  s_feb29f5c1d3af4::t_d3cb706efb8c8a 1-289
+PHASE27_3_EXECUTION_PLAN.md
+  s_feb29f5c1d3af4::t_8368d0a78cb738 1-107
+PHASE27_3_PR_CHECKLIST.md
+  s_feb29f5c1d3af4::t_65be39c68dfee1 1-278
+PHASE_27_4_DISPATCH.md
+  s_feb29f5c1d3af4::t_c1fbf20557cc23 1-219
+PHASE_27_4_SKELETON_SUMMARY.md
+  s_feb29f5c1d3af4::t_03fa1798290723 1-232
+PHASE_27_FILES_GENERATED.md
+  s_feb29f5c1d3af4::t_8a49f95bae9c6f 1-283
+PHASE_27_STEP3_COMPLETE.md
+  s_feb29f5c1d3af4::t_9f076ecce399eb 1-216
+PHASE_2_COMPLETION.md
+  s_feb29f5c1d3af4::t_fe170df68fb3ca 1-300
+PHASE_2_ROLLOUT.md
+  s_feb29f5c1d3af4::t_0879f3015fc03c 1-155
+PHASE_5B_IMPLEMENTATION_SUMMARY.md
+  s_feb29f5c1d3af4::t_168ac5e1f2ed89 1-298
+PHASE_5B_VERIFICATION_REPORT.md
+  s_feb29f5c1d3af4::t_a04bc9927cb619 1-350
+PHASE_5C_DEPRECATION_INVENTORY.md
+  s_feb29f5c1d3af4::t_e7e9fb2742a810 1-540
+PHASE_5C_FILE_REMOVAL_MATRIX.md
+  s_feb29f5c1d3af4::t_e190d43faf8720 1-471
+PHASE_5C_INVENTORY_SUMMARY.txt
+  s_feb29f5c1d3af4::t_7d2f5743bc760a 1-216
+PHASE_5C_PHASE_B_COMPLETION.md
+  s_feb29f5c1d3af4::t_214040f52ff8db 1-110
+PHASE_5C_PHASE_B_MANIFEST.txt
+  s_feb29f5c1d3af4::t_86559436579920 1-73
+PHASE_5C_REMOVAL_PLAN.md
+  s_feb29f5c1d3af4::t_af7c1125dd376e 1-391
+PHASE_5E_EXECUTION_SUMMARY.md
+  s_feb29f5c1d3af4::t_0b06462f9d8e3f 1-101
+PHASE_8_SPEC.md
+  s_feb29f5c1d3af4::t_9cd16c150825ec 1-716
+PHASE_8_TEST_MATRICES.md
+  s_feb29f5c1d3af4::t_edc900b6638987 1-260
+PLAN.md
+  s_feb29f5c1d3af4::t_9e16c98d692c4c 1-143
+PLAN_PHASE_6.md
+  s_feb29f5c1d3af4::t_236c2860acc014 1-292
+PLAN_UMM_D3.md
+  s_feb29f5c1d3af4::t_8524362591d7aa 1-558
+PROJECT.md
+  s_feb29f5c1d3af4::t_3a0a8ef8818348 1-314
+README.md
+  s_feb29f5c1d3af4::t_6bd5d8e28c9ba0 1-162
+REVIEW-28a2.md
+  s_feb29f5c1d3af4::t_aff7fe271d9b99 1-41
+REVIEW.md
+  s_feb29f5c1d3af4::t_806e4f999a4e39 1-167
+SESSION-HANDOFF.md
+  s_feb29f5c1d3af4::t_5383c281ae83e1 1-157
+TASKS-1-2-SUMMARY.txt
+  s_feb29f5c1d3af4::t_6cd8e7a929718a 1-135
+TEMPLATE-EXPANSION-REVIEW.md
+  s_feb29f5c1d3af4::t_aaf657508ce4cc 1-140
+TIER2_AGENTS_CONFLICT_MAP.md
+  s_feb29f5c1d3af4::t_d9b6f90090b2ae 1-359
+TOKEN_AUDIT_REPORT.md
+  s_feb29f5c1d3af4::t_08dfc718401037 1-425
+TOKEN_COVERAGE_MATRIX.md
+  s_feb29f5c1d3af4::t_e8052510b1c7fd 1-399
+TOKEN_COVERAGE_MATRIX_PHASE_ROADMAP.md
+  s_feb29f5c1d3af4::t_2d5b39eafd4cf2 1-245
+TORQUEQUERY_BUILD_SUMMARY.md
+  s_feb29f5c1d3af4::t_d0dd7c3b93a536 1-406
+TORQUEQUERY_DELIVERY_CHECKLIST.md
+  s_feb29f5c1d3af4::t_4f0a703ef63f5f 1-574
+TORQUEQUERY_EXECUTIVE_SUMMARY.md
+  s_feb29f5c1d3af4::t_14ac070d08a0e9 1-424
+TORQUEQUERY_INDEX.md
+  s_feb29f5c1d3af4::t_2e39a3bc9b2b7e 1-485
+TORQUEQUERY_MCP_REFERENCE.md
+  s_feb29f5c1d3af4::t_6f3b7ebe6be41b 1-634
+TORQUEQUERY_QUICKSTART.md
+  s_feb29f5c1d3af4::t_91b5946297b8ca 1-361
+TheFoundry/.markdownlint.json
+  s_feb29f5c1d3af4::t_4a3d4e4f554ebc 1-13
+TheFoundry/Dockerfile
+  s_feb29f5c1d3af4::t_839ea35edbb278 1-26
+TheFoundry/Makefile
+  s_feb29f5c1d3af4::t_db78fa68f17f44 1-31
+TheFoundry/PRE_FLIGHT.md
+  s_feb29f5c1d3af4::t_fd6451a923e7db 1-176
+TheFoundry/README.md
+  s_feb29f5c1d3af4::t_08b69d23bff6f5 1-74
+TheFoundry/SCHEDULER_ENFORCEMENT.md
+  s_feb29f5c1d3af4::t_58af9aac49a0b4 1-100
+TheFoundry/build-docs.sh
+  s_feb29f5c1d3af4::t_a7d135ab751bc7 1-26
+TheFoundry/build.sh
+  s_feb29f5c1d3af4::t_f667747e230474 1-37
+TheFoundry/compile.js
+  s_feb29f5c1d3af4::t_25f45a901af85e 1-157
+TheFoundry/docker-stubs.sh
+  s_feb29f5c1d3af4::t_c80d8ad86cfefc 1-63
+TheFoundry/drift-detector.js
+  s_feb29f5c1d3af4::t_ef5c742a043a5c 1-100
+TheFoundry/generate-manifest.js
+  s_feb29f5c1d3af4::t_10e8dacec06b2e 1-57
+TheFoundry/health-check.sh
+  s_feb29f5c1d3af4::t_6566d4d8157b18 1-98
+TheFoundry/package.json
+  s_feb29f5c1d3af4::t_a2f65697475919 1-19
+TheFoundry/phase-metadata.json
+  s_feb29f5c1d3af4::t_f561971cd37f24 1-65
+TheFoundry/scheduler-enforcement-patch.js
+  s_feb29f5c1d3af4::t_c6c1aba6b6265c 1-38
+TheFoundry/schemas/phase.schema.json
+  s_feb29f5c1d3af4::t_0d4e5a2d0dc3de 1-56
+TheFoundry/schemas/roadmap.schema.json
+  s_feb29f5c1d3af4::t_ea72e8cf72420f 1-31
+TheFoundry/validate-docs.sh
+  s_feb29f5c1d3af4::t_97c4a592c08c40 1-19
+TheFoundry/validate-phases.js
+  s_feb29f5c1d3af4::t_571e00c0400a91 1-55
+TheFoundry/validate-schema.js
+  s_feb29f5c1d3af4::t_19d2bcaad92efe 1-107
+WS-B-C-SCAFFOLD.md
+  s_feb29f5c1d3af4::t_c24bf709c109e4 1-149
+_cic-fragments-archive/castironforge/.mcp.json
+  s_feb29f5c1d3af4::t_92a805c3a3721c 1-4
+_cic-fragments-archive/castironforge/validate-phase-6.js
+  s_feb29f5c1d3af4::t_def5821fe51fc6 1-276
+_cic-fragments-archive/cic-agent/.env.example
+  s_feb29f5c1d3af4::t_b304372fe9d8bb 1-21
+_cic-fragments-archive/cic-agent/README.md
+  s_feb29f5c1d3af4::t_afd9e1282135e2 1-295
+_cic-fragments-archive/cic-agent/pr-reviewer/README.md
+  s_feb29f5c1d3af4::t_ded42fc36b1218 1-258
+_cic-fragments-archive/cic-agent/pr-reviewer/agent.yaml
+  s_feb29f5c1d3af4::t_9c957a07b63ea9 1-43
+_cic-fragments-archive/cic-agent/pr-reviewer/channels/github-pr.ts
+  s_feb29f5c1d3af4::t_67b0d68e8135a7 1-104
+_cic-fragments-archive/cic-agent/pr-reviewer/instructions.md
+  s_feb29f5c1d3af4::t_4d3b1ac3393fe8 1-162
+_cic-fragments-archive/cic-agent/pr-reviewer/schedules/nightly-build-health.ts
+  s_feb29f5c1d3af4::t_f78411638dd1dc 1-68
+_cic-fragments-archive/cic-agent/pr-reviewer/tools/apply_patch.ts
+  s_feb29f5c1d3af4::t_cfcb89343173fe 1-136
+_cic-fragments-archive/cic-agent/pr-reviewer/tools/query_cic_state.ts
+  s_feb29f5c1d3af4::t_aa1b632997d0dc 1-255
+_cic-fragments-archive/cic-agent/pr-reviewer/tools/run_tests.ts
+  s_feb29f5c1d3af4::t_cb07bc76176a69 1-94
+api/openapi/budget_ledger_v2.yaml
+  s_feb29f5c1d3af4::t_2e53ae0b1c9856 1-249
+approval-gates.ts
+  s_feb29f5c1d3af4::t_e68cc21885106f 1-185
+bookstack-docker/.gitignore
+  s_feb29f5c1d3af4::t_4ffb51b420a0c2 1-2
+bookstack-docker/README.md
+  s_feb29f5c1d3af4::t_95fa175aa24a71 1-23
+bookstack-docker/bookstack_data/.migrations
+  s_feb29f5c1d3af4::t_96a72f423687a9 1-2
+bookstack-docker/bookstack_data/keys/cert.crt
+  s_feb29f5c1d3af4::t_b056ada12a59cc 1-23
+bookstack-docker/bookstack_data/keys/cert.key
+  s_feb29f5c1d3af4::t_e38210d232f1a7 1-28
+bookstack-docker/bookstack_data/log/logrotate.status
+  s_feb29f5c1d3af4::t_54a1118995a541 1-6
+bookstack-docker/bookstack_data/nginx/nginx.conf
+  s_feb29f5c1d3af4::t_2dde4b200ebf56 1-98
+bookstack-docker/bookstack_data/nginx/nginx.conf.sample
+  s_feb29f5c1d3af4::t_132ab2ac74ce9c 1-98
+bookstack-docker/bookstack_data/nginx/resolver.conf
+  s_feb29f5c1d3af4::t_cbc23e1deccc2d 1-3
+bookstack-docker/bookstack_data/nginx/site-confs/default.conf
+  s_feb29f5c1d3af4::t_7da43dc3599b81 1-46
+bookstack-docker/bookstack_data/nginx/site-confs/default.conf.sample
+  s_feb29f5c1d3af4::t_dc8d9bc60d36e4 1-46
+bookstack-docker/bookstack_data/nginx/ssl.conf
+  s_feb29f5c1d3af4::t_faec0db64075b8 1-36
+bookstack-docker/bookstack_data/nginx/ssl.conf.sample
+  s_feb29f5c1d3af4::t_a71227d7e8105b 1-36
+bookstack-docker/bookstack_data/nginx/worker_processes.conf
+  s_feb29f5c1d3af4::t_b89833c51899e6 1-3
+bookstack-docker/bookstack_data/php/php-local.ini
+  s_feb29f5c1d3af4::t_f633e5e439a836 1-5
+bookstack-docker/bookstack_data/php/www2.conf
+  s_feb29f5c1d3af4::t_42a270846285e1 1-5
+bookstack-docker/bookstack_data/www/framework/cache/db/a5/dba536388a083fdf84cec411668f7af646bfbf7d
+  s_feb29f5c1d3af4::t_49a26987eaf233 1-2
+bookstack-docker/bookstack_data/www/framework/sessions/ILnwBI3hWdyetFKxK7AL52nIwZAZbWR25nGs8JN7
+  s_feb29f5c1d3af4::t_999b223c080d20 1
+bookstack-docker/bookstack_data/www/framework/views/011f1b5503e5513edad596e3d70b807f.php
+  s_feb29f5c1d3af4::t_9e27faad8a3792 1-8
+bookstack-docker/bookstack_data/www/framework/views/0276ba894f2dc0b1829bf53ac2d862de.php
+  s_feb29f5c1d3af4::t_851991eaa015fd 1-93
+bookstack-docker/bookstack_data/www/framework/views/03787ec3ea554eaa80379e30685a0d1e.php
+  s_feb29f5c1d3af4::t_ff90498a87af9b 1
+bookstack-docker/bookstack_data/www/framework/views/03ff0d1ce0e34df9d46006ff11fb82f9.php
+  s_feb29f5c1d3af4::t_95321a8e63fe60 1-13
+bookstack-docker/bookstack_data/www/framework/views/064b73fbd5bdb03507bc7436b0b7faa9.php
+  s_feb29f5c1d3af4::t_ef78cd5c4bdc6e 1-42
+bookstack-docker/bookstack_data/www/framework/views/092d3e3a1246a221fb18f046f5b9cd8b.php
+  s_feb29f5c1d3af4::t_2fc1c9ebe9c7b6 1-52
+bookstack-docker/bookstack_data/www/framework/views/0cc222bc295f1752a9f79b1e24b8ff00.php
+  s_feb29f5c1d3af4::t_717e3b60d5fc43 1-103
+bookstack-docker/bookstack_data/www/framework/views/0d0fc15d5d3dc9acb8fb6d2182a7b559.php
+  s_feb29f5c1d3af4::t_c142c11ae5b938 1-50
+bookstack-docker/bookstack_data/www/framework/views/0e28f6aafe8f43468dcf63dc6a5d5661.php
+  s_feb29f5c1d3af4::t_5dbecf108a6f1e 1-37
+bookstack-docker/bookstack_data/www/framework/views/0e32928edcf636c3b5563d5a9b142070.php
+  s_feb29f5c1d3af4::t_ea5f14eb167fc3 1-6
+bookstack-docker/bookstack_data/www/framework/views/10b6b13b9414ed2b44c18a7ae8b2a99f.php
+  s_feb29f5c1d3af4::t_edd36f2142d93e 1-149
+bookstack-docker/bookstack_data/www/framework/views/12735ae2a347d3262249d5ca26f6347b.php
+  s_feb29f5c1d3af4::t_e5e7777d218cfd 1-11
+bookstack-docker/bookstack_data/www/framework/views/167de76b648ad48e8cd61520471231a9.php
+  s_feb29f5c1d3af4::t_8b06d6c140ae2e 1-13
+bookstack-docker/bookstack_data/www/framework/views/16c4fd40991e2f1eab3898fa26537a24.php
+  s_feb29f5c1d3af4::t_6b623d56a3469e 1-16
+bookstack-docker/bookstack_data/www/framework/views/17018ffceaf11560ec4cc1b819a74c8d.php
+  s_feb29f5c1d3af4::t_07ee1f7fcb528a 1-28
+bookstack-docker/bookstack_data/www/framework/views/18b02d5a4c5e2a564a679b05f8a9feea.php
+  s_feb29f5c1d3af4::t_14424f79c66434 1-8
+bookstack-docker/bookstack_data/www/framework/views/1bda70d78a250040a46b010c1f63445e.php
+  s_feb29f5c1d3af4::t_9520a573fef276 1-9
+bookstack-docker/bookstack_data/www/framework/views/20880b9458184d130060dc3b5230c32c.php
+  s_feb29f5c1d3af4::t_8d96c08bfd0a9e 1-25
+bookstack-docker/bookstack_data/www/framework/views/21af5aef5ea5dc781c211c6432510b11.php
+  s_feb29f5c1d3af4::t_db56bc25f2b8a7 1-81
+bookstack-docker/bookstack_data/www/framework/views/22c98ae2fa1d46e903ad2df82a1bac1f.php
+  s_feb29f5c1d3af4::t_45759e5ec5b615 1-20
+bookstack-docker/bookstack_data/www/framework/views/245112fd1515f45ea86141ae4cde7c18.php
+  s_feb29f5c1d3af4::t_ee866b6ae83271 1-7
+bookstack-docker/bookstack_data/www/framework/views/2c3f985e70b811805bdb86c712b7d8cd.php
+  s_feb29f5c1d3af4::t_9bd02cbf3173b9 1-12
+bookstack-docker/bookstack_data/www/framework/views/2fbaf5e69fb245ebd33f0a911a001b01.php
+  s_feb29f5c1d3af4::t_d621033cfb0017 1-38
+bookstack-docker/bookstack_data/www/framework/views/35fca775905a375e449e86bea53443c3.php
+  s_feb29f5c1d3af4::t_3d332c11e1aba3 1-47
+bookstack-docker/bookstack_data/www/framework/views/391f617f90580c4dd8006a8016587331.php
+  s_feb29f5c1d3af4::t_78b6e5259d088d 1-31
+bookstack-docker/bookstack_data/www/framework/views/3b5b71909b167b1ebd42bb3178352463.php
+  s_feb29f5c1d3af4::t_e3e569915be098 1-93
+bookstack-docker/bookstack_data/www/framework/views/3fe3d838f5af2d877fc432d7d5556dea.php
+  s_feb29f5c1d3af4::t_98e8f4aefebe88 1-22
+bookstack-docker/bookstack_data/www/framework/views/403b70e5c3af427aacac1a597c9e6862.php
+  s_feb29f5c1d3af4::t_1339f68c40bbad 1-38
+bookstack-docker/bookstack_data/www/framework/views/40e64bfc29d1f7f9e882ad64581643e6.php
+  s_feb29f5c1d3af4::t_8cbaaed7ea04e1 1-15
+bookstack-docker/bookstack_data/www/framework/views/48e081a1f5f6516c28709d702aa2aa3e.php
+  s_feb29f5c1d3af4::t_baa9e63ae3e429 1-14
+bookstack-docker/bookstack_data/www/framework/views/49f98d417812e1694d4cc64f846a2262.php
+  s_feb29f5c1d3af4::t_7fd3c07f101312 1-9
+bookstack-docker/bookstack_data/www/framework/views/4bacc00e0ddd3104683b2ee2028b11e8.php
+  s_feb29f5c1d3af4::t_a173c1d6d9dccf 1-59
+bookstack-docker/bookstack_data/www/framework/views/4d31b0cac5520fcc2904a55f539a1974.php
+  s_feb29f5c1d3af4::t_5c581cf9fdbcb9 1-36
+bookstack-docker/bookstack_data/www/framework/views/51cf77c23ad1d1a863331acaa55081bc.php
+  s_feb29f5c1d3af4::t_afffc3b42aae0a 1-2
+bookstack-docker/bookstack_data/www/framework/views/596979b31285f4d65181fff7f18178e4.php
+  s_feb29f5c1d3af4::t_03c4a79f8daeeb 1-12
+bookstack-docker/bookstack_data/www/framework/views/5c86e8a759ca6ec6ce3f5304ed36cbd0.php
+  s_feb29f5c1d3af4::t_ce31d0a34e1082 1-33
+bookstack-docker/bookstack_data/www/framework/views/5cf9f0aed8ce2c381b21f379000f4569.php
+  s_feb29f5c1d3af4::t_5102eb2d5cfa3d 1-23
+bookstack-docker/bookstack_data/www/framework/views/673a2d79fd2d296b2394c0fabfe48176.php
+  s_feb29f5c1d3af4::t_c72b3b63dfd6df 1-5
+bookstack-docker/bookstack_data/www/framework/views/69b0692bed1eb48f652cad2ece1badf3.php
+  s_feb29f5c1d3af4::t_131129f340e35b 1-136
+bookstack-docker/bookstack_data/www/framework/views/6cad59081db09eda578a653376302e30.php
+  s_feb29f5c1d3af4::t_2a04ba17bff25f 1-18
+bookstack-docker/bookstack_data/www/framework/views/6d17209a6eb2ce05282b128826b90d19.php
+  s_feb29f5c1d3af4::t_6cd0c055713d26 1-25
+bookstack-docker/bookstack_data/www/framework/views/6e612cac97fbedc66f69b1a0fe27f3d7.php
+  s_feb29f5c1d3af4::t_6fc9bdce70b709 1-25
+bookstack-docker/bookstack_data/www/framework/views/6ecfe0bde4544c0905273c7338e7738b.php
+  s_feb29f5c1d3af4::t_60f34fab479621 1-14
+bookstack-docker/bookstack_data/www/framework/views/726b72332ac6f2c35a3a012f3c584d66.php
+  s_feb29f5c1d3af4::t_26a1eb54aade7c 1-28
+bookstack-docker/bookstack_data/www/framework/views/73d7ff67871d354f3fb3f206b7134798.php
+  s_feb29f5c1d3af4::t_c284ff9820df8c 1-8
+bookstack-docker/bookstack_data/www/framework/views/7b3c5ce05d13a1cdccc4708957366e81.php
+  s_feb29f5c1d3af4::t_f4cdfe8e2e30d5 1-28
+bookstack-docker/bookstack_data/www/framework/views/8246188051667758909b7506c9ffc0d7.php
+  s_feb29f5c1d3af4::t_cc23cd9a02a354 1-55
+bookstack-docker/bookstack_data/www/framework/views/83e8f79e5fa0c4938af178b5e2029a47.php
+  s_feb29f5c1d3af4::t_f22fe59fe7df9a 1-23
+bookstack-docker/bookstack_data/www/framework/views/874006527dc4713c7f587e0a759e2c0c.php
+  s_feb29f5c1d3af4::t_155415f431c13f 1-8
+bookstack-docker/bookstack_data/www/framework/views/8749c345efaf0dc22f3e17c591290deb.php
+  s_feb29f5c1d3af4::t_838e957f8ecaa9 1-2
+bookstack-docker/bookstack_data/www/framework/views/87fdd9053d0a2e4a3e92715c8c7f13d4.php
+  s_feb29f5c1d3af4::t_d904dd75118784 1-55
+bookstack-docker/bookstack_data/www/framework/views/8b39b033152a67839443bd5cff9346f3.php
+  s_feb29f5c1d3af4::t_472a6162f973ce 1-21
+bookstack-docker/bookstack_data/www/framework/views/8d4a727292dbe82511ffd9a41b37a633.php
+  s_feb29f5c1d3af4::t_0ca11d3989ab1c 1-8
+bookstack-docker/bookstack_data/www/framework/views/8f8807ce3f2b75c44ac3db1006d541ac.php
+  s_feb29f5c1d3af4::t_396cf811a23bc1 1-45
+bookstack-docker/bookstack_data/www/framework/views/8fa0fdc14648f04667601ebdcfd85a2d.php
+  s_feb29f5c1d3af4::t_3fd67b6b1766cf 1-86
+bookstack-docker/bookstack_data/www/framework/views/97bb404f8b448935b898f66495e1dccf.php
+  s_feb29f5c1d3af4::t_837ce98563e090 1-51
+bookstack-docker/bookstack_data/www/framework/views/99faa57e788a913b0e4a7d41ae8ffc5f.php
+  s_feb29f5c1d3af4::t_dfe1f7e2aeb706 1-8
+bookstack-docker/bookstack_data/www/framework/views/9c405ae0cbb055ce62844f53b30e9491.php
+  s_feb29f5c1d3af4::t_8f323b22e99903 1-12
+bookstack-docker/bookstack_data/www/framework/views/9e35373d9328db6b2fd72510fb5c3264.php
+  s_feb29f5c1d3af4::t_77cbcaf2a735ee 1-5
+bookstack-docker/bookstack_data/www/framework/views/a4cb86385be7d07af2b486beac8cdc83.php
+  s_feb29f5c1d3af4::t_41bf648e8336f8 1-17
+bookstack-docker/bookstack_data/www/framework/views/a4f2f514dec308201bc6585d20fdf841.php
+  s_feb29f5c1d3af4::t_dfd7457183dcea 1-29
+bookstack-docker/bookstack_data/www/framework/views/ab4fcffac541b642599bb4a483671cdc.php
+  s_feb29f5c1d3af4::t_cd237024eeca42 1-34
+bookstack-docker/bookstack_data/www/framework/views/ac66ec3af35d7df838792da42a902132.php
+  s_feb29f5c1d3af4::t_4eca9f43c9ca7f 1-124
+bookstack-docker/bookstack_data/www/framework/views/b0a3fb2f7df4894766d9e5acf2427173.php
+  s_feb29f5c1d3af4::t_f04a891e4f0e1e 1-14
+bookstack-docker/bookstack_data/www/framework/views/b4d21db559ae61c09d77638a855570f5.php
+  s_feb29f5c1d3af4::t_e5e7d2822824b1 1-8
+bookstack-docker/bookstack_data/www/framework/views/ba9f3d696f30e4ad1fa69a70b245eb4c.php
+  s_feb29f5c1d3af4::t_b7e7aa0292a1f4 1-179
+bookstack-docker/bookstack_data/www/framework/views/c11319bdde50697c08540024649f3907.php
+  s_feb29f5c1d3af4::t_4e4433b52fa32f 1-59
+bookstack-docker/bookstack_data/www/framework/views/c5d9875a59cd747d179d6be4e13389d1.php
+  s_feb29f5c1d3af4::t_8398f1211a7319 1-18
+bookstack-docker/bookstack_data/www/framework/views/c7b501f9335f95ce8349deb7dd15d5df.php
+  s_feb29f5c1d3af4::t_ff866d920f5475 1-66
+bookstack-docker/bookstack_data/www/framework/views/cdd55534d68bd3ce4b11a694f98c56e8.php
+  s_feb29f5c1d3af4::t_ba357731d0ef55 1-2
+bookstack-docker/bookstack_data/www/framework/views/d061b6d848142ba4a74aeb2c03a75cf4.php
+  s_feb29f5c1d3af4::t_7558d6902e98af 1-79
+bookstack-docker/bookstack_data/www/framework/views/d48975c3b9e05240fc3053ecfaa3f1d7.php
+  s_feb29f5c1d3af4::t_cb453b48bf9c04 1-8
+bookstack-docker/bookstack_data/www/framework/views/d5b9b3c2e1835836e1116be3bf019e82.php
+  s_feb29f5c1d3af4::t_1a56861275e587 1-6
+bookstack-docker/bookstack_data/www/framework/views/dc31d908ad07e5cae1721793f9af5714.php
+  s_feb29f5c1d3af4::t_0cb2fb35bd0bf0 1-19
+bookstack-docker/bookstack_data/www/framework/views/dd3b5f548071c2d1334cb2c8ee179a21.php
+  s_feb29f5c1d3af4::t_468655a2a619cf 1-78
+bookstack-docker/bookstack_data/www/framework/views/e7b937f2dc1b009da3df384d47350f31.php
+  s_feb29f5c1d3af4::t_19b7bce48c77fa 1-18
+bookstack-docker/bookstack_data/www/framework/views/eacdae0d41b866928b278055cb8c9de2.php
+  s_feb29f5c1d3af4::t_8b77721686da24 1-14
+bookstack-docker/bookstack_data/www/framework/views/f15c93b7b54b5a3baed266f430047e7f.php
+  s_feb29f5c1d3af4::t_a56c1c9d530117 1-8
+bookstack-docker/bookstack_data/www/framework/views/f1934f354304f6ef15801c5c666270df.php
+  s_feb29f5c1d3af4::t_1c97c75eac09fc 1-26
+bookstack-docker/bookstack_data/www/framework/views/f34b7cfaf8ffed56b42e401b7b4ed49e.php
+  s_feb29f5c1d3af4::t_7560f03181a707 1-7
+bookstack-docker/bookstack_data/www/framework/views/f418c470a80ea73cf61e8589c20eb2ba.php
+  s_feb29f5c1d3af4::t_a94a688c8c4355 1-27
+bookstack-docker/bookstack_data/www/framework/views/f62a5b29d91729766efa1ac28261e5c2.php
+  s_feb29f5c1d3af4::t_a7dbc407c8071b 1-2
+bookstack-docker/bookstack_data/www/index.html
+  s_feb29f5c1d3af4::t_a21a596d89edd4 1-34
+bookstack-docker/docker-compose.yml
+  s_feb29f5c1d3af4::t_10fd83304eca1e 1-41
+bookstack-docker/mariadb_data/custom.cnf
+  s_feb29f5c1d3af4::t_f3fa3ba92ba826 1-198
+bookstack-docker/mariadb_data/databases/bookstackapp/db.opt
+  s_feb29f5c1d3af4::t_aec741d006adb8 1-2
+bookstack-docker/mariadb_data/databases/ib_buffer_pool
+  s_feb29f5c1d3af4::t_bd472a4cc0bec2 1-307
+castironforge
+  s_b45fc56236e596::t_a783433349ae29 1
+performance-store.js
+  s_feb29f5c1d3af4::t_99a0af7b02fdf8 1-232
+phase-5e-test.ps1
+  s_feb29f5c1d3af4::t_91bd3b28ec3f3b 1-196
+phase0.7/build-system/graph/phase0.7.json
+  s_feb29f5c1d3af4::t_203e7bcf5dcd0d 1-90
+phase0.7/build-system/routing/phase0.7-routing.yaml
+  s_feb29f5c1d3af4::t_66e5869a5b2b1d 1-60
+phase0.7/policies/cic.lineage.rego
+  s_feb29f5c1d3af4::t_c29181c5fe7974 1-57
+phase0.7/policies/cic.routing.rego
+  s_feb29f5c1d3af4::t_7206d45c68ccce 1-75
+playwright-report/index.html
+  s_feb29f5c1d3af4::t_f51e61c0d07a4a 1-90
+playwright.config.ts
+  s_feb29f5c1d3af4::t_44f6ed8b36d003 1-31
+policy-engine.ts
+  s_feb29f5c1d3af4::t_510571b8a39bc5 1-185
+policy-manifest.yaml
+  s_feb29f5c1d3af4::t_c958d3cd6e52c7 1-63
+predictive-routing-engine.js
+  s_feb29f5c1d3af4::t_e96e6410a512be 1-224
+prometheus/alert-rules.yml
+  s_feb29f5c1d3af4::t_1048425285f6e7 1-106
+prometheus/cic_slo_274.yaml
+  s_feb29f5c1d3af4::t_6efa4f020bf964 1-90
+public/test-components.html
+  s_feb29f5c1d3af4::t_269c4dc09b6d64 1-211
+roadmap-runner/.env.local.example
+  s_feb29f5c1d3af4::t_8e9d08ce482e01 1-20
+roadmap-runner/.gitignore
+  s_feb29f5c1d3af4::t_c3d5f36bdfc15b 1-27
+roadmap-runner/Dockerfile
+  s_feb29f5c1d3af4::t_a8a5e8df49ba74 1-24
+roadmap-runner/Makefile
+  s_feb29f5c1d3af4::t_22e3c63fdbc584 1-95
+roadmap-runner/README.md
+  s_feb29f5c1d3af4::t_359fd76241543c 1-374
+roadmap-runner/STARTUP_CHECKLIST.md
+  s_feb29f5c1d3af4::t_32f45dc456d736 1-273
+roadmap-runner/docker-compose.yml
+  s_feb29f5c1d3af4::t_f7eb8b7174aedc 1-76
+roadmap-runner/docker-runner.js
+  s_feb29f5c1d3af4::t_8c6445d65ec37a 1-114
+roadmap-runner/package.json
+  s_feb29f5c1d3af4::t_350fc68654527a 1-34
+roadmap-runner/phases/PHASE-0.9.yaml
+  s_feb29f5c1d3af4::t_0d72df24e118e2 1-51
+roadmap-runner/phases/PHASE-26.yaml
+  s_feb29f5c1d3af4::t_8bcaac8be49af2 1-56
+roadmap-runner/phases/RL-4.0.yaml
+  s_feb29f5c1d3af4::t_639e200af4029e 1-45
+roadmap-runner/phases/RL-4.1.yaml
+  s_feb29f5c1d3af4::t_7c68d9da1f60ec 1-42
+roadmap-runner/phases/RL-4.2.yaml
+  s_feb29f5c1d3af4::t_9bb585bdf5cb77 1-46
+roadmap-runner/phases/RL-4.3.yaml
+  s_feb29f5c1d3af4::t_a1f4716f3c98c5 1-43
+roadmap-runner/phases/RL-4.4.yaml
+  s_feb29f5c1d3af4::t_eda61f4d7e788b 1-46
+roadmap-runner/phases/RL-4.5.yaml
+  s_feb29f5c1d3af4::t_dbe5aa4ccdbacd 1-46
+roadmap-runner/phases/RL-4.6.yaml
+  s_feb29f5c1d3af4::t_c832a09e38a862 1-44
+roadmap-runner/prometheus.yml
+  s_feb29f5c1d3af4::t_c48b0b287a7a96 1-35
+roadmap-runner/scheduler.js
+  s_feb29f5c1d3af4::t_38f19907828493 1-228
+roadmap-runner/success-gate-validator.js
+  s_feb29f5c1d3af4::t_0ee980bcb059e0 1-84
+rollback.sh
+  s_feb29f5c1d3af4::t_d64efb6e833d20 1-279
+routing-validator.js
+  s_feb29f5c1d3af4::t_0c078d41770917 1-135
+run-auto-docs.js
+  s_feb29f5c1d3af4::t_8c2f135b5e6bf2 1-85
+scripts/audit-build-artifacts.ps1
+  s_feb29f5c1d3af4::t_bf2426c3d87838 1-79
+scripts/audit-build-artifacts.sh
+  s_feb29f5c1d3af4::t_5d933efe0db262 1-67
+scripts/boundary-checker.sh
+  s_feb29f5c1d3af4::t_26db55397cc66a 1-66
+scripts/canary-gates.ts
+  s_feb29f5c1d3af4::t_07480775992b56 1-271
+scripts/cic-docker-entrypoint.sh
+  s_feb29f5c1d3af4::t_c2c4e53b7467d6 1-317
+scripts/cic-docker-recovery.sh
+  s_feb29f5c1d3af4::t_eb1131ed36996f 1-193
+scripts/cic-dry-run.sh
+  s_feb29f5c1d3af4::t_f42bc8c646a331 1-26
+scripts/cic-log-archival.sh
+  s_feb29f5c1d3af4::t_ca13958e4e8e0f 1-87
+scripts/cic-smoke-test.sh
+  s_feb29f5c1d3af4::t_53d1d65b162702 1-144
+scripts/deploy-review.ps1
+  s_feb29f5c1d3af4::t_3cbaea2f366e19 1-389
+scripts/deploy-review.sh
+  s_feb29f5c1d3af4::t_6faaf116fc590f 1-423
+scripts/docker-drift-detector.js
+  s_feb29f5c1d3af4::t_4d73a4b08058d2 1-269
+scripts/drift-detector.js
+  s_feb29f5c1d3af4::t_d540118df63ee5 1-250
+scripts/evaluate-decision.js
+  s_feb29f5c1d3af4::t_f57b125776ae0d 1-48
+scripts/fetch-lineage.js
+  s_feb29f5c1d3af4::t_5cdbc5ebe5b994 1-72
+scripts/fire-drills.ts
+  s_feb29f5c1d3af4::t_6725f3d204f0fd 1-289
+scripts/image-builder.js
+  s_feb29f5c1d3af4::t_bd9a2242087baa 1-362
+scripts/image-builder.sh
+  s_feb29f5c1d3af4::t_afcfd94c681d16 1-514
+scripts/mailbox-intake-daemon/Dockerfile
+  s_feb29f5c1d3af4::t_712981a3ff81df 1-55
+scripts/mailbox-intake-daemon/FINAL_STATUS.md
+  s_feb29f5c1d3af4::t_0af4ab06383abf 1-251
+scripts/mailbox-intake-daemon/IMPLEMENTATION_CHECKLIST.md
+  s_feb29f5c1d3af4::t_6acda1b2a2cea7 1-263
+scripts/mailbox-intake-daemon/README.md
+  s_feb29f5c1d3af4::t_2dffd4d93d65ee 1-360
+scripts/mailbox-intake-daemon/REVIEW.md
+  s_feb29f5c1d3af4::t_d5baf59f9852c3 1-118
+scripts/mailbox-intake-daemon/config.example.json
+  s_feb29f5c1d3af4::t_27f865d5e7830c 1-109
+scripts/mailbox-intake-daemon/docker-compose.yml
+  s_feb29f5c1d3af4::t_f71e44f4a6035a 1-63
+scripts/mailbox-intake-daemon/docs/API.md
+  s_feb29f5c1d3af4::t_824f6fe4067cc9 1-470
+scripts/mailbox-intake-daemon/docs/ARCHITECTURE.md
+  s_feb29f5c1d3af4::t_aebc8164eba4fa 1-416
+scripts/mailbox-intake-daemon/docs/DEPLOYMENT.md
+  s_feb29f5c1d3af4::t_86efeac81a0c85 1-357
+scripts/mailbox-intake-daemon/docs/INDEX.md
+  s_feb29f5c1d3af4::t_8bb0d8615fd6a4 1-382
+scripts/mailbox-intake-daemon/docs/SECRETS.md
+  s_feb29f5c1d3af4::t_1cda4e3269f4a7 1-391
+scripts/mailbox-intake-daemon/jest.config.js
+  s_feb29f5c1d3af4::t_c9009f48c328ca 1-27
+scripts/mailbox-intake-daemon/package.json
+  s_feb29f5c1d3af4::t_c53707b9f0e3b7 1-30
+scripts/mailbox-intake-daemon/src/client/MailpitClient.ts
+  s_feb29f5c1d3af4::t_a5825d424ac56e 1-254
+scripts/mailbox-intake-daemon/src/config-validator.ts
+  s_feb29f5c1d3af4::t_cd33f0a2d3ec4c 1-122
+scripts/mailbox-intake-daemon/src/config.ts
+  s_feb29f5c1d3af4::t_f619457d52cc6a 1-94
+scripts/mailbox-intake-daemon/src/index.ts
+  s_feb29f5c1d3af4::t_a353840dc5d894 1-70
+scripts/mailbox-intake-daemon/src/orchestrator/DriveUploader.ts
+  s_feb29f5c1d3af4::t_9b6786a5fe6ae6 1-176
+scripts/mailbox-intake-daemon/src/orchestrator/IngestOrchestrator.ts
+  s_feb29f5c1d3af4::t_b8325170738efe 1-275
+scripts/mailbox-intake-daemon/src/processor/BatchProcessor.ts
+  s_feb29f5c1d3af4::t_a0c9d740bf1be9 1-350
+scripts/mailbox-intake-daemon/src/utils/CircuitBreaker.ts
+  s_feb29f5c1d3af4::t_918a948911cc34 1-56
+scripts/mailbox-intake-daemon/src/utils/Logger.ts
+  s_feb29f5c1d3af4::t_72b85bf1631d18 1-62
+scripts/mailbox-intake-daemon/src/utils/sanitize.ts
+  s_feb29f5c1d3af4::t_a189cc4f25fa00 1-19
+scripts/mailbox-intake-daemon/src/watcher/FileWatcher.ts
+  s_feb29f5c1d3af4::t_c423b84526839d 1-226
+scripts/mailbox-intake-daemon/tests/core.test.ts
+  s_feb29f5c1d3af4::t_00a3e3fdea2a6f 1-365
+scripts/mailbox-intake-daemon/tests/scenarios.test.ts
+  s_feb29f5c1d3af4::t_16b0ac2a99f888 1-331
+scripts/mailbox-intake-daemon/tsconfig.json
+  s_feb29f5c1d3af4::t_9be3ac2deccd04 1-20
+scripts/phase-3-builder.js
+  s_feb29f5c1d3af4::t_11d66b3e38ea5f 1-837
+scripts/qa-004-performance-validation.ts
+  s_feb29f5c1d3af4::t_4bab61505eb862 1-341
+scripts/scan-agents.js
+  s_feb29f5c1d3af4::t_cc1c75a028aeef 1-95
+scripts/scp-init.sh
+  s_feb29f5c1d3af4::t_bc06a6c4f6594d 1-70
+scripts/skill-deployer-backend-test.js
+  s_feb29f5c1d3af4::t_701350fba0b664 1-221
+scripts/skill-deployer-backend.js
+  s_feb29f5c1d3af4::t_8112e73f213e4f 1-552
+scripts/skills/DEPLOY_REVIEW_SKILL.md
+  s_feb29f5c1d3af4::t_d73f89acc985ea 1-289
+scripts/skills/deploy-review.skill.json
+  s_feb29f5c1d3af4::t_806ef1ff7eb2d0 1-123
+scripts/skills/image-builder.skill.json
+  s_feb29f5c1d3af4::t_e98703f932ab68 1-85
+scripts/smoke-test-maal-http-only.ps1
+  s_feb29f5c1d3af4::t_43719025e5eed9 1-308
+scripts/smoke-test-maal.ps1
+  s_feb29f5c1d3af4::t_99b5c7e6683cac 1-290
+scripts/smoke-test-maal.sh
+  s_feb29f5c1d3af4::t_a46364e95e79a4 1-307
+scripts/submit-governance.js
+  s_feb29f5c1d3af4::t_a6e57d36d21d27 1-76
+scripts/test-console-v3-setup.ps1
+  s_feb29f5c1d3af4::t_3d27ce0203e47f 1-52
+scripts/test-m3-phase23.js
+  s_feb29f5c1d3af4::t_28d624bbf9e7d8 1-287
+scripts/validate-cloakbrowser.ts
+  s_feb29f5c1d3af4::t_a0798d3a7a59e3 1-316
+scripts/validate-dark-mode.js
+  s_feb29f5c1d3af4::t_f299aded229fce 1-165
+scripts/validate-design-compliance.js
+  s_feb29f5c1d3af4::t_6406dd2597707c 1-144
+scripts/validate-storybook-wrappers.js
+  s_feb29f5c1d3af4::t_9f37ae39ffe15f 1-16
+scripts/validate-tokens.js
+  s_feb29f5c1d3af4::t_e9ae2f577a21e9 1-35
+scripts/write-vault-record.js
+  s_feb29f5c1d3af4::t_e87f7db7396b72 1-162
+services/antigravity-ide/events.ts
+  s_feb29f5c1d3af4::t_e6e2799c588337 1-62
+services/antigravity-ide/mock/coachEventSimulator.ts
+  s_feb29f5c1d3af4::t_f5c7d6b92a3256 1-71
+services/antigravity-ide/src/events.ts
+  s_feb29f5c1d3af4::t_f3d8440ba5a76e 1-57
+services/chat-agent/Dockerfile
+  s_feb29f5c1d3af4::t_4f36f9e4cfcc41 1-20
+services/chat-agent/jest.config.js
+  s_feb29f5c1d3af4::t_f4715b8b85b98c 1-7
+services/chat-agent/package.json
+  s_feb29f5c1d3af4::t_fe10c2928cd0a6 1-24
+services/chat-agent/src/handlers/pipeline.ts
+  s_feb29f5c1d3af4::t_138546530d8f0e 1-91
+services/chat-agent/src/index.ts
+  s_feb29f5c1d3af4::t_221826442ee9ed 1
+services/chat-agent/src/routes/pipeline.ts
+  s_feb29f5c1d3af4::t_fd0dfa3f3da655 1-104
+services/chat-agent/src/server.ts
+  s_feb29f5c1d3af4::t_70ea7dff7ad1eb 1-43
+services/chat-agent/src/shared/README.md
+  s_feb29f5c1d3af4::t_164ef4e091c290 1-89
+services/chat-agent/src/shared/index.ts
+  s_feb29f5c1d3af4::t_4f2a81ce0f06c9 1-3
+services/chat-agent/src/shared/utils/logger.js
+  s_feb29f5c1d3af4::t_01e3423138ce9d 1-26
+services/chat-agent/src/shared/utils/logger.ts
+  s_feb29f5c1d3af4::t_d70d3313b7c010 1-29
+services/chat-agent/src/shared/webhook-listener.js
+  s_feb29f5c1d3af4::t_4f3dd0d8bfad9d 1-210
+services/chat-agent/src/shared/webhook-listener.ts
+  s_feb29f5c1d3af4::t_296cd810967393 1-250
+services/chat-agent/tsconfig.json
+  s_feb29f5c1d3af4::t_5a28baad871d5b 1-16
+services/cic-governance/Dockerfile
+  s_feb29f5c1d3af4::t_a6add1af41d807 1-24
+services/cic-governance/jest.config.js
+  s_feb29f5c1d3af4::t_79232396340996 1-19
+services/cic-governance/package.json
+  s_feb29f5c1d3af4::t_b448ee7bbc5b4a 1-26
+services/cic-governance/src/__tests__/council-voting.integration.test.ts
+  s_feb29f5c1d3af4::t_d5acf02c9d094a 1-315
+services/cic-governance/src/clients/MemoryQueryClient.d.ts
+  s_feb29f5c1d3af4::t_0eadcdc963e9e4 1-48
+services/cic-governance/src/clients/MemoryQueryClient.d.ts.map
+  s_feb29f5c1d3af4::t_12c7015ac2e46b 1
+services/cic-governance/src/clients/MemoryQueryClient.js
+  s_feb29f5c1d3af4::t_2da11aba4ea658 1-60
+services/cic-governance/src/clients/MemoryQueryClient.js.map
+  s_feb29f5c1d3af4::t_74665c60b702eb 1
+services/cic-governance/src/clients/MemoryQueryClient.ts
+  s_feb29f5c1d3af4::t_42294eba341023 1-90
+services/cic-governance/src/clients/VaultClient.d.ts
+  s_feb29f5c1d3af4::t_b802dbdbacded9 1-23
+services/cic-governance/src/clients/VaultClient.d.ts.map
+  s_feb29f5c1d3af4::t_2b5076127b2ebe 1
+services/cic-governance/src/clients/VaultClient.js
+  s_feb29f5c1d3af4::t_f1d540f4a7a978 1-53
+services/cic-governance/src/clients/VaultClient.js.map
+  s_feb29f5c1d3af4::t_bc031915b4dfee 1
+services/cic-governance/src/clients/VaultClient.ts
+  s_feb29f5c1d3af4::t_d1a9f205bd500e 1-64
+services/cic-governance/src/index.ts
+  s_feb29f5c1d3af4::t_7aa754da9e57f7 1-77
+services/cic-governance/src/services/GovernanceAmendmentGenerator.ts
+  s_feb29f5c1d3af4::t_4207c8279ffeb0 1-44
+services/cic-governance/src/services/GovernanceConstraintUpdater.ts
+  s_feb29f5c1d3af4::t_1b41297e0b0835 1-43
+services/cic-governance/src/services/GovernanceCouncil.d.ts
+  s_feb29f5c1d3af4::t_5f155a1d3678b4 1-51
+services/cic-governance/src/services/GovernanceCouncil.d.ts.map
+  s_feb29f5c1d3af4::t_0bc29468e80059 1
+services/cic-governance/src/services/GovernanceCouncil.js
+  s_feb29f5c1d3af4::t_70d1b1f711b6ad 1-82
+services/cic-governance/src/services/GovernanceCouncil.js.map
+  s_feb29f5c1d3af4::t_60a78e253ac2d6 1
+services/cic-governance/src/services/GovernanceCouncil.ts
+  s_feb29f5c1d3af4::t_ac99132727ed64 1-115
+services/cic-governance/src/services/GovernanceEvolutionEngine.d.ts
+  s_feb29f5c1d3af4::t_f1c8d0291547f2 1-29
+services/cic-governance/src/services/GovernanceEvolutionEngine.d.ts.map
+  s_feb29f5c1d3af4::t_08ca544e09173a 1
+services/cic-governance/src/services/GovernanceEvolutionEngine.js
+  s_feb29f5c1d3af4::t_a28f2793840ffa 1-92
+services/cic-governance/src/services/GovernanceEvolutionEngine.js.map
+  s_feb29f5c1d3af4::t_e29424d6cd2b7d 1
+services/cic-governance/src/services/GovernanceEvolutionEngine.ts
+  s_feb29f5c1d3af4::t_8577982fe530a5 1-112
+services/cic-governance/src/services/GovernanceEvolutionLoop.ts
+  s_feb29f5c1d3af4::t_78fb31f9b367bd 1-82
+services/cic-governance/src/services/GovernancePolicyUpdater.ts
+  s_feb29f5c1d3af4::t_b8233d687818fe 1-43
+services/cic-governance/src/services/PanelValidator.ts
+  s_feb29f5c1d3af4::t_4c9d0242436de0 1-190
+services/cic-governance/src/types/GovernancePacket.d.ts
+  s_feb29f5c1d3af4::t_fb34c43015b314 1-24
+services/cic-governance/src/types/GovernancePacket.d.ts.map
+  s_feb29f5c1d3af4::t_9b20c8dc1c7736 1
+services/cic-governance/src/types/GovernancePacket.js
+  s_feb29f5c1d3af4::t_6ca35d07d5a869 1-8
+services/cic-governance/src/types/GovernancePacket.js.map
+  s_feb29f5c1d3af4::t_8b9b0e0ce97827 1
+services/cic-governance/src/types/GovernancePacket.ts
+  s_feb29f5c1d3af4::t_bcfd326f867c1c 1-25
+services/cic-governance/tests/phase-24-2-evolution-loop.test.ts
+  s_feb29f5c1d3af4::t_af47dc8ecbc4c4 1-127
+services/cic-governance/tests/phase-24-integration.test.ts
+  s_feb29f5c1d3af4::t_7b39302d48b7a4 1-221
+services/cic-governance/tsconfig.json
+  s_feb29f5c1d3af4::t_85e13648b8502d 1-20
+services/cic-substrate/README.md
+  s_feb29f5c1d3af4::t_57a482352d0ae8 1-146
+services/cic-substrate/package.json
+  s_feb29f5c1d3af4::t_ec6c330a416b7d 1-27
+services/cic-substrate/schema.sql
+  s_feb29f5c1d3af4::t_f500bb404ca2d1 1-146
+services/cic-substrate/scripts/agentic-smoke.ts
+  s_feb29f5c1d3af4::t_507fb03ec85479 1-77
+services/cic-substrate/src/agentic/README.md
+  s_feb29f5c1d3af4::t_a770b9db10a05b 1-84
+services/cic-substrate/src/agentic/context/loader.ts
+  s_feb29f5c1d3af4::t_533b4dd9c71e63 1-80
+services/cic-substrate/src/agentic/events.ts
+  s_feb29f5c1d3af4::t_e10f763fb938a2 1-38
+services/cic-substrate/src/agentic/index.ts
+  s_feb29f5c1d3af4::t_69457021b6274b 1-9
+services/cic-substrate/src/agentic/ingestion/index.ts
+  s_feb29f5c1d3af4::t_37a9593c1a0638 1-110
+services/cic-substrate/src/agentic/jobs/materializeMetrics.ts
+  s_feb29f5c1d3af4::t_0ebc499304bfd6 1-68
+services/cic-substrate/src/agentic/mcp/getAgenticReadiness.ts
+  s_feb29f5c1d3af4::t_f5d93c9976176e 1-51
+services/cic-substrate/src/agentic/mcp/getDrift.ts
+  s_feb29f5c1d3af4::t_a1adac752fbcb0 1-75
+services/cic-substrate/src/agentic/mcp/getRuleFindings.ts
+  s_feb29f5c1d3af4::t_836d6470cde96b 1-78
+services/cic-substrate/src/agentic/mcp/getSkillDetections.ts
+  s_feb29f5c1d3af4::t_7d2052a160c3cc 1-71
+services/cic-substrate/src/agentic/metrics.ts
+  s_feb29f5c1d3af4::t_578f27555057b2 1-144
+services/cic-substrate/src/agentic/metrics/drift.ts
+  s_feb29f5c1d3af4::t_12cd9f0787b62d 1-120
+services/cic-substrate/src/agentic/rules/engine.ts
+  s_feb29f5c1d3af4::t_b91a459b3b2271 1-49
+services/cic-substrate/src/agentic/rules/registry.ts
+  s_feb29f5c1d3af4::t_a7bd429ef9bb6c 1-182
+services/cic-substrate/src/agentic/rules/types.ts
+  s_feb29f5c1d3af4::t_8a57ead5d18fe1 1-24
+services/cic-substrate/src/agentic/skills/extraction.ts
+  s_feb29f5c1d3af4::t_4b2e220f623205 1-142
+services/cic-substrate/src/agentic/skills/index.ts
+  s_feb29f5c1d3af4::t_44c2343e4c7226 1
+services/cic-substrate/src/agentic/types.ts
+  s_feb29f5c1d3af4::t_d94ff0930b7ba1 1-65
+services/cic-substrate/src/agentic/utils.ts
+  s_feb29f5c1d3af4::t_5cafd877112845 1-10
+services/cic-substrate/src/context.ts
+  s_feb29f5c1d3af4::t_bc8f641652cf96 1-86
+services/cic-substrate/src/db.ts
+  s_feb29f5c1d3af4::t_5c99dd8e1d871c 1-23
+services/cic-substrate/src/governance.ts
+  s_feb29f5c1d3af4::t_541bf7feae32fe 1-98
+services/cic-substrate/src/handlers.ts
+  s_feb29f5c1d3af4::t_36d42ebf95c5f9 1-205
+services/cic-substrate/src/index.ts
+  s_feb29f5c1d3af4::t_41293908f6b550 1-60
+services/cic-substrate/src/ingestion.ts
+  s_feb29f5c1d3af4::t_dd25659acf61c9 1-110
+services/cic-substrate/src/retrieval.ts
+  s_feb29f5c1d3af4::t_1254ffe8979e17 1-90
+services/cic-substrate/tests/agentic-integration.test.ts
+  s_feb29f5c1d3af4::t_2f8bc82086de8d 1-58
+services/cic-substrate/tsconfig.json
+  s_feb29f5c1d3af4::t_0fec7377c8485e 1-15
+services/docker-compose.yml
+  s_feb29f5c1d3af4::t_0e52105934ce9a 1-139
+services/gemini-coach/package.json
+  s_feb29f5c1d3af4::t_5b99765c7721f7 1-20
+services/gemini-coach/src/routing/routing-algorithm.ts
+  s_feb29f5c1d3af4::t_752f20c7b0f445 1-95
+services/knowledge-graph/ARCHITECTURE.md
+  s_feb29f5c1d3af4::t_0c92f417518273 1-285
+services/knowledge-graph/Dockerfile
+  s_feb29f5c1d3af4::t_4f6972c8b78c86 1-28
+services/knowledge-graph/README.md
+  s_feb29f5c1d3af4::t_36a0bd8ed0aa37 1-69
+services/knowledge-graph/__tests__/CausalAtom.test.ts
+  s_feb29f5c1d3af4::t_d8a8fe43de97dd 1-44
+services/knowledge-graph/__tests__/CausalEngine.test.ts
+  s_feb29f5c1d3af4::t_50f7035df58d64 1-61
+services/knowledge-graph/__tests__/CausalRules.test.ts
+  s_feb29f5c1d3af4::t_7034355bc5f385 1-84
+services/knowledge-graph/__tests__/Counterfactual.test.ts
+  s_feb29f5c1d3af4::t_ab23615c79bfeb 1-73
+services/knowledge-graph/__tests__/causal.integration.test.ts
+  s_feb29f5c1d3af4::t_0320cac8a7938f 1-114
+services/knowledge-graph/jest.config.js
+  s_feb29f5c1d3af4::t_e787bba6ff754f 1-9
+services/knowledge-graph/package.json
+  s_feb29f5c1d3af4::t_e0cddbfe6fce20 1-31
+services/knowledge-graph/src/api/routes/diagnostics/cursor.ts
+  s_feb29f5c1d3af4::t_65c4244dd7be50 1-58
+services/knowledge-graph/src/api/routes/diagnostics/integrity.ts
+  s_feb29f5c1d3af4::t_569eeedebde2eb 1-41
+services/knowledge-graph/src/api/routes/diagnostics/lag.ts
+  s_feb29f5c1d3af4::t_bdf455c4e5bb43 1-37
+services/knowledge-graph/src/api/routes/introspection/schema.ts
+  s_feb29f5c1d3af4::t_0153179e49f7d3 1-23
+services/knowledge-graph/src/api/routes/introspection/stats.ts
+  s_feb29f5c1d3af4::t_06e42d1973ba13 1-20
+services/knowledge-graph/src/api/server.ts
+  s_feb29f5c1d3af4::t_c8e6645465188e 1-50
+services/knowledge-graph/src/causal/CausalAtom.ts
+  s_feb29f5c1d3af4::t_98c36d50dcf889 1-47
+services/knowledge-graph/src/causal/CausalEngine.ts
+  s_feb29f5c1d3af4::t_37746d3a2a7a4b 1-92
+services/knowledge-graph/src/causal/CausalRules.ts
+  s_feb29f5c1d3af4::t_5334af936c3c7c 1-291
+services/knowledge-graph/src/causal/CausalSnapshot.ts
+  s_feb29f5c1d3af4::t_829859bd927d79 1-55
+services/knowledge-graph/src/causal/Counterfactual.ts
+  s_feb29f5c1d3af4::t_69a3615f37da9f 1-130
+services/knowledge-graph/src/causal/README.md
+  s_feb29f5c1d3af4::t_20e56b4d919ff2 1-121
+services/knowledge-graph/src/causal/index.ts
+  s_feb29f5c1d3af4::t_5ec0b124180f51 1-18
+services/knowledge-graph/src/causal/routes.ts
+  s_feb29f5c1d3af4::t_f4bc844b2121e9 1-153
+services/knowledge-graph/src/cli/bootstrap.ts
+  s_feb29f5c1d3af4::t_5e6e190917c03c 1-165
+services/knowledge-graph/src/clients/TorqueQueryClient.ts
+  s_feb29f5c1d3af4::t_9429e40fa2e021 1-166
+services/knowledge-graph/src/config/kg-store.config.ts
+  s_feb29f5c1d3af4::t_157f2c40dd13fb 1-101
+services/knowledge-graph/src/core/graph_store/GraphStore.ts
+  s_feb29f5c1d3af4::t_9b4d150cec0154 1-446
+services/knowledge-graph/src/core/graph_store/IKGStore.ts
+  s_feb29f5c1d3af4::t_59e3b78f261c05 1-153
+services/knowledge-graph/src/core/graph_store/PostgresKGStore.ts
+  s_feb29f5c1d3af4::t_97e904c08d31ca 1-427
+services/knowledge-graph/src/core/graph_store/SQLiteKGStore.ts
+  s_feb29f5c1d3af4::t_6da99bb37780df 1-200
+services/knowledge-graph/src/core/graph_store/mappers.ts
+  s_feb29f5c1d3af4::t_82af5287ded1df 1-52
+services/knowledge-graph/src/core/graph_store/migrations/001_init_nodes_edges.sql
+  s_feb29f5c1d3af4::t_746746fa45bb62 1-62
+services/knowledge-graph/src/core/graph_store/migrations/002_indexes.sql
+  s_feb29f5c1d3af4::t_8a4a75d2ec6382 1-22
+services/knowledge-graph/src/core/graph_store/schema.ts
+  s_feb29f5c1d3af4::t_26024ca5537ca5 1-77
+services/knowledge-graph/src/core/mappers/TorqueMapper.ts
+  s_feb29f5c1d3af4::t_c71ff8efc21b69 1-154
+services/knowledge-graph/src/core/models/Edge.ts
+  s_feb29f5c1d3af4::t_bc53300974f666 1-21
+services/knowledge-graph/src/core/models/Node.ts
+  s_feb29f5c1d3af4::t_002abb4ae04d7c 1-21
+services/knowledge-graph/src/core/models/Types.ts
+  s_feb29f5c1d3af4::t_f749c02f80b36d 1-31
+services/knowledge-graph/src/index.ts
+  s_feb29f5c1d3af4::t_3eca8c8cc21c46 1-19
+services/knowledge-graph/src/infra/logging.ts
+  s_feb29f5c1d3af4::t_a931b901b045e2 1-95
+services/knowledge-graph/src/infra/metrics.ts
+  s_feb29f5c1d3af4::t_8378fd529b167e 1-100
+services/knowledge-graph/src/ingestion/EventIntakeServer.ts
+  s_feb29f5c1d3af4::t_38b642c8fb66aa 1-176
+services/knowledge-graph/src/ingestion/EventRouter.ts
+  s_feb29f5c1d3af4::t_46caa8c9f4b907 1-189
+services/knowledge-graph/src/ingestion/IdempotencyManager.ts
+  s_feb29f5c1d3af4::t_36ca884dedd020 1-131
+services/knowledge-graph/tests/unit/graph_store.test.ts
+  s_feb29f5c1d3af4::t_c28df58e65114d 1-890
+services/knowledge-graph/tests/unit/ingestion/event_router.test.ts
+  s_feb29f5c1d3af4::t_3ab1f8bba6f0a3 1-280
+services/knowledge-graph/tests/unit/ingestion/idempotency_manager.test.ts
+  s_feb29f5c1d3af4::t_604813f595dea0 1-136
+services/knowledge-graph/tests/unit/mappers/torque_mapper.test.ts
+  s_feb29f5c1d3af4::t_1ec4561d395f73 1-201
+services/knowledge-graph/tsconfig.json
+  s_feb29f5c1d3af4::t_d62caca6e5f886 1-18
+services/repomix-ingestion/Dockerfile
+  s_feb29f5c1d3af4::t_7f15661a4285d6 1-24
+services/repomix-ingestion/jest.config.js
+  s_feb29f5c1d3af4::t_f2bbf0834d4ed7 1-6
+services/repomix-ingestion/package.json
+  s_feb29f5c1d3af4::t_3ee7573d515691 1-24
+services/repomix-ingestion/src/RepomixClient.ts
+  s_feb29f5c1d3af4::t_2ec7822d56cb96 1-50
+services/repomix-ingestion/src/RepomixMemoryAdapter.ts
+  s_feb29f5c1d3af4::t_bbce82478a1fef 1-79
+services/repomix-ingestion/src/RepomixPipeline.ts
+  s_feb29f5c1d3af4::t_c0ef1c1b55f7b8 1-52
+services/repomix-ingestion/src/index.ts
+  s_feb29f5c1d3af4::t_8a164af3756d57 1-11
+services/repomix-ingestion/src/server.ts
+  s_feb29f5c1d3af4::t_18706ef531cb42 1-76
+services/repomix-ingestion/tests/phase-4-4-repomix-integration.test.ts
+  s_feb29f5c1d3af4::t_ea4e91221b713f 1-110
+services/repomix-ingestion/tsconfig.json
+  s_feb29f5c1d3af4::t_f3a30a24ec3648 1-20
+services/torquequery/Dockerfile
+  s_feb29f5c1d3af4::t_f9058a26c04b49 1-29
+services/torquequery/jest.config.js
+  s_feb29f5c1d3af4::t_26ef0047764da7 1-13
+services/torquequery/package.json
+  s_feb29f5c1d3af4::t_44edb2065eb684 1-28
+services/torquequery/src/db/schema.sql
+  s_feb29f5c1d3af4::t_18e66a2f8f2d7f 1-63
+services/torquequery/src/handlers/cic-ingest.ts
+  s_feb29f5c1d3af4::t_961a8f0059dc44 1-101
+services/torquequery/src/index.ts
+  s_feb29f5c1d3af4::t_80337631fa21f0 1-6
+services/torquequery/src/indexer/MemoryIndexer.ts
+  s_feb29f5c1d3af4::t_b0fb1171c4d5c3 1-135
+services/torquequery/src/queries/MemoryQueries.ts
+  s_feb29f5c1d3af4::t_df19d485e3a394 1-111
+services/torquequery/src/server.ts
+  s_feb29f5c1d3af4::t_f7583953375e26 1-194
+services/torquequery/src/server/TorqueQueryServer.ts
+  s_feb29f5c1d3af4::t_bc48a9c0b48da8 1-85
+services/torquequery/src/shared/README.md
+  s_feb29f5c1d3af4::t_7e094dc206deb1 1-89
+services/torquequery/src/shared/index.ts
+  s_feb29f5c1d3af4::t_7a79ded74d5c19 1-3
+services/torquequery/src/shared/utils/logger.js
+  s_feb29f5c1d3af4::t_611092e18d5ef1 1-26
+services/torquequery/src/shared/utils/logger.ts
+  s_feb29f5c1d3af4::t_4e1464c1f2796d 1-29
+services/torquequery/src/shared/webhook-listener.js
+  s_feb29f5c1d3af4::t_dff21aaaaf686c 1-210
+services/torquequery/src/shared/webhook-listener.ts
+  s_feb29f5c1d3af4::t_c43c861679ed8c 1-250
+services/torquequery/src/types/TorqueRecord.ts
+  s_feb29f5c1d3af4::t_efd387d76ca679 1-121
+services/torquequery/tests/phase-26-ingest.test.ts
+  s_feb29f5c1d3af4::t_ff5342d71e8a3d 1-346
+services/torquequery/tests/phase-26-torquequery-integration.test.ts
+  s_feb29f5c1d3af4::t_2f160a9a7da62b 1-184
+services/torquequery/tsconfig.json
+  s_feb29f5c1d3af4::t_b2b6b808cada04 1-21
+services/unified-api/Dockerfile
+  s_feb29f5c1d3af4::t_d03df806243cdb 1-24
+services/unified-api/jest.config.cjs
+  s_feb29f5c1d3af4::t_081fca2a54a99e 1-9
+services/unified-api/package.json
+  s_feb29f5c1d3af4::t_5e6fa1daa33d3c 1-26
+services/unified-api/run-tests.sh
+  s_feb29f5c1d3af4::t_4d862772903cac 1-21
+services/unified-api/src/clients/GovernanceServiceClient.ts
+  s_feb29f5c1d3af4::t_5f6a16f2861dec 1-104
+services/unified-api/src/clients/RepomixServiceClient.ts
+  s_feb29f5c1d3af4::t_60110d1c47a809 1-39
+services/unified-api/src/clients/TorqueQueryServiceClient.ts
+  s_feb29f5c1d3af4::t_d0d3c89fdab257 1-77
+services/unified-api/src/clients/VaultServiceClient.ts
+  s_feb29f5c1d3af4::t_3ec116ad105e54 1-91
+services/unified-api/src/routes/governance-evolution.ts
+  s_feb29f5c1d3af4::t_4857e8e1c7bf65 1-90
+services/unified-api/src/routes/governance.ts
+  s_feb29f5c1d3af4::t_228bd56d1086cf 1-168
+services/unified-api/src/routes/repomix.ts
+  s_feb29f5c1d3af4::t_a7e3719b585ca4 1-67
+services/unified-api/src/routes/torquequery.ts
+  s_feb29f5c1d3af4::t_b0bca8b9213aea 1-125
+services/unified-api/src/routes/vault.ts
+  s_feb29f5c1d3af4::t_7bfd3db1a58540 1-190
+services/unified-api/src/server.ts
+  s_feb29f5c1d3af4::t_e454da937685a6 1-92
+services/unified-api/tests/integration.test.ts
+  s_feb29f5c1d3af4::t_610a642736595d 1-127
+services/unified-api/tests/setup.cjs
+  s_feb29f5c1d3af4::t_1c31e86c60f519 1-85
+services/unified-api/tsconfig.json
+  s_feb29f5c1d3af4::t_775bdf09890ced 1-20
+services/vault/Dockerfile
+  s_feb29f5c1d3af4::t_03bb53eebd23b9 1-29
+services/vault/jest.config.js
+  s_feb29f5c1d3af4::t_d04bc1727126da 1-7
+services/vault/package.json
+  s_feb29f5c1d3af4::t_7caacd14c01406 1-28
+services/vault/src/VaultPersistence.ts
+  s_feb29f5c1d3af4::t_f009714dac4fac 1-149
+services/vault/src/VaultSecrets.ts
+  s_feb29f5c1d3af4::t_d1335b332198be 1-93
+services/vault/src/db/schema.sql
+  s_feb29f5c1d3af4::t_fff8a7cf30fe1c 1-29
+services/vault/src/index.ts
+  s_feb29f5c1d3af4::t_f1ee0891b255b0 1-4
+services/vault/src/server.ts
+  s_feb29f5c1d3af4::t_c9863a4830b9bd 1-117
+services/vault/tests/phase-m3-vault-persistence.test.ts
+  s_feb29f5c1d3af4::t_abd2dcbb1b8906 1-145
+services/vault/tsconfig.json
+  s_feb29f5c1d3af4::t_6e3952266d73cc 1-20
+setup/exclude.txt
+  s_feb29f5c1d3af4::t_81e572c631895d 1-6
+setup/groups/archive.txt
+  s_feb29f5c1d3af4::t_8acabb00eba011 1-2
+setup/groups/core.txt
+  s_feb29f5c1d3af4::t_6fad64f4e427fa 1-5
+setup/groups/labs.txt
+  s_feb29f5c1d3af4::t_77f91866b3a635 1-2
+setup/validate.sh
+  s_feb29f5c1d3af4::t_a7b891c83eb8bc 1-81
+shared/README.md
+  s_feb29f5c1d3af4::t_625f6d061aaf2c 1-89
+shared/index.ts
+  s_feb29f5c1d3af4::t_6fe852daa4525f 1-3
+shared/utils/logger.js
+  s_feb29f5c1d3af4::t_2607a1bee83034 1-26
+shared/utils/logger.ts
+  s_feb29f5c1d3af4::t_0f4dbe0df147c7 1-29
+shared/webhook-listener.js
+  s_feb29f5c1d3af4::t_d00492f8a70c66 1-210
+shared/webhook-listener.ts
+  s_feb29f5c1d3af4::t_8df7b6918b6b8d 1-250
+site/404.html
+  s_feb29f5c1d3af4::t_6266591e3ffbef 1
+site/COMMERCIALIZATION-BLUEPRINT/index.html
+  s_feb29f5c1d3af4::t_e0101c32ab4e15 1
+site/ROADMAP-0.7-to-1.0/index.html
+  s_feb29f5c1d3af4::t_30f6d76ff86e5f 1
+site/about/index.html
+  s_feb29f5c1d3af4::t_82c3a31356a3b4 1-24
+site/architecture/gitignore-strategy/index.html
+  s_feb29f5c1d3af4::t_caec36bcf4cf22 1-59
+site/architecture/kg-config-flags/index.html
+  s_feb29f5c1d3af4::t_625d239f5a6313 1-99
+site/architecture/kg-migration-plan/index.html
+  s_feb29f5c1d3af4::t_0c11f5a63362a8 1
+site/architecture/kg-roadmap.txt
+  s_feb29f5c1d3af4::t_73f718e632f36f 1-154
+site/architecture/kg-storage-choice/index.html
+  s_feb29f5c1d3af4::t_903e1d0e07d99f 1
+site/architecture/monorepo/index.html
+  s_feb29f5c1d3af4::t_042e3b70ba7341 1-43
+site/assets/javascripts/bundle.79ae519e.min.js
+  s_feb29f5c1d3af4::t_2a404609c84198 1-16
+site/assets/javascripts/bundle.79ae519e.min.js.map
+  s_feb29f5c1d3af4::t_760f8ec5614c96 1-7
+site/assets/javascripts/lunr/min/lunr.ar.min.js
+  s_feb29f5c1d3af4::t_19b4060cd9a3eb 1
+site/assets/javascripts/lunr/min/lunr.da.min.js
+  s_feb29f5c1d3af4::t_80d2ccc7407512 1-18
+site/assets/javascripts/lunr/min/lunr.de.min.js
+  s_feb29f5c1d3af4::t_4954a0d30aca47 1-18
+site/assets/javascripts/lunr/min/lunr.du.min.js
+  s_feb29f5c1d3af4::t_60853f57221616 1-18
+site/assets/javascripts/lunr/min/lunr.el.min.js
+  s_feb29f5c1d3af4::t_113702121977a6 1
+site/assets/javascripts/lunr/min/lunr.es.min.js
+  s_feb29f5c1d3af4::t_76c07e0cba9c73 1-18
+site/assets/javascripts/lunr/min/lunr.fi.min.js
+  s_feb29f5c1d3af4::t_72fdc5101a9382 1-18
+site/assets/javascripts/lunr/min/lunr.fr.min.js
+  s_feb29f5c1d3af4::t_dfd2336ee7d33d 1-18
+site/assets/javascripts/lunr/min/lunr.he.min.js
+  s_feb29f5c1d3af4::t_9dcbed85c8e340 1
+site/assets/javascripts/lunr/min/lunr.hi.min.js
+  s_feb29f5c1d3af4::t_dc6fb1571c3c24 1
+site/assets/javascripts/lunr/min/lunr.hu.min.js
+  s_feb29f5c1d3af4::t_7923198f66cd47 1-18
+site/assets/javascripts/lunr/min/lunr.hy.min.js
+  s_feb29f5c1d3af4::t_a02c42e39e4c5a 1
+site/assets/javascripts/lunr/min/lunr.it.min.js
+  s_feb29f5c1d3af4::t_605ba81947e44e 1-18
+site/assets/javascripts/lunr/min/lunr.ja.min.js
+  s_feb29f5c1d3af4::t_3ecd28bf31fb4f 1
+site/assets/javascripts/lunr/min/lunr.jp.min.js
+  s_feb29f5c1d3af4::t_7ed0dd5cf3b0d1 1
+site/assets/javascripts/lunr/min/lunr.kn.min.js
+  s_feb29f5c1d3af4::t_dda859b1c7b9c5 1
+site/assets/javascripts/lunr/min/lunr.ko.min.js
+  s_feb29f5c1d3af4::t_0a514c226a0f9d 1
+site/assets/javascripts/lunr/min/lunr.multi.min.js
+  s_feb29f5c1d3af4::t_cf212140a83df5 1
+site/assets/javascripts/lunr/min/lunr.nl.min.js
+  s_feb29f5c1d3af4::t_37ed26f67e5bce 1-18
+site/assets/javascripts/lunr/min/lunr.no.min.js
+  s_feb29f5c1d3af4::t_221e57266e2907 1-18
+site/assets/javascripts/lunr/min/lunr.pt.min.js
+  s_feb29f5c1d3af4::t_0fd95c4d552e71 1-18
+site/assets/javascripts/lunr/min/lunr.ro.min.js
+  s_feb29f5c1d3af4::t_d387299308281f 1-18
+site/assets/javascripts/lunr/min/lunr.ru.min.js
+  s_feb29f5c1d3af4::t_45783ed19025e2 1-18
+site/assets/javascripts/lunr/min/lunr.sa.min.js
+  s_feb29f5c1d3af4::t_49a8173c2f4c85 1
+site/assets/javascripts/lunr/min/lunr.stemmer.support.min.js
+  s_feb29f5c1d3af4::t_071de750922d85 1
+site/assets/javascripts/lunr/min/lunr.sv.min.js
+  s_feb29f5c1d3af4::t_55236c3be6f5c4 1-18
+site/assets/javascripts/lunr/min/lunr.ta.min.js
+  s_feb29f5c1d3af4::t_bd428c701e8c1d 1
+site/assets/javascripts/lunr/min/lunr.te.min.js
+  s_feb29f5c1d3af4::t_17cde8de449f77 1
+site/assets/javascripts/lunr/min/lunr.th.min.js
+  s_feb29f5c1d3af4::t_c4ea66d767dc57 1
+site/assets/javascripts/lunr/min/lunr.tr.min.js
+  s_feb29f5c1d3af4::t_f8b3e1404fa8b0 1-18
+site/assets/javascripts/lunr/min/lunr.vi.min.js
+  s_feb29f5c1d3af4::t_8725e5fcd3b70f 1
+site/assets/javascripts/lunr/min/lunr.zh.min.js
+  s_feb29f5c1d3af4::t_ef627c4083d44d 1
+site/assets/javascripts/lunr/tinyseg.js
+  s_feb29f5c1d3af4::t_ac9743ec886245 1-206
+site/assets/javascripts/lunr/wordcut.js
+  s_feb29f5c1d3af4::t_121b20b61e0d6a 1-6708
+site/assets/javascripts/workers/search.2c215733.min.js
+  s_feb29f5c1d3af4::t_f8c979dc1f8517 1-42
+site/assets/javascripts/workers/search.2c215733.min.js.map
+  s_feb29f5c1d3af4::t_6a94e7dc557cba 1-7
+site/assets/stylesheets/main.484c7ddc.min.css
+  s_feb29f5c1d3af4::t_cd99d5bb2dee34 1
+site/assets/stylesheets/main.484c7ddc.min.css.map
+  s_feb29f5c1d3af4::t_1582d3fa93e42e 1
+site/assets/stylesheets/palette.ab4e12ef.min.css
+  s_feb29f5c1d3af4::t_e59da518d6b111 1
+site/assets/stylesheets/palette.ab4e12ef.min.css.map
+  s_feb29f5c1d3af4::t_ce10f66f57ca1c 1
+site/automation/guide/index.html
+  s_feb29f5c1d3af4::t_a3104d41d29989 1-97
+site/automation/skills/index.html
+  s_feb29f5c1d3af4::t_fec19b30d939a6 1-138
+site/index.html
+  s_feb29f5c1d3af4::t_da187fb7ca3983 1-5
+site/phase0.7-deployment/index.html
+  s_feb29f5c1d3af4::t_8d452596374a9c 1-268
+site/phase0.7/agents/index.html
+  s_feb29f5c1d3af4::t_1c6696e14d1d85 1
+site/phase0.7/build-graph/index.html
+  s_feb29f5c1d3af4::t_e0713b9704ac06 1-17
+site/phase0.7/cli-reference/index.html
+  s_feb29f5c1d3af4::t_bf43a7f346eb5c 1-33
+site/phase0.7/day2-ops/index.html
+  s_feb29f5c1d3af4::t_297ce82d019429 1-12
+site/phase0.7/incident-response-playbook/index.html
+  s_feb29f5c1d3af4::t_d0313fffc87ff1 1-8
+site/phase0.7/index.html
+  s_feb29f5c1d3af4::t_7ea5930d129838 1
+site/phase0.7/inference-routing/index.html
+  s_feb29f5c1d3af4::t_d62c007389b29b 1-48
+site/phase0.7/operator-runbook/index.html
+  s_feb29f5c1d3af4::t_bc5bbbdde39e41 1-16
+site/phase0.7/routing/index.html
+  s_feb29f5c1d3af4::t_ffd4f9c51e72d0 1-21
+site/phase0.7/security-hardening/index.html
+  s_feb29f5c1d3af4::t_69488b1fe72d98 1-5
+site/phase0.8-plan/index.html
+  s_feb29f5c1d3af4::t_a13ae8b815fa08 1-36
+site/phase0.8/index.html
+  s_feb29f5c1d3af4::t_3a89b80beb155d 1-4
+site/phase0.9-plan/index.html
+  s_feb29f5c1d3af4::t_55ca744491e393 1-79
+site/phase1.0-plan/index.html
+  s_feb29f5c1d3af4::t_0a6cd03ca37553 1-90
+site/phase1.0/system-diagrams/index.html
+  s_feb29f5c1d3af4::t_a2ed4d6df55b67 1-51
+site/rewrite-labs/RL-4.0-DOM-Extraction/index.html
+  s_feb29f5c1d3af4::t_2229935302376f 1-34
+site/rewrite-labs/agent-architecture/index.html
+  s_feb29f5c1d3af4::t_e52d5f448b53e0 1-2
+site/rewrite-labs/agent-design-guide/index.html
+  s_feb29f5c1d3af4::t_bffd57e8303e78 1
+site/rewrite-labs/agent-template/index.html
+  s_feb29f5c1d3af4::t_f9feb9823b97f7 1-15
+site/rewrite-labs/ai-finetuning-playbook/index.html
+  s_feb29f5c1d3af4::t_e0c92c69b8c5a9 1
+site/rewrite-labs/brand-identity-kit/index.html
+  s_feb29f5c1d3af4::t_e9a9a4e22dc894 1-14
+site/rewrite-labs/customer-success-playbook/index.html
+  s_feb29f5c1d3af4::t_b100e89e93c4a8 1
+site/rewrite-labs/enterprise-rfp-response/index.html
+  s_feb29f5c1d3af4::t_171a9fdcce7651 1
+site/rewrite-labs/enterprise-security-whitepaper/index.html
+  s_feb29f5c1d3af4::t_3ef1e9044b09b0 1
+site/rewrite-labs/marketing-funnel-full/index.html
+  s_feb29f5c1d3af4::t_58ce382aafbb37 1
+site/rewrite-labs/onboarding-course/index.html
+  s_feb29f5c1d3af4::t_9ac5dbf57b7183 1
+site/rewrite-labs/partner-program-guide/index.html
+  s_feb29f5c1d3af4::t_c5883e01f9f5f9 1
+site/rewrite-labs/phase-2-0-vision/index.html
+  s_feb29f5c1d3af4::t_c7132a8f9cc18f 1
+site/rewrite-labs/product-requirements-document/index.html
+  s_feb29f5c1d3af4::t_7c3c1505d2bfd6 1
+site/rewrite-labs/sales-playbook/index.html
+  s_feb29f5c1d3af4::t_fffa6ce0141c12 1
+site/rewrite-labs/template-expansion-pack/aeo/dental.json
+  s_feb29f5c1d3af4::t_6f54ee14621af8 1-162
+site/rewrite-labs/template-expansion-pack/aeo/fitness.json
+  s_feb29f5c1d3af4::t_869d7385a35864 1-116
+site/rewrite-labs/template-expansion-pack/aeo/landscaping.json
+  s_feb29f5c1d3af4::t_8e059803f37e42 1-116
+site/rewrite-labs/template-expansion-pack/aeo/legal.json
+  s_feb29f5c1d3af4::t_966491308d2c65 1-142
+site/rewrite-labs/template-expansion-pack/aeo/salon_spa.json
+  s_feb29f5c1d3af4::t_2739ebfb99499a 1-158
+site/rewrite-labs/template-expansion-pack/index.html
+  s_feb29f5c1d3af4::t_877b8cfa5d9452 1
+site/rewrite-labs/template-expansion-pack/manifests/dental-manifest.json
+  s_feb29f5c1d3af4::t_792a252866b4bd 1-95
+site/rewrite-labs/template-expansion-pack/manifests/fitness-manifest.json
+  s_feb29f5c1d3af4::t_78bd24d764aa7a 1-95
+site/rewrite-labs/template-expansion-pack/manifests/landscaping-manifest.json
+  s_feb29f5c1d3af4::t_879475323314fa 1-96
+site/rewrite-labs/template-expansion-pack/manifests/legal-manifest.json
+  s_feb29f5c1d3af4::t_8931f95cefe5c4 1-95
+site/rewrite-labs/template-expansion-pack/manifests/salon_spa-manifest.json
+  s_feb29f5c1d3af4::t_d5b582e8deabf1 1-96
+site/rewrite-labs/template-expansion-pack/outreach/dental-sequence/index.html
+  s_feb29f5c1d3af4::t_5c9f5195a5097e 1
+site/rewrite-labs/template-expansion-pack/outreach/fitness-sequence/index.html
+  s_feb29f5c1d3af4::t_cfa8807aef764a 1
+site/rewrite-labs/template-expansion-pack/outreach/landscaping-sequence/index.html
+  s_feb29f5c1d3af4::t_5de7893bd00149 1
+site/rewrite-labs/template-expansion-pack/outreach/legal-sequence/index.html
+  s_feb29f5c1d3af4::t_eeed02b18147e3 1
+site/rewrite-labs/template-expansion-pack/outreach/salon_spa-sequence/index.html
+  s_feb29f5c1d3af4::t_29c6bba1769b68 1
+site/rewrite-labs/template-expansion-pack/phase-30/PHASE-30-CIC-INGESTION-TEST-PLAN/index.html
+  s_feb29f5c1d3af4::t_d07908ccf667af 1-23
+site/rewrite-labs/template-expansion-pack/phase-30/PHASE-30-DEPLOYMENT-ANNOUNCEMENT/index.html
+  s_feb29f5c1d3af4::t_eee72f04073878 1
+site/rewrite-labs/template-expansion-pack/phase-30/PHASE-30-INTEGRATION-CHECKLIST/index.html
+  s_feb29f5c1d3af4::t_7ec0975a939c1b 1
+site/rewrite-labs/template-expansion-pack/phase-30/PHASE-30-TELEMETRY-DASHBOARD-SPEC/index.html
+  s_feb29f5c1d3af4::t_af6df5156a596b 1-53
+site/rewrite-labs/template-expansion-pack/phase-30/PHASE-30-VERTICAL-QA-MATRIX/index.html
+  s_feb29f5c1d3af4::t_941a6c7c4676e5 1
+site/rewrite-labs/template-expansion-pack/schemas/components-dental.json
+  s_feb29f5c1d3af4::t_17dfc269334dc2 1-81
+site/rewrite-labs/template-expansion-pack/schemas/components-fitness.json
+  s_feb29f5c1d3af4::t_1495170ba414d2 1-87
+site/rewrite-labs/template-expansion-pack/schemas/components-landscaping.json
+  s_feb29f5c1d3af4::t_7daf34886206da 1-77
+site/rewrite-labs/template-expansion-pack/schemas/components-legal.json
+  s_feb29f5c1d3af4::t_a12c248641de95 1-83
+site/rewrite-labs/template-expansion-pack/schemas/components-salon_spa.json
+  s_feb29f5c1d3af4::t_881e10d78543a0 1-93
+site/rewrite-labs/template-expansion-pack/schemas/components-universal.json
+  s_feb29f5c1d3af4::t_4ca5d63aec4b8f 1-140
+site/rewrite-labs/template-expansion-pack/skeletons/contact.html
+  s_feb29f5c1d3af4::t_77d612a30a6fcf 1-162
+site/rewrite-labs/template-expansion-pack/skeletons/homepage.html
+  s_feb29f5c1d3af4::t_e689edb036774c 1-172
+site/rewrite-labs/template-expansion-pack/skeletons/mobile-shell.html
+  s_feb29f5c1d3af4::t_e55ec9a1beca95 1-172
+site/rewrite-labs/template-expansion-pack/skeletons/service-page.html
+  s_feb29f5c1d3af4::t_2dc503053121e8 1-196
+site/rewrite/REWRITE_LABS_SYSTEM/index.html
+  s_feb29f5c1d3af4::t_7fdd66f085e2e7 1
+site/roadmap/CIC_SUBROADMAP_v3.0/index.html
+  s_feb29f5c1d3af4::t_cf107a75e0b710 1
+site/roadmap/MASTER_ROADMAP_v3.0/index.html
+  s_feb29f5c1d3af4::t_ba2e3bf125a9b5 1-22
+site/roadmap/MIGRATION_GUIDE_v2_to_v3/index.html
+  s_feb29f5c1d3af4::t_eb68db6aff13e0 1
+site/roadmap/REWRITE_LABS_SUBROADMAP_v3.0/index.html
+  s_feb29f5c1d3af4::t_609d154c410297 1-22
+site/roadmap/ROADMAP_DEPENDENCY_GRAPH.json
+  s_feb29f5c1d3af4::t_31876e9001c5b3 1-121
+site/roadmap/ROADMAP_INDEX/index.html
+  s_feb29f5c1d3af4::t_435e8b6c1f526e 1
+site/roadmap/ROADMAP_POLICY/index.html
+  s_feb29f5c1d3af4::t_e6f03d095be8f8 1-12
+site/search/search_index.json
+  s_feb29f5c1d3af4::t_ef047735efbe48 1
+site/sitemap.xml
+  s_feb29f5c1d3af4::t_2395cda140b44d 1-3
+site/strategy/CIC_VSCODE_INTEGRATION_SPEC/index.html
+  s_feb29f5c1d3af4::t_37ef1329a7008b 1-185
+site/strategy/MAILBOX_INTAKE_DAEMON_IMPLEMENTATION_SUMMARY/index.html
+  s_feb29f5c1d3af4::t_2d9203e194792c 1-25
+site/strategy/MAILBOX_INTAKE_DAEMON_SPEC_EXPANDED/index.html
+  s_feb29f5c1d3af4::t_44f1a43edbdd90 1-1145
+site/strategy/REWRITE_LABS_TEARDOWN_AND_BUILD_PLAN_v1.0/index.html
+  s_feb29f5c1d3af4::t_edc8a3e482b7dc 1-299
+site/strategy/__tests__/rpc.test.ts
+  s_feb29f5c1d3af4::t_9c296238838da5 1-114
+site/strategy/cic_rpc_router.ts
+  s_feb29f5c1d3af4::t_11255034a6b305 1-178
+site/strategy/extension_manifest.json
+  s_feb29f5c1d3af4::t_a75be02ef52535 1-47
+site/strategy/extension_skeleton.ts
+  s_feb29f5c1d3af4::t_0e1b48ef6994c1 1-151
+site/strategy/micro_loop_contract/index.html
+  s_feb29f5c1d3af4::t_e163fec225ab51 1-27
+site/strategy/session_state_machine/index.html
+  s_feb29f5c1d3af4::t_2f25487a31422e 1-21
+site/strategy/transport.types.ts
+  s_feb29f5c1d3af4::t_c4a6daf78665c6 1-139
+site/strategy/transport_spec/index.html
+  s_feb29f5c1d3af4::t_d16a25b6d63e10 1-67
+src/adapter-gateway/cache.ts
+  s_feb29f5c1d3af4::t_82783890ce8f28 1-209
+src/adapters/BookStackAdapter.ts
+  s_feb29f5c1d3af4::t_edadfcde79030f 1-146
+src/adapters/BrowserNavigateAdapter.ts
+  s_feb29f5c1d3af4::t_cd675a365e3ca5 1-75
+src/adapters/BrowserScreenshotAdapter.ts
+  s_feb29f5c1d3af4::t_db9a3cb76c614f 1-83
+src/adapters/ModelGenerateAdapter.ts
+  s_feb29f5c1d3af4::t_5c3d966caf8ef4 1-100
+src/adapters/PuppeteerEngine.ts
+  s_feb29f5c1d3af4::t_391c44a4ebb416 1-92
+src/adapters/TorqueQueryAdapter.ts
+  s_feb29f5c1d3af4::t_fa78bfac819605 1-6
+src/adapters/__tests__/BookStackAdapter.test.ts
+  s_feb29f5c1d3af4::t_123527c22c3f51 1-75
+src/adapters/__tests__/BrowserNavigateAdapter.test.ts
+  s_feb29f5c1d3af4::t_2d289494a0b9e5 1-108
+src/adapters/__tests__/BrowserScreenshotAdapter.test.ts
+  s_feb29f5c1d3af4::t_0b2a07f850d30e 1-98
+src/adapters/__tests__/ModelGenerateAdapter.test.ts
+  s_feb29f5c1d3af4::t_72fb35159b4daa 1-112
+src/adapters/__tests__/PuppeteerEngine.test.ts
+  s_feb29f5c1d3af4::t_f966143b565b4f 1-109
+src/adapters/index.ts
+  s_feb29f5c1d3af4::t_268d9463bccae0 1-14
+src/agents/auditAgent.ts
+  s_feb29f5c1d3af4::t_773d6eb6f71d89 1-176
+src/agents/baseAgent.ts
+  s_feb29f5c1d3af4::t_ae61e7e4df3a2e 1-101
+src/agents/enrichmentAgent.ts
+  s_feb29f5c1d3af4::t_c6e4a4827889dd 1-27
+src/agents/index.ts
+  s_feb29f5c1d3af4::t_b24ccc39ec89b1 1-6
+src/agents/orchestratorAgent.ts
+  s_feb29f5c1d3af4::t_1fe876c0054f52 1-24
+src/agents/routingProfile.ts
+  s_feb29f5c1d3af4::t_5f260f8ab6f23d 1-56
+src/agents/synthesisAgent.ts
+  s_feb29f5c1d3af4::t_2d9b08374ebb2f 1-27
+src/charts/BarChart.tsx
+  s_feb29f5c1d3af4::t_3809f590d61b94 1-51
+src/charts/LineChart.tsx
+  s_feb29f5c1d3af4::t_14d310933d564f 1-49
+src/charts/components/AreaChart.test.tsx
+  s_feb29f5c1d3af4::t_c7450666294c20 1-46
+src/charts/components/AreaChart.tsx
+  s_feb29f5c1d3af4::t_b8619c05d58229 1-136
+src/charts/components/BarChart.test.tsx
+  s_feb29f5c1d3af4::t_8368e736e5cc81 1-45
+src/charts/components/BarChart.tsx
+  s_feb29f5c1d3af4::t_5269b4f5b8a6c8 1-125
+src/charts/components/HeatMap.test.tsx
+  s_feb29f5c1d3af4::t_c6688d9f35949d 1-45
+src/charts/components/HeatMap.tsx
+  s_feb29f5c1d3af4::t_87136ec23b3eff 1-157
+src/charts/components/LineChart.test.tsx
+  s_feb29f5c1d3af4::t_bb46f492fa841b 1-46
+src/charts/components/LineChart.tsx
+  s_feb29f5c1d3af4::t_69dc1f1718c005 1-124
+src/charts/components/ScatterChart.test.tsx
+  s_feb29f5c1d3af4::t_96cedf2ad1d7a0 1-53
+src/charts/components/ScatterChart.tsx
+  s_feb29f5c1d3af4::t_02f8eb8c93fa1a 1-130
+src/charts/hooks/useChartData.test.ts
+  s_feb29f5c1d3af4::t_1fa09738386625 1-76
+src/charts/hooks/useChartData.ts
+  s_feb29f5c1d3af4::t_a1014768363a13 1-45
+src/charts/hooks/useChartDimensions.test.ts
+  s_feb29f5c1d3af4::t_486975f6d3f99d 1-33
+src/charts/hooks/useChartDimensions.ts
+  s_feb29f5c1d3af4::t_5d833e64d5fa00 1-31
+src/charts/index.ts
+  s_feb29f5c1d3af4::t_ee87c336dd649d 1-11
+src/charts/tokens/chart-colors.css
+  s_feb29f5c1d3af4::t_b5d5ec6ffa99f4 1-45
+src/charts/tokens/chart-scales.ts
+  s_feb29f5c1d3af4::t_a819e45c339d59 1-42
+src/charts/useCicColorScale.ts
+  s_feb29f5c1d3af4::t_d4defe0cf5c18c 1-10
+src/charts/useDimensions.ts
+  s_feb29f5c1d3af4::t_2db7482afb0aac 1-21
+src/clients/AnthropicClient.ts
+  s_feb29f5c1d3af4::t_c0d1e2c21c1712 1-100
+src/clients/__tests__/AnthropicClient.test.ts
+  s_feb29f5c1d3af4::t_35f3d73015eaa3 1-119
+src/components/agents/AgentCard.tsx
+  s_feb29f5c1d3af4::t_6a477dfb0576ec 1-67
+src/components/agents/AgentDetailPanel.tsx
+  s_feb29f5c1d3af4::t_44afce5c9e7374 1-258
+src/components/agents/AgentsPanel.tsx
+  s_feb29f5c1d3af4::t_72058d1673c7e6 1-65
+src/components/agents/Metric.tsx
+  s_feb29f5c1d3af4::t_94c6b8c72499c4 1-16
+src/components/agents/SkillsList.tsx
+  s_feb29f5c1d3af4::t_eedb93b3691e46 1-18
+src/components/agents/StatusPill.tsx
+  s_feb29f5c1d3af4::t_08421eee3f7efb 1-21
+src/components/agents/agent-card.css
+  s_feb29f5c1d3af4::t_942d020ea40517 1-69
+src/components/agents/agent-detail-panel.css
+  s_feb29f5c1d3af4::t_f1888eff57a92d 1-259
+src/components/agents/agents-panel.css
+  s_feb29f5c1d3af4::t_85254b61088d73 1-56
+src/components/agents/index.ts
+  s_feb29f5c1d3af4::t_ae9f0b3250fc1e 1-6
+src/components/agents/metric.css
+  s_feb29f5c1d3af4::t_7781d830aef963 1-29
+src/components/agents/skills-list.css
+  s_feb29f5c1d3af4::t_bf005d4c5afecf 1-21
+src/components/agents/status-pill.css
+  s_feb29f5c1d3af4::t_c3aadb9eba4b9f 1-49
+src/components/cic/Alert.tsx
+  s_feb29f5c1d3af4::t_da5b0312d52004 1-21
+src/components/cic/Button.tsx
+  s_feb29f5c1d3af4::t_a972d447689d27 1-32
+src/components/cic/Card.tsx
+  s_feb29f5c1d3af4::t_8fc7bded44fcd9 1-33
+src/components/cic/Checkbox.tsx
+  s_feb29f5c1d3af4::t_b36d9c3daa02eb 1-36
+src/components/cic/Grid.tsx
+  s_feb29f5c1d3af4::t_319d16091ac20f 1-33
+src/components/cic/Input.tsx
+  s_feb29f5c1d3af4::t_8240887ffe6800 1-37
+src/components/cic/Panel.tsx
+  s_feb29f5c1d3af4::t_8f5eacdb237347 1-48
+src/components/cic/Row.tsx
+  s_feb29f5c1d3af4::t_ad3f70dd9dc135 1-55
+src/components/cic/Table.tsx
+  s_feb29f5c1d3af4::t_c4b9ba14ac27ec 1-20
+src/components/cic/add.css
+  s_feb29f5c1d3af4::t_e3fb52167c1427 1-8
+src/components/cic/alert.css
+  s_feb29f5c1d3af4::t_a82bae2a2e95a6 1-8
+src/components/cic/button.css
+  s_feb29f5c1d3af4::t_a7f9fc8a7d144e 1-89
+src/components/cic/card.css
+  s_feb29f5c1d3af4::t_3fcbd9addb73bb 1-11
+src/components/cic/checkbox.css
+  s_feb29f5c1d3af4::t_6c3eaab8a363a1 1-72
+src/components/cic/cic-component-tokens.css
+  s_feb29f5c1d3af4::t_1c2f705eb0db15 1-89
+src/components/cic/grid.css
+  s_feb29f5c1d3af4::t_64f27a55900c30 1-12
+src/components/cic/index.ts
+  s_feb29f5c1d3af4::t_b9a35ef48c7e0e 1-9
+src/components/cic/input.css
+  s_feb29f5c1d3af4::t_a0ffec9b987756 1-66
+src/components/cic/panel.css
+  s_feb29f5c1d3af4::t_a3748f7abe7a36 1-22
+src/components/cic/row.css
+  s_feb29f5c1d3af4::t_2ab9385f877fe3 1-21
+src/components/cic/table.css
+  s_feb29f5c1d3af4::t_0b1cc25694e3a9 1-8
+src/components/generator.ts
+  s_feb29f5c1d3af4::t_e8f518c9b4b973 1-33
+src/config.ts
+  s_feb29f5c1d3af4::t_cad6489a4067c6 1-12
+src/core/capabilities.ts
+  s_feb29f5c1d3af4::t_c222093ae20045 1-17
+src/core/errors.ts
+  s_feb29f5c1d3af4::t_ff3cce4520e546 1-27
+src/core/index.ts
+  s_feb29f5c1d3af4::t_7813febb90bbdf 1-9
+src/core/modelRegistry.ts
+  s_feb29f5c1d3af4::t_8b810bb87ec962 1-66
+src/core/modelRouter.ts
+  s_feb29f5c1d3af4::t_ae605e74f9e69b 1-254
+src/core/modelSpec.ts
+  s_feb29f5c1d3af4::t_c3bf3946678dfa 1-35
+src/extractors/browser/CloakBrowser.ts
+  s_feb29f5c1d3af4::t_91cc4e2d3fffa1 1-23
+src/extractors/browser/CloakBrowserAdapter.WarmPool.ts
+  s_feb29f5c1d3af4::t_a70ebe8d7a2386 1-188
+src/extractors/browser/DomSampler.test.ts
+  s_feb29f5c1d3af4::t_57a446f556b9ee 1-295
+src/extractors/browser/DomSampler.ts
+  s_feb29f5c1d3af4::t_8ffa0c9d15e6c6 1-191
+src/extractors/browser/SpaHydrationDetector.test.ts
+  s_feb29f5c1d3af4::t_ec37fb8eb095c3 1-206
+src/extractors/browser/SpaHydrationDetector.ts
+  s_feb29f5c1d3af4::t_e58751ffbfda8e 1-231
+src/extractors/browser/WarmPoolManager.test.ts
+  s_feb29f5c1d3af4::t_03bf461a25056a 1-434
+src/extractors/browser/WarmPoolManager.ts
+  s_feb29f5c1d3af4::t_e035f85f73980f 1-410
+src/hooks/useAgent.ts
+  s_feb29f5c1d3af4::t_e8e07eae419bc5 1-140
+src/hooks/useAgentList.ts
+  s_feb29f5c1d3af4::t_5636e3e6789a66 1-62
+src/integration/adapters.integration.test.ts
+  s_feb29f5c1d3af4::t_eb108e1a2d2559 1-296
+src/integration/bookstack.integration.test.ts
+  s_feb29f5c1d3af4::t_8774c13b41a533 1-96
+src/integration/mocks/mockBookStackServer.ts
+  s_feb29f5c1d3af4::t_a944c135464d35 1-84
+src/integration/torquequery.bookstack.ingestion.test.ts
+  s_feb29f5c1d3af4::t_f40e99e1366f19 1-79
+src/lib/logger.ts
+  s_feb29f5c1d3af4::t_d53e0931dcf2b2 1-37
+src/logging/__tests__/adapterLogger.test.ts
+  s_feb29f5c1d3af4::t_28a15f66a850a2 1-40
+src/logging/adapterLogger.ts
+  s_feb29f5c1d3af4::t_acc1f601cbd686 1-47
+src/metrics/AdapterLogger.ts
+  s_feb29f5c1d3af4::t_ac043b14172ce0 1-58
+src/metrics/MetricsExporter.ts
+  s_feb29f5c1d3af4::t_46306463579328 1-186
+src/metrics/VerticalDriftDetector.test.ts
+  s_feb29f5c1d3af4::t_006a4f5e58deac 1-312
+src/metrics/VerticalDriftDetector.ts
+  s_feb29f5c1d3af4::t_6befe242a6ac60 1-235
+src/metrics/__tests__/metricsExporter.test.ts
+  s_feb29f5c1d3af4::t_f2c6ee27e02e1d 1-36
+src/mocks/agents.ts
+  s_feb29f5c1d3af4::t_76ecc24e90a9af 1-138
+src/models/claude-3.7.json
+  s_feb29f5c1d3af4::t_a065931f0f3361 1-20
+src/models/fugu-ultra.json
+  s_feb29f5c1d3af4::t_a9a086ff225a60 1-20
+src/models/fugu.json
+  s_feb29f5c1d3af4::t_58348b47f127a9 1-19
+src/models/gemini-2.0.json
+  s_feb29f5c1d3af4::t_fd34d6ef44fb0a 1-20
+src/models/glm-flash.json
+  s_feb29f5c1d3af4::t_8990b39abe0564 1-19
+src/models/gpt-4.1.json
+  s_feb29f5c1d3af4::t_67b0a82a56bbdd 1-20
+src/models/mock.json
+  s_feb29f5c1d3af4::t_9cc7fa7fa257a6 1-21
+src/models/qwen3.json
+  s_feb29f5c1d3af4::t_83f0a977f1bbb9 1-19
+src/observability/events.ts
+  s_feb29f5c1d3af4::t_bf3a13ba085af1 1-32
+src/observability/index.ts
+  s_feb29f5c1d3af4::t_a5ea6ba49565f5 1
+src/observability/metrics-endpoint.ts
+  s_feb29f5c1d3af4::t_2fa3f951dc0bb8 1-216
+src/orchestrator/adapterLoader.ts
+  s_feb29f5c1d3af4::t_2c4c97bb912aa4 1-9
+src/providers/anthropic.ts
+  s_feb29f5c1d3af4::t_507006b59d9b83 1-61
+src/providers/azureOpenAI.ts
+  s_feb29f5c1d3af4::t_6a762592d94fc1 1-53
+src/providers/google.ts
+  s_feb29f5c1d3af4::t_1568a57a649799 1-96
+src/providers/index.ts
+  s_feb29f5c1d3af4::t_0fb3aa06115672 1-7
+src/providers/local.ts
+  s_feb29f5c1d3af4::t_277e90b5d4d9e3 1-48
+src/providers/mock.ts
+  s_feb29f5c1d3af4::t_221b83cf2ded14 1-22
+src/providers/ollama.ts
+  s_feb29f5c1d3af4::t_cb100e42a33e72 1-47
+src/providers/openaiCompatible.ts
+  s_feb29f5c1d3af4::t_36cb0bfc3452d0 1-55
+src/server/MetricsServer.ts
+  s_feb29f5c1d3af4::t_7ea624263876fb 1-71
+src/server/agentsAPI.ts
+  s_feb29f5c1d3af4::t_0a7561f2782222 1-145
+src/server/consoleAPI.ts
+  s_feb29f5c1d3af4::t_8a50b6aaf9dc9b 1-67
+src/slo-controller/__tests__/canary-abort.test.ts
+  s_feb29f5c1d3af4::t_b935a920b01b5e 1-35
+src/slo-controller/__tests__/canary-rollback.test.ts
+  s_feb29f5c1d3af4::t_2fba40399b21ce 1-31
+src/slo-controller/__tests__/e2e-slo-enforcement-flow.test.ts
+  s_feb29f5c1d3af4::t_c4daf5721cadc7 1-41
+src/slo-controller/__tests__/enforcement-engine.test.ts
+  s_feb29f5c1d3af4::t_f7b98a36432431 1-84
+src/slo-controller/__tests__/rollback-timing-harness.test.ts
+  s_feb29f5c1d3af4::t_73dc9d02cc41bd 1-48
+src/slo-controller/rollback-timing-harness.ts
+  s_feb29f5c1d3af4::t_b3449e56d43f0e 1-52
+src/stories/PHASE3_TEST_PLAN.md
+  s_feb29f5c1d3af4::t_84131f0bcdc549 1-152
+src/stories/agents/AgentCard.stories.tsx
+  s_feb29f5c1d3af4::t_af190010378538 1-95
+src/stories/agents/AgentDetailPanel.stories.tsx
+  s_feb29f5c1d3af4::t_6853e6ce91947d 1-95
+src/stories/agents/AgentsPanel.stories.tsx
+  s_feb29f5c1d3af4::t_09b0658877117c 1-52
+src/stories/cic/Alert.stories.tsx
+  s_feb29f5c1d3af4::t_dbb470ad494bc8 1-64
+src/stories/cic/Button.stories.tsx
+  s_feb29f5c1d3af4::t_7649dcbc5a0cea 1-55
+src/stories/cic/Card.stories.tsx
+  s_feb29f5c1d3af4::t_1689536649710b 1-116
+src/stories/cic/Checkbox.stories.tsx
+  s_feb29f5c1d3af4::t_9f584a5926e5c7 1-58
+src/stories/cic/DensityWrapper.tsx
+  s_feb29f5c1d3af4::t_f1fb185d5d0e19 1-30
+src/stories/cic/Grid.stories.tsx
+  s_feb29f5c1d3af4::t_d30312af039acd 1-182
+src/stories/cic/Input.stories.tsx
+  s_feb29f5c1d3af4::t_565eca5a9800f2 1-69
+src/stories/cic/Panel.stories.tsx
+  s_feb29f5c1d3af4::t_fa7eec7559e148 1-108
+src/stories/cic/Row.stories.tsx
+  s_feb29f5c1d3af4::t_278fef0d5e6d56 1-118
+src/stories/cic/Table.stories.tsx
+  s_feb29f5c1d3af4::t_9eee2613e63f43 1-110
+src/stories/console-v3/ConsoleV3.stories.tsx
+  s_feb29f5c1d3af4::t_367a7b3cc0d2fa 1-72
+src/stories/utils/DarkModeWrapper.tsx
+  s_feb29f5c1d3af4::t_c5fc91c957f047 1-20
+src/tests/agentRouting.test.ts
+  s_11e6db4e871c6a::t_21ba57fdbd7957 1-20
+src/tests/auditCrossModel.test.ts
+  s_11e6db4e871c6a::t_9d5020ff8040c6 1-12
+src/tests/c-phase-harness.ts
+  s_11e6db4e871c6a::t_f144568d34bc06 1-284
+src/tests/c-phase-routing.test.ts
+  s_11e6db4e871c6a::t_fef25dc6005228 1-398
+src/tests/c-phase/QUICKSTART.md
+  s_11e6db4e871c6a::t_4ee536c706265f 1-107
+src/tests/c-phase/README.md
+  s_11e6db4e871c6a::t_ebbb68b60e19c4 1-186
+src/tests/c-phase/c01-routing-profile-determinism.test.ts
+  s_11e6db4e871c6a::t_1edc731d677b11 1-166
+src/tests/c-phase/c02-capability-filtering-determinism.test.ts
+  s_11e6db4e871c6a::t_2b9f13847c6946 1-209
+src/tests/c-phase/c03-fallback-chain-determinism.test.ts
+  s_11e6db4e871c6a::t_48117a211ab26e 1-249
+src/tests/c-phase/c04-agent-determinism.test.ts
+  s_11e6db4e871c6a::t_ef6619366cf687 1-317
+src/tests/c-phase/c05-json-ordering-determinism.test.ts
+  s_11e6db4e871c6a::t_b1759c336a18ec 1-264
+src/tests/c-phase/c06-no-hidden-nondeterminism.test.ts
+  s_11e6db4e871c6a::t_ddb3b66df8f01f 1-355
+src/tests/capabilities.test.ts
+  s_11e6db4e871c6a::t_e3fa5d0ec47a93 1-14
+src/tests/cic/Alert.test.tsx
+  s_11e6db4e871c6a::t_8404291938fc9d 1-47
+src/tests/cic/Button.test.tsx
+  s_11e6db4e871c6a::t_72ab7d9c8cea3d 1-117
+src/tests/cic/Card.test.tsx
+  s_11e6db4e871c6a::t_d6e7f8c5858358 1-124
+src/tests/cic/Checkbox.test.tsx
+  s_11e6db4e871c6a::t_43fc2b8a2eec10 1-106
+src/tests/cic/Grid.test.tsx
+  s_11e6db4e871c6a::t_2a6938c1bc6b93 1-168
+src/tests/cic/Input.test.tsx
+  s_11e6db4e871c6a::t_32c54a600e2501 1-95
+src/tests/cic/Panel.test.tsx
+  s_11e6db4e871c6a::t_7e05f45f353eba 1-139
+src/tests/cic/Row.test.tsx
+  s_11e6db4e871c6a::t_b6c58866b215a7 1-128
+src/tests/cic/Table.test.tsx
+  s_11e6db4e871c6a::t_e3f07f72147160 1-47
+src/tests/cic/__snapshots__/Card.test.tsx.snap
+  s_11e6db4e871c6a::t_9c5c6aca3840f0 1-101
+src/tests/cic/__snapshots__/Grid.test.tsx.snap
+  s_11e6db4e871c6a::t_f0c246d3bad4f0 1-115
+src/tests/cic/__snapshots__/Panel.test.tsx.snap
+  s_11e6db4e871c6a::t_41c81b8cb10762 1-213
+src/tests/cic/__snapshots__/Row.test.tsx.snap
+  s_11e6db4e871c6a::t_c8800f36f6af58 1-113
+src/tests/d-phase/d-phase-simple.test.ts
+  s_11e6db4e871c6a::t_4d4b5f0baedf52 1-74
+src/tests/d-phase/d-phase.test.ts
+  s_11e6db4e871c6a::t_dd2f947c09fb28 1-101
+src/tests/d-phase/fire-drill-harness.ts
+  s_11e6db4e871c6a::t_b92697fba9c487 1-140
+src/tests/fuguIntegration.test.ts
+  s_11e6db4e871c6a::t_880f1b537f9d3b 1-19
+src/tests/mocks/mockProvider.ts
+  s_11e6db4e871c6a::t_06494d24dc3e06 1-84
+src/tests/modelRegistry.test.ts
+  s_11e6db4e871c6a::t_dc4973423c1cde 1-14
+src/tests/modelRouter.test.ts
+  s_11e6db4e871c6a::t_ad1c4d49aee60f 1-9
+src/types/agents.ts
+  s_11e6db4e871c6a::t_a92f42e23dc085 1-71
+src/ui/console-v3/ConsoleV3.a11y.test.ts
+  s_11e6db4e871c6a::t_a94c5ecb310bff 1-217
+src/ui/console-v3/ConsoleV3.test.tsx
+  s_11e6db4e871c6a::t_b67667ecd51190 1-82
+src/ui/console-v3/ConsoleV3.tsx
+  s_11e6db4e871c6a::t_077199b497986c 1-345
+src/ui/console-v3/README.md
+  s_11e6db4e871c6a::t_a5553d6ab98b60 1-185
+src/ui/console-v3/focus-order.test.tsx
+  s_11e6db4e871c6a::t_c07cc3464800a8 1-326
+src/ui/console-v3/index.ts
+  s_11e6db4e871c6a::t_a66ff12d08af3d 1-12
+src/ui/console-v3/keyboard-shortcuts.test.tsx
+  s_11e6db4e871c6a::t_071b06a0490622 1-402
+src/ui/console-v3/keyboard-shortcuts.ts
+  s_11e6db4e871c6a::t_d59b7b41168af1 1-241
+src/ui/console-v3/live-regions.test.tsx
+  s_11e6db4e871c6a::t_8f0ead0fbd18fa 1-366
+src/ui/console-v3/live-regions.tsx
+  s_11e6db4e871c6a::t_8d30d580e878b4 1-344
+src/ui/console-v3/useConsoleAPI.ts
+  s_11e6db4e871c6a::t_0519d2ceb3e0dd 1-168
+src/utils/__tests__/idResolver.test.ts
+  s_11e6db4e871c6a::t_2bf1abececcd80 1-40
+src/utils/fetchWithAuth.ts
+  s_11e6db4e871c6a::t_c2b32da9a1c107 1-120
+src/utils/idResolver.ts
+  s_11e6db4e871c6a::t_626fbf75b9319d 1-50
+src/utils/mockOidc.ts
+  s_11e6db4e871c6a::t_d7850d8d55e6f6 1-14
+src/validation/envelope.test.ts
+  s_11e6db4e871c6a::t_49ab416134c89f 1-323
+src/validation/envelope.ts
+  s_11e6db4e871c6a::t_75e9896e7eddbd 1-56
+src/validation/guards.test.ts
+  s_11e6db4e871c6a::t_8bb9ceaaece82e 1-427
+src/validation/guards.ts
+  s_11e6db4e871c6a::t_a9bd3a4428c1ca 1-110
+src/validation/schemas.ts
+  s_11e6db4e871c6a::t_02f1f26e60985b 1-112
+src/vector/goldenQueries.json
+  s_11e6db4e871c6a::t_a873c2b4edefae 1-10
+startup.sh
+  s_11e6db4e871c6a::t_7652a886dc1e97 1-103
+test-harvest-inline.js
+  s_11e6db4e871c6a::t_0b142ebd69dab2 1-152
+test-results.txt
+  s_11e6db4e871c6a::t_ee7e2c668459c9 1-7844
+test-results/.last-run.json
+  s_11e6db4e871c6a::t_f1302155b5c1d9 1-4
+tests/snapshots/CicAlert.spec.ts
+  s_11e6db4e871c6a::t_b864a7838db147 1-28
+tests/snapshots/CicButton.spec.ts
+  s_11e6db4e871c6a::t_d0c90c847ca404 1-24
+tests/snapshots/CicInput.spec.ts
+  s_11e6db4e871c6a::t_2cf1d60b09e724 1-24
+tests/snapshots/CicPanel.spec.ts
+  s_11e6db4e871c6a::t_7b9a50e5b1eb4a 1-23
+tests/snapshots/README.md
+  s_11e6db4e871c6a::t_4595a1b4574f18 1-67
+tests/snapshots/components/alert.spec.ts
+  s_11e6db4e871c6a::t_d229b6558d6ae3 1-33
+tests/snapshots/components/button.spec.ts
+  s_11e6db4e871c6a::t_b5734becdbff56 1-28
+tests/snapshots/components/input.spec.ts
+  s_11e6db4e871c6a::t_9c030515027dcd 1-29
+tests/snapshots/components/panel.spec.ts
+  s_11e6db4e871c6a::t_a884b1d6345541 1-21
+tests/snapshots/components/table.spec.ts
+  s_11e6db4e871c6a::t_ba815bd6efb207 1-28
+tests/snapshots/pages/dashboard.spec.ts
+  s_11e6db4e871c6a::t_5a7d00cf2f9fbd 1-34
+tests/snapshots/pages/tokens.spec.ts
+  s_11e6db4e871c6a::t_daaba18fbc9395 1-29
+ui-dashboard.tsx
+  s_11e6db4e871c6a::t_478de9b38c3808 1-968
+ui-server.js
+  s_11e6db4e871c6a::t_e534ff44533a3a 1-36
+vscode-integration-REVIEW.md
+  s_11e6db4e871c6a::t_6aa146f06a5d33 1-93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "29776dc9e2b28de8731cb4db67f017ad1ebb15ae",
+  "prompts": {},
+  "sessions": {
+    "s_11e6db4e871c6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "500ba9fb-b057-4115-9e88-07595b4132f8",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_b45fc56236e596": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4834af03-ab4c-471c-9b56-1857224a1ccd",
+        "model": "unknown"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_feb29f5c1d3af4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9dfe3b0d-2f7d-4534-94eb-6eee4265d042",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
