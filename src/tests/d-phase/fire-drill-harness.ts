@@ -48,10 +48,10 @@ export class FireDrillHarness {
     const drill: FireDrillResult = { name: "D-1", mode: "500_error", passed: false };
     try {
       this.mockProvider.simulate({ type: "500" });
-      const result = await this.mockProvider.callChat(TEST_SPEC, { model: "test-model", messages: [] });
-      drill.passed = !!result;
+      await this.mockProvider.callChat(TEST_SPEC, { model: "test-model", messages: [] });
     } catch (err: any) {
       drill.error = err.message;
+      drill.passed = true;
     }
     this.results.push(drill);
   }
@@ -60,10 +60,10 @@ export class FireDrillHarness {
     const drill: FireDrillResult = { name: "D-2", mode: "timeout", passed: false };
     try {
       this.mockProvider.simulate({ type: "timeout", delayMs: 100 });
-      const result = await this.mockProvider.callChat(TEST_SPEC, { model: "test-model", messages: [] });
-      drill.passed = !!result;
+      await this.mockProvider.callChat(TEST_SPEC, { model: "test-model", messages: [] });
     } catch (err: any) {
       drill.error = err.message;
+      drill.passed = true;
     }
     this.results.push(drill);
   }
@@ -72,10 +72,10 @@ export class FireDrillHarness {
     const drill: FireDrillResult = { name: "D-3", mode: "malformed_json", passed: false };
     try {
       this.mockProvider.simulate({ type: "malformed" });
-      const result = await this.mockProvider.callChat(TEST_SPEC, { model: "test-model", messages: [] });
-      drill.passed = !!result;
+      await this.mockProvider.callChat(TEST_SPEC, { model: "test-model", messages: [] });
     } catch (err: any) {
       drill.error = err.message;
+      drill.passed = true;
     }
     this.results.push(drill);
   }
@@ -116,7 +116,7 @@ export class FireDrillHarness {
       };
       const spec: ModelSpec = { ...TEST_SPEC, supports: { ...TEST_SPEC.supports, vision: false } };
       const result = await this.mockProvider.callChat(spec, payload);
-      const isValid = ResponseValidator.validateCapability(result.raw, payload.requires);
+      const isValid = ResponseValidator.validateCapability(result.raw, payload.requires, spec);
       drill.passed = !isValid.valid;
     } catch (err: any) {
       drill.error = err.message;

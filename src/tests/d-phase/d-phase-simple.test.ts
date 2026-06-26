@@ -9,14 +9,14 @@ describe("D-Phase: Response Validator (Fire-Drill)", () => {
     mockProvider = new MockProvider();
   });
 
-  it("D-1: detects 500 errors", () => {
+  it("D-1: detects 500 errors", async () => {
     mockProvider.simulate({ type: "500" });
-    expect(() => mockProvider.callChat(null as any, null as any)).rejects.toThrow();
+    await expect(mockProvider.callChat(null as any, null as any)).rejects.toThrow();
   });
 
-  it("D-3: detects malformed JSON", () => {
+  it("D-3: detects malformed JSON", async () => {
     mockProvider.simulate({ type: "malformed" });
-    expect(() => mockProvider.callChat(null as any, null as any)).rejects.toThrow();
+    await expect(mockProvider.callChat(null as any, null as any)).rejects.toThrow();
   });
 
   it("D-4: validator rejects empty text", async () => {
@@ -48,7 +48,8 @@ describe("D-Phase: Response Validator (Fire-Drill)", () => {
       content: [{ type: "text", text: "no vision" }],
       model: "text-only-model"
     };
-    const validation = ResponseValidator.validateCapability(responseWithoutVision, { vision: true });
+    const spec = { name: "text-only", provider: "test", type: "mock" as any, env: "", apiBase: "", supports: { chat: true, toolCalls: true, vision: false, streaming: true, embeddings: true } };
+    const validation = ResponseValidator.validateCapability(responseWithoutVision, { vision: true }, spec);
     expect(validation.valid).toBe(false);
   });
 

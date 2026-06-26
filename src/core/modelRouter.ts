@@ -58,10 +58,9 @@ export class ResponseValidator {
     return { valid: true };
   }
 
-  static validateCapability(raw: any, requires?: ChatPayload["requires"]): { valid: boolean; reason?: string } {
+  static validateCapability(raw: any, requires?: ChatPayload["requires"], spec?: ModelSpec): { valid: boolean; reason?: string } {
     if (!requires) return { valid: true };
-    const returnedModel = raw.model;
-    if (requires.vision && !returnedModel?.includes("vision")) return { valid: false, reason: "No vision capability" };
+    if (requires.vision && spec?.supports?.vision === false) return { valid: false, reason: "No vision capability" };
     if (requires.toolCalls && !raw.tool_calls && !raw.choices?.[0]?.tool_calls) return { valid: false, reason: "No tool calls" };
     return { valid: true };
   }
@@ -176,7 +175,7 @@ export async function callModel(
         continue;
       }
 
-      const validCap = ResponseValidator.validateCapability(result.raw, payload.requires);
+      const validCap = ResponseValidator.validateCapability(result.raw, payload.requires, spec);
       if (!validCap.valid) {
         lastError = new ProviderError(`Capability mismatch: ${validCap.reason}`);
         continue;
