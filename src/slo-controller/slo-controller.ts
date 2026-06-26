@@ -2,15 +2,11 @@
  * SLO Controller
  * Workstream B: Implements SLO rules, burn-rate calculation, and canary integration
  *
- * TODO: Implement
- * - [ ] Load SLO rules from config
- * - [ ] Collect metrics from observability layer
- * - [ ] Calculate burn rates
- * - [ ] Trigger violations when thresholds exceeded
- * - [ ] Integrate with canary gates
+ * Wired to E-Phase enforcement engine for deterministic abort/rollback flow
  */
 
 import { SLORule, Metrics, BurnRateResult, SLOViolationEvent } from './types';
+import { enforcementIntegration } from './enforcement-integration';
 
 export class SLOController {
   private rules: Map<string, SLORule> = new Map();
