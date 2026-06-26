@@ -55,17 +55,21 @@ Key properties:
 
 **Problem:** Synchronous writes to PostgreSQL during routing decisions add latency.
 
-**Solution:** Event streaming + background ledger writer.
+**Solution:** Event streaming + background ledger writer with backpressure awareness.
 
 ```
 MAAL routing decisions (hot path)
     ↓
 Emit RoutingDecisionEvent (fingerprint, regime, constraints, accepted/overridden count)
     ↓
-In-process ring buffer (Phase 1) → PostgreSQL writer
-or Redis stream (Phase 2+, if scaling beyond 5000 events/sec)
+In-process ring buffer (Phase 1, <1000 events/sec)
+    - Monitor high-water mark (80% capacity)
+    - Set LEDGER_DEGRADED flag if buffer saturates
+    - Drop non-critical metrics if overflow imminent
     ↓
 Background process drains buffer into PostgreSQL (~1s lag)
+    ↓
+PostgreSQL ledgers (eventual consistency OK for governance)
 ```
 
 **Ledgers written asynchronously:**
@@ -73,6 +77,12 @@ Background process drains buffer into PostgreSQL (~1s lag)
 - `drift_ledger` — audit drift signals
 - `model_performance_ledger` — per-model performance
 - `cost_ledger` — cost tracking
+
+**Backpressure guardrail:**
+- When buffer crosses 80%, set LEDGER_DEGRADED flag
+- EvolutionLoop ignores training data from degraded window
+- SPLTrainingLoop down-weights trajectories from degraded periods
+- Prevents silent training on partial or biased data
 
 **Constraint:** EvolutionLoop operates on "last N minutes" of data; real-time is not required.
 
@@ -84,7 +94,7 @@ Background process drains buffer into PostgreSQL (~1s lag)
 
 **Problem:** High-dimensional context fed to SPL causes GRPO instability.
 
-**Solution:** MAAL's task fingerprinting feeds into discrete feature encoding for SPL.
+**Solution:** MAAL's task fingerprinting feeds into discrete, versioned feature encoding for SPL.
 
 ```
 MAAL input (raw context)
@@ -93,30 +103,56 @@ TaskFingerprinting outputs:
   - task_class (enum: code_fix, spec_gen, data_enrich, ...)
   - complexity_bucket (enum: low, medium, high, very_high)
   - modality (enum: code, code+image, text, multi_modal)
-  - schema_signature (enum: single_file, multi_file, multi_repo, ...)
+  - schema_signature (hash(tool_surface + MCP_version) → enum: single_file, multi_file, multi_repo, ...)
   - token_count_bucket (enum: <1K, 1-10K, 10-100K, >100K)
+  - S_t_schema_version (int, bumped when feature schema changes)
     ↓
-SPL receives compact S_t = [task_class, complexity_bucket, modality, schema_signature, token_count_bucket]
+SPL receives compact S_t = [task_class, complexity_bucket, modality, schema_signature, token_count_bucket, S_t_schema_version]
 ```
 
-**Benefit:** Small, discrete state space for SPL; fast GRPO convergence; interpretable policy behavior.
+**Feature evolution (versioning):**
+- Maintain S_t_schema_version to track feature schema changes
+- When bucket boundaries change or features are added/removed, bump version
+- SPLTrainingLoop can:
+  - Train per-version (isolated policy versions)
+  - Explicitly map old versions to new (cross-version compatibility)
+- Keeps discrete state space evolution-aware, not frozen
+- MCP/tool version changes tracked via schema_signature hash
+
+**Benefit:** Small, discrete state space for SPL; fast GRPO convergence; interpretable policy behavior; feature evolution traceable.
 
 ---
 
 ### 3.3 Offline Simulation Harness (Validate GRPO before live integration)
 
-**Problem:** Reward-shaping bugs discovered in live CIC are expensive.
+**Problem:** Reward-shaping bugs discovered in live CIC are expensive. SPL inference latency could break MAAL routing.
 
-**Solution:** Validate GRPO with synthetic trajectories before Phase 3 live integration.
+**Solution:** Validate GRPO offline with synthetic trajectories. Bound SPL inference with deterministic fallback.
 
 **Harness (Phase 2):**
 - Generate ~10,000 synthetic trajectories matching real MAAL/CIC distributions
 - Each: (S_t, A_t, V_t, X_t, R_t) with controlled correctness/cost/drift/override rates
-- Train SPLPolicy offline, vary reward weights (α, β, γ, δ, ε)
+- Train SPLPolicy offline with validation assertions:
+  - assert policy_converges_within_10k_steps()
+  - assert drift_score_decreases_monotonically()
+  - assert cost_constraints_respected()
+  - assert policy_remains_stable_when_reward_weights_shift_10_percent()
 - Check convergence, stability, sensitivity to weight changes
 - Validate policy learns task_class-specific strategies
+- Measure SPL.proposeScaffold() latency (target: <50ms)
 
-**Outcome:** Ship SPL with proven-stable training loop; white-paper-grade validation.
+**SPL inference latency guardrail (Phase 1/2):**
+- Optional in early phases (can disable SPL entirely; MAAL routes statically)
+- Hard cap: 50ms per scaffold proposal
+- If inference exceeds cap, MAAL deterministically falls back to static routing
+- Prevents latency cascade; always has escape hatch
+
+**Reward weight sensitivity check (Phase 2):**
+- assert policy_remains_stable_when_reward_weights_shift_10_percent()
+- Ensures policy isn't hypersensitive to small α, β, γ, δ, ε changes
+- Validates robustness for production deployment
+
+**Outcome:** Ship SPL with proven-stable training loop, bounded latency, weight robustness; white-paper-grade validation.
 
 ---
 
