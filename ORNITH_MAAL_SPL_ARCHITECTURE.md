@@ -49,7 +49,78 @@ Key properties:
 
 ---
 
-## 3. MAAL Routing Plane (cic-os/src/core/maal/)
+## 3. Strategic Architectural Refinements
+
+### 3.1 Async Event Ledgers (Decouple ledger I/O from hot path)
+
+**Problem:** Synchronous writes to PostgreSQL during routing decisions add latency.
+
+**Solution:** Event streaming + background ledger writer.
+
+```
+MAAL routing decisions (hot path)
+    ↓
+Emit RoutingDecisionEvent (fingerprint, regime, constraints, accepted/overridden count)
+    ↓
+In-process ring buffer (Phase 1) → PostgreSQL writer
+or Redis stream (Phase 2+, if scaling beyond 5000 events/sec)
+    ↓
+Background process drains buffer into PostgreSQL (~1s lag)
+```
+
+**Ledgers written asynchronously:**
+- `routing_history` — all decisions + outcomes
+- `drift_ledger` — audit drift signals
+- `model_performance_ledger` — per-model performance
+- `cost_ledger` — cost tracking
+
+**Constraint:** EvolutionLoop operates on "last N minutes" of data; real-time is not required.
+
+**Benefit:** MAAL routing latency not blocked by I/O.
+
+---
+
+### 3.2 Discrete S_t Feature Space (Stabilize downstream GRPO)
+
+**Problem:** High-dimensional context fed to SPL causes GRPO instability.
+
+**Solution:** MAAL's task fingerprinting feeds into discrete feature encoding for SPL.
+
+```
+MAAL input (raw context)
+    ↓
+TaskFingerprinting outputs:
+  - task_class (enum: code_fix, spec_gen, data_enrich, ...)
+  - complexity_bucket (enum: low, medium, high, very_high)
+  - modality (enum: code, code+image, text, multi_modal)
+  - schema_signature (enum: single_file, multi_file, multi_repo, ...)
+  - token_count_bucket (enum: <1K, 1-10K, 10-100K, >100K)
+    ↓
+SPL receives compact S_t = [task_class, complexity_bucket, modality, schema_signature, token_count_bucket]
+```
+
+**Benefit:** Small, discrete state space for SPL; fast GRPO convergence; interpretable policy behavior.
+
+---
+
+### 3.3 Offline Simulation Harness (Validate GRPO before live integration)
+
+**Problem:** Reward-shaping bugs discovered in live CIC are expensive.
+
+**Solution:** Validate GRPO with synthetic trajectories before Phase 3 live integration.
+
+**Harness (Phase 2):**
+- Generate ~10,000 synthetic trajectories matching real MAAL/CIC distributions
+- Each: (S_t, A_t, V_t, X_t, R_t) with controlled correctness/cost/drift/override rates
+- Train SPLPolicy offline, vary reward weights (α, β, γ, δ, ε)
+- Check convergence, stability, sensitivity to weight changes
+- Validate policy learns task_class-specific strategies
+
+**Outcome:** Ship SPL with proven-stable training loop; white-paper-grade validation.
+
+---
+
+## 4. MAAL Routing Plane (cic-os/src/core/maal/)
 
 ### 3.1 TaskFingerprinting.ts
 
