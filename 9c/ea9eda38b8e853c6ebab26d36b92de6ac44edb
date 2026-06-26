@@ -1,0 +1,30 @@
+src/tests/d-phase/d-phase-simple.test.ts
+  s_feb29f5c1d3af4::t_2b85db5e5fbd6c 51-52
+  s_feb29f5c1d3af4::t_e1f11eed7ffb7d 12,14,17,19
+src/core/modelRouter.ts
+  s_feb29f5c1d3af4::t_09649559dc8a12 178
+  s_feb29f5c1d3af4::t_fb0633e571a7e0 61,63
+src/tests/mocks/mockProvider.ts
+  s_feb29f5c1d3af4::t_d961f3295f6de8 33
+src/tests/d-phase/fire-drill-harness.ts
+  s_feb29f5c1d3af4::t_e06d6d2906e6db 63,66
+  s_feb29f5c1d3af4::t_775ba74c4684ae 51,54
+  s_feb29f5c1d3af4::t_ab5ff69be3a79c 75,78
+  s_feb29f5c1d3af4::t_5765561baa8226 119
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "9cea9eda38b8e853c6ebab26d36b92de6ac44edb",
+  "prompts": {},
+  "sessions": {
+    "s_feb29f5c1d3af4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9dfe3b0d-2f7d-4534-94eb-6eee4265d042",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
