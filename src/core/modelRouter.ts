@@ -241,9 +241,10 @@ async function callWithTimeout(
 }
 
 function buildFallbackChain(primaryModel: string): string[] {
+  const isLocal = process.env.MAAL_MODE === "local";
   const profile = {
     preferredModels: [primaryModel],
-    fallbackModels: ["claude-opus-4-1", "claude-sonnet-4-5", "gpt-4-turbo"]
+    fallbackModels: isLocal ? ["mock"] : ["claude-3.7", "gpt-4.1", "fugu", "mock"]
   };
   return [
     ...new Set([

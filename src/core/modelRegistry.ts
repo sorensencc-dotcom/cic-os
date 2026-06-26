@@ -7,7 +7,7 @@ const modelsBasePath = process.env.NODE_ENV === "test"
   ? path.join(process.cwd(), "src")
   : path.join(process.cwd(), "src");
 
-const MODELS_DIR = path.join(modelsBasePath, "..", "models");
+const MODELS_DIR = path.join(modelsBasePath, "models");
 
 let registry: Map<string, ModelSpec> | null = null;
 
