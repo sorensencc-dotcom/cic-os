@@ -7,7 +7,7 @@ export class EnforcementIntegration {
   private sloController: SLOController;
   private enforcementEngine: EnforcementEngine;
   private evaluationIntervalMs = 1000;
-  private evaluationTimer: NodeJS.Timer | null = null;
+  private evaluationTimer: any = null;
 
   constructor() {
     this.sloController = new SLOController();

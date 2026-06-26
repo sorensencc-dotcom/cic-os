@@ -1,5 +1,7 @@
 import { EnforcementEngine } from '../enforcement-engine';
 import { SLOController } from '../slo-controller';
+import * as canaryAbort from '../canary-abort';
+import * as canaryRollback from '../canary-rollback';
 
 jest.mock('../slo-controller');
 jest.mock('../canary-abort');
@@ -10,8 +12,18 @@ describe('EnforcementEngine', () => {
   let controller: jest.Mocked<SLOController>;
 
   beforeEach(() => {
+    jest.clearAllMocks();
     controller = new SLOController() as jest.Mocked<SLOController>;
     engine = new EnforcementEngine(controller);
+
+    // Setup default mocks
+    (canaryAbort.triggerCanaryAbort as jest.Mock).mockResolvedValue(undefined);
+    (canaryRollback.executeCanaryRollback as jest.Mock).mockResolvedValue({
+      success: true,
+      previousVersion: 'v1.0.0',
+      completeMs: 150,
+      rolledBackAt: Date.now(),
+    });
   });
 
   test('enforce returns none when no violations', async () => {
