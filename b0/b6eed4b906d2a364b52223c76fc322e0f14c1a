@@ -1,0 +1,37 @@
+src/slo-controller/enforcement-engine.ts
+  s_11e6db4e871c6a::t_3edf34cc6d9574 1-70
+src/slo-controller/canary-abort.ts
+  s_11e6db4e871c6a::t_46d2e4be58e173 1-30
+src/slo-controller/__tests__/enforcement-engine.test.ts
+  s_11e6db4e871c6a::t_fad896eac21533 1-72
+src/slo-controller/__tests__/canary-abort.test.ts
+  s_11e6db4e871c6a::t_98f302b423d822 1-35
+src/slo-controller/index.ts
+  s_11e6db4e871c6a::t_e99b5eefe5a352 1-7
+src/slo-controller/slo-controller.ts
+  s_11e6db4e871c6a::t_88a47018d73d22 5,9
+src/slo-controller/__tests__/canary-rollback.test.ts
+  s_11e6db4e871c6a::t_7dbdfec2fa8a16 1-31
+src/slo-controller/canary-rollback.ts
+  s_11e6db4e871c6a::t_72c89635a9f3b8 1-52
+src/slo-controller/canary-signals.ts
+  s_11e6db4e871c6a::t_32312668d8595b 1-28
+src/slo-controller/__tests__/e2e-slo-enforcement-flow.test.ts
+  s_11e6db4e871c6a::t_cad31ab1f8ab16 1-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "b0b6eed4b906d2a364b52223c76fc322e0f14c1a",
+  "prompts": {},
+  "sessions": {
+    "s_11e6db4e871c6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "500ba9fb-b057-4115-9e88-07595b4132f8",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
