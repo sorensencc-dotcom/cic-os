@@ -1,0 +1,103 @@
+src/autonomy/firedrills/scenario-b-error-rate-drift.ts
+  s_11e6db4e871c6a::t_84141ad84d3284 1-50
+src/autonomy/firedrills/burnrate-spike-generator.ts
+  s_feb29f5c1d3af4::t_48c954d8fc3db3 1-74
+jest.config.js
+  s_11e6db4e871c6a::t_a23ef3227f16c2 1,3-25,28-29,31-34,36-37,39-41,43-48,50
+  s_11e6db4e871c6a::t_4a5934212270af 49,51-55
+src/slo-controller/__tests__/e2e-enforcement-flow.test.ts
+  s_feb29f5c1d3af4::t_28aa142100203f 1-122
+src/slo-controller/__tests__/slo-controller.test.ts
+  s_feb29f5c1d3af4::t_32a13b066e7824 1-185
+src/slo-controller/__tests__/enforcement-integration.test.ts
+  s_feb29f5c1d3af4::t_608ca1a584d4c4 1-103
+src/autonomy/firedrills/__tests__/scenario-b-burnrate-spike.test.ts
+  s_feb29f5c1d3af4::t_ff100ad7538831 1-79
+src/autonomy/firedrills/__tests__/burnrate-spike-generator.test.ts
+  s_feb29f5c1d3af4::t_3b38da535fec48 1-143
+src/autonomy/firedrills/scenario-b-saturation.ts
+  s_11e6db4e871c6a::t_c99e02f81ad6ac 1-50
+src/autonomy/firedrills/scenario-b-burnrate-spike.ts
+  s_feb29f5c1d3af4::t_6c829e619a8794 1-70
+src/autonomy/firedrills/scenario-b-latency-regression.ts
+  s_11e6db4e871c6a::t_cb139ddf538411 1-49
+src/autonomy/firedrills/__tests__/wsb-runner.test.ts
+  s_11e6db4e871c6a::t_7d59b1cfb3d9f8 16
+  s_11e6db4e871c6a::t_6d760eed2f72a2 1-15,17-195
+src/autonomy/firedrills/wsb-runner.ts
+  s_11e6db4e871c6a::t_66a9d6b3e7b1a5 1-205
+ops/artifacts/wsb-report-template.json
+  s_11e6db4e871c6a::t_a8c38fc6a4e655 1-47
+cic-os/scripts/code-review.js
+  s_10803700c7fcba::t_61aa02d34dff8c 1-199
+cic-os/scripts/generate-docs.js
+  s_10803700c7fcba::t_53f3dbb8b0cdec 1-219
+cic-os/scripts/shared-utils.js
+  s_10803700c7fcba::t_fea5fe1056b836 1-71
+deploy-native-precommit.cjs
+  s_c94c9880cc28e6::t_209adcc0f618f1 1-74
+jest.config.js.bak
+  s_b45fc56236e596::t_2a86b21fb04562 2-3,32-39,41,54-55
+scripts/canary-gates.ts
+  s_11e6db4e871c6a::t_e0f05d9de8021d 141-202,204-207
+src/slo-controller/enforcement-engine.ts
+  s_feb29f5c1d3af4::t_a4ee0c32371d8b 1-4
+src/slo-controller/enforcement-integration.ts
+  s_feb29f5c1d3af4::t_eb9e5d7d47a831 1-4,7
+src/slo-controller/index.ts
+  s_feb29f5c1d3af4::t_3c040ad4142388 1-7
+src/slo-controller/slo-controller.ts
+  s_feb29f5c1d3af4::t_08e43e48b5d3a3 8-14,105-115,118-119
+src/slo-controller/types.ts
+  s_11e6db4e871c6a::t_85c00e9dfdeceb 9-12,16,29,45,49,55
+src/tests/c-phase/stress-determinism.ts
+  s_b45fc56236e596::t_dd5c073d62e68e 1-146
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "0427a75696344dd4a39ed8424c28006c5384f445",
+  "prompts": {},
+  "sessions": {
+    "s_10803700c7fcba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "45ab3f3c-7556-4cff-a7e7-250f36c3a430",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_11e6db4e871c6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "500ba9fb-b057-4115-9e88-07595b4132f8",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_b45fc56236e596": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4834af03-ab4c-471c-9b56-1857224a1ccd",
+        "model": "unknown"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_c94c9880cc28e6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "43b76c2f-253a-4322-9348-05b84ffe0098",
+        "model": "unknown"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_feb29f5c1d3af4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9dfe3b0d-2f7d-4534-94eb-6eee4265d042",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
