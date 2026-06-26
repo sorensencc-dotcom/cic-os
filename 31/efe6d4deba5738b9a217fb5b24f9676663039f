@@ -1,0 +1,63 @@
+src/autonomy/firedrills/scenario-b-error-rate-drift.ts
+  s_11e6db4e871c6a::t_5102007dadc432 28,30-32
+  s_11e6db4e871c6a::t_78e40b08b16678 36
+canary-report-B-1782502007330.json
+  s_11e6db4e871c6a::t_4eec90cfc074bf 1-40
+src/autonomy/firedrills/scenario-b-burnrate-spike.ts
+  s_11e6db4e871c6a::t_381d4e389c5fd5 42-44,46-49,52-53
+  s_11e6db4e871c6a::t_cd728eb8d8d165 41
+src/autonomy/firedrills/wsb-runner.ts
+  s_11e6db4e871c6a::t_d46eb791d43525 12-13
+  s_11e6db4e871c6a::t_31d383a4c755e9 51-55,65-66,68,72-73
+  s_11e6db4e871c6a::t_2f104f390a3b22 60
+  s_11e6db4e871c6a::t_097467fd37d353 48-50,56-59,61-64,67,69-71,74,77-82,88-89
+  s_11e6db4e871c6a::t_4c09cc78dfb3d0 75-76
+  s_11e6db4e871c6a::t_e1eeb0acfd11a1 90
+src/autonomy/firedrills/scenario-b-latency-regression.ts
+  s_11e6db4e871c6a::t_b7a4bb70fc0cbc 28,30-31
+  s_11e6db4e871c6a::t_27000ddf759de6 35
+canary-report-B-1782502033667.json
+  s_11e6db4e871c6a::t_9bb6897590ce86 1-40
+src/autonomy/firedrills/__tests__/scenario-b-burnrate-spike.test.ts
+  s_11e6db4e871c6a::t_3c49ab0c71a3d4 46
+canary-report-B-1782501748401.json
+  s_11e6db4e871c6a::t_268f61c2204cbd 1-40
+src/autonomy/firedrills/burnrate-spike-generator.ts
+  s_11e6db4e871c6a::t_cd8e652103d665 19
+src/autonomy/firedrills/scenario-b-saturation.ts
+  s_11e6db4e871c6a::t_ae6841f56e4d5b 36
+canary-report-B-1782501897659.json
+  s_11e6db4e871c6a::t_14eb742679683f 1-40
+canary-report-B-1782501957805.json
+  s_11e6db4e871c6a::t_1177b8562fa172 1-40
+canary-report-B-1782501564506.json
+  s_11e6db4e871c6a::t_4a24056b6689d2 1-40
+src/slo-controller/enforcement-engine.ts
+  s_11e6db4e871c6a::t_a7b012cf2d648c 20-21
+src/slo-controller/slo-controller.ts
+  s_feb29f5c1d3af4::t_254ccc887bbf9b 39-40,47-57,60-64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "31efe6d4deba5738b9a217fb5b24f9676663039f",
+  "prompts": {},
+  "sessions": {
+    "s_11e6db4e871c6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "500ba9fb-b057-4115-9e88-07595b4132f8",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_feb29f5c1d3af4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9dfe3b0d-2f7d-4534-94eb-6eee4265d042",
+        "model": "unknown"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
