@@ -84,6 +84,7 @@ export const googleProvider: Provider = {
     return {
       raw: json,
       text,
+      model: spec.name,
       tokensUsed: json.usageMetadata
         ? {
             input: json.usageMetadata.promptTokenCount ?? 0,

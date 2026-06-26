@@ -36,6 +36,7 @@ export const localProvider: Provider = {
     return {
       raw: json,
       text,
+      model: spec.name,
       tokensUsed: json.usage
         ? {
             input: json.usage.prompt_tokens ?? 0,

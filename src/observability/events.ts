@@ -1,5 +1,5 @@
 export interface EventPayload {
-  eventName: "MODEL_CALL_START" | "MODEL_CALL_SUCCESS" | "MODEL_CALL_FAILURE" | "AUDIT_COMPARISON";
+  eventName: "MODEL_CALL_START" | "MODEL_CALL_SUCCESS" | "MODEL_CALL_FAILURE" | "MODEL_CALL_EXHAUSTED" | "AUDIT_COMPARISON";
   model?: string;
   latencyMs?: number;
   tokensUsed?: { input: number; output: number };
@@ -8,6 +8,7 @@ export interface EventPayload {
   primaryModel?: string;
   secondaryModel?: string;
   score?: number;
+  fallback?: boolean;
   [key: string]: any;
 }
 

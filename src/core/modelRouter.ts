@@ -33,10 +33,38 @@ export interface ChatResult {
     input: number;
     output: number;
   };
+  model: string;
+  fallbackUsed?: boolean;
 }
 
 export interface Provider {
   callChat(spec: ModelSpec, payload: ChatPayload): Promise<ChatResult>;
+}
+
+export interface RouterConfig {
+  providerTimeoutMs?: number;
+  driftThresholdPct?: number;
+}
+
+export class ResponseValidator {
+  static validateStructure(raw: any): { valid: boolean; reason?: string } {
+    if (!raw || typeof raw !== "object") return { valid: false, reason: "Not an object" };
+    if (!("content" in raw) && !("choices" in raw)) return { valid: false, reason: "Missing content/choices" };
+    return { valid: true };
+  }
+
+  static validateText(text: string): { valid: boolean; reason?: string } {
+    if (!text || text.trim().length === 0) return { valid: false, reason: "Empty response" };
+    return { valid: true };
+  }
+
+  static validateCapability(raw: any, requires?: ChatPayload["requires"]): { valid: boolean; reason?: string } {
+    if (!requires) return { valid: true };
+    const returnedModel = raw.model;
+    if (requires.vision && !returnedModel?.includes("vision")) return { valid: false, reason: "No vision capability" };
+    if (requires.toolCalls && !raw.tool_calls && !raw.choices?.[0]?.tool_calls) return { valid: false, reason: "No tool calls" };
+    return { valid: true };
+  }
 }
 
 export class ModelRouter {
@@ -109,43 +137,118 @@ const providers: Record<ModelSpec["type"], Provider> = {
 
 export async function callModel(
   payload: ChatPayload,
-  agentName: string = "UnknownAgent"
+  agentName: string = "UnknownAgent",
+  config: RouterConfig = {}
 ): Promise<ChatResult> {
-  const spec = getModelSpec(payload.model);
-  const provider = providers[spec.type];
-  if (!provider) {
-    throw new ProviderError(`No provider for type: ${spec.type}`);
+  const timeoutMs = config.providerTimeoutMs ?? 30000;
+  const startTime = Date.now();
+
+  const fallbackModels = buildFallbackChain(payload.model);
+  let lastError: Error | null = null;
+
+  for (const modelName of fallbackModels) {
+    try {
+      const spec = getModelSpec(modelName);
+      const provider = providers[spec.type];
+      if (!provider) {
+        lastError = new ProviderError(`No provider for type: ${spec.type}`);
+        continue;
+      }
+
+      logEvent({
+        eventName: "MODEL_CALL_START",
+        model: spec.name,
+        agent: agentName,
+        fallback: modelName !== payload.model
+      });
+
+      const result = await callWithTimeout(provider, spec, payload, timeoutMs);
+
+      const validStructure = ResponseValidator.validateStructure(result.raw);
+      if (!validStructure.valid) {
+        lastError = new ProviderError(`Invalid response structure: ${validStructure.reason}`);
+        continue;
+      }
+
+      const validText = ResponseValidator.validateText(result.text);
+      if (!validText.valid) {
+        lastError = new ProviderError(`Invalid text: ${validText.reason}`);
+        continue;
+      }
+
+      const validCap = ResponseValidator.validateCapability(result.raw, payload.requires);
+      if (!validCap.valid) {
+        lastError = new ProviderError(`Capability mismatch: ${validCap.reason}`);
+        continue;
+      }
+
+      const latencyMs = Date.now() - startTime;
+      logEvent({
+        eventName: "MODEL_CALL_SUCCESS",
+        model: spec.name,
+        agent: agentName,
+        latencyMs,
+        tokensUsed: result.tokensUsed,
+        fallback: modelName !== payload.model
+      });
+
+      return {
+        ...result,
+        model: spec.name,
+        fallbackUsed: modelName !== payload.model
+      };
+    } catch (err: any) {
+      lastError = err;
+      const latencyMs = Date.now() - startTime;
+      logEvent({
+        eventName: "MODEL_CALL_FAILURE",
+        model: modelName,
+        agent: agentName,
+        latencyMs,
+        error: err.message ?? String(err),
+        fallback: modelName !== payload.model
+      });
+    }
   }
 
+  const latencyMs = Date.now() - startTime;
   logEvent({
-    eventName: "MODEL_CALL_START",
-    model: spec.name,
-    agent: agentName
+    eventName: "MODEL_CALL_EXHAUSTED",
+    primaryModel: payload.model,
+    agent: agentName,
+    latencyMs,
+    error: lastError?.message ?? "Unknown error"
   });
 
-  const startTime = Date.now();
-  try {
-    const result = await provider.callChat(spec, payload);
-    const latencyMs = Date.now() - startTime;
+  throw lastError ?? new RoutingError(`All fallback models exhausted for ${payload.model}`);
+}
 
-    logEvent({
-      eventName: "MODEL_CALL_SUCCESS",
-      model: spec.name,
-      agent: agentName,
-      latencyMs,
-      tokensUsed: result.tokensUsed
-    });
+async function callWithTimeout(
+  provider: Provider,
+  spec: ModelSpec,
+  payload: ChatPayload,
+  timeoutMs: number
+): Promise<ChatResult> {
+  return Promise.race([
+    provider.callChat(spec, payload),
+    new Promise<ChatResult>((_, reject) =>
+      setTimeout(
+        () => reject(new ProviderError(`Timeout after ${timeoutMs}ms`)),
+        timeoutMs
+      )
+    )
+  ]);
+}
 
-    return result;
-  } catch (err: any) {
-    const latencyMs = Date.now() - startTime;
-    logEvent({
-      eventName: "MODEL_CALL_FAILURE",
-      model: spec.name,
-      agent: agentName,
-      latencyMs,
-      error: err.message ?? String(err)
-    });
-    throw err;
-  }
+function buildFallbackChain(primaryModel: string): string[] {
+  const profile = {
+    preferredModels: [primaryModel],
+    fallbackModels: ["claude-opus-4-1", "claude-sonnet-4-5", "gpt-4-turbo"]
+  };
+  return [
+    ...new Set([
+      ...profile.preferredModels,
+      ...profile.fallbackModels
+    ])
+  ];
 }

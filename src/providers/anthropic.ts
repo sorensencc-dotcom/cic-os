@@ -49,6 +49,7 @@ export const anthropicProvider: Provider = {
     return {
       raw: json,
       text,
+      model: spec.name,
       tokensUsed: json.usage
         ? {
             input: json.usage.input_tokens ?? 0,

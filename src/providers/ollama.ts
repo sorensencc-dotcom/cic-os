@@ -37,6 +37,7 @@ export const ollamaProvider: Provider = {
     return {
       raw: json,
       text,
+      model: spec.name,
       tokensUsed: {
         input: json.prompt_eval_count ?? 0,
         output: json.eval_count ?? 0
