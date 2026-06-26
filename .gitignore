@@ -4,6 +4,11 @@
 .vscode/
 .idea/
 
+# Environment
+.env
+.env.local
+.env.*.local
+
 # Build & test artifacts
 node_modules/
 dist/
@@ -12,11 +17,14 @@ coverage/
 *.log
 eval/
 safety/
+.next/
+out/
+.cache/
+*.tsbuildinfo
 
-# Environment
-.env
-.env.local
-.env.*.local
+# Dependencies
+package-lock.json
+yarn.lock
 
 # OS
 .DS_Store
@@ -24,3 +32,31 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Logs & temp
+logs/
+tmp/
+temp/
+
+# Docker
+docker-compose.override.yml
+
+# Workspace config
+.github/
+.husky/
+
+# Generated
+.nyc_output/
+build-report.json
+build-metrics.jsonl
+build-audit.log
+
+# Nested Git Repos (workspace projects)
+CIP/
+charlie-deep-research/
+cic/
+cic-ingestion/
+claude-configs/
+claude-skills/
+financeos/
+rewrite-mcp/

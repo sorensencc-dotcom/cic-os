@@ -1,0 +1,14 @@
+apiVersion: v2
+name: cic-os
+description: CIC OS v1.0 — governed, deterministic, multi-agent intelligence runtime
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - intelligence
+  - agents
+  - governance
+  - ml-ops
+maintainers:
+  - name: Chris Sorensen
+    email: sorensencc@gmail.com

@@ -1,0 +1,559 @@
+{
+  "version": "0.1.0",
+  "scan_date": "2026-06-19",
+  "scan_root": "/c/dev",
+  "servers": [
+    {
+      "name": "Planning Engine",
+      "port": 3114,
+      "path": "/c/dev/cic/src/planning/server.ts",
+      "entry": "dist/planning/server.js",
+      "type": "express",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT",
+        "VAULT_URL",
+        "MEMORY_STORE_URL"
+      ]
+    },
+    {
+      "name": "CIC Ingestion (Autonomy API Server)",
+      "port": 3116,
+      "path": "/c/dev/cic-ingestion/src/server.ts",
+      "entry": "dist/cic-ingestion/src/autonomy/AutonomyAPIServer.js",
+      "type": "express",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT",
+        "VAULT_URL",
+        "MEMORY_STORE_URL",
+        "QDRANT_URL"
+      ]
+    },
+    {
+      "name": "Harvester v2",
+      "port": 3115,
+      "path": "/c/dev/cic-ingestion/src/harvester/v2/server.ts",
+      "entry": "dist/src/harvester/v2/server.js",
+      "type": "express",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT",
+        "VAULT_URL",
+        "MEMORY_STORE_URL",
+        "PLANNING_ENGINE_URL"
+      ]
+    },
+    {
+      "name": "Unified API",
+      "port": 3100,
+      "path": "/c/dev/services/unified-api/src/server.ts",
+      "entry": "dist/server.js",
+      "type": "express",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "UNIFIED_API_PORT",
+        "TORQUEQUERY_URL",
+        "VAULT_URL",
+        "REPOMIX_URL",
+        "GOVERNANCE_URL",
+        "PLANNING_ENGINE_URL",
+        "HARVESTER_V2_URL",
+        "PLANNING_CONSOLE_URL"
+      ]
+    },
+    {
+      "name": "TorqueQuery",
+      "port": 3110,
+      "path": "/c/dev/services/torquequery/src/server.ts",
+      "entry": "N/A (Python/FastAPI)",
+      "type": "fastapi",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT",
+        "OLLAMA_HOST",
+        "HF_HUB_DISABLE_SYMLINKS_WARNING",
+        "HF_HUB_OFFLINE",
+        "TRANSFORMERS_OFFLINE",
+        "CUDA_VISIBLE_DEVICES"
+      ]
+    },
+    {
+      "name": "Vault",
+      "port": 3111,
+      "path": "/c/dev/services/vault/src/server.ts",
+      "entry": "dist/server.js",
+      "type": "express",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT",
+        "VAULT_SECRET_KEY"
+      ]
+    },
+    {
+      "name": "Knowledge Graph",
+      "port": 3107,
+      "path": "/c/dev/services/knowledge-graph/src/api/server.ts",
+      "entry": "dist/api/server.js",
+      "type": "express",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "KG_PORT"
+      ]
+    },
+    {
+      "name": "Repomix Ingestion",
+      "port": 3112,
+      "path": "/c/dev/services/repomix-ingestion/src/index.ts",
+      "entry": "dist/index.js",
+      "type": "express",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT"
+      ]
+    },
+    {
+      "name": "CIC Governance",
+      "port": 3113,
+      "path": "/c/dev/services/cic-governance/Dockerfile",
+      "entry": "dist/index.js",
+      "type": "express",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT"
+      ]
+    },
+    {
+      "name": "Build Executor",
+      "port": 3101,
+      "path": "/c/dev/build-system/docker/Dockerfile.build-executor",
+      "entry": "N/A",
+      "type": "service",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "BUILD_PHASE",
+        "PORT",
+        "REDIS_URL",
+        "LINEAGE_URL",
+        "ROUTING_URL"
+      ]
+    },
+    {
+      "name": "Lineage Registry",
+      "port": 3102,
+      "path": "/c/dev/build-system/docker/Dockerfile.lineage-registry",
+      "entry": "N/A",
+      "type": "service",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT",
+        "DB_HOST",
+        "DB_PORT",
+        "DB_NAME",
+        "DB_USER",
+        "DB_PASSWORD"
+      ]
+    },
+    {
+      "name": "Routing Validator",
+      "port": 3103,
+      "path": "/c/dev/build-system/docker/Dockerfile.routing-validator",
+      "entry": "N/A",
+      "type": "service",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT",
+        "OPA_ENABLED"
+      ]
+    },
+    {
+      "name": "Build Orchestrator",
+      "port": 3104,
+      "path": "/c/dev/build-system/docker/Dockerfile.orchestrator",
+      "entry": "N/A",
+      "type": "service",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "BUILD_PHASE",
+        "PORT",
+        "REDIS_URL",
+        "BUILD_EXECUTOR_URL",
+        "LINEAGE_URL",
+        "ROUTING_URL",
+        "PERFORMANCE_STORE_URL",
+        "NEMOTRON_URL",
+        "NIM_GATEWAY_URL",
+        "GIT_SHA"
+      ]
+    },
+    {
+      "name": "Performance Store",
+      "port": 3105,
+      "path": "/c/dev/build-system/docker/Dockerfile.performance-store",
+      "entry": "N/A",
+      "type": "service",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT"
+      ]
+    },
+    {
+      "name": "Predictive Routing Engine",
+      "port": 3106,
+      "path": "/c/dev/build-system/docker/Dockerfile.predictive-routing-engine",
+      "entry": "N/A",
+      "type": "service",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "PORT",
+        "PERFORMANCE_STORE_URL"
+      ]
+    },
+    {
+      "name": "Planning Console (React UI)",
+      "port": 3200,
+      "path": "/c/dev/rewrite-mcp/Dockerfile.planning-console",
+      "entry": "N/A (React)",
+      "type": "react",
+      "env_vars": [
+        "NODE_ENV",
+        "LOG_LEVEL",
+        "REACT_APP_PLANNING_ENGINE_URL",
+        "REACT_APP_GOVERNANCE_URL",
+        "REACT_APP_VAULT_URL"
+      ]
+    },
+    {
+      "name": "Memory Spine MCP",
+      "port": null,
+      "path": "/c/dev/castironforge/services/memory-spine/src/mcp/server.ts",
+      "entry": "dist/mcp/server.js",
+      "type": "mcp",
+      "env_vars": []
+    },
+    {
+      "name": "Executive Intelligence Engine (MCP)",
+      "port": null,
+      "path": "/c/dev/rewrite-mcp/projects/cic/ingestion/mcp-servers/executive-intelligence-engine/src/server.js",
+      "entry": "src/server.js",
+      "type": "mcp",
+      "env_vars": []
+    },
+    {
+      "name": "Helm Server Tool",
+      "port": null,
+      "path": "/c/dev/rewrite-mcp/tools/helm/server.ts",
+      "entry": "dist/server.js",
+      "type": "service",
+      "env_vars": []
+    },
+    {
+      "name": "Prompt Telemetry Tool",
+      "port": null,
+      "path": "/c/dev/rewrite-mcp/tools/prompt-telemetry/server.js",
+      "entry": "tools/prompt-telemetry/server.js",
+      "type": "service",
+      "env_vars": []
+    }
+  ],
+  "dashboards": [
+    {
+      "name": "CIC Ingestion Dashboards",
+      "path": "/c/dev/cic-ingestion/dashboards",
+      "framework": "static",
+      "routes": [],
+      "data_sources": [
+        "http://torquequery:3110",
+        "http://vault:3111"
+      ]
+    },
+    {
+      "name": "Operator Console (Legacy)",
+      "path": "/c/dev/rewrite-mcp/archive/operator-console-legacy",
+      "framework": "other",
+      "routes": [],
+      "data_sources": []
+    },
+    {
+      "name": "Planning Console (React)",
+      "path": "/c/dev/rewrite-mcp",
+      "framework": "react",
+      "routes": [
+        "/",
+        "/planning",
+        "/governance",
+        "/vault"
+      ],
+      "data_sources": [
+        "http://localhost:3114",
+        "http://localhost:3113",
+        "http://localhost:3111"
+      ]
+    },
+    {
+      "name": "Operator UI",
+      "path": "/c/dev/rewrite-mcp/apps/operator-ui",
+      "framework": "react",
+      "routes": [
+        "/"
+      ],
+      "data_sources": [
+        "http://unified-api:3100"
+      ]
+    },
+    {
+      "name": "Control Plane Dashboard",
+      "path": "/c/dev/rewrite-mcp/apps/control-plane/dashboard",
+      "framework": "react",
+      "routes": [
+        "/dashboard",
+        "/panels"
+      ],
+      "data_sources": [
+        "http://control-plane:3000"
+      ]
+    },
+    {
+      "name": "CIC UI Package",
+      "path": "/c/dev/rewrite-mcp/packages/cic-ui",
+      "framework": "react",
+      "routes": [
+        "/dashboard",
+        "/panels"
+      ],
+      "data_sources": []
+    },
+    {
+      "name": "Ingestion Dashboard",
+      "path": "/c/dev/rewrite-mcp/projects/cic/ingestion/dashboard",
+      "framework": "react",
+      "routes": [
+        "/dashboard",
+        "/panels"
+      ],
+      "data_sources": [
+        "http://localhost:3116"
+      ]
+    },
+    {
+      "name": "Pipeline Orchestration Dashboard",
+      "path": "/c/dev/rewrite-mcp/workflows/pipeline-orchestration-dashboard",
+      "framework": "other",
+      "routes": [],
+      "data_sources": []
+    }
+  ],
+  "scripts": [
+    {
+      "name": "Bootstrap All Repos",
+      "path": "/c/dev/bootstrap-all.sh",
+      "purpose": "Multi-repo GitHub bootstrap with auto-syncing",
+      "trigger": "manual"
+    },
+    {
+      "name": "Rollback Snapshot",
+      "path": "/c/dev/rollback.sh",
+      "purpose": "Restore repo from saved snapshot",
+      "trigger": "manual"
+    },
+    {
+      "name": "K3D Kubernetes Setup",
+      "path": "/c/dev/cic-ingestion/scripts/k3d-setup.sh",
+      "purpose": "Initialize local Kubernetes cluster",
+      "trigger": "manual"
+    },
+    {
+      "name": "Registry Init",
+      "path": "/c/dev/cic-ingestion/scripts/registry-init.sh",
+      "purpose": "Initialize Docker registry",
+      "trigger": "manual"
+    },
+    {
+      "name": "CIC Smoke Test",
+      "path": "/c/dev/scripts/cic-smoke-test.sh",
+      "purpose": "Quick validation of running services",
+      "trigger": "manual"
+    },
+    {
+      "name": "CIC Docker Entrypoint",
+      "path": "/c/dev/scripts/cic-docker-entrypoint.sh",
+      "purpose": "Container initialization script",
+      "trigger": "automatic"
+    },
+    {
+      "name": "Docker Recovery",
+      "path": "/c/dev/scripts/cic-docker-recovery.sh",
+      "purpose": "Recovery procedures for failed containers",
+      "trigger": "manual"
+    },
+    {
+      "name": "Dry Run Tests",
+      "path": "/c/dev/scripts/cic-dry-run.sh",
+      "purpose": "Non-destructive validation",
+      "trigger": "manual"
+    },
+    {
+      "name": "Log Archival",
+      "path": "/c/dev/scripts/cic-log-archival.sh",
+      "purpose": "Archive and compress logs",
+      "trigger": "cron"
+    },
+    {
+      "name": "Bootstrap Docs",
+      "path": "/c/dev/rewrite-mcp/scripts/bootstrap-docs.sh",
+      "purpose": "Generate documentation",
+      "trigger": "manual"
+    },
+    {
+      "name": "Launch CIC",
+      "path": "/c/dev/rewrite-mcp/scripts/launch-cic.sh",
+      "purpose": "Start CIC runtime",
+      "trigger": "manual"
+    },
+    {
+      "name": "Run E2E Tests",
+      "path": "/c/dev/rewrite-mcp/scripts/run-e2e.sh",
+      "purpose": "Execute end-to-end test suite",
+      "trigger": "manual"
+    },
+    {
+      "name": "Sync Docs",
+      "path": "/c/dev/rewrite-mcp/scripts/sync-docs.sh",
+      "purpose": "Synchronize documentation",
+      "trigger": "event"
+    },
+    {
+      "name": "Boundary Checker",
+      "path": "/c/dev/scripts/boundary-checker.sh",
+      "purpose": "Validate commit boundaries and hooks",
+      "trigger": "pre-commit"
+    },
+    {
+      "name": "Build Foundry",
+      "path": "/c/dev/rewrite-mcp/scripts/build-foundry.sh",
+      "purpose": "Build TheFoundry infrastructure",
+      "trigger": "manual"
+    }
+  ],
+  "hooks": [
+    {
+      "name": "Boundary Checker",
+      "path": "/c/dev/scripts/boundary-checker.sh",
+      "trigger": "pre-commit",
+      "cic_related": true
+    },
+    {
+      "name": "Detect Playwright",
+      "path": "/c/dev/claude-skills/engineering-team/playwright-pro/hooks/detect-playwright.sh",
+      "trigger": "post-commit",
+      "cic_related": false
+    },
+    {
+      "name": "Validate Test",
+      "path": "/c/dev/claude-skills/engineering-team/playwright-pro/hooks/validate-test.sh",
+      "trigger": "pre-commit",
+      "cic_related": false
+    },
+    {
+      "name": "Error Capture",
+      "path": "/c/dev/claude-skills/engineering-team/self-improving-agent/hooks/error-capture.sh",
+      "trigger": "post-commit",
+      "cic_related": false
+    },
+    {
+      "name": "Karpathy Gate",
+      "path": "/c/dev/claude-skills/engineering/karpathy-coder/hooks/karpathy-gate.sh",
+      "trigger": "pre-commit",
+      "cic_related": false
+    }
+  ],
+  "cic_modules": [
+    {
+      "name": "CIC Governance",
+      "path": "/c/dev/cic/src/governance",
+      "entry": "dist/governance/index.js",
+      "type": "module"
+    },
+    {
+      "name": "CIC Vault",
+      "path": "/c/dev/services/vault/src",
+      "entry": "dist/server.js",
+      "type": "service"
+    },
+    {
+      "name": "CIC Memory (TorqueQuery)",
+      "path": "/c/dev/services/torquequery/src",
+      "entry": "dist/server.py",
+      "type": "service"
+    },
+    {
+      "name": "CIC Skills Library",
+      "path": "/c/dev/rewrite-mcp/skills",
+      "entry": "index.js",
+      "type": "library"
+    },
+    {
+      "name": "CIC Agents",
+      "path": "/c/dev/rewrite-mcp/packages/agents/src",
+      "entry": "dist/index.js",
+      "type": "library"
+    },
+    {
+      "name": "CIC Orchestrator",
+      "path": "/c/dev/rewrite-mcp/projects/cic/orchestrator/src",
+      "entry": "dist/index.js",
+      "type": "service"
+    }
+  ],
+  "databases": [
+    {
+      "name": "PostgreSQL",
+      "port": 5433,
+      "purpose": "Lineage & artifact storage",
+      "env": {
+        "POSTGRES_DB": "cic_lineage",
+        "POSTGRES_USER": "cic",
+        "POSTGRES_PASSWORD": "cic_dev_pass"
+      }
+    },
+    {
+      "name": "Redis",
+      "port": 6380,
+      "purpose": "Async message queue for builds",
+      "env": {
+        "REDIS_URL": "redis://redis:6379"
+      }
+    },
+    {
+      "name": "Qdrant",
+      "port": 6333,
+      "purpose": "Vector database for memory indexing",
+      "env": {
+        "QDRANT_API_KEY": "dev-key-unsafe"
+      }
+    }
+  ],
+  "summary": {
+    "total_servers": 20,
+    "total_dashboards": 8,
+    "total_scripts": 15,
+    "total_hooks": 5,
+    "total_databases": 3,
+    "port_range": "3100-3116, 3200, 5433, 6333, 6380"
+  }
+}

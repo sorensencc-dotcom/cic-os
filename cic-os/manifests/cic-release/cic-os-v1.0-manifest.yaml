@@ -1,0 +1,50 @@
+apiVersion: cic/v1
+kind: ReleaseManifest
+metadata:
+  name: cic-os-v1.0
+spec:
+  version: "1.0.0"
+  date: "2026-06-10"
+
+  components:
+    evaluation:
+      - cic-model-eval-harness
+      - cic-autonomous-model-evaluator
+      - cic-agent-replay-harness
+    safety:
+      - cic-agent-safety-sandbox
+      - cic-agent-safety-fuzzer
+      - cic-safety-fuzzer-corpus
+    drift:
+      - cic-drift-rules-engine-v2
+      - cic-drift-profiles
+    lifecycle:
+      - cic-model-lifecycle
+      - cic-model-lifecycle-controller
+      - cic-model-canary-strategy
+      - cic-model-promotion-gate
+      - cic-model-rollback-protocol
+    governance:
+      - cic-governance-manifest
+      - cic-autonomy-boundary
+      - cic-constitutional-court
+      - cic-governance-ledger
+    evolution:
+      - cic-evolution-loop-v3
+      - cic-evolution-loop-v3-tests
+    selfHealing:
+      - cic-self-healing-loop
+
+  guarantees:
+    - deterministicExecution
+    - sandboxEnforcement
+    - immutableAuditChain
+    - governedAutonomy
+    - reproducibleEvaluation
+    - safeSelfEvolution
+
+  stabilityRequirements:
+    - driftScore < 0.35
+    - noRegressions
+    - sandboxIntegrity == true
+    - governanceLedgerValid == true

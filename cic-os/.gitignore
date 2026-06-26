@@ -1,0 +1,49 @@
+# CIC OS — Git Ignore Rules
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Helm build artifacts
+*.tgz
+charts/
+tmp/
+
+# MkDocs build output
+site/
+
+# Kubernetes local configs
+kubeconfig
+*.kubeconfig
+kubeconfig.yaml
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor junk
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# CIC OS specific
+cic-os-v*.tar.gz
+dist/
+
+# Prevent accidental nested repos
+**/.git/

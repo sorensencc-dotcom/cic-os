@@ -1,0 +1,26 @@
+name: CIC OS CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.14.0
+
+      - name: Helm Lint
+        run: helm lint helm/cic-os
+
+      - name: Helm Template Render
+        run: helm template cic-os helm/cic-os --namespace cic-system
