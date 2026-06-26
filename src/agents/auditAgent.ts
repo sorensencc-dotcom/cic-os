@@ -13,7 +13,7 @@ export interface AuditResult {
 }
 
 export class AuditAgent extends BaseAgent {
-  protected routingProfile = new AgentRoutingProfile(["claude-3.7"], ["fugu"]);
+  protected routingProfile = new AgentRoutingProfile(["mock"], ["mock"]);
 
   async audit(primary: string, secondary?: string): Promise<AuditResult>;
   async audit(result: string): Promise<AuditResult>;
@@ -35,20 +35,20 @@ export class AuditAgent extends BaseAgent {
     const messages = this.buildAuditPrompt(result);
 
     let primaryResult = "";
-    let primaryModel = "claude-3.7";
+    let primaryModel = "mock";
     let secondaryResult = secondaryOverride || "";
-    let secondaryModel = "fugu";
+    let secondaryModel = "mock";
 
-    // Try primary model (claude-3.7)
+    // Try primary model
     try {
       const primary = await this.llm(messages);
       primaryResult = primary.text;
     } catch (e) {
       // Primary failed, use secondary model for primary slot
       try {
-        const fallback = await this.llm(messages, { model: "fugu" });
+        const fallback = await this.llm(messages, { model: "mock" });
         primaryResult = fallback.text;
-        primaryModel = "fugu";
+        primaryModel = "mock";
       } catch (fallbackErr) {
         // Both primary and fallback failed
         throw new Error(
@@ -60,7 +60,7 @@ export class AuditAgent extends BaseAgent {
     // Try secondary model if not provided
     if (!secondaryOverride) {
       try {
-        const secondary = await this.llm(messages, { model: "fugu" });
+        const secondary = await this.llm(messages, { model: "mock" });
         secondaryResult = secondary.text;
       } catch (e) {
         // Secondary failed, degrade gracefully by using a stripped version

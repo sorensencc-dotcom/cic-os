@@ -4,8 +4,8 @@ import { ChatPayload } from "../core/modelRouter.js";
 
 export class SynthesisAgent extends BaseAgent {
   protected routingProfile = new AgentRoutingProfile(
-    ["claude-3.7", "fugu"],
-    ["gpt-4.1"]
+    ["mock"],
+    ["mock"]
   );
 
   async synthesize(chunks: string[]) {

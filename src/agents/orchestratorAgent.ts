@@ -3,7 +3,7 @@ import { AgentRoutingProfile } from "./routingProfile.js";
 import { ChatPayload } from "../core/modelRouter.js";
 
 export class OrchestratorAgent extends BaseAgent {
-  protected routingProfile = new AgentRoutingProfile(["fugu-ultra"]);
+  protected routingProfile = new AgentRoutingProfile(["mock"]);
 
   async runPlan(plan: string) {
     const messages = this.buildOrchestratorPrompt(plan);

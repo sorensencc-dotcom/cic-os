@@ -1,6 +1,7 @@
 export default {
-  preset: "ts-jest",
-  testEnvironment: "jsdom",
+  preset: "ts-jest/presets/default-esm",
+  testEnvironment: "node",
+  extensionsToTreatAsEsm: [".ts"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   roots: ["<rootDir>/src", "<rootDir>/cic-runtime", "<rootDir>/cic-ingestion", "<rootDir>/cic-ui"],
   testMatch: ["**/*.test.ts", "**/*.test.tsx"],
@@ -29,14 +30,12 @@ export default {
     "\\.css$": "<rootDir>/jest-mock-css.js"
   },
   transform: {
-    "^.+\\.tsx?$": ["ts-jest", {
-      useESM: true,
-      isolatedModules: true,
-      tsconfig: {
-        module: "esnext",
-        target: "esnext"
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      {
+        useESM: true
       }
-    }]
+    ]
   },
   transformIgnorePatterns: [
     "node_modules/(?!(uuid|@paralleldrive|@noble|cuid2|node-cron)/)"
@@ -49,6 +48,5 @@ export default {
   testTimeout: 90000,
   verbose: true,
   forceExit: true,
-  clearMocks: true,
-  extensionsToTreatAsEsm: [".ts"]
+  clearMocks: true
 };

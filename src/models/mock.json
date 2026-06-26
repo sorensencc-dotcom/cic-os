@@ -9,11 +9,11 @@
   "env": null,
   "type": "mock",
   "supports": {
-    "embeddings": false,
-    "vision": false,
+    "embeddings": true,
+    "vision": true,
     "chat": true,
-    "streaming": false,
-    "toolCalls": false
+    "streaming": true,
+    "toolCalls": true
   },
   "routingBias": 999,
   "provider": "mock",

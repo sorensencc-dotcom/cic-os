@@ -4,8 +4,8 @@ import { ChatPayload } from "../core/modelRouter.js";
 
 export class EnrichmentAgent extends BaseAgent {
   protected routingProfile = new AgentRoutingProfile(
-    ["fugu-ultra", "claude-3.7"],
-    ["gpt-4.1", "gemini-2.0"]
+    ["mock"],
+    ["mock"]
   );
 
   async enrich(doc: string) {
