@@ -1,0 +1,23 @@
+ops/monitoring/prometheus/slo-rules.yml
+  s_11e6db4e871c6a::t_4d60a6aa7b50e0 1-145
+src/slo-controller/rollback-timing-harness.ts
+  s_11e6db4e871c6a::t_96ba008702298a 1-52
+src/slo-controller/__tests__/rollback-timing-harness.test.ts
+  s_11e6db4e871c6a::t_dc41d4095e1a30 1-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "0485be00de4041466d76985217695c5b86ef86fe",
+  "prompts": {},
+  "sessions": {
+    "s_11e6db4e871c6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "500ba9fb-b057-4115-9e88-07595b4132f8",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
