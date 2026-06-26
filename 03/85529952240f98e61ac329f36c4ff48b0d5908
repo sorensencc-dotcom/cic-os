@@ -1,0 +1,63 @@
+src/tests/c-phase/c01-routing-profile-determinism.test.ts
+  s_b45fc56236e596::t_e09776dba6bc3c 1-166
+src/core/modelRegistry.ts
+  s_feb29f5c1d3af4::t_26f58d2a811d22 6,10
+  s_feb29f5c1d3af4::t_b8a5ec0baa7ab0 7-8
+  s_feb29f5c1d3af4::t_a86f9650865b17 9
+src/tests/c-phase/c05-json-ordering-determinism.test.ts
+  s_b45fc56236e596::t_3183a61a6cc464 95,114,188
+  s_b45fc56236e596::t_9f128ce61f93da 222-223
+  s_b45fc56236e596::t_a44e37e7416505 1-94,96-113,115-187,189-221,224-264
+src/tests/c-phase/README.md
+  s_b45fc56236e596::t_dcbe58a480365e 1-186
+src/tests/c-phase/QUICKSTART.md
+  s_b45fc56236e596::t_dc4914787f3fe4 1-107
+src/tests/c-phase/c02-capability-filtering-determinism.test.ts
+  s_b45fc56236e596::t_fc7c50a8681f09 1-45,49,55-209
+  s_b45fc56236e596::t_33b25846ff84f9 46-48,50-54
+src/tests/c-phase/c06-no-hidden-nondeterminism.test.ts
+  s_b45fc56236e596::t_6942b0753f8b96 294
+  s_b45fc56236e596::t_1962e1d539ca42 1-90,92-293,295-355
+  s_b45fc56236e596::t_0e446477c27bb8 91
+src/tests/c-phase/c04-agent-determinism.test.ts
+  s_b45fc56236e596::t_fdc4352b724236 1-317
+src/tests/c-phase/c03-fallback-chain-determinism.test.ts
+  s_b45fc56236e596::t_ca47432e2bfacd 1-150,152-155,157-249
+  s_b45fc56236e596::t_02faf45003b7dc 151,156
+src/agents/auditAgent.ts
+  s_b45fc56236e596::t_cc881d2666eccb 16
+  s_b45fc56236e596::t_0b36de4708511f 38,40,42,49,51,63
+jest.config.mjs
+  s_b45fc56236e596::t_57bcd44c8ac1f0 36
+  s_b45fc56236e596::t_baf5d53992483b 2-4,33-35,38,51
+src/agents/orchestratorAgent.ts
+  s_b45fc56236e596::t_7752cc61ece21d 6
+src/agents/enrichmentAgent.ts
+  s_b45fc56236e596::t_c777a16a5b3f35 7-8
+src/agents/synthesisAgent.ts
+  s_b45fc56236e596::t_386af5cb96e5aa 7-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "0385529952240f98e61ac329f36c4ff48b0d5908",
+  "prompts": {},
+  "sessions": {
+    "s_b45fc56236e596": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4834af03-ab4c-471c-9b56-1857224a1ccd",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_feb29f5c1d3af4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9dfe3b0d-2f7d-4534-94eb-6eee4265d042",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
