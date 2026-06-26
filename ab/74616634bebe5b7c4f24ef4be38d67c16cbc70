@@ -1,0 +1,22 @@
+src/slo-controller/enforcement-integration.ts
+  s_11e6db4e871c6a::t_34a8b5826c123f 1-17,20-21,24-28,30-39,42-52
+  s_11e6db4e871c6a::t_b131852fb8f21b 29
+  s_11e6db4e871c6a::t_8e9e997088d0a6 40-41
+  s_11e6db4e871c6a::t_8703ae46edf7d3 18-19,22-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "ab74616634bebe5b7c4f24ef4be38d67c16cbc70",
+  "prompts": {},
+  "sessions": {
+    "s_11e6db4e871c6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "500ba9fb-b057-4115-9e88-07595b4132f8",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
