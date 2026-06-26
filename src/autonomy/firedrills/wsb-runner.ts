@@ -9,6 +9,8 @@ import { runLatencyRegressionGate } from "./scenario-b-latency-regression";
 import { runErrorRateDriftGate } from "./scenario-b-error-rate-drift";
 import { runSaturationGate } from "./scenario-b-saturation";
 import { enforcementIntegration } from "../../slo-controller/enforcement-integration";
+import { sloController } from "../../slo-controller/slo-controller";
+import { SLORule } from "../../slo-controller/types";
 
 export interface ScenarioResult {
   name: string;
@@ -43,10 +45,48 @@ async function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+async function loadWSBRules(): Promise<void> {
+  const rules: SLORule[] = [
+    {
+      id: "slo-error-rate-1m",
+      name: "Error Rate 1m",
+      metric: "slo_error_rate_1m",
+      target: 0.001,
+      burnRateThreshold: 3,
+    },
+    {
+      id: "slo-latency-p99",
+      name: "P99 Latency",
+      metric: "slo_latency_p99_ms",
+      target: 120,
+      burnRateThreshold: 1.25,
+    },
+    {
+      id: "slo-error-rate-30m",
+      name: "Error Rate 30m",
+      metric: "slo_error_rate_30m",
+      target: 0.001,
+      burnRateThreshold: 3,
+    },
+    {
+      id: "slo-cpu-saturation",
+      name: "CPU Saturation",
+      metric: "slo_cpu_usage",
+      target: 0.15,
+      burnRateThreshold: 5,
+    },
+  ];
+
+  await sloController.loadRules(rules);
+}
+
 export async function runWSBValidation(): Promise<WSBReport> {
   const startedAt = Date.now();
   const criticalFailures: string[] = [];
   const scenarios: Record<string, ScenarioResult> = {};
+
+  // Load SLO rules for WS-B validation
+  await loadWSBRules();
 
   // Ensure enforcement loop is running
   await enforcementIntegration.start();

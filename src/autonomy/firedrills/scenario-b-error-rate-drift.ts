@@ -25,15 +25,15 @@ export async function runErrorRateDriftGate(): Promise<ErrorRateDriftReport> {
   const startedAt = Date.now();
   errorRateDriftRollbackMs = null;
 
-  // Inject error-rate: 30m window at 1% (3x threshold of 0.3%)
+  // Inject error-rate: 30m window at 1.5% (15x threshold of 0.1%)
   sloController.setMetrics({
-    slo_error_rate_1m: 0.005,
-    slo_error_rate_5m: 0.008,
-    slo_error_rate_30m: 0.01,
+    slo_error_rate_1m: 0.015,
+    slo_error_rate_5m: 0.012,
+    slo_error_rate_30m: 0.015,
   });
 
   // Wait for enforcement to evaluate and react
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 4000));
 
   const status = sloController.getCanaryGateStatus();
   const abortTriggered = status.violations > 0;

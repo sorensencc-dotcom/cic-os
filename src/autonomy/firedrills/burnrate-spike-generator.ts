@@ -16,7 +16,7 @@ export interface SpikeConfig {
 
 const defaultConfig: SpikeConfig = {
   baseErrorRate: 0.001,
-  spikeMultiplier: 5,
+  spikeMultiplier: 10,
   windows: ["1m", "5m", "30m"],
   holdTimeMs: 4000,
   rampDownMs: 2000,

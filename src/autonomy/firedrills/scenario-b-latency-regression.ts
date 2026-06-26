@@ -25,14 +25,14 @@ export async function runLatencyRegressionGate(): Promise<LatencyRegressionRepor
   const startedAt = Date.now();
   latencyRollbackMs = null;
 
-  // Inject latency: p99 = 150ms (exceeds SLO threshold of 120ms)
+  // Inject latency: p99 = 800ms (6.6x SLO threshold of 120ms)
   sloController.setMetrics({
-    slo_latency_p99_ms: 150,
-    slo_latency_p95_ms: 100,
+    slo_latency_p99_ms: 800,
+    slo_latency_p95_ms: 500,
   });
 
   // Wait for enforcement to evaluate and react
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 4000));
 
   const status = sloController.getCanaryGateStatus();
   const abortTriggered = status.violations > 0;

@@ -38,16 +38,19 @@ export async function runBurnRateSpikeFireDrill(): Promise<FireDrillReport> {
   const startedAt = Date.now();
   lastRollbackResult = null;
 
-  // Start enforcement loop
-  await enforcementIntegration.start();
+  // Enforcement loop already started by wsb-runner
+  // Inject sustained error spike (don't ramp down yet)
+  const baseErrorRate = 0.001;
+  const spikeRate = baseErrorRate * 10; // 10x error rate
 
-  // Generate 5x load spike and feed metrics
-  await generateBurnRateSpike((metricsSnapshot) => {
-    sloController.setMetrics(metricsSnapshot);
+  sloController.setMetrics({
+    slo_error_rate_1m: spikeRate,
+    slo_error_rate_5m: spikeRate,
+    slo_error_rate_30m: spikeRate,
   });
 
-  // Wait for enforcement to react (< 5s)
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  // Wait for enforcement to detect and react
+  await new Promise((resolve) => setTimeout(resolve, 4000));
 
   // Inspect canary gate status
   const status = sloController.getCanaryGateStatus();

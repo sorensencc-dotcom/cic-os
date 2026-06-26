@@ -36,23 +36,32 @@ export class SLOController {
 
   /**
    * Calculate burn rate for a specific SLO rule
-   * Burn rate = (1 - target) / window
-   * Example: 99.9% target over 30 days = 0.1% / 30 days burn budget
+   * Burn rate = current value / target
+   * Example: error rate 3% against 1% target = 3x burn rate
    */
   calculateBurnRate(rule: SLORule): BurnRateResult {
     if (!this.metrics) {
       throw new Error('Metrics not available');
     }
 
-    // TODO: Implement burn rate calculation
-    // For now, return stub
+    const value = this.metrics[rule.metric] ?? 0;
+    const currentBurnRate = rule.target > 0 ? value / rule.target : 0;
+    const threshold = rule.burnRateThreshold;
+    const isViolating = currentBurnRate > threshold;
+
+    const remainingBudget = value >= rule.target ? 0 : rule.target - value;
+    const estimatedBudgetExhaustion =
+      currentBurnRate <= 0 ? Infinity : remainingBudget / currentBurnRate;
+
+    metricsExporter.setBurnRate(rule.id, currentBurnRate, threshold);
+
     return {
       sloId: rule.id,
-      currentBurnRate: 0,
-      threshold: rule.burnRateThreshold,
-      isViolating: false,
-      remainingBudget: 100,
-      estimatedBudgetExhaustion: null,
+      currentBurnRate,
+      threshold,
+      isViolating,
+      remainingBudget,
+      estimatedBudgetExhaustion,
     };
   }
 

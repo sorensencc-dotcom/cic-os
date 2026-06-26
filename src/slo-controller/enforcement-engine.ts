@@ -17,6 +17,8 @@ export class EnforcementEngine {
 
   constructor(controller: SLOController) {
     this.controller = controller;
+    // Set critical threshold to 6x for canary gate tier (B-Phase SLO enforcement)
+    this.criticalBurnRateThreshold = 6;
   }
 
   async enforce(): Promise<EnforcementAction> {

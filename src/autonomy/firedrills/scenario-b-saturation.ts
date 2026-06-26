@@ -33,7 +33,7 @@ export async function runSaturationGate(): Promise<SaturationGateReport> {
   });
 
   // Wait for enforcement to evaluate and react
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 4000));
 
   const status = sloController.getCanaryGateStatus();
   const abortTriggered = status.violations > 0;

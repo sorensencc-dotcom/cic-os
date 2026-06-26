@@ -43,7 +43,7 @@ describe("Fire-Drill Scenario B: Burn-Rate Spike", () => {
     const report = await runBurnRateSpikeFireDrill();
 
     expect(report.duration).toBeGreaterThan(0);
-    expect(report.duration).toBeGreaterThanOrEqual(5000); // Wait window
+    expect(report.duration).toBeGreaterThanOrEqual(4000); // 4s wait window
   });
 
   it("should track rollback attempt", async () => {
