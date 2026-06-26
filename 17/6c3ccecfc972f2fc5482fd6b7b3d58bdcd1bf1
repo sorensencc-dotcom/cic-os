@@ -1,0 +1,24 @@
+src/core/modelRegistry.ts
+  s_b45fc56236e596::t_504b4cc78e89f8 10
+src/providers/mock.ts
+  s_b45fc56236e596::t_49117dc055202b 6,15
+  s_b45fc56236e596::t_c8b1a0880370e9 7-12,14
+src/core/modelRouter.ts
+  s_b45fc56236e596::t_f6df6f06a82b32 244,247
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "176c3ccecfc972f2fc5482fd6b7b3d58bdcd1bf1",
+  "prompts": {},
+  "sessions": {
+    "s_b45fc56236e596": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4834af03-ab4c-471c-9b56-1857224a1ccd",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
