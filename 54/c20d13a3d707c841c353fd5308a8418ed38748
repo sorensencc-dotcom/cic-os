@@ -1,0 +1,27 @@
+postgres/ledgers/training_metrics.sql
+  s_9db7ff8307af04::t_a5a0a4f7599ec4 1-13
+postgres/ledgers/policy_checkpoints.sql
+  s_9db7ff8307af04::t_3fb1b38b7ff13c 1-10
+postgres/ledgers/evaluation_results.sql
+  s_9db7ff8307af04::t_34a84b49113bfb 1-11
+postgres/ledgers/training_runs.sql
+  s_9db7ff8307af04::t_9f06f045a64ab4 1-11
+cic-os/src/learning/training/TrainingLoop.ts
+  s_9db7ff8307af04::t_72473433180ae6 1-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "54c20d13a3d707c841c353fd5308a8418ed38748",
+  "prompts": {},
+  "sessions": {
+    "s_9db7ff8307af04": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7868a049-3774-41db-ade2-dd9374785bc7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
