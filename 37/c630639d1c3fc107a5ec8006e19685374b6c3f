@@ -1,0 +1,27 @@
+postgres/ledgers/routing_history.sql
+  s_9db7ff8307af04::t_c4418f2f7ad099 1-7
+postgres/ledgers/model_performance_ledger.sql
+  s_9db7ff8307af04::t_5725a4b2dbaa21 1-9
+postgres/ledgers/drift_ledger.sql
+  s_9db7ff8307af04::t_a168e24bd64fa4 1-8
+postgres/ledgers/cost_ledger.sql
+  s_9db7ff8307af04::t_e79af5b7c6c62a 1-9
+cic-os/src/core/maal/MAALRouter.ts
+  s_9db7ff8307af04::t_d1bf4173c21a71 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "37c630639d1c3fc107a5ec8006e19685374b6c3f",
+  "prompts": {},
+  "sessions": {
+    "s_9db7ff8307af04": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7868a049-3774-41db-ade2-dd9374785bc7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
