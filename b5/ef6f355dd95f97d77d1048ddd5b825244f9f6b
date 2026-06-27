@@ -1,0 +1,27 @@
+postgres/ledgers/a_b_test_results.sql
+  s_9db7ff8307af04::t_d7a1ea354dd293 1-15
+postgres/ledgers/rollback_incidents.sql
+  s_9db7ff8307af04::t_df74fab6d62adc 1-12
+postgres/ledgers/shadow_decisions.sql
+  s_9db7ff8307af04::t_fc43975543c4bd 1-14
+postgres/ledgers/policy_promotion_audit.sql
+  s_9db7ff8307af04::t_5db4803cc0de63 1-12
+cic-os/src/integration/config/SPLPhase3Config.ts
+  s_9db7ff8307af04::t_821c589256fd4c 1-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "b5ef6f355dd95f97d77d1048ddd5b825244f9f6b",
+  "prompts": {},
+  "sessions": {
+    "s_9db7ff8307af04": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7868a049-3774-41db-ade2-dd9374785bc7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
