@@ -1,0 +1,78 @@
+src/adapter-gateway-cache/gateway/adapter-wrapper.ts
+  s_11e6db4e871c6a::t_8b8d5f072bee21 1-166
+src/adapter-gateway-cache/cache-engine/l2-disk-cache.ts
+  s_11e6db4e871c6a::t_376b009f439467 1-102
+src/adapter-gateway-cache/gateway/offline-mode.ts
+  s_11e6db4e871c6a::t_f4b8dc8b298dc3 1-100
+src/adapter-gateway-cache/__tests__/cache-engine.test.ts
+  s_11e6db4e871c6a::t_eb3b7a66daa6d2 1-239,241,243-248,250-251,255-258,263-273,277-279,282-323
+  s_11e6db4e871c6a::t_1d726da1745c03 240,242,249,253-254,259,261,274-276,280-281
+  s_11e6db4e871c6a::t_0082663eca632d 252,260,262
+src/adapter-gateway-cache/__tests__/concurrency.test.ts
+  s_11e6db4e871c6a::t_642053c881d194 55
+  s_11e6db4e871c6a::t_e93a32ca3dfa64 73-75,77-79,81-86
+  s_11e6db4e871c6a::t_a1ac0659b497ec 1-54,56-72,76,80,87-193
+src/adapter-gateway-cache/cache-engine/l1-memory-cache.ts
+  s_11e6db4e871c6a::t_d0cad162766df9 1-80
+src/adapter-gateway-cache/cache-engine/cache-locks.ts
+  s_11e6db4e871c6a::t_29148fed2c67e6 3-4,25,29
+  s_11e6db4e871c6a::t_10171143183c89 2,5-6,8-16,19-21,34,38
+  s_11e6db4e871c6a::t_dfa39e4e157608 1,7,17-18,22-24,26-28,30-33,35-37,39-40
+src/adapter-gateway-cache/__tests__/offline-mode.test.ts
+  s_11e6db4e871c6a::t_9560bacd6fcab6 173-174,176-178,180-181
+  s_11e6db4e871c6a::t_57fd9da4bfd1eb 188,192-193,196-200,205-206,208-213,223
+  s_11e6db4e871c6a::t_7fe687c91158d8 107-108,116,118-119
+  s_11e6db4e871c6a::t_c6baf5eeade68f 1-80,82-93,96-99,101,104-106,109-115,117,120-138,141-142,144,147-172,175,179,182-187,189-191,194-195,201-204,207,214-222,224-228,231-232,234,237-240,242-252,254-256
+  s_11e6db4e871c6a::t_9148e0a0c621c8 139-140,143,145-146
+  s_11e6db4e871c6a::t_7491384c761c59 229-230,233,235-236,241,253
+  s_11e6db4e871c6a::t_f336189bb61cf8 94-95,100,102-103
+  s_11e6db4e871c6a::t_f2e465acfa7fa3 81
+src/adapter-gateway-cache/integration/maal-routing-hook.ts
+  s_11e6db4e871c6a::t_d42a6ef58f78c0 1-73
+src/adapter-gateway-cache/README.md
+  s_11e6db4e871c6a::t_a1acf21846100c 1-331
+src/adapter-gateway-cache/gateway/cache-policy.ts
+  s_11e6db4e871c6a::t_d8293f4d792013 1-77
+src/adapter-gateway-cache/index.ts
+  s_11e6db4e871c6a::t_25ce995267a7ed 15
+  s_11e6db4e871c6a::t_291e21a4c1ce8a 1-14
+src/adapter-gateway-cache/__tests__/integration.test.ts
+  s_11e6db4e871c6a::t_7bbd50816b7a76 1-198,200-201,203-208,213-223,225-281,284-314
+  s_11e6db4e871c6a::t_77753740d57e4c 209-212,224
+  s_11e6db4e871c6a::t_22c8895af12a77 199,202
+  s_11e6db4e871c6a::t_f401204df1c262 282-283
+src/adapter-gateway-cache/cache-engine/cache-key.ts
+  s_11e6db4e871c6a::t_34b0134be2e0f9 1-40
+src/adapter-gateway-cache/cache-engine/cache-types.ts
+  s_11e6db4e871c6a::t_bfcd864fa332c0 1-48
+src/adapter-gateway-cache/integration/provider-adapter-hook.ts
+  s_11e6db4e871c6a::t_ae1bcd62f1b130 1-76
+src/adapter-gateway-cache/cache-engine/cache-metrics.ts
+  s_11e6db4e871c6a::t_e7f15b98a62a3e 1-82
+src/adapter-gateway-cache/gateway/adapter-gateway.ts
+  s_11e6db4e871c6a::t_ef2634f835298a 1-132
+src/adapter-gateway-cache/__tests__/adapter-gateway.test.ts
+  s_11e6db4e871c6a::t_1a9bcce63764c9 1-308
+coverage/clover.xml
+  s_11e6db4e871c6a::t_03b9e6ee9ebe1d 2-4
+coverage/coverage-final.json
+  s_11e6db4e871c6a::t_d840835c57aa7a 1
+coverage/lcov-report/index.html
+  s_11e6db4e871c6a::t_206c7c0cbb7325 26,28,33,35,40,42,47,49,64,81,89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "1cd2eb94d95582fb5f7e2d8357b56b130ce4b283",
+  "prompts": {},
+  "sessions": {
+    "s_11e6db4e871c6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "500ba9fb-b057-4115-9e88-07595b4132f8",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
