@@ -283,3 +283,4 @@ GraphStore (append, digest)
 - **Phase 29.3**: Vector embeddings (Qdrant) for semantic similarity
 - **Phase 30**: Causal reasoning engine (why, impact, counterfactuals)
 - **Phase 31**: Autonomous orchestration (plan & execute via KG + reasoning)
+- **Phase 34**: Document knowledge extraction — LLM-based entity/relation extraction, resolution, and grounded querying over unstructured docs (`PHASE_*.md`, architecture docs). Scoped, not started: see [kg-document-extraction.md](../../docs/architecture/kg-document-extraction.md).
