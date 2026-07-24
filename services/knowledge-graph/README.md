@@ -63,7 +63,8 @@ npm run test:coverage # Coverage report
 - **Phase 29.1:** Ingestion bridges (TorqueQuery, Vault, Repomix, Evolution)
 - **Phase 29.2:** Query engine (paths, neighborhoods, patterns, causality)
 - **Phase 29.3:** Governance integration (access control, digest chain)
+- **Phase 34:** Document knowledge extraction — LLM entity/relation extraction over unstructured docs (scoped, not started; see [kg-document-extraction.md](../../docs/architecture/kg-document-extraction.md))
 
 ---
 
-See [Phase 29–31 ABB](../../docs/phase-29-31-architecture.md) for full architecture.
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for full architecture.
